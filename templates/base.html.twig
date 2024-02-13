@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+{% block head %}
 	<title>{% block title %}Pacific - Free Bootstrap 4 Template by Colorlib{% endblock %}</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,11 +25,12 @@
 
 	{% endblock %}
 </head>
+{% endblock %}
 <body>
 {% block body%}
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="index.html">Tfarhida<span>Bon plan</span></a>
+			<a class="navbar-brand" href="index.html"><span>Travel Agency</span></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
@@ -37,7 +39,7 @@
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active"><a href="accueil" class="nav-link">Home</a></li>
 					<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-					<li class="nav-item"><a href="activite" class="nav-link">Activite</a></li>
+					<li class="nav-item"><a href="act" class="nav-link">Activite</a></li>
 					<li class="nav-item"><a href="hotel.html" class="nav-link">Hotel</a></li>
 					<li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
 					<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
@@ -47,14 +49,14 @@
 	</nav>
 	<!-- END nav -->
 	
-	<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_5.jpg');">
+<div class="hero-wrap js-fullheight" style="background-image: url('/images/5.jpg');">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
 				<div class="col-md-7 ftco-animate">
-					<span class="subheading">Welcome to Pacific</span>
-					<h1 class="mb-4">Discover Your Favorite Place with Us</h1>
-					<p class="caps">Travel to the any corner of the world, without going around in circles</p>
+					<span class="subheading">Bienvenue dans Tfarhida</span>
+					<h1 class="mb-4">Découvrir ton bon plan avec nous</h1>
+					<p class="caps">Voyagez aux quatre coins du monde, sans tourner en rond</p>
 				</div>
 				<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
 					<span class="fa fa-play"></span>
