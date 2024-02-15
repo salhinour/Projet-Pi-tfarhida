@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+{% block head %}
 	<title>{% block title %}Pacific - Free Bootstrap 4 Template by Colorlib{% endblock %}</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	{% block stylesheets%}
+	{% block stylesheets %}
 	<link href="{{asset('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900')}}" rel="stylesheet">
 	<link href="{{asset('https://fonts.googleapis.com/css2?family=Arizonia&display=swap')}}" rel="stylesheet">
 
@@ -24,23 +25,21 @@
 
 	{% endblock %}
 </head>
+{% endblock %}
 <body>
-{% block body%}
+{% block body %}
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="index.html">Tfarhida<span>Bon plan</span></a>
+			<a class="navbar-brand" href="index.html"><span>Travel Agency</span></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a href="accueil" class="nav-link">Home</a></li>
-					<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-					<li class="nav-item"><a href="activite" class="nav-link">Activite</a></li>
-					<li class="nav-item"><a href="hotel.html" class="nav-link">Hotel</a></li>
-					<li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-					<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+					<li class="nav-item active"><a href="accueil" class="nav-link">Accueil</a></li>
+ 					<li class="nav-item"><a href="reclamation" class="nav-link">Réclamation</a></li>
+					
 				</ul>
 			</div>
 		</div>
