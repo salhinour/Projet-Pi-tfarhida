@@ -35,51 +35,39 @@
 
      <div class="collapse navbar-collapse" id="ftco-nav">
        <ul class="navbar-nav ml-auto">
-         <li class="nav-item"><a href="accueil" class="nav-link">Home</a></li>
-         <li class="nav-item"><a href="activite" class="nav-link">Transport</a></li>
+         <li class="nav-item"><a href="/accueil" class="nav-link">Home</a></li>
+         <li class="nav-item"><a href="/activite" class="nav-link">Transport</a></li>
 
        </ul>
      </div>
    </div>
  </nav>
  <!-- END nav -->
- 
- <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_1.2.jpg');">
+  <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/images/bg_1.2.jpg');">
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
       <div class="col-md-9 ftco-animate pb-5 text-center">
-       <h1 class="mb-0 bread">Transopt</h1>
+       <h1 class="mb-0 bread">Create new MoyenTransport</h1>
      </div>
    </div>
  </div>
 </section>
-
-<section class="ftco-section">
-  <div class="container">
-    <div class="row d-flex">
-      <div class="col-md-4 d-flex ftco-animate">
-       <div class="blog-entry justify-content-end">
-        <a href="blog-single.html" class="block-20" style="background-image: url('images/image1.jpg');" id="bord1">
-        </a>
-        <div class="text" id="bord1" >
-         <div class="d-flex align-items-center mb-4 ">
-          <div class="one">
-         </div>
-
-       </div>
-       <h3 class="heading"><a href="#">choose your means of transport</a></h3>
-           <p><a href="#" class="btn btn-primary">click here</a></p>
-     </div>
-   </div>
- </div>
  
 
-</section>	
+<div class="container">
+    <div class="row no-gutters slider-text align-items-end justify-content-center">
 
+{% block body %}
 
+    {{ include('moyen_transport/_form.html.twig') }}
 
-<footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url(images/bg_3.jpg);">
+    <a href="{{ path('app_moyen_transport_index') }}">back to list</a>
+{% endblock %}
+</div>
+</div>
+
+<footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url(/images/bg_3.jpg);">
   <div class="container">
     <div class="row mb-5">
       <div class="col-md pt-5">

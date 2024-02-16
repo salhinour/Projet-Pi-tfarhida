@@ -35,8 +35,8 @@
 
      <div class="collapse navbar-collapse" id="ftco-nav">
        <ul class="navbar-nav ml-auto">
-         <li class="nav-item"><a href="accueil" class="nav-link">Home</a></li>
-         <li class="nav-item"><a href="activite" class="nav-link">Transport</a></li>
+         <li class="nav-item"><a href="/accueil" class="nav-link">Home</a></li>
+         <li class="nav-item"><a href="/activite" class="nav-link">Transport</a></li>
 
        </ul>
      </div>
@@ -44,7 +44,7 @@
  </nav>
  <!-- END nav -->
  
- <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_1.2.jpg');">
+ <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/images/bg_1.2.jpg');">
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
@@ -54,32 +54,47 @@
    </div>
  </div>
 </section>
+{% block title %}MoyenTransport index{% endblock %}
 
-<section class="ftco-section">
-  <div class="container">
-    <div class="row d-flex">
-      <div class="col-md-4 d-flex ftco-animate">
-       <div class="blog-entry justify-content-end">
-        <a href="blog-single.html" class="block-20" style="background-image: url('images/image1.jpg');" id="bord1">
-        </a>
-        <div class="text" id="bord1" >
-         <div class="d-flex align-items-center mb-4 ">
-          <div class="one">
-         </div>
+{% block body %}
+    <h1>MoyenTransport index</h1>
 
-       </div>
-       <h3 class="heading"><a href="#">choose your means of transport</a></h3>
-           <p><a href="#" class="btn btn-primary">click here</a></p>
-     </div>
-   </div>
- </div>
- 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Capacite</th>
+                <th>Num_serie</th>
+                <th>Etat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for moyen_transport in moyen_transports %}
+            <tr>
+                <td>{{ moyen_transport.id }}</td>
+                <td>{{ moyen_transport.type }}</td>
+                <td>{{ moyen_transport.capacite }}</td>
+                <td>{{ moyen_transport.numSerie }}</td>
+                <td>{{ moyen_transport.etat }}</td>
+                <td>
+                    <a href="{{ path('app_moyen_transport_show', {'id': moyen_transport.id}) }}">show</a>
+                    <a href="{{ path('app_moyen_transport_edit', {'id': moyen_transport.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-</section>	
+    <a href="{{ path('app_moyen_transport_new') }}">Create new</a>
+{% endblock %}
 
-
-
-<footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url(images/bg_3.jpg);">
+<footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url(/images/bg_3.jpg);">
   <div class="container">
     <div class="row mb-5">
       <div class="col-md pt-5">
@@ -167,3 +182,4 @@
 {% endblock %}
 </body>
 </html>
+
