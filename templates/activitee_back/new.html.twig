@@ -1,11 +1,11 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}New Activitee{% endblock %}
+{% extends 'baseback.html.twig' %}
+ {% block title %}Activitee back new{% endblock %}
 
 {% block body %}
-    <h1>Create new Activitee</h1>
+      <h1>Create new Activite</h1>
 
-    {{ include('activitee_back/_form.html.twig') }}
+    {{ include('categorie_back_c/_form.html.twig') }}
 
-    <a href="{{ path('app_activitee_back_index') }}">back to list</a>
+    <a href="{{ path('app_categorie_back_c_index') }}">back to list</a>
 {% endblock %}
+

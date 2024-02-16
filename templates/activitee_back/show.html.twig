@@ -1,8 +1,8 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Activitee{% endblock %}
+{% extends 'baseback.html.twig' %}
+ {% block title %}Activitee back show{% endblock %}
 
 {% block body %}
+       
     <h1>Activitee</h1>
 
     <table class="table">
@@ -29,7 +29,7 @@
             </tr>
             <tr>
                 <th>Etat</th>
-                <td>{{ activitee.etat ? 'Yes' : 'No' }}</td>
+                <td>{{ activitee.etat }}</td>
             </tr>
             <tr>
                 <th>Image</th>
@@ -43,4 +43,5 @@
     <a href="{{ path('app_activitee_back_edit', {'id': activitee.id}) }}">edit</a>
 
     {{ include('activitee_back/_delete_form.html.twig') }}
-{% endblock %}
+        
+    {% endblock %}

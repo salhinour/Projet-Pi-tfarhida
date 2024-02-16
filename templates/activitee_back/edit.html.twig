@@ -1,13 +1,13 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Edit Activitee{% endblock %}
+{% extends 'baseback.html.twig' %}
+ {% block title %}Activitee back edit{% endblock %}
 
 {% block body %}
-    <h1>Edit Activitee</h1>
 
+        <h1>Edit Activitee</h1>
     {{ include('activitee_back/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('app_activitee_back_index') }}">back to list</a>
 
     {{ include('activitee_back/_delete_form.html.twig') }}
 {% endblock %}
+  

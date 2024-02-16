@@ -6,5 +6,5 @@
         {{ form_row(form.image) }}
         {# Désactiver le champ etat #}
         {{ form_row(form.etat) }}
-    <button class="btn">{{ button_label|&('Save') }}</button>
+    <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
