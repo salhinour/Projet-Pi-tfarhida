@@ -1,4 +1,11 @@
 {{ form_start(form,{'attr' : { 'novalidate' :'novalidate'}} ) }}
-    {{ form_widget(form) }}
+  {{ form_row(form.nom) }}
+        {{ form_row(form.prix) }}
+        {{ form_row(form.localisation) }}
+        {{ form_row(form.nbP) }}
+        {{ form_row(form.image) }}
+            {{ form_row(form.categorie, {'label': 'type_categorie', 'attr': {'class': 'form-control'}}) }}
+        {# Désactiver le champ etat #}
+        {{ form_row(form.etat, {'disabled': true}) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

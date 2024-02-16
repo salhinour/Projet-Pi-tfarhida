@@ -20,6 +20,21 @@ class ActiviteeRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Activitee::class);
     }
+        /**
+     * Finds all logements with etat = true
+     *
+     * @return Activitee[] Returns an array of Logement objects
+     */
+
+    public function findAllWithEtatTrue(): array
+    {
+        return $this->createQueryBuilder('l')
+            ->andWhere('l.etat = :etat')
+            ->setParameter('etat', true)
+            ->getQuery()
+            ->getResult();
+    }
+    }
 
 //    /**
 //     * @return Activitee[] Returns an array of Activitee objects
@@ -45,4 +60,4 @@ class ActiviteeRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
-}
+

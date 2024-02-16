@@ -37,12 +37,14 @@ class Activitee
     private ?int $nbP = null;
 
     #[ORM\Column]
-    #[Assert\NotBlank(message: "vous devez mettre l'etat!!!")]
 
-    private ?bool $etat = null;
+    private ?bool $etat = false;
 
     #[ORM\ManyToOne(inversedBy: 'activitee')]
     private ?Categorie $categorie = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
 
    
 
@@ -127,6 +129,18 @@ class Activitee
     public function setCategorie(?Categorie $categorie): static
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }

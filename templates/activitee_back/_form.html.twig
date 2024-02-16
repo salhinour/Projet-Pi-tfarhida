@@ -1,0 +1,10 @@
+{{ form_start(form,{'attr' : { 'novalidate' :'novalidate'}} ) }}
+  {{ form_row(form.nom) }}
+        {{ form_row(form.prix) }}
+        {{ form_row(form.localisation) }}
+        {{ form_row(form.nbP) }}
+        {{ form_row(form.image) }}
+        {# Désactiver le champ etat #}
+        {{ form_row(form.etat) }}
+    <button class="btn">{{ button_label|&('Save') }}</button>
+{{ form_end(form) }}
