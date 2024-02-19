@@ -25,7 +25,9 @@ class Categorie
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: "vous devez mettre le type!!!")]
 
-    
+    #[Assert\Regex(
+        pattern: '/^[a-zA-ZÀ-ÖØ-öø-ÿ\s]+$/',
+        message: "Le type de catégorie ne doit pas contenir de chiffres ou de symboles")]
     private ?string $type_categorie = null;
 
     #[ORM\OneToMany(targetEntity: Activitee::class, mappedBy: 'categorie')]

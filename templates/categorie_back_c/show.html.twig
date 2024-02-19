@@ -3,6 +3,11 @@
 {% block title %}Categorie back shoow{% endblock %}
 
 {% block body %}
+<div>
+            <a href="{{ path('app_categorie_back_c_new') }}" class="btn btn-success btn-icon-split ml-auto">
+                <i class="fas fa-plus"></i> Create New
+            </a>
+        </div>
     <h1>Categorie</h1>
 
     <table class="table">
@@ -18,13 +23,12 @@
             <tr>
                 <th>Type_categorie</th>
                 <td>{{ categorie.typeCategorie }}</td>
-            </tr>
+   </tr>
         </tbody>
     </table>
+            <a href="{{ path('app_categorie_back_c_index') }}" class="btn btn-primary">Back to list</a>
 
-    <a href="{{ path('app_categorie_back_c_index') }}">back to list</a>
-
-    <a href="{{ path('app_categorie_back_c_edit', {'id': categorie.id}) }}">edit</a>
+    <a href="{{ path('app_categorie_back_c_edit', {'id': categorie.id}) }}" class="btn btn-secondary">edit</a>
 
     {{ include('categorie_back_c/_delete_form.html.twig') }}
 {% endblock %}

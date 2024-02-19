@@ -1,11 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Mettez ici les autres balises meta, titre et liens vers les autres fichiers CSS -->
+    <style>
+        /* CSS pour le bouton Save */
+        .btn-save {
+            background-color: #ff5733; /* Couleur orange */
+            color: white;
+            border: 2px solid #ff5733; /* Bordure orange */
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .btn-save:hover {
+            background-color: #e64a19; /* Couleur orange foncée au survol */
+            border-color: #e64a19; /* Bordure orange foncée au survol */
+        }
+         .small-search {
+            width: 150px; /* Ajustez la largeur selon vos besoins */
+        }
+    </style>
+</head>
+<body>
+<div class="container" style="text-align:center" >
 {{ form_start(form,{'attr' : { 'novalidate' :'novalidate'}} ) }}
   {{ form_row(form.nom) }}
         {{ form_row(form.prix) }}
         {{ form_row(form.localisation) }}
         {{ form_row(form.nbP) }}
         {{ form_row(form.image) }}
-            {{ form_row(form.categorie, {'label': 'type_categorie', 'attr': {'class': 'form-control'}}) }}
+        {{ form_row(form.descriptionact) }}
+        {{ form_row(form.categorie, {'label': 'type_categorie', 'attr': {'class': 'form-control'}}) }}
         {# Désactiver le champ etat #}
-        {{ form_row(form.etat, {'disabled': true}) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+    <button class="btn-save">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
+</div>
+</body>
+</html>
+

@@ -23,6 +23,8 @@ class Activitee
 
     #[ORM\Column]
     #[Assert\NotBlank(message: "vous devez mettre le prix!!!")]
+    #[Assert\GreaterThan(value: 0, message: "Le prix doit être supérieur à zéro")]
+
 
     private ?float $prix = null;
 
@@ -32,20 +34,25 @@ class Activitee
     private ?string $localisation = null;
 
     #[ORM\Column]
-    #[Assert\NotBlank(message: "vous devez mettre le nombre!!!")]
 
     private ?int $nbP = null;
 
     #[ORM\Column]
 
     private ?bool $etat = false;
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "vous devez mettre la desciption de l'activite!!!")]
+
+    private ?string $DescriptionAct = null;
+
 
     #[ORM\ManyToOne(inversedBy: 'activitee')]
     private ?Categorie $categorie = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $image = null;
-
+    
    
 
     
@@ -141,6 +148,18 @@ class Activitee
     public function setImage(string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getDescriptionAct(): ?string
+    {
+        return $this->DescriptionAct;
+    }
+
+    public function setDescriptionAct(string $DescriptionAct): static
+    {
+        $this->DescriptionAct = $DescriptionAct;
 
         return $this;
     }

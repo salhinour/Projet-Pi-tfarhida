@@ -2,6 +2,11 @@
  {% block title %}Activitee back Affichage{% endblock %}
 
 {% block body %}
+<div>
+            <a href="{{ path('app_activitee_back_new') }}" class="btn btn-success btn-icon-split ml-auto">
+                <i class="fas fa-plus"></i> Create New
+            </a>
+        </div>
    <h1>Activite Affichage</h1>
 
     <table class="table">
@@ -26,10 +31,10 @@
                 <td>{{ activitee.localisation }}</td>
                 <td>{{ activitee.nbP }}</td>
                 <td>{{ activitee.etat}}</td>
-<td><img src="{{ asset('uploads/' ~ activitee.image) }}" alt="Image" width="100" height="100"></td>
+                <td><img src="{{ asset('uploads/' ~ activitee.image) }}" alt="Image" width="100" height="100"></td>
                 <td>
-                    <a href="{{ path('app_activitee_back_show', {'id': activitee.id}) }}">show</a>
-                    <a href="{{ path('app_activitee_back_edit', {'id': activitee.id}) }}">edit</a>
+                <a href="{{ path('app_activitee_back_show', {'id': activitee.id}) }}" class="btn btn-primary">show</a>
+                <a href="{{ path('app_activitee_back_edit', {'id': activitee.id}) }}" class="btn btn-secondary">edit</a>   
                 </td>
             </tr>
         {% else %}
@@ -40,7 +45,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_activitee_back_new') }}">Create new</a>
+    <a href="{{ path('app_activitee_back_new') }}" class="btn btn-third" >Create new</a>
 {% endblock %}
 
           

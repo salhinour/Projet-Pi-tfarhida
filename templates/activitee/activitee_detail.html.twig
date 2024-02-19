@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de l'activité{% endblock %}
+
+{% block body %}
+
+
+<div class="activity-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="activity-info">
+                    <h2 class="activity-title">{{ activitee.nom }}</h2>
+                    <p class="activity-description">{{ activitee.descriptionact }}</p>
+                    <ul class="activity-details-list">
+                        <li><strong>Localisation:</strong> {{ activitee.localisation }}</li>
+                        <li><strong>Nombre de personnes:</strong> {{ activitee.nbP }}</li>
+                        <li><strong>Prix:</strong> {{ activitee.prix }} DT/personne</li>
+                        {% if activitee.categorie is defined and activitee.categorie is not null %}
+                        <li><strong>Catégorie:</strong> {{ activitee.categorie.getTypeCategorie()}}</li>
+                        <li><strong>Description Catégorie:</strong> {{ activitee.categorie.getDescription()}}</li>
+                        {% else %}
+                        <li>Aucune catégorie trouvée pour cette activité</li>
+                        {% endif %}
+                    </ul>
+                    <a href="{{ path('app_activitee_indexx') }}" class="btn btn-primary">Retour</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="activity-image">
+                    <img src="{{ asset('uploads/' ~ activitee.image) }}" class="img-fluid" alt="Image de l'activité">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

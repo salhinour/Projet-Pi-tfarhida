@@ -1,11 +1,17 @@
  {% extends 'base.html.twig' %}
-
-{% block title %}Activite new{% endblock %}
+ {% block title %}Activitee new{% endblock %}
 
 {% block body %}
-    <h1>Nouvelle Activite</h1>
+    <div class="container" style="text-align:center" >
+            <h1>Nouvelle Activite</h1>
+
 
     {{ include('activitee/_form.html.twig') }}
 
-    <a href="{{ path('app_activitee_index') }}">back to list</a>
+        <div class="button-group">
+            <a href="{{ path('app_activitee_index') }}" class="btn btn-primary">Back to list</a>
+             <a href="{{ path('app_categorie_new') }}" class="btn btn-secondary">Ajouter categorie</a>
+        </div>
+    </div>
 {% endblock %}
+

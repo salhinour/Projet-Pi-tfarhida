@@ -24,6 +24,8 @@ class ActiviteeController extends AbstractController
     #[Route('/activite', name: 'app_activitee_index', methods: ['GET'])]
     public function index(ActiviteeRepository $activiteeRepository): Response
     {
+        $this->addFlash('success', 'Les activités ont été mises à jour avec succès.');
+
         return $this->render('activitee/index.html.twig', [
             'activitees' => $activiteeRepository->findAll(),
         ]);
@@ -32,6 +34,7 @@ class ActiviteeController extends AbstractController
     public function indexx(ActiviteeRepository $activiteeRepository,CategorieRepository  $categorieRepository): Response
     {
         $activitees = $activiteeRepository->findAllWithEtatTrue();
+
 
         return $this->render('activitee/activite.html.twig', [
             'activitees' => $activitees, 
@@ -48,12 +51,15 @@ class ActiviteeController extends AbstractController
             $form->handleRequest($request);
         
             if ($form->isSubmitted() && $form->isValid()) {
-                $file = $form['image']->getData();
-                if ($file) {
-                    $uploadsDirectory = $parameterBag->get('uploads_directory');
-                    $filename = md5(uniqid()) . '.' . $file->guessExtension();
-                    $file->move($uploadsDirectory, $filename);
-                    $activitee->setImage($filename);
+                // Vérifiez si le champ image est présent dans le formulaire soumis
+                if ($form->has('image')) {
+                    $file = $form['image']->getData();
+                    if ($file) {
+                        $uploadsDirectory = $parameterBag->get('uploads_directory');
+                        $filename = md5(uniqid()) . '.' . $file->guessExtension();
+                        $file->move($uploadsDirectory, $filename);
+                        $activitee->setImage($filename);
+                    }
                 }
                 
                 // Accéder à la valeur du champ type_categorie depuis la requête
@@ -71,12 +77,18 @@ class ActiviteeController extends AbstractController
                 'form' => $form,
             ]);
         }
-    
-
+     
     #[Route('/{id}', name: 'app_activitee_show', methods: ['GET'])]
     public function show(Activitee $activitee): Response
     {
         return $this->render('activitee/show.html.twig', [
+            'activitee' => $activitee,
+        ]);
+    }
+    #[Route('/{id}/desc', name: 'app_activitee_desc', methods: ['GET'])]
+    public function descriptif(Activitee $activitee): Response
+    {
+        return $this->render('activitee/activitee_detail.html.twig', [
             'activitee' => $activitee,
         ]);
     }

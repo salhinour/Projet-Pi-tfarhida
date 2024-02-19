@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Activitee;
-use App\Form\ActiviteeType;
+use App\Form\Activitee1Type;
 use App\Repository\ActiviteeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,7 +26,7 @@ class ActiviteeBackController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $activitee = new Activitee();
-        $form = $this->createForm(ActiviteeType::class, $activitee);
+        $form = $this->createForm(Activitee1Type::class, $activitee);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -53,7 +53,7 @@ class ActiviteeBackController extends AbstractController
     #[Route('/{id}/edit', name: 'app_activitee_back_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Activitee $activitee, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(ActiviteeType::class, $activitee);
+        $form = $this->createForm(Activitee1Type::class, $activitee);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

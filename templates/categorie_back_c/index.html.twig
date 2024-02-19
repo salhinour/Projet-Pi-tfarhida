@@ -3,6 +3,11 @@
 {% block title %}Categorie back index{% endblock %}
 
 {% block body %}
+<div>
+            <a href="{{ path('app_categorie_back_c_new') }}" class="btn btn-success btn-icon-split ml-auto">
+                <i class="fas fa-plus"></i> Create New
+            </a>
+        </div>
     <h1>Categorie index</h1>
 
     <table class="table">
@@ -21,8 +26,9 @@
                 <td>{{ categorie.description }}</td>
                 <td>{{ categorie.typeCategorie }}</td>
                 <td>
-                    <a href="{{ path('app_categorie_back_c_show', {'id': categorie.id}) }}">show</a>
-                    <a href="{{ path('app_categorie_back_c_edit', {'id': categorie.id}) }}">edit</a>
+                    <a href="{{ path('app_categorie_back_c_show', {'id': categorie.id}) }}" class="btn btn-primary">show</a>
+                    <a href="{{ path('app_categorie_back_c_edit', {'id': categorie.id}) }}" class="btn btn-secondary">edit</a>
+
                 </td>
             </tr>
         {% else %}
@@ -33,5 +39,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_categorie_back_c_new') }}">Create new</a>
+    <a href="{{ path('app_categorie_back_c_new') }}" class="btn btn-third ">Create new</a>
 {% endblock %}

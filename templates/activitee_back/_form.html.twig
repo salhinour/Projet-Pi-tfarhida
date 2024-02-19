@@ -1,10 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Mettez ici les autres balises meta, titre et liens vers les autres fichiers CSS -->
+    <style>
+        /* CSS pour le bouton Save */
+        .btn-save {
+            background-color: green;
+            color: white;
+            border: 2px solid green;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .btn-save:hover {
+            background-color: darkgreen;
+            border-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+
 {{ form_start(form,{'attr' : { 'novalidate' :'novalidate'}} ) }}
   {{ form_row(form.nom) }}
         {{ form_row(form.prix) }}
         {{ form_row(form.localisation) }}
         {{ form_row(form.nbP) }}
         {{ form_row(form.image) }}
+        {{ form_row(form.descriptionact) }}
+        {{ form_row(form.categorie, {'label': 'type_categorie', 'attr': {'class': 'form-control'}}) }}
         {# Désactiver le champ etat #}
         {{ form_row(form.etat) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button class="btn-save">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
+</body>
+</html>

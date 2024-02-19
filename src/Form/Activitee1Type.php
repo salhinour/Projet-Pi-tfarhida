@@ -10,7 +10,8 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use App\Entity\Categorie;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class ActiviteeType extends AbstractType
+
+class Activitee1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -21,7 +22,7 @@ class ActiviteeType extends AbstractType
             ->add('prix')
             ->add('localisation')
             ->add('nbP')
-            #->add('etat')
+            ->add('etat')
             ->add('image', FileType::class, [
                 'data_class' => null,
                 'required' => false,

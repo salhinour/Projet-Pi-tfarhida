@@ -1,43 +1,74 @@
-<html><head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <title>
-            Utilisateurs - Tfarhida
-        </title>
+<!DOCTYPE html>
+<html lang="fr">
 
-        <link href="/sbadmin2/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-        <link href="/sbadmin2/css/sb-admin-2.min.css" rel="stylesheet">
-        <link href="/css/app.css" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Utilisateurs - Tfarhida</title>
 
-          <link href="/sbadmin2/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/sbadmin2/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/sbadmin2/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
+    <link href="/sbadmin2/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-    </head>
+    <style>
+        .button-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .button-group {
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: #fff;
+        }
+         .btn-third {
+            background-color: #F98D75;
+            color: #fff;
+        }
+        .logo {
+    width: 150px; /* ajustez la taille selon vos préférences */
+    height: auto; /* pour conserver les proportions */
+}
+      
+    
+    </style>
+</head>
     <body class="" id="page-top">
             
         <div id="wrapper">
             
             
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">Tfarhida</div>
-    </a>
+    
 
     <hr class="sidebar-divider my-0">
 
-    <li class="nav-item     ">
-        <a class="nav-link" href="/admin/tableau-de-bord">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Tableau de bord</span>
-        </a>
-    </li>
-
+    <div class="sidebar-brand-text mx-3">
+    <img src="{{ asset('/sbadmin2/logo.png') }}" alt="Votre Image" class="logo">
+</div>
     <hr class="sidebar-divider my-0">
 
                                                                                 
@@ -125,24 +156,18 @@
                     
                     <div class="container-fluid">
 
-                        <h1 class="h3 mb-0 text-gray-800">Gestion des activites</h1>
-                        
-                        
-                        
+                        <h1 class="h3 mb-0 text-gray-800">Gestion des activites</h1>           
+              
             <div id="table-actions" class="d-flex align-items-center justify-content-between mb-4">
         <div class="d-flex">
             <button id="btPrint" onclick="createPDF()" class="export-pdf-btn">
                 <i class="fas fa-file-pdf"></i> Export PDF
             </button>
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search ..." class="form-control">
+            <input type="text" id="myInput" onkeyup="sortTable()" placeholder="Search ..." class="form-control">
         </div>
-        <div>
-            <a href="{{ path('app_activitee_back_new') }}" class="btn btn-success btn-icon-split ml-auto">
-                <i class="fas fa-plus"></i> Create New
-            </a>
         </div>
-    </div>
-         {% block body%}
+{% block body%}
+             
 {% endblock %}   
         </div>
     </div>
@@ -155,15 +180,9 @@
                         </div>
                     </div>
                 </footer>
-
-            
-
-        
-
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>
-
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -181,39 +200,21 @@
         </div>
     </div>
 </div>
-        <!-- Bootstrap core JavaScript-->
-        <script src="/sbadmin2/vendor/jquery/jquery.min.js"></script>
-        <script src="/sbadmin2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+{% block javascripts %}
+  {# <script src="{{ asset("sbadmin2/vendor/datatables/jquery.dataTables.min.js") }}"></script>
+  <script src="{{ asset("sbadmin2/vendor/datatables/dataTables.bootstrap4.min.js") }}"></script>
 
-        <!-- Core plugin JavaScript-->
-        <script src="/sbadmin2/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-        <!-- Custom scripts for all pages-->
-        <script src="/sbadmin2/js/sb-admin-2.min.js"></script>
-
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="{{ asset("js/dataTable/user.js") }}"></script> #}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script>
-      function createPDF() {
-        var sTable = document.getElementById('table').outerHTML;
-        var style = "<style>";
-        style = style + "table {width: 100%; border-collapse: collapse; margin-top: 20px;}";
-        style = style + "th, td {border: 1px solid #ddd; padding: 8px; text-align: left;}";
-        style = style + "th {background-color: #f2f2f2;}";
-        style = style + "</style>";
-    
-        // CREATE A WINDOW OBJECT.
-        var win = window.open('', '', 'height=700,width=700');
-        win.document.write('<html><head>');
-        win.document.write('<title>product list PDF</title>');   // <title> FOR PDF HEADER.
-        win.document.write(style);          // ADD STYLE INSIDE THE HEAD TAG.
-        win.document.write('</head>');
-        win.document.write('<body>');
-        win.document.write(sTable);         // THE TABLE CONTENTS INSIDE THE BODY TAG.
-        win.document.write('</body></html>');
-        win.document.close(); 	// CLOSE THE CURRENT WINDOW.
-        win.print();    // PRINT THE CONTENTS.
-    }
-    </script>
+function createPDF() {
+    var htmlContent = document.documentElement.outerHTML;
+    var win = window.open('', '', 'height=700,width=700');
+    win.document.write(htmlContent);
+    win.document.close();
+    win.print();
+}
+</script>
     <script>
         function myFunction() {
           // Declare variables
@@ -239,13 +240,13 @@
 
         function sortTable(n) {
           var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-          table = document.getElementById("table");
+          table-actions = document.getElementById("table-actions");
           switching = true;
           dir = "asc";
 
           while (switching) {
             switching = false;
-            rows = table.rows;
+            rows = table-actions.rows;
 
             for (i = 1; i < (rows.length - 1); i++) {
               shouldSwitch = false;
@@ -278,7 +279,7 @@
           }
         }
     </script>
-    
+    {%endblock%}
 <div id="sfwdt5e5522" class="sf-toolbar" role="region" aria-label="Symfony Web Debug Toolbar" data-sfurl="http://127.0.0.1:8000/_wdt/5e5522" style="display: block;"><!-- START of Symfony Web Debug Toolbar -->
 <div id="sfMiniToolbar-5e5522" class="sf-minitoolbar" data-no-turbolink="" data-turbo="false" style="display: none;">
     <button type="button" title="Show Symfony toolbar" id="sfToolbarMiniToggler-5e5522" accesskey="D" aria-expanded="false" aria-controls="sfToolbarMainContent-5e5522">
