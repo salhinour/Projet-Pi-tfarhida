@@ -26,8 +26,8 @@ class ActiviteeType extends AbstractType
                 'data_class' => null,
                 'required' => false,
                 'mapped' => false, // Ne pas mapper ce champ à l'entité
-                'empty_data' => $activitee->getImage(), // Pré-remplir avec le chemin de l'image existante
-            ])            
+                'empty_data' => $activitee ? $activitee->getImage() : null,
+                ])            
             ->add('descriptionact')
             ->add('categorie', EntityType::class, [
                 'class' => Categorie::class,

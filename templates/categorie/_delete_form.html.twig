@@ -1,47 +1,42 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <!-- Mettez ici les autres balises meta, titre et liens vers les autres fichiers CSS -->
-    <style>
-        /* CSS pour le bouton Save */
-        .btn-save {
-            background-color: orange; /* Couleur orange */
-            color: white;
-            border: 2px solid orange; /* Bordure orange */
-            border-radius: 5px;
-            padding: 8px 12px;
-            cursor: pointer;
-        }
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-        .btn-save:hover {
-            background-color: darkorange; /* Couleur orange foncé au survol */
-            border-color: darkorange; /* Bordure orange foncée au survol */
-        }
-
-        /* CSS pour le bouton Delete */
-        .btn-delete {
-            background-color: blue; /* Nouvelle couleur bleue */
-            color: white;
-            border: 2px solid blue; /* Bordure bleue */
-            border-radius: 5px;
-            padding: 8px 12px;
-            cursor: pointer;
-        }
-
-        .btn-delete:hover {
-            background-color: darkblue; /* Couleur bleue foncée au survol */
-            border-color: darkblue; /* Bordure bleue foncée au survol */
-        }
-    </style>
-</head>
-<form method="post" action="{{ path('app_categorie_delete', {'id': categorie.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ categorie.id) }}">
-    <button class="btn-delete">Delete</button>
+<form id="deleteForm" method="post" action="{{ path('app_categorie_delete', {'id': activitee.id}) }}">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ activitee.id) }}">
+    <button id="deleteButton" class="btn btn-danger">Delete</button>
 </form>
 
-    <!-- Votre autre contenu HTML ici -->
-</body>
-</html>
+<script>
+    document.getElementById('deleteButton').addEventListener('click', function(event) {
+        event.preventDefault();
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('deleteForm').submit();
+
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                );
+            }
+        });
+    });
+</script>
+
+
+
+
+
+
+
 
 
 

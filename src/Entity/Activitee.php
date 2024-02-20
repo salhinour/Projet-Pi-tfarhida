@@ -41,7 +41,7 @@ class Activitee
 
     private ?bool $etat = false;
     #[ORM\Column(length: 255)]
-    private ?string $image = null;
+    private ?string $image = '';
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: "vous devez mettre la desciption de l'activite!!!")]

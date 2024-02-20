@@ -3,13 +3,16 @@
 {% block title %}Activite edit{% endblock %}
 
 {% block body %}
-    <h1>Edit Activitee</h1>
-
+  <div class="container" style="text-align:center" >
+    <h1>Modifier activité</h1>
+<div class="button-group">
     {{ include('activitee/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_activitee_index') }}">back to list</a>
+        <a href="{{ path('app_activitee_index') }}" class="btn btn-primary">Back to list</a>
 
     {{ include('activitee/_delete_form.html.twig') }}
+     </div>
+    </div>
 {% endblock %}
 
 

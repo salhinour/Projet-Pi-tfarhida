@@ -94,14 +94,30 @@ class ActiviteeController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_activitee_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Activitee $activitee, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Activitee $activitee, EntityManagerInterface $entityManager,ParameterBagInterface $parameterBag): Response
     {
         $form = $this->createForm(ActiviteeType::class, $activitee);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Vérifiez si le champ image est présent dans le formulaire soumis
+            if ($form->has('image')) {
+                $file = $form['image']->getData();
+                if ($file) {
+                    $uploadsDirectory = $parameterBag->get('uploads_directory');
+                    $filename = md5(uniqid()) . '.' . $file->guessExtension();
+                    $file->move($uploadsDirectory, $filename);
+                    $activitee->setImage($filename);
+                }
+            }
+            
+            // Accéder à la valeur du champ type_categorie depuis la requête
+            
+            // Faites ce que vous devez faire avec la valeur de type_categorie
+            
+            $entityManager->persist($activitee);
             $entityManager->flush();
-
+    
             return $this->redirectToRoute('app_activitee_index', [], Response::HTTP_SEE_OTHER);
         }
 

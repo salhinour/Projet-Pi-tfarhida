@@ -1,15 +1,15 @@
- {% extends 'baseback.html.twig' %}
+{% extends 'baseback.html.twig' %}
 
 {% block title %}Categorie back edit{% endblock %}
 
 {% block body %}
-       
-     <h1>Edit Categorie</h1>
+<div class="container d-flex justify-content-center align-items-center flex-column">
+    <h1>Modifier Catégorie</h1>
 
     {{ include('categorie_back_c/_form.html.twig', {'button_label': 'Update'}) }}
 
-            <a href="{{ path('app_categorie_back_c_index') }}" class="btn btn-primary">Back to list</a>
+    <a href="{{ path('app_categorie_back_c_index') }}" class="btn btn-primary mt-3">Back to list</a>
 
     {{ include('categorie_back_c/_delete_form.html.twig') }}
-
-{% endblock %} 
+</div>
+{% endblock %}

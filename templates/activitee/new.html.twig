@@ -3,14 +3,16 @@
 
 {% block body %}
     <div class="container" style="text-align:center" >
+
             <h1>Nouvelle Activite</h1>
 
 
     {{ include('activitee/_form.html.twig') }}
 
         <div class="button-group">
-            <a href="{{ path('app_activitee_index') }}" class="btn btn-primary">Back to list</a>
-             <a href="{{ path('app_categorie_new') }}" class="btn btn-secondary">Ajouter categorie</a>
+        <a href="{{ path('app_activitee_index') }}" class="btn btn-primary">Back to list</a>
+
+        <a href="{{ path('app_categorie_new') }}" class="btn btn-secondary">Ajouter categorie</a>
         </div>
     </div>
 {% endblock %}
