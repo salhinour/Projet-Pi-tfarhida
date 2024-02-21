@@ -20,8 +20,9 @@ class Reponse
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    #[Assert\NotBlank(message: "vous devez entrer la date !!!")]
     private ?\DateTimeInterface $date = null;
+
+   
 
     public function getId(): ?int
     {
@@ -51,4 +52,6 @@ class Reponse
 
         return $this;
     }
+
+ 
 }

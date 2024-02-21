@@ -23,15 +23,20 @@ class Reclamation
     #[Assert\NotBlank(message: "vous devez insérer la description !!!")]
     private ?string $description_reclamation = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $etat = null;
+    #[ORM\Column(type: 'boolean')]
+    private ?bool $etat = false;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    #[Assert\NotBlank(message: "vous devez entrer la date !!!")]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Reponse $Reponse = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $image = '';
+
+    
+    
 
     public function getId(): ?int
     {
@@ -62,12 +67,12 @@ class Reclamation
         return $this;
     }
 
-    public function getEtat(): ?string
+    public function getEtat(): ?bool
     {
         return $this->etat;
     }
 
-    public function setEtat(string $etat): static
+    public function setEtat(bool $etat): static
     {
         $this->etat = $etat;
 
@@ -85,7 +90,6 @@ class Reclamation
 
         return $this;
     }
-
     public function getReponse(): ?Reponse
     {
         return $this->Reponse;
@@ -97,4 +101,17 @@ class Reclamation
 
         return $this;
     }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): static
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+   
 }

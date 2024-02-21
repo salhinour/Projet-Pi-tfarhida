@@ -1,0 +1,74 @@
+{% extends 'baseback.html.twig' %}
+{% block body %}
+
+    <h1>Liste des réclamations</h1>
+
+    <div class="table-responsive">
+        <table class="table table-striped" id="myTable">
+       
+            <thead class="thead-dark"> 
+                <tr>
+                    <th>Id</th>
+                    <th>Type de réclamation</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Image</th>
+                    <th>État</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for reclamation in reclamations %}
+                <tr>
+                    <td>{{ reclamation.id }}</td>
+                    <td>{{ reclamation.typeDeReclamation }}</td>
+                    <td>{{ reclamation.descriptionReclamation }}</td>
+                    <td>{{ reclamation.date ? reclamation.date|date('d-m-Y') : '' }}</td>
+                    <td>
+                        {% if reclamation.image %}
+                            <img src="{{ asset('uploads/' ~ reclamation.image) }}" alt="Image" width="100" height="100">
+                        {% else %}
+                            <span>Aucune image</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if not reclamation.etat %}
+                            <span style="color: red;">Non traitée</span>
+                        {% else %}
+                            <span style="color: green;">Traitée</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if not reclamation.etat and not reclamation.reponse %}
+                            <a href="{{ path('app_reclamation_back_repondre', {'id': reclamation.id}) }}" class="btn btn-success">Répondre</a>
+                        {% elseif reclamation.reponse %}
+                            <a href="{{ path('app_reclamation_back_show_response', {'id': reclamation.id}) }}" class="btn btn-primary">
+                                Voir la réponse
+                            </a>
+                        {% endif %}
+                        <a href="{{ path('app_reclamation_back_show', {'id': reclamation.id}) }}" class="btn btn-primary mr-2">
+                            <i class="fas fa-eye"></i> 
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">Aucun enregistrement trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+{% endblock %}

@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 #[Route('/reclamation')]
 class ReclamationController extends AbstractController
@@ -22,26 +24,37 @@ class ReclamationController extends AbstractController
         ]);
     }
 
+   
     #[Route('/new', name: 'app_reclamation_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, ParameterBagInterface $parameterBag): Response
     {
         $reclamation = new Reclamation();
         $form = $this->createForm(ReclamationType::class, $reclamation);
         $form->handleRequest($request);
-
+    
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            if ($form->has('image')) {
+                $file = $form['image']->getData();
+                if ($file) {
+                    $uploadsDirectory = $parameterBag->get('uploads_directory');
+                    $filename = md5(uniqid()) . '.' . $file->guessExtension();
+                    $file->move($uploadsDirectory, $filename);
+                    $reclamation->setImage($filename);
+                }
+            }
+            
             $entityManager->persist($reclamation);
             $entityManager->flush();
-
+    
             return $this->redirectToRoute('app_reclamation_index', [], Response::HTTP_SEE_OTHER);
         }
-        
+    
         return $this->renderForm('reclamation/new.html.twig', [
             'reclamation' => $reclamation,
             'form' => $form,
         ]);
     }
-
     #[Route('/{id}', name: 'app_reclamation_show', methods: ['GET'])]
     public function show(Reclamation $reclamation): Response
     {
@@ -50,23 +63,41 @@ class ReclamationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_reclamation_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Reclamation $reclamation, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(ReclamationType::class, $reclamation);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
 
-            return $this->redirectToRoute('app_reclamation_index', [], Response::HTTP_SEE_OTHER);
+#[Route('/{id}/edit', name: 'app_reclamation_edit', methods: ['GET', 'POST'])]
+public function edit(Request $request, Reclamation $reclamation, EntityManagerInterface $entityManager, ParameterBagInterface $parameterBag): Response
+{
+    $form = $this->createForm(ReclamationType::class, $reclamation);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+       
+        $file = $form['image']->getData();
+
+      
+        if ($file instanceof UploadedFile) {
+           
+            $uploadsDirectory = $parameterBag->get('uploads_directory');
+            $filename = md5(uniqid()) . '.' . $file->guessExtension();
+            $file->move($uploadsDirectory, $filename);
+
+          
+            $reclamation->setImage($filename);
         }
 
-        return $this->renderForm('reclamation/edit.html.twig', [
-            'reclamation' => $reclamation,
-            'form' => $form,
-        ]);
+     
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_reclamation_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    
+    return $this->renderForm('reclamation/edit.html.twig', [
+        'reclamation' => $reclamation,
+        'form' => $form,
+    ]);
+}
 
     #[Route('/{id}', name: 'app_reclamation_delete', methods: ['POST'])]
     public function delete(Request $request, Reclamation $reclamation, EntityManagerInterface $entityManager): Response
