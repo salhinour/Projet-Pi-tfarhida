@@ -1,19 +1,25 @@
- {% extends 'base.html.twig' %}
- {% block title %}Activitee new{% endblock %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Activitee new{% endblock %}
 
 {% block body %}
-    <div class="container" style="text-align:center" >
+<div class="container">
+    <h1 class="text-center mb-4">Nouvelle Activité</h1>
 
-            <h1>Nouvelle Activite</h1>
-
-
-    {{ include('activitee/_form.html.twig') }}
-
-        <div class="button-group">
-        <a href="{{ path('app_activitee_index') }}" class="btn btn-primary">Back to list</a>
-
-        <a href="{{ path('app_categorie_new') }}" class="btn btn-secondary">Ajouter categorie</a>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            {{ include('activitee/_form.html.twig') }}
         </div>
     </div>
-{% endblock %}
 
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6">
+            <div class="button-group">
+                <a href="{{ path('app_activitee_index') }}" class="btn btn-primary btn-lg btn-block">Retour à la liste</a>
+                <a href="{{ path('app_categorie_new') }}" class="btn btn-secondary btn-lg btn-block">Ajouter une catégorie</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

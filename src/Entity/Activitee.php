@@ -23,7 +23,7 @@ class Activitee
 
     #[ORM\Column]
     #[Assert\NotBlank(message: "vous devez mettre le prix!!!")]
-    #[Assert\GreaterThan(value: 0, message: "Le prix doit être supérieur à zéro")]
+    #[Assert\GreaterThanOrEqual(value: 0, message: "Le prix doit être supérieur ou égal à zéro")]
 
 
     private ?float $prix = null;
@@ -34,6 +34,7 @@ class Activitee
     private ?string $localisation = null;
 
     #[ORM\Column]
+    #[Assert\GreaterThan(value: 0, message: "Le nombre de participant doit être supérieur à zéro")]
 
     private ?int $nbP = null;
 
@@ -69,7 +70,7 @@ class Activitee
         return $this->nom;
     }
 
-    public function setNom(string $nom): static
+    public function setNom(?string $nom): static
     {
         $this->nom = $nom;
 
@@ -81,7 +82,7 @@ class Activitee
         return $this->prix;
     }
 
-    public function setPrix(float $prix): static
+    public function setPrix(?float $prix): static
     {
         $this->prix = $prix;
 
@@ -93,7 +94,7 @@ class Activitee
         return $this->localisation;
     }
 
-    public function setLocalisation(string $localisation): static
+    public function setLocalisation(?string $localisation): static
     {
         $this->localisation = $localisation;
 

@@ -1,7 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-<form id="deleteForm" method="post" action="{{ path('app_categorie_delete', {'id': activitee.id}) }}">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ activitee.id) }}">
+<form id="deleteForm" method="post" action="{{ path('app_categorie_delete', {'id': categorie.id}) }}">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ categorie.id) }}">
     <button id="deleteButton" class="btn btn-danger">Delete</button>
 </form>
 

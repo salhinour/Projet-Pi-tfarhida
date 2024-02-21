@@ -31,7 +31,8 @@
 <body>
     <!-- Conteneur du formulaire avec cadre -->
     <div class="form-container">
-        <!-- Début du formulaire -->
+        {% form_theme form 'bootstrap_5_layout.html.twig' %}
+
         {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
             <!-- Champs du formulaire -->
             {{ form_widget(form) }}

@@ -19,12 +19,10 @@ class Categorie
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: "vous devez mettre la description!!!")]
-
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: "vous devez mettre le type!!!")]
-
     #[Assert\Regex(
         pattern: '/^[a-zA-ZÀ-ÖØ-öø-ÿ\s]+$/',
         message: "Le type de catégorie ne doit pas contenir de chiffres ou de symboles")]
@@ -50,7 +48,7 @@ class Categorie
         return $this->description;
     }
 
-    public function setDescription(string $description): static
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
@@ -62,7 +60,7 @@ class Categorie
         return $this->type_categorie;
     }
 
-    public function setTypeCategorie(string $type_categorie): static
+    public function setTypeCategorie(?string $type_categorie): static
     {
         $this->type_categorie = $type_categorie;
 
