@@ -1,0 +1,18 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'id': 'myForm'}}) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-success float-left mr-2" type="submit">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
+<script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+      
+        Swal.fire({
+            title: 'Added Successfully!',
+            text: 'Your item has been added successfully.',
+            icon: 'success'
+        });
+        this.submit();
+    });
+</script>

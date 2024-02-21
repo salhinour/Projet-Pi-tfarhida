@@ -10,15 +10,25 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\Valid;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+
 
 #[Route('/moyen/transport')]
 class MoyenTransportController extends AbstractController
 {
+    #[Route('/accueil', name: 'app_activate')]
+    public function home(): Response
+    {
+        return $this->render('activite/index.html.twig', [
+            'controller_name' => 'ActiviteController',
+        ]);
+    }
     #[Route('/', name: 'app_moyen_transport_index', methods: ['GET'])]
     public function index(MoyenTransportRepository $moyenTransportRepository): Response
     {
         return $this->render('moyen_transport/index.html.twig', [
-            'moyen_transports' => $moyenTransportRepository->findAll(),
+            'moyen_transports' => $moyenTransportRepository->findBy(['valide' => True]),
         ]);
     }
 
@@ -30,10 +40,29 @@ class MoyenTransportController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('image')->getData();
+            if ($imageFile) {
+                $oldFilename = $moyenTransport->getImage();
+                if ($oldFilename && file_exists($this->getParameter('images_directory') . '/' . $oldFilename)) {
+                    unlink($this->getParameter('images_directory') . '/' . $oldFilename);
+                }
+                $newFilename = uniqid().'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // Gérer les erreurs de téléchargement ici
+                }
+
+                $moyenTransport->setImage($newFilename);
+            }
             $entityManager->persist($moyenTransport);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_moyen_transport_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_activite', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('moyen_transport/new.html.twig', [
@@ -77,5 +106,16 @@ class MoyenTransportController extends AbstractController
         }
 
         return $this->redirectToRoute('app_moyen_transport_index', [], Response::HTTP_SEE_OTHER);
+    }
+    #[Route('/{id}/trajects', name: 'app_trajects_for_moyen_transport', methods: ['GET'])]
+    public function trajectsForMoyenTransport(MoyenTransport $moyenTransport): Response
+    {
+        // Fetch trajects related to the specified moyen de transport
+        $trajects = $moyenTransport->getTrajets();
+
+        return $this->render('moyen_transport/trajects.html.twig', [
+            'moyenTransport' => $moyenTransport,
+            'trajects' => $trajects,
+        ]);
     }
 }

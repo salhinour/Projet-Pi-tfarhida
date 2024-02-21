@@ -6,6 +6,7 @@ use App\Repository\MoyenTransportRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\PseudoTypes\False_;
 use Symfony\Component\Mime\Message;
 use Symfony\Component\Validator\Constraints as Assert ;
 
@@ -19,24 +20,32 @@ class MoyenTransport
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message:"ce champ est obligatoire !")]
+    #[Assert\NotBlank(message: "Ce champ est obligatoire !")]
+    #[Assert\Length(max: 255, maxMessage: "Le type ne doit pas dépasser {{ limit }} caractères.")]
     private ?string $type = null;
 
     #[ORM\Column]
-    #[Assert\NotBlank(message:"ce champ est obligatoire !")]
+    #[Assert\NotBlank(message: "Ce champ est obligatoire !")]
+    #[Assert\Type(type: 'integer', message: "La capacité doit être un nombre.")]
     private ?int $capacite = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message:"ce champ est obligatoire !")]
-    private ?string $num_serie = null;
+    #[Assert\NotBlank(message: "Ce champ est obligatoire !")]
+    #[Assert\Length(max: 255, maxMessage: "Le lieu ne doit pas dépasser {{ limit }} caractères.")]
+    private ?string $lieu = null;
 
-    #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message:"ce champ est obligatoire !")]
-    private ?string $etat = null;
+    #[ORM\Column(type: 'boolean')]
+    private ?bool $etat = null;
 
     #[ORM\OneToMany(targetEntity: Trajet::class, mappedBy: 'MoyenTransport')]
     private Collection $trajets;
 
+    #[ORM\Column(type: 'boolean')]
+    private ?bool $valide = false;
+
+    #[ORM\Column(length: 255)]
+    
+    private ?string $image = null;
     public function __construct()
     {
         $this->trajets = new ArrayCollection();
@@ -71,24 +80,24 @@ class MoyenTransport
         return $this;
     }
 
-    public function getNumSerie(): ?string
+    public function getLieu(): ?string
     {
-        return $this->num_serie;
+        return $this->lieu;
     }
 
-    public function setNumSerie(string $num_serie): static
+    public function setLieu(string $lieu): static
     {
-        $this->num_serie = $num_serie;
+        $this->lieu = $lieu;
 
         return $this;
     }
 
-    public function getEtat(): ?string
+    public function getEtat(): ?bool
     {
         return $this->etat;
     }
 
-    public function setEtat(string $etat): static
+    public function setEtat(bool $etat): static
     {
         $this->etat = $etat;
 
@@ -121,6 +130,30 @@ class MoyenTransport
                 $trajet->setMoyenTransport(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isValide(): ?bool
+    {
+        return $this->valide;
+    }
+
+    public function setValide(bool $valide): static
+    {
+        $this->valide = $valide;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

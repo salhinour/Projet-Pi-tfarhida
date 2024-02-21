@@ -14,5 +14,8 @@ class ActiviteController extends AbstractController
         return $this->render('activite/index.html.twig', [
             'controller_name' => 'ActiviteController',
         ]);
+        
     }
+    
+    
 }

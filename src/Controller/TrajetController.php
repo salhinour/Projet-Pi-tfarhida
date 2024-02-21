@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\MoyenTransport;
 use App\Entity\Trajet;
 use App\Form\TrajetType;
 use App\Repository\TrajetRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -79,3 +81,4 @@ class TrajetController extends AbstractController
         return $this->redirectToRoute('app_trajet_index', [], Response::HTTP_SEE_OTHER);
     }
 }
+ 

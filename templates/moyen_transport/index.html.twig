@@ -28,7 +28,7 @@
 <body>
  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
    <div class="container">
-     <a class="navbar-brand" href="index.html">Tfarhida<span>Bon plan</span></a>
+     <a class="navbar-brand" href="/accueil">Tfarhida<span>Bon plan</span></a>
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
        <span class="oi oi-menu"></span> Menu
      </button>
@@ -37,6 +37,7 @@
        <ul class="navbar-nav ml-auto">
          <li class="nav-item"><a href="/accueil" class="nav-link">Home</a></li>
          <li class="nav-item"><a href="/activite" class="nav-link">Transport</a></li>
+         <li class="nav-item"><a href="/moyen/transport/back" class="nav-link">Admin</a></li>
 
        </ul>
      </div>
@@ -49,15 +50,14 @@
   <div class="container">
     <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
       <div class="col-md-9 ftco-animate pb-5 text-center">
-       <h1 class="mb-0 bread">Transopt</h1>
+       <h1 class="mb-0 bread">Transport</h1>
      </div>
    </div>
  </div>
 </section>
-{% block title %}MoyenTransport index{% endblock %}
 
 {% block body %}
-    <h1>MoyenTransport index</h1>
+    {# <h1>MoyenTransport index</h1>
 
     <table class="table">
         <thead>
@@ -77,21 +77,55 @@
                 <td>{{ moyen_transport.type }}</td>
                 <td>{{ moyen_transport.capacite }}</td>
                 <td>{{ moyen_transport.numSerie }}</td>
-                <td>{{ moyen_transport.etat }}</td>
+                <td> {% if moyen_transport.etat == 1 %}
+                            Disponible
+                        {% else %}
+                            Non Disponible
+                        {% endif %} </td>
                 <td>
-                    <a href="{{ path('app_moyen_transport_show', {'id': moyen_transport.id}) }}">show</a>
-                    <a href="{{ path('app_moyen_transport_edit', {'id': moyen_transport.id}) }}">edit</a>
+                    <a href="{{ path('app_moyen_transport_show', {'id': moyen_transport.id}) }}" class="btn btn-success  ">show</a>
+                   
                 </td>
             </tr>
         {% else %}
             <tr>
                 <td colspan="6">no records found</td>
             </tr>
-        {% endfor %}
+        {% endfor %} #}
+
+
+<div class="row">
+    {% for moyen_transport in moyen_transports %}
+        <div class="col-md-3 mb-4">
+            <div class="card border-0 shadow" style="background-color: #FDF5E6;"> <!-- Change #f8f9fa to your preferred color code -->
+                <div class="ratio ratio-4x3">
+                    <img src="{{ asset('uploads/images/' ~ moyen_transport.image) }}" alt="Image du moyen de transport" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ moyen_transport.type }}</h5>
+                    <p class="card-text">
+                        <strong>État:</strong> {% if moyen_transport.etat == 1 %} Disponible {% else %} Non Disponible {% endif %}<br>
+                    </p>
+                    <p class="card-text">
+                    Lieu:{{ moyen_transport.lieu}}
+                    </p>
+                    <a href="{{ path('app_moyen_transport_show', {'id': moyen_transport.id}) }}" class="btn btn-primary btn-lg">Détails</a>
+                    <a href="{{ path('app_trajects_for_moyen_transport', {'id': moyen_transport.id}) }}" class="btn btn-primary btn-lg">trajects</a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="col-md-12">
+            <p>Pas de moyens de transport trouvés.</p>
+        </div>
+    {% endfor %}
+</div>
+
+
+
         </tbody>
     </table>
 
-    <a href="{{ path('app_moyen_transport_new') }}">Create new</a>
 {% endblock %}
 
 <footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url(/images/bg_3.jpg);">
