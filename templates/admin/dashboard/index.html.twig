@@ -1,0 +1,164 @@
+{% extends "admin/layout.html.twig" %}
+
+{% block title %}
+    Tableau de bord
+{% endblock %}
+
+{% block title_h1 %}
+    Tableau de bord
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Number of Users Card -->
+        <div class="col-xl-3 col-md-6 mb-4 mt-3">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Nombre d'utilisateurs total
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ users }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Number of Admins Card -->
+        <div class="col-xl-3 col-md-6 mb-4 mt-3">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Nombre des administrateurs
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ admin }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-shield fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Number of Collaborators Card -->
+        <div class="col-xl-3 col-md-6 mb-4 mt-3">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Nombre de Collaborateurs
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ collab }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-friends fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Number of Utilisateur Card -->
+        <div class="col-xl-3 col-md-6 mb-4 mt-3">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Nombre des utilisateurs
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ utilisateur }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Section -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Statistiques</h6>
+                </div>
+                <div class="card-body">
+                    <div class="doughnut-chart">
+                        <canvas id="doughnutChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Style -->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f0f0f0;
+    }
+
+    .doughnut-chart {
+        width: 400px;
+        height: 400px;
+        margin: 0 auto;
+    }
+</style>
+
+<!-- Script Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const data = {
+        labels: ['Admin', 'Collaborateur', 'Utilisateur'],
+        datasets: [{
+            label: 'Statistiques',
+            data: [{{ adminPercentage }}, {{ collabPercentage }}, {{ utilisateurPercentage }}],
+            backgroundColor: [
+                'rgba(40, 167, 69, 0.5)', // Couleur de la carte Admin
+                'rgba(23, 162, 184, 0.5)', // Couleur de la carte Collaborateur
+                'rgba(255, 193, 7, 0.5)', // Couleur de la carte Utilisateur
+            ],
+            borderColor: [
+                'rgba(40, 167, 69, 1)',
+                'rgba(23, 162, 184, 1)',
+                'rgba(255, 193, 7, 1)',
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    const config = {
+        type: 'doughnut',
+        data: data,
+        options: {
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+            },
+        }
+    };
+
+    var doughnutChart = new Chart(
+        document.getElementById('doughnutChart'),
+        config
+    );
+</script>
+
+
+{% endblock %}

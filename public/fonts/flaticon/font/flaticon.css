@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 22/08/2019 02:16
+  	Creation date: 06/04/2020 04:44
   	*/
 
 @font-face {
@@ -30,11 +30,12 @@ font-style: normal;
 margin-left: 20px;
 }
 
-.flaticon-sun-umbrella:before { content: "\f100"; }
-.flaticon-king-size:before { content: "\f101"; }
-.flaticon-shower:before { content: "\f102"; }
-.flaticon-paragliding:before { content: "\f103"; }
-.flaticon-tour-guide:before { content: "\f104"; }
-.flaticon-route:before { content: "\f105"; }
-.flaticon-map:before { content: "\f106"; }
-.flaticon-mountains:before { content: "\f107"; }
+.flaticon-pawprint-1:before { content: "\f100"; }
+.flaticon-pawprint:before { content: "\f101"; }
+.flaticon-blind:before { content: "\f102"; }
+.flaticon-dog-eating:before { content: "\f103"; }
+.flaticon-grooming:before { content: "\f104"; }
+.flaticon-stethoscope:before { content: "\f105"; }
+.flaticon-customer-service:before { content: "\f106"; }
+.flaticon-emergency-call:before { content: "\f107"; }
+.flaticon-veterinarian:before { content: "\f108"; }

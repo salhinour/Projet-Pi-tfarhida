@@ -1,0 +1,129 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title "Inscription" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /* Custom styles for the registration form */
+        .card {
+            border-radius: 15px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-control {
+            border-radius: 25px;
+            padding: 15px;
+        }
+
+        .btn-primary {
+            background-color: #4e73df;
+            border-color: #4e73df;
+            border-radius: 25px;
+            padding: 12px 30px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #224abe;
+            border-color: #224abe;
+        }
+
+        .small {
+            font-size: 14px;
+        }
+
+        .invalid-feedback {
+            display: block;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">S'inscrire</h1>
+                            </div>
+                            {{ form_start(form, {'attr': {'class': "user needs-validation", 'novalidate': 'novalidate'} }) }}
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    {# {{ form_errors(form.firstName) }} #}
+                                    {{ form_widget(form.firstName, {'attr': {'class': 'form-control', 'required': 'required'}}) }}
+                                    <div class="invalid-feedback">
+                                        {{ form_errors(form.firstName) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    {# {{ form_errors(form.lastName) }} #}
+                                    {{ form_widget(form.lastName, {'attr': {'class': 'form-control', 'required': 'required'}}) }}
+                                    <div class="invalid-feedback">
+                                        {{ form_errors(form.lastName) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    {# {{ form_errors(form.email) }} #}
+                                    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'required': 'required'}}) }}
+                                    <div class="invalid-feedback">
+                                        {{ form_errors(form.email) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    {# {{ form_errors(form.username) }} #}
+                                    {{ form_widget(form.username, {'attr': {'class': 'form-control', 'required': 'required'}}) }}
+                                    <div class="invalid-feedback">
+                                        {{ form_errors(form.username) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    {# {{ form_errors(form.password.password) }} #}
+                                    {{ form_widget(form.password.password, {'attr': {'class': 'form-control', 'required': 'required'}}) }}
+                                    <div class="invalid-feedback">
+                                        {{ form_errors(form.password.password) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    {# {{ form_errors(form.password.passwordRepeat) }} #}
+                                    {{ form_widget(form.password.passwordRepeat, {'attr': {'class': 'form-control', 'required': 'required'}}) }}
+                                    <div class="invalid-feedback">
+                                        {{ form_errors(form.password.passwordRepeat) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    {# {{ form_errors(form.captcha) }} #}
+                                    {{ form_widget(form.captcha, {'attr': {'class': 'form-control', 'required': 'required'}}) }}
+                                    <div class="invalid-feedback">
+                                        {{ form_errors(form.captcha) }}
+                                    </div>
+                                </div>
+                            </div>
+                            {{ form_widget(form._token) }}
+                            {{ form_row(form.save, {'attr': {'class': 'btn btn-primary btn-user btn-block'}}) }}
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="{{ path('login') }}">Vous avez déjà un compte ? Connectez-vous !</a>
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
