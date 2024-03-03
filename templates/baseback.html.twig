@@ -153,20 +153,10 @@
     </ul>
 
 </nav>
-<!-- End of Topbar -->
-                    
-                    <div class="container-fluid">
 
-                        <h1 class="h3 mb-0 text-gray-800">Gestion des activites</h1>           
-              
-            <div id="table-actions" class="d-flex align-items-center justify-content-between mb-4">
-        <div class="d-flex">
-            <button id="btPrint" onclick="createPDF()" class="export-pdf-btn">
-                <i class="fas fa-file-pdf"></i> Export PDF
-            </button>
-            <input type="text" id="myInput" onkeyup="sortTable()" placeholder="Search ..." class="form-control">
-        </div>
-        </div>
+
+
+                   
 {% block body%}
              
 {% endblock %}   
@@ -209,7 +199,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script>
 function createPDF() {
-    var htmlContent = document.documentElement.outerHTML;
+    var htmlContent =document.getElementById("activitee-table").outerHTML;
+
     var win = window.open('', '', 'height=700,width=700');
     win.document.write(htmlContent);
     win.document.close();
@@ -220,7 +211,7 @@ function createPDF() {
         function myFunction() {
           // Declare variables
           var input, filter, table, tr, td, i, txtValue;
-          input = document.getElementById("myInput");
+          input = document.getElementById("table-actions");
           filter = input.value.toUpperCase();
           table = document.getElementById("table");
           tr = table.getElementsByTagName("tr");

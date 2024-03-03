@@ -39,8 +39,7 @@ class Activitee
     private ?int $nbP = null;
 
     #[ORM\Column]
-
-    private ?bool $etat = false;
+    private ?string $etat = "En cours";
     #[ORM\Column(length: 255)]
     private ?string $image = '';
 
@@ -113,12 +112,12 @@ class Activitee
         return $this;
     }
 
-    public function isEtat(): ?bool
+    public function isEtat(): ?string
     {
         return $this->etat;
     }
 
-    public function setEtat(bool $etat): static
+    public function setEtat(string $etat): static
     {
         $this->etat = $etat;
 
@@ -164,5 +163,9 @@ class Activitee
 
         return $this;
     }
+    public function __construct()
+{
+    $this->etat = "En cours";
+}
     
 }

@@ -13,7 +13,22 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Repository\CategorieRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Endroid\QrCode\QrCode;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+use Endroid\QrCode\Builder\BuilderInterface;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\Response\QrCodeResponse;
+use Endroid\QrCode\Logo\Logo;
+use Endroid\QrCode\Label\Label;
+use Endroid\QrCode\Color\Color;
+use Endroid\QrCode\Label\Alignment\LabelAlignmentLeft;
+use Endroid\QrCode\ErrorCorrectionLevel;
+use Endroid\QrCode\Label\LabelAlignment;
+use Endroid\QrCode\Writer\PngWriter;
 
 
 
@@ -24,6 +39,7 @@ class ActiviteeController extends AbstractController
     #[Route('/activite', name: 'app_activitee_index', methods: ['GET'])]
     public function index(ActiviteeRepository $activiteeRepository): Response
     {
+        
         $this->addFlash('success', 'Les activités ont été mises à jour avec succès.');
 
         return $this->render('activitee/index.html.twig', [
@@ -31,16 +47,33 @@ class ActiviteeController extends AbstractController
         ]);
     }
     #[Route('/act', name: 'app_activitee_indexx', methods: ['GET'])]
-    public function indexx(ActiviteeRepository $activiteeRepository,CategorieRepository  $categorieRepository): Response
+    public function indexx(ActiviteeRepository $activiteeRepository, CategorieRepository $categorieRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $activitees = $activiteeRepository->findAllWithEtatTrue();
-
-
+        $selectedState = $request->query->get('activity'); // Récupérer le nom de l'activité depuis la requête GET
+        
+        // Si un nom d'activité est spécifié, filtrer les activités en fonction de ce nom
+        if ($selectedState) {
+            $activitees = $activiteeRepository->findBy(['nom' => $selectedState]);
+        } else {
+            // Sinon, récupérer toutes les activités
+            $activitees = $activiteeRepository->findBy(['etat' => 'Accepté']); // Remplacer par votre méthode de récupération des activités acceptées
+        }
+        
+        // Paginer les activités récupérées
+        $activitees = $paginator->paginate($activitees, $request->query->getInt('page', 1), 8);
+    
         return $this->render('activitee/activite.html.twig', [
             'activitees' => $activitees, 
             'categories' => $categorieRepository->findAll(),
+            'selectedState' => $selectedState,
         ]);
-    }
+    
+    
+    
+
+    
+
+}
  
     
         #[Route('/new', name: 'app_activitee_new', methods: ['GET', 'POST'])]
@@ -79,10 +112,12 @@ class ActiviteeController extends AbstractController
         }
      
     #[Route('/{id}', name: 'app_activitee_show', methods: ['GET'])]
-    public function show(Activitee $activitee): Response
+    public function show(Activitee $activitee ,CategorieRepository $categorieRepository): Response
     {
         return $this->render('activitee/show.html.twig', [
             'activitee' => $activitee,
+            'categories' => $categorieRepository->findAll()
+
         ]);
     }
     #[Route('/{id}/desc', name: 'app_activitee_desc', methods: ['GET'])]
@@ -136,5 +171,42 @@ class ActiviteeController extends AbstractController
         }
 
         return $this->redirectToRoute('app_activitee_index', [], Response::HTTP_SEE_OTHER);
+    }
+    #[Route('/show_in_map/{id}', name: 'app_evenement_map', methods: ['GET'])]
+    public function Map( Activitee $id,EntityManagerInterface $entityManager ): Response
+    {
+
+        $id = $entityManager
+            ->getRepository(Activitee::class)->findBy( 
+                ['id'=>$id ]
+            );
+        return $this->render('activitee/api_arcgis.html.twig', [
+            'activitees' => $id,
+        ]);
+    }
+#[Route('/generate_qr_code/{id}', name: 'generate_qr_code', methods: ['POST'])]
+    public function generateQrCode(Request $request): Response
+    {
+        $text = $request->request->get('text');
+        $qrCode = QrCode::create($text)
+            ->setSize(600)
+            ->setMargin(40)
+            ->setForegroundColor(new Color(0, 0, 128)) // Dark blue foreground color
+            ->setBackgroundColor(new Color(153, 204, 255))
+            ->setErrorCorrectionLevel(ErrorCorrectionLevel::High); // Set error correction level to HIGH
+
+        // Create label
+        $label = Label::create("CoLocStudy")
+            ->setTextColor(new Color(255, 0, 0)) // Red text color
+            ->setAlignment(LabelAlignment::Left); // Align label to left
+
+        // Create PNG writer
+        $writer = new PngWriter();
+
+        // Write QR code to PNG image with label
+        $result = $writer->write($qrCode, label: $label);
+
+        // Output QR code image to the browser
+        return new Response($result->getString(), Response::HTTP_OK, ['Content-Type' => $result->getMimeType()]);
     }
 }

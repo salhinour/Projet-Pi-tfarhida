@@ -23,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for categorie in categories %}
+        {% for categorie in pagination %}
             <tr>
                 <td>{{ categorie.id }}</td>
                 <td>{{ categorie.description }}</td>
@@ -45,5 +45,31 @@
         {% endfor %}
         </tbody>
     </table>
+<div class="pagination-container">
+    <ul class="pagination">
+        {% if pagination.currentPageNumber > 1 %}
+            <li class="page-item">
+                <a class="page-link" href="{{ path('app_categorie_back_c_index', {'page': pagination.currentPageNumber - 1}) }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+        {% endif %}
 
+        {% for page in range(1, pagination.pageCount) %}
+            <li class="page-item {% if page == pagination.currentPageNumber %}active{% endif %}">
+                <a class="page-link" href="{{ path('app_categorie_back_c_index', {'page': page}) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if pagination.currentPageNumber < pagination.pageCount %}
+            <li class="page-item">
+                <a class="page-link" href="{{ path('app_categorie_back_c_index', {'page': pagination.currentPageNumber + 1}) }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
 {% endblock %}

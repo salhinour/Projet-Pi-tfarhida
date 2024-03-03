@@ -10,15 +10,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
+
 
 #[Route('/categorie/back/c')]
 class CategorieBackCController extends AbstractController
 {
     #[Route('/', name: 'app_categorie_back_c_index', methods: ['GET'])]
-    public function index(CategorieRepository $categorieRepository): Response
+    public function index(CategorieRepository $categorieRepository,PaginatorInterface $paginator,Request $request): Response
     {
+        $activiteeQuery = $categorieRepository->createQueryBuilder('r')
+        ->orderBy('r.type_categorie', 'DESC')
+        ->getQuery();
+
+    
+        $pagination = $paginator->paginate(
+            $activiteeQuery, 
+            $request->query->getInt('page', 1), 
+            3
+        );
         return $this->render('categorie_back_c/index.html.twig', [
             'categories' => $categorieRepository->findAll(),
+            'pagination' => $pagination
+
         ]);
     }
 

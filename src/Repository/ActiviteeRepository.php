@@ -34,7 +34,7 @@ class ActiviteeRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-    }
+    
 
 //    /**
 //     * @return Activitee[] Returns an array of Activitee objects
@@ -60,4 +60,15 @@ class ActiviteeRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+public function searchByName($query)
+{
+    return $this->createQueryBuilder('a')
+        ->andWhere('a.nom LIKE :query')
+        ->setParameter('query', '%'.$query.'%')
+        ->getQuery()
+        ->getResult();
+}
+}
+
+
 

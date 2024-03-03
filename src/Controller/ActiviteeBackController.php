@@ -11,18 +11,45 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+use Knp\Component\Pager\PaginatorInterface;
 
 
 #[Route('/activitee/back')]
 class ActiviteeBackController extends AbstractController
 {
-    #[Route('/', name: 'app_activitee_back_index', methods: ['GET'])]
-    public function index(ActiviteeRepository $activiteeRepository): Response
+    #[Route('/', name: 'app_activitee_back_index', methods: ['GET','POST'])]
+    public function index(ActiviteeRepository $activiteeRepository, Request $request, EntityManagerInterface $entityManager, PaginatorInterface $paginator): Response
     {
+        
+        $back=null;
+        // Récupérer l'état sélectionné depuis la requête
+        $selectedState = $request->query->get('etat'); // Utiliser query au lieu de request pour récupérer les paramètres GET
+    
+        // Récupérer les activités en fonction de l'état sélectionné
+        $activiteeQuery = $activiteeRepository->createQueryBuilder('a')
+            ->orderBy('a.id', 'DESC'); // Tri par défaut
+    
+        if ($selectedState) {
+            $activiteeQuery->andWhere('a.etat = :etat')
+                ->setParameter('etat', $selectedState);
+        }
+    
+        $pagination = $paginator->paginate(
+            $activiteeQuery->getQuery(),
+            $request->query->getInt('page', 1),
+            5
+        );
+    
         return $this->render('activitee_back/index.html.twig', [
-            'activitees' => $activiteeRepository->findAll(),
+            'pagination' => $pagination,
+            'back' =>$back,
+            'selectedState' => $selectedState // Passer la valeur de l'état sélectionné au template
         ]);
     }
+    
+    
 
     #[Route('/new', name: 'app_activitee_back_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager,ParameterBagInterface $parameterBag): Response
@@ -67,7 +94,7 @@ class ActiviteeBackController extends AbstractController
         ]);
     }
     #[Route('/{id}/modifier-etat', name: 'app_modifier_etat_activite')]
-    public function modifierEtatActivite($id): Response
+    public function modifierEtatActivite($id,MailerInterface $mailer): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
         $activitee = $entityManager->getRepository(Activitee::class)->find($id);
@@ -77,16 +104,24 @@ class ActiviteeBackController extends AbstractController
         }
     
         // Modifier l'état du activitee selon la logique de votre application
-        $activitee->setEtat(1); // Remplacez 'nouvel_etat' par le nouvel état souhaité
+        $activitee->setEtat("Accepté");
     
         // Enregistrer les modifications
         $entityManager->flush();
     
+        $email = (new Email())
+        ->from('salhi.nour@esprit.tn')
+        ->To('salhi.nour@esprit.tn')
+        ->subject('reponse')
+        ->text("votre demande est accepté!!!");
+        $mailer->send($email);
+
+
         // Rediriger ou retourner une réponse appropriée
         return $this->redirectToRoute('app_activitee_back_index', ['id' => $id]);
     }
     #[Route('/{id}/refuser-etat', name: 'app_refuser_etat_activite')]
-    public function refuserEtatLogement($id, EntityManagerInterface $entityManager): Response
+    public function refuserEtatLogement($id, EntityManagerInterface $entityManager,MailerInterface $mailer): Response
     {
         // Récupérer le logement à partir de l'ID
         $activitee = $entityManager->getRepository(Activitee::class)->find($id);
@@ -96,10 +131,17 @@ class ActiviteeBackController extends AbstractController
         }
 
         // Mettre à jour l'état du logement (par exemple, changer un champ "état" dans votre entité Logement)
-        $activitee->setEtat(0); // Supposons que vous avez un champ "état" dans votre entité Logement
+        $activitee->setEtat("Refusé");
 
         // Enregistrer les modifications dans la base de données
         $entityManager->flush();
+
+ $email = (new Email())
+        ->from('salhi.nour@esprit.tn')
+        ->To('salhi.nour@esprit.tn')
+        ->subject('reponse')
+        ->text("votre demande est refuser!!!");
+        $mailer->send($email);
 
         // Rediriger ou retourner une réponse appropriée
         return $this->redirectToRoute('app_activitee_back_index'); // Redirige vers la liste des logements par exemple
