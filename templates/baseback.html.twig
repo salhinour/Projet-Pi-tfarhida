@@ -159,25 +159,18 @@
 </nav>
 <!-- End of Topbar -->
                     
-                    <div class="container-fluid">
-
+                    
                         
                         
                         
                         
-            <div id="table-actions" class="d-flex align-items-center justify-content-between mb-4">
-        <div class="d-flex">
-            <button id="btPrint" onclick="createPDF()" class="export-pdf-btn">
-                <i class="fas fa-file-pdf"></i> Export PDF
-            </button>
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search ..." class="form-control">
-        </div>
+           
         {# <div>
             <a href="{{ path('app_reponse_new') }}" class="btn btn-success btn-icon-split ml-auto">
                 <i class="fas fa-plus"></i> Create New
             </a>
         </div> #}
-    </div>
+   
          {% block body%}
 {% endblock %}   
         </div>
@@ -230,7 +223,7 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script>
       function createPDF() {
-        var sTable = document.getElementById('table').outerHTML;
+        var sTable = document.getElementById('myTable').outerHTML;
         var style = "<style>";
         style = style + "table {width: 100%; border-collapse: collapse; margin-top: 20px;}";
         style = style + "th, td {border: 1px solid #ddd; padding: 8px; text-align: left;}";
@@ -275,7 +268,7 @@
 
         function sortTable(n) {
           var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-          table = document.getElementById("table");
+          table = document.getElementById("myTable");
           switching = true;
           dir = "asc";
 

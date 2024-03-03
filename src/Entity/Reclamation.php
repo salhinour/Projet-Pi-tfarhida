@@ -17,7 +17,16 @@ class Reclamation
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: "vous devez mettre le type !!!")]
-    private ?string $type_de_reclamation = null;
+    #[Assert\Length(
+        min: 7,
+        minMessage: "Le champ doit contenir au moins {{ limit }} caractères.",
+        
+    )]
+    #[Assert\Regex( 
+        pattern: "/^[a-zA-Z]+$/",
+        message: "Seules les lettres sont autorisées dans ce champ."
+    )]
+    private ?string $titre = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: "vous devez insérer la description !!!")]
@@ -35,6 +44,9 @@ class Reclamation
     #[ORM\Column(length: 255)]
     private ?string $image = '';
 
+    #[ORM\Column(length: 255)]
+    private ?string $type = null;
+
     
     
 
@@ -43,14 +55,14 @@ class Reclamation
         return $this->id;
     }
 
-    public function getTypeDeReclamation(): ?string
+    public function getTitre(): ?string
     {
-        return $this->type_de_reclamation;
+        return $this->titre;
     }
 
-    public function setTypeDeReclamation(string $type_de_reclamation): static
+    public function setTitre(?string $titre): static
     {
-        $this->type_de_reclamation = $type_de_reclamation;
+        $this->titre = $titre;
 
         return $this;
     }
@@ -60,7 +72,7 @@ class Reclamation
         return $this->description_reclamation;
     }
 
-    public function setDescriptionReclamation(string $description_reclamation): static
+    public function setDescriptionReclamation(?string $description_reclamation): static
     {
         $this->description_reclamation = $description_reclamation;
 
@@ -110,6 +122,18 @@ class Reclamation
     public function setImage(string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): static
+    {
+        $this->type = $type;
 
         return $this;
     }

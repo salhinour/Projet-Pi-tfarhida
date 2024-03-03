@@ -22,6 +22,7 @@ class Reponse
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
+    
    
 
     public function getId(): ?int
@@ -34,7 +35,7 @@ class Reponse
         return $this->description;
     }
 
-    public function setDescription(string $description): static
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
@@ -52,6 +53,8 @@ class Reponse
 
         return $this;
     }
+
+ 
 
  
 }

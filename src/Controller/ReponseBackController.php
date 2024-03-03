@@ -11,6 +11,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+use Twilio\Rest\Client;
 
 #[Route('/reponse/back')]
 class ReponseBackController extends AbstractController
@@ -53,13 +56,30 @@ class ReponseBackController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_reponse_back_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Reponse $reponse, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Reponse $reponse, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
     {
         $form = $this->createForm(Reponse1Type::class, $reponse);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $accountSid = 'ACe1066284a1c153e92f884d183dec7869';
+            $authToken = 'fe3ad2db716b74b165a64a0be07e590c';
+            $client = new Client($accountSid, $authToken);
+    
+            $message = $client->messages->create(
+                '+21696638088', // replace with admin's phone number
+                [
+                    'from' => '+15098222653', // replace with your Twilio phone number
+                    'body' => 'Une modification  a été faite sur la réponse que vous avez reçu '
+                ]
+            );
             $entityManager->flush();
+            $email = (new Email())
+            ->from('tayssir.sboui@esprit.tn')
+            ->To('tayssir.sboui@esprit.tn')
+            ->subject('Renouvellement')
+            ->text("Une modification  a été faite sur la réponse que vous avez reçu");
+            $mailer->send($email);
 
             return $this->redirectToRoute('app_reponse_back_index', [], Response::HTTP_SEE_OTHER);
         }

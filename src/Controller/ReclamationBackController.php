@@ -12,20 +12,77 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+use Twilio\Rest\Client;
+use Knp\Component\Pager\PaginatorInterface;
 
 #[Route('/reclamation/back')]
 class ReclamationBackController extends AbstractController
 {
-    #[Route('/', name: 'app_reclamation_back_index', methods: ['GET'])]
-    public function index(ReclamationRepository $reclamationRepository): Response
-    {
+    #[Route('/', name: 'app_reclamation_back_index', methods: ['GET','POST'])]
+    public function index(ReclamationRepository $reclamationRepository,PaginatorInterface $paginator,EntityManagerInterface $entityManager,Request $request): Response
+    {   
+        $typeStatistics = $entityManager->createQueryBuilder()
+        ->select('p.type, COUNT(p.id) as typeCount')
+        ->from('App\Entity\Reclamation', 'p')
+        ->groupBy('p.type')
+        ->getQuery()
+        ->getResult();
+        $reclamations = $entityManager
+        ->getRepository(Reclamation::class)
+        ->findAll();
+
+        /////////
+        // $back = null;
+        
+        // if($request->isMethod("POST")){
+        //     if ( $request->request->get('optionsRadios')){
+        //         $SortKey = $request->request->get('optionsRadios');
+        //         switch ($SortKey){
+        //             case 'titre':
+        //                 $reclamations = $reclamationRepository->SortByTitre();
+        //                 break;
+        //             case 'type':
+        //                 $reclamations = $reclamationRepository->SortByTypeDeReclamation();
+        //                 break;
+        //             case 'description_reclamation':
+        //                 $reclamations = $reclamationRepository->SortByDescriptionReclamation();
+        //                 break;
+
+        //             case 'date':
+        //                 $reclamations = $reclamationRepository->SortByDate();
+        //                 break;
+
+
+        //         }
+        //     }
+        //     if ( $reclamations){
+        //         $back = "success";
+        //     }else{
+        //         $back = "failure";
+        //     }
+        //     }
+        $reclamationsQuery = $reclamationRepository->createQueryBuilder('r')
+        ->orderBy('r.date', 'DESC')
+        ->getQuery();
+
+    
+        $pagination = $paginator->paginate(
+            $reclamationsQuery, 
+            $request->query->getInt('page', 1), 
+            5
+        );
         return $this->render('reclamation_back/index.html.twig', [
-            'reclamations' => $reclamationRepository->findAll(),
+            'reclamations' => $reclamations,
+            // 'back' => $back,
+            'pagination' => $pagination,
+            'typeStatistics'=>$typeStatistics
         ]);
     }
 
     #[Route('/{id}/repondre', name: 'app_reclamation_back_repondre', methods: ['GET', 'POST'])]
-public function repondre(Request $request, Reclamation $reclamation, EntityManagerInterface $entityManager): Response
+public function repondre(Request $request, Reclamation $reclamation, EntityManagerInterface $entityManager,  MailerInterface $mailer): Response
 {
     $reponse = new Reponse();
 
@@ -33,6 +90,17 @@ public function repondre(Request $request, Reclamation $reclamation, EntityManag
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
+        $accountSid = 'ACe1066284a1c153e92f884d183dec7869';
+            $authToken = 'fe3ad2db716b74b165a64a0be07e590c';
+            $client = new Client($accountSid, $authToken);
+    
+            $message = $client->messages->create(
+                '+21696638088', // replace with admin's phone number
+                [
+                    'from' => '+15098222653', // replace with your Twilio phone number
+                    'body' => 'vous avez reçu une reponse a votre reclamation'
+                ]
+            );
         // Associer la réponse à la réclamation
         $reclamation->setReponse($reponse);
 
@@ -42,6 +110,12 @@ public function repondre(Request $request, Reclamation $reclamation, EntityManag
         $entityManager->persist($reponse);
         $entityManager->flush();
 
+        $email = (new Email())
+        ->from('tayssir.sboui@esprit.tn')
+        ->To('tayssir.sboui@esprit.tn')
+        ->subject('reponse reclamation')
+        ->text("vous avez reçu une reponse a votre reclamation");
+        $mailer->send($email);
         return $this->redirectToRoute('app_reclamation_back_index', ['id' => $reclamation->getId()]);
     }
 

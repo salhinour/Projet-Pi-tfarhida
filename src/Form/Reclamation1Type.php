@@ -12,7 +12,8 @@ class Reclamation1Type extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('type_de_reclamation')
+            ->add('titre')
+            ->add('type')
             ->add('description_reclamation')
             ->add('date')
             ->add('Reponse')

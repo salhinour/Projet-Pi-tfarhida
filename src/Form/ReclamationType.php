@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 
 class ReclamationType extends AbstractType
@@ -16,13 +17,24 @@ class ReclamationType extends AbstractType
     {
         $reclamation = $options['data'] ?? null;
         $builder
-            ->add('type_de_reclamation', null, [
+        ->add('type', ChoiceType::class, [
+            'choices' => [
+                'Activité' => 'Activité',
+                'Logement' => 'Logement',
+                'Restaurant' => 'Restaurant',
+                'Transport' => 'Transport',
+                
+                
+            ],
+        ])
+            ->add('titre', null, [
                 'attr' => ['class' => 'form-control'],
                 ])
             ->add('description_reclamation', null, [
                 'attr' => ['class' => 'form-control'],
                 ])
-            ->add('date', DateType::class, [
+            ->add('date', DateType::class,  [
+                'attr' => ['class' => 'form-control'],
                 'widget' => 'single_text',
                 'html5' => false,
                 'attr' => ['class' => 'js-datepicker', 'readonly' => true], 
@@ -30,11 +42,13 @@ class ReclamationType extends AbstractType
                 'format' => 'dd-MM-yyyy', 
             ])
             ->add('image', FileType::class, [
+                'attr' => ['class' => 'form-control'],
                 'data_class' => null,
                 'required' => false,
                 'mapped' => false, 
                 'empty_data' => $reclamation ? $reclamation->getImage() : null,
                 ])
+
             
         ;
        

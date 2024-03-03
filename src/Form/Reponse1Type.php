@@ -13,9 +13,13 @@ class Reponse1Type extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('description')
-            ->add('date')
-            ->add('date', DateType::class, [
+            ->add('description', null, [
+                'attr' => ['class' => 'form-control'],
+                ])
+            
+            ->add('date', DateType::class,  [
+                'attr' => ['class' => 'form-control'],
+                
                 'widget' => 'single_text',
                 'html5' => false,
                 'attr' => ['class' => 'js-datepicker', 'readonly' => true], 

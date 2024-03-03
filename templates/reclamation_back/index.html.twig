@@ -1,66 +1,172 @@
 {% extends 'baseback.html.twig' %}
+
 {% block body %}
+    <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#statsModal">
+        Afficher les statistiques 
+    </button>
+
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <div class="d-flex">
+            <button id="btPrint" onclick="createPDF()" class="export-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Export PDF
+            </button>         
+            <select class="form-control" id="selectType">
+                                                            <option value="">Tous</option>
+                                                            <option value="Activité">Activité</option>
+                                                            <option value="Logement">Logement</option>
+                                                            <option value="Restaurant">Restaurant</option>
+                                                            <option value="Transport">Transport</option>
+                                                        </select>
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search ..." class="form-control" id="search-input">
+            
+        </div>
+    </div>
 
     <h1>Liste des réclamations</h1>
 
-    <div class="table-responsive">
-        <table class="table table-striped" id="myTable">
-       
-            <thead class="thead-dark"> 
-                <tr>
-                    <th>Id</th>
-                    <th>Type de réclamation</th>
-                    <th>Description</th>
-                    <th>Date</th>
-                    <th>Image</th>
-                    <th>État</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for reclamation in reclamations %}
-                <tr>
-                    <td>{{ reclamation.id }}</td>
-                    <td>{{ reclamation.typeDeReclamation }}</td>
-                    <td>{{ reclamation.descriptionReclamation }}</td>
-                    <td>{{ reclamation.date ? reclamation.date|date('d-m-Y') : '' }}</td>
-                    <td>
-                        {% if reclamation.image %}
-                            <img src="{{ asset('uploads/' ~ reclamation.image) }}" alt="Image" width="100" height="100">
-                        {% else %}
-                            <span>Aucune image</span>
-                        {% endif %}
-                    </td>
-                    <td>
-                        {% if not reclamation.etat %}
-                            <span style="color: red;">Non traitée</span>
-                        {% else %}
-                            <span style="color: green;">Traitée</span>
-                        {% endif %}
-                    </td>
-                    <td>
-                        {% if not reclamation.etat and not reclamation.reponse %}
-                            <a href="{{ path('app_reclamation_back_repondre', {'id': reclamation.id}) }}" class="btn btn-success">Répondre</a>
-                        {% elseif reclamation.reponse %}
-                            <a href="{{ path('app_reclamation_back_show_response', {'id': reclamation.id}) }}" class="btn btn-primary">
-                                Voir la réponse
-                            </a>
-                        {% endif %}
-                        <a href="{{ path('app_reclamation_back_show', {'id': reclamation.id}) }}" class="btn btn-primary mr-2">
-                            <i class="fas fa-eye"></i> 
+    <table class="table" id="myTable">
+        <thead> 
+            <tr>
+                <th>Id</th>
+                <th style="width: 15%" onclick="sortTable(1)">Titre</th>
+                <th style="width: 15%" onclick="sortTable(2)">Type de Réclamation</th>
+                <th onclick="sortTable(3)">Description</th>
+                <th onclick="sortTable(4)">Date</th>
+                <th>Image</th>
+                <th>État</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+      <tr id="noRecordsMessage" style="display: none;">
+        <td colspan="7">Aucune réclamation trouvée.</td>
+    </tr>
+    {% if pagination|length > 0 %}
+        {% for reclamation in pagination %}
+            <tr>
+                <td>{{ reclamation.id }}</td>
+                <td>{{ reclamation.titre }}</td>
+                <td>{{ reclamation.type }}</td>
+                <td>{{ reclamation.descriptionReclamation }}</td>
+                <td>{{ reclamation.date ? reclamation.date|date('d-m-Y') : '' }}</td>
+                <td>
+                    {% if reclamation.image %}
+                        <img src="{{ asset('uploads/' ~ reclamation.image) }}" alt="Image" width="100" height="100">
+                    {% else %}
+                        <span>Aucune image</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if not reclamation.etat %}
+                        <span style="color: red;">Non traitée</span>
+                    {% else %}
+                        <span style="color: green;">Traitée</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if not reclamation.etat and not reclamation.reponse %}
+                        <a href="{{ path('app_reclamation_back_repondre', {'id': reclamation.id}) }}" class="btn btn-success">Répondre</a>
+                    {% elseif reclamation.reponse %} 
+                        <a href="{{ path('app_reclamation_back_show_response', {'id': reclamation.id}) }}" class="btn btn-primary btn-view-response">
+                            Voir la réponse
                         </a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="7">Aucun enregistrement trouvé</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                    {% endif %}
+                    <a href="{{ path('app_reclamation_back_show', {'id': reclamation.id}) }}" class="btn btn-primary btn-view-reclamation mr-2">
+                        <i class="fas fa-eye"></i> 
+                    </a>
+                </td>
+            </tr>
+        
+        {% endfor %}
+    {% endif %}
+     </tbody>
+</table>
+<div class="pagination-container">
+            <ul class="pagination">
+                {% if pagination.currentPageNumber > 1 %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ path('app_reclamation_back_index', {'page': pagination.currentPageNumber - 1}) }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% for page in range(1, pagination.pageCount) %}
+                    <li class="page-item {% if page == pagination.currentPageNumber %}active{% endif %}">
+                        <a class="page-link" href="{{ path('app_reclamation_back_index', {'page': page}) }}">{{ page }}</a>
+                    </li>
+                {% endfor %}
+
+                {% if pagination.currentPageNumber < pagination.pageCount %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ path('app_reclamation_back_index', {'page': pagination.currentPageNumber + 1}) }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    <div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="responseModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Response content will be loaded here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <div class="modal fade" id="showReclamationModal" tabindex="-1" role="dialog" aria-labelledby="showReclamationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="showReclamationModalLabel">Détails de la réclamation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="reclamationDetailContent">
+                    <!-- Contenu de la réclamation sera chargé ici -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#myInput, #selectType").on("change keyup", function () {
+            var searchTerm = $("#myInput").val().toLowerCase();
+            var selectedType = $("#selectType").val().toLowerCase();
+            var rowCount = 0;
+            $("#myTable tbody tr").each(function () {
+                var type = $(this).find("td:nth-child(3)").text().toLowerCase(); // Assuming type is in the third column
+                var text = $(this).text().toLowerCase();
+                if ((selectedType === "" || type === selectedType) && (text.includes(searchTerm))) {
+                    $(this).show();
+                    rowCount++;
+                } else {
+                    $(this).hide();
+                }
+            });
+            if (rowCount === 0) {
+                $("#noRecordsMessage").show();
+            } else {
+                $("#noRecordsMessage").hide();
+            }
+        });
+    });
+</script>
     <script>
         $(document).ready(function () {
             $("#myInput").on("keyup", function () {
@@ -71,4 +177,141 @@
             });
         });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script>
+        function createPDF() {
+            var htmlContent = document.getElementById("myTable").outerHTML;
+            var win = window.open('', '', 'height=700,width=700');
+            win.document.write(htmlContent);
+            win.document.close();
+            win.print();
+        }
+    </script>
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1]; 
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.btn-view-response').click(function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    success: function (response) {
+                        $('#responseModal .modal-body').html(response);
+                        $('#responseModal').modal('show');
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.btn-view-reclamation').click(function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    success: function (response) {
+                        $('#reclamationDetailContent').html(response);
+                        $('#showReclamationModal').modal('show');
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <div class="category-statistics">
+        <canvas id="categoryChart" width="300 px" height="100 px"></canvas>
+    </div>
+
+    <div class="modal fade" id="statsModal" tabindex="-1" role="dialog" aria-labelledby="statsModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="statsModalLabel">Type Statistics</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <canvas id="modalCategoryChart" width="400" height="200"></canvas>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            var modalCtx = document.getElementById('modalCategoryChart').getContext('2d');
+                            var colors = ['#87CEEB', '#012970','#E29790'];
+
+                            var data = {
+                                labels: [
+                                    {% for stat in typeStatistics %}
+                                        '{{ stat.type }} ({{ stat.typeCount }})',
+                                    {% endfor %}
+                                    
+                                ],
+                                datasets: [{
+                                    data: [
+                                        {% for stat in typeStatistics %}
+                                            {{ stat.typeCount }},
+                                        {% endfor %}
+                                    ],
+                                    backgroundColor: colors
+                                }]
+                            };
+
+                            var modalCategoryChart = new Chart(modalCtx, {
+                                type: 'pie',
+                                data: data,
+                                options: {
+                                    tooltips: {
+                                        callbacks: {
+                                            label: function (tooltipItem, data) {
+                                                var dataset = data.datasets[tooltipItem.datasetIndex];
+                                                var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array) {
+                                                    return previousValue + currentValue;
+                                                });
+                                                var currentValue = dataset.data[tooltipItem.index];
+                                                var percentage = Math.round((currentValue / total) * 100);
+                                                return data.labels[tooltipItem.index] + ': ' + currentValue + ' (' + percentage + '%)';
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
