@@ -1,0 +1,10 @@
+/* Increase specificity */
+form .form-control {
+    border: 1px solid #ced4da !important;
+    border-color: #ced4da !important;
+}
+
+/* Apply border color change when invalid */
+form .form-control.is-invalid {
+    border-color: #dc3545 !important;
+}

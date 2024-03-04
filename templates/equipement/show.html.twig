@@ -1,233 +1,91 @@
 {% extends 'header.html.twig' %}
 
-
 {% block body %}
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-		<div class="container">
-     <a class="navbar-brand" href="index.html">Tfarhida<span>Travel Agency</span></a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="oi oi-menu"></span> Menu
-			</button>
+    <div class="hero-wrap js-fullheight" style="background-image:url('{{ asset('uploads/' ~ logement.image) }}');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
+                <div class="col-md-7 ftco-animate">
+                    <h1 class="mb-4">Discover Your Favorite Place with Us</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 
-			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item "><a href="accueil" class="nav-link">Accueil</a></li>
-					<li class="nav-item active"><a href="logement" class="nav-link">Logements</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- END nav -->
-    	<div class="hero-wrap js-fullheight" style="background-image: url('/images/iberostar-selection-royal.jpg');">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
-				<div class="col-md-7 ftco-animate">
-					<span class="subheading">Welcome to Pacific</span>
-					<h1 class="mb-4">Discover Your Favorite Place with Us</h1>
-					
-				</div>
-				
-			</div>
-		</div>
-	</div>
-<section class="ftco-section ftco-no-pb ftco-no-pt">
-		<div class="container">
-			<div class="row">
-                    <div style="width: 750px; height: 129px; padding-top: 65px; padding-bottom: 16px; padding-left: 21px;
-                padding-right: 359.58px; background: white; border-radius: 5px;
-                border: 1px #DEDEDE solid; flex-direction: column; justify-content: flex-end; 
-                align-items: flex-start; gap: 10px; display: inline-flex">
-                <div style="width: 180.72px; height: 44px; color: black;
-                font-size: 18px; font-family: Poppins; font-weight: 500; line-height: 22.41px; word-wrap: break-word">Le golf  restaurant</div>
-                <div style="width: 369.42px; height: 24px; color: #7F7F7F; font-size: 14px; font-family: Open Sans; font-weight: 400; line-height: 24px; word-wrap: break-word">Authenticité, saveurs et qualité, c’est Le Golf  qui régale</div>
-                </div>
-	
-				
-							
-                <div style="width: 390px; height: 1169.39px; position: relative">
-                <div style="width: 360px; height: 52px; left: 15px; top: 0px; position: absolute; border-radius: 5px; border: 1px #DEDEDE solid">
-                    <img style="width: 18px; height: 18px; left: 21px; top: 18.53px; position: absolute" src="https://via.placeholder.com/18x18" />
-                    <div style="width: 130.65px; height: 18px; left: 55px; top: 17px; position: absolute; color: #41A700; font-size: 13px; font-family: Open Sans; font-weight: 400; line-height: 22px; word-wrap: break-word">Actuellement ouvert~</div>
-                    <div style="width: 83.61px; height: 19px; left: 255.72px; top: 15px; position: absolute; color: #7F7F7F; font-size: 14px; font-family: Open Sans; font-weight: 400; word-wrap: break-word">11:30 - 01:00</div>
-                    <div style="width: 157.55px; padding-top: 1px; padding-bottom: 4.84px; padding-left: 6px; padding-right: 5.70px; left: 101.23px; top: 42.15px; position: absolute; background: white; border: 1px #DEDEDE solid; justify-content: center; align-items: flex-end; display: inline-flex">
-                    <div style="width: 10.31px; height: 12.85px; color: #939393; font-size: 9px; font-family: Quicksand; font-weight: 400; text-transform: capitalize; line-height: 12.86px; letter-spacing: 0.70px; word-wrap: break-word">+</div>
-                    <div style="width: 135.85px; height: 10px; color: #939393; font-size: 9px; font-family: Quicksand; font-weight: 400; text-transform: capitalize; line-height: 12.86px; letter-spacing: 0.70px; word-wrap: break-word">Afficher tous les horaires</div>
-                    </div>
-                </div>
-               {# --- map--- #}
-                <div style="width: 360px; height: 298.84px; left: 15px; top: 82px; position: absolute; background: #FAFAFA; border-radius: 5px; overflow: hidden; border: 1px #DEDEDE solid">
-                    <div style="width: 358px; height: 158.84px; left: 1px; top: 1px; position: absolute; background: white; border-radius: 5px; justify-content: center; align-items: center; display: inline-flex">
-                        <div style="flex: 1 1 0; align-self: stretch; padding-bottom: 8.84px; justify-content: center; align-items: center; display: inline-flex">
-                            <div style="flex: 1 1 0; height: 150px; background: #808080; justify-content: center; align-items: center; display: inline-flex">
-                                <div style="width: 358px; height: 150px; position: relative; background: #E5E3DF; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-                                
-                                    <div style="width: 52px; height: 21.84px; justify-content: center; align-items: center; display: inline-flex">
-                                        <div style="flex: 1 1 0; align-self: stretch; padding-left: 0.02px; padding-right: 0.02px; justify-content: center; align-items: center; display: inline-flex">
-                                            <div style="width: 51.96px; height: 21.84px; position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-                                                <div style="width: 47.47px; height: 15.97px; position: relative; opacity: 0.60">
-                                                    <div style="width: 12.35px; height: 12.65px; left: 0px; top: 0px; position: absolute; background: white; border: 1.13px white solid"></div>
-                                                    <div style="width: 8.44px; height: 8.54px; left: 12.10px; top: 4.10px; position: absolute; background: white; border: 1.13px white solid"></div>
-                                                    <div style="width: 8.44px; height: 8.54px; left: 20.29px; top: 4.10px; position: absolute; background: white; border: 1.13px white solid"></div>
-                                                    <div style="width: 11.09px; height: 15.57px; left: 28.48px; top: 0.40px; position: absolute; background: white; border: 1.13px white solid"></div>
-                                                    <div style="width: 8.08px; height: 8.54px; left: 39.39px; top: 4.11px; position: absolute; background: white; border: 1.13px white solid"></div>
+    <section class="ftco-section ftco-no-pb ftco-no-pt">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="ftco-search d-flex justify-content-center">
+                        <div class="row">
+                            <div class="col-md-12 tab-wrap">
+                                <div class="tab-content" id="v-pills-tabContent">
+                                    <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+                                        <form action="#" class="search-property-1">
+                                            <div class="row no-gutters">
+                                                <div class="col-md d-flex">
+                                                    <div class="form-group p-4 border-0">
+                                                        <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">
+                                                            <label for="#">{{logement.nom }}</label>
+                                                        </a>
+                                                        <div class="form-field">
+                                                            <table class="table">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th>Localaisation</th>
+                                                                        <td>{{ logement.Localisation }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>NoteMoyenne</th>
+                                                                        <td>{{ logement.NoteMoyenne }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Prix</th>
+                                                                        <td>{{ logement.Prix }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th><i class="fas fa-parking"></i> Parking</th> <!-- Icon for parking -->
+                                                                        <td>{{ equipement.Parking ? 'Yes' : 'No' }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th><i class="fas fa-wifi"></i> Wifi</th> <!-- Icon for wifi -->
+                                                                        <td>{{ equipement.internet ? 'Yes' : 'No' }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th><i class="fas fa-bed"></i> NbrChambre</th> <!-- Icon for bedrooms -->
+                                                                        <td>{{ equipement.nbrChambre }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th><i class="fas fa-snowflake"></i> Climatisation</th> <!-- Icon for air conditioning -->
+                                                                        <td>{{ equipement.climatisation ? 'Yes' : 'No' }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Types De Chambre</th>
+                                                                        <td>{{ equipement.TypesDeChambre }}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <div style="text-align: center;">
+                                                                <a href="{{ path('app_equipement_edit', {'id': equipement.id}) }}" class="btn btn-warning">edit</a>
+                                                                {{ include('equipement/_delete_form.html.twig') }}
+                                                            </div> 
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div style="width: 11.22px; height: 11.52px; background: #4285F4"></div>
-                                                <div style="width: 1.63px; height: 10.90px; background: #34A853"></div>
-                                                <div style="width: 7.11px; height: 10.74px; background: #4285F4"></div>
-                                                <div style="width: 7.31px; height: 7.41px; background: #E94235"></div>
-                                                <div style="width: 7.31px; height: 7.41px; background: #FABB05"></div>
-                                                <div style="width: 6.78px; height: 7.41px; background: #E94235"></div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
-                                    
+                                    <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-performance-tab">
+                                        <!-- Content for the second tab -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div style="width: 358px; height: 41px; left: 1px; top: 164.84px; position: absolute; border-bottom: 1px #DEDEDE solid">
-                    <img style="width: 18px; height: 18px; left: 25px; top: 11.06px; position: absolute" />
-                    <div style="width: 242.22px; height: 19px; left: 60.98px; top: 8px; position: absolute; color: #7F7F7F; font-size: 13.89px; font-family: Open Sans; font-weight: 400; line-height: 24px; word-wrap: break-word">45 Avenue mohamed 5 Tunis, Tunisie</div>
-                    </div>
-                    {#icon  #}
-                    <div style="width: 118.83px; height: 19px; left: 61.98px; top: 216.84px; position: absolute; color: #337AB7; font-size: 14px; font-family: Open Sans; font-weight: 400; line-height: 24px; word-wrap: break-word">00 216 24 944 910</div>
-                    <div style="width: 358px; height: 49px; padding-top: 13.25px; padding-bottom: 13.75px; padding-left: 27px; padding-right: 309px; left: 1px; top: 248.84px; position: absolute; border-top: 1px #DEDEDE solid; justify-content: flex-start; align-items: center; display: inline-flex">
-                     {#icon  #}
-
-                    </div>
                 </div>
-                
-                <div style="width: 360px; height: 552.70px; left: 15px; top: 410.84px; position: absolute; border-radius: 5px; border: 1px #DEDEDE solid">
-                    <img style="width: 60px; height: 60px; left: 26px; top: 26px; position: absolute; border-radius: 60px; border: 1px #DEDEDE solid" src="https://via.placeholder.com/60x60" />
-                    <div style="width: 42.94px; height: 19px; left: 97.59px; top: 31px; position: absolute; color: #333333; font-size: 14px; font-family: Open Sans; font-weight: 400; text-transform: capitalize; line-height: 20px; word-wrap: break-word">admin</div>
-                    <div style="width: 308px; height: 40px; padding-left: 16px; padding-right: 16px; padding-top: 10.50px; padding-bottom: 10.50px; left: 26px; top: 126px; position: absolute; background: #FAFAFA; border-radius: 5px; border: 1px #DEDEDE solid; justify-content: center; align-items: center; display: inline-flex">
-                    <div style="flex: 1 1 0; align-self: stretch; padding-right: 183.19px; justify-content: flex-start; align-items: center; display: inline-flex">
-                        <div style="width: 92.81px; height: 19px; color: #999999; font-size: 14px; font-family: Open Sans; font-weight: 400; word-wrap: break-word">Nom complet:</div>
-                    </div>
-                    </div>
-                    <div style="width: 308px; height: 40px; padding-left: 16px; padding-right: 16px; padding-top: 10.50px; padding-bottom: 10.50px; left: 26px; top: 181px; position: absolute; background: #FAFAFA; border-radius: 5px; border: 1px #DEDEDE solid; justify-content: center; align-items: center; display: inline-flex">
-                    <div style="flex: 1 1 0; align-self: stretch; padding-right: 236.27px; justify-content: flex-start; align-items: center; display: inline-flex">
-                        <div style="width: 39.73px; height: 19px; color: #999999; font-size: 14px; font-family: Open Sans; font-weight: 400; word-wrap: break-word">Email:</div>
-                    </div>
-                    </div>
-                    <div style="width: 308px; height: 40px; padding-left: 16px; padding-right: 16px; padding-top: 10.50px; padding-bottom: 10.50px; left: 26px; top: 236px; position: absolute; background: #FAFAFA; border-radius: 5px; border: 1px #DEDEDE solid; justify-content: center; align-items: center; display: inline-flex">
-                    <div style="flex: 1 1 0; align-self: stretch; padding-right: 203.96px; justify-content: flex-start; align-items: center; display: inline-flex">
-                        <div style="width: 72.04px; height: 19px; color: #999999; font-size: 14px; font-family: Open Sans; font-weight: 400; word-wrap: break-word">Téléphone </div>
-                    </div>
-                    </div>
-                    <div style="width: 308px; height: 156px; left: 26px; top: 291px; position: absolute; background: #FAFAFA; border-radius: 5px; border: 1px #DEDEDE solid"></div>
-                    <div style="width: 308px; height: 49.70px; padding-top: 14px; padding-bottom: 15.70px; left: 26px; top: 477px; position: absolute; border-radius: 5px; border: 1px #363F48 solid; justify-content: center; align-items: center; display: inline-flex">
-                    <div style="width: 73.20px; height: 20px; text-align: center; color: #363F48; font-size: 18px; font-family: Quicksand; font-weight: 700; line-height: 25.71px; word-wrap: break-word">Envoyer</div>
-                    </div>
-                    <div style="width: 15.02px; height: 15px; padding-left: 0.01px; padding-right: 0.01px; left: 110.88px; top: 509px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
-                    <div style="width: 15px; height: 15px; background: #363F48"></div>
-                    </div>
-                </div>
-                <div style="width: 360px; height: 70px; left: 15px; top: 993.54px; position: absolute; border-radius: 5px; border: 1px #DEDEDE solid">
-                    <img style="width: 20px; height: 20px; left: 23px; top: 15px; position: absolute" src="https://via.placeholder.com/20x20" />
-                    <div style="width: 176.64px; height: 20px; left: 50.64px; top: 15px; position: absolute; color: #7F7F7F; font-size: 13.89px; font-family: Open Sans; font-weight: 400; line-height: 20px; word-wrap: break-word">Propriétaire ou travailler ici</div>
-                    <div style="width: 155.13px; height: 20px; left: 35px; top: 35px; position: absolute; color: #337AB7; font-size: 14px; font-family: Quicksand; font-weight: 700; line-height: 20px; word-wrap: break-word">Réclamez maintenant!</div>
-                </div>
-                <div style="height: 23px; padding-top: 3.08px; padding-bottom: 1.42px; padding-right: 4.49px; left: 15px; top: 1133.54px; position: absolute; justify-content: flex-start; align-items: center; display: inline-flex">
-                    <div style="width: 18.51px; height: 18.51px; background: #7F7F7F"></div>
-                </div>
-                <div style="width: 188px; height: 22px; padding-top: 1px; padding-bottom: 2px; padding-left: 2px; padding-right: 2px; left: 48px; top: 1114.54px; position: absolute; background: white; justify-content: center; align-items: center; display: inline-flex">
-                    <div style="flex: 1 1 0; align-self: stretch; padding-right: 67.64px; justify-content: flex-start; align-items: center; display: inline-flex">
-                    <div style="width: 116.36px; height: 19px; color: #757575; font-size: 14px; font-family: Open Sans; font-weight: 400; word-wrap: break-word">Chercher par tags</div>
-                    </div>
-                </div>
-                </div>
-                </div>
-                </section>
-    <table class="table">
-        <tbody>
-           
-            <tr>
-                <th>Parking</th>
-                <td>{{ equipement.Parking ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>NbrChambre</th>
-                <td>{{ equipement.nbrChambre }}</td>
-            </tr>
-            <tr>
-                <th>Internet</th>
-                <td>{{ equipement.internet ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Climatisation</th>
-                <td>{{ equipement.climatisation ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>TypesDeChambre</th>
-                <td>{{ equipement.TypesDeChambre }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <div id="googleMap" style="width:100%;height:400px;"></div>
+            </div>
+        </div>
+    </section>
 
-<h1>HTML Geolocation</h1>
-<p id="demo">Click the button to get your position.</p>
-
-<button onclick="getLocation()">Try It</button>
-
-<div id="mapholder"></div>
-
-<script src="https://maps.google.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU"></script>
-<!--
-To use this code on your website, get a free API key from Google.
-Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
--->
-<script>
-const x = document.getElementById("demo");
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition, showError);
-  } else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
-
-function showPosition(position) {
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  const latlon = new google.maps.LatLng(lat, lon)
-  const mapholder = document.getElementById('mapholder')
-  mapholder.style.height = '250px';
-  mapholder.style.width = '500px';
-
-  var myOptions = {
-    center:latlon,zoom:14,
-    mapTypeId:google.maps.MapTypeId.ROADMAP,
-    mapTypeControl:false,
-    navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
-  }
-    
-  const map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
-  const marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
-}
-
-function showError(error) {
-  switch(error.code) {
-    case error.PERMISSION_DENIED:
-      x.innerHTML = "User denied the request for Geolocation."
-      break;
-    case error.POSITION_UNAVAILABLE:
-      x.innerHTML = "Location information is unavailable."
-      break;
-    case error.TIMEOUT:
-      x.innerHTML = "The request to get user location timed out."
-      break;
-    case error.UNKNOWN_ERROR:
-      x.innerHTML = "An unknown error occurred."
-      break;
-  }
-}
-</script>
-    <a href="{{ path('app_equipement_index') }}">back to list</a>
-
-    <a href="{{ path('app_equipement_edit', {'id': equipement.id}) }}">edit</a>
-
-    {{ include('equipement/_delete_form.html.twig') }}
+    <a href="{{ path('app_logement_index') }}">Back to list</a>
 {% endblock %}

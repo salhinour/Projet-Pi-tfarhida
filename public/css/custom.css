@@ -1,0 +1,11 @@
+.success-message {
+    color: green;
+}
+.form-control {
+    border: 1px solid #ced4da;
+    border-color: #ced4da;
+}
+
+.form-control.is-invalid {
+    border-color: #dc3545;
+}

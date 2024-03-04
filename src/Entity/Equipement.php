@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Entity;
-
+use App\Entity\Logement;
 use App\Repository\EquipementRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: EquipementRepository::class)]
 class Equipement
@@ -16,6 +18,7 @@ class Equipement
     #[ORM\Column]
     private ?bool $Parking = null;
 
+    #[Assert\NotBlank(message: "vous devez mettre le Nombre de chambre!!!")]
     #[ORM\Column]
     private ?int $nbrChambre = null;
 
@@ -25,8 +28,20 @@ class Equipement
     #[ORM\Column]
     private ?bool $climatisation = null;
 
+    #[Assert\NotBlank(message: "vous devez mettre le type de chambre!!!")]
     #[ORM\Column(length: 255)]
     private ?string $TypesDeChambre = null;
+
+    // #[ORM\OneToOne(targetEntity: Logement::class, cascade: ['persist', 'remove'])]
+    // #[ORM\JoinColumn(name: "logement_id", referencedColumnName: "id", onDelete: "CASCADE")]
+    // private ?Logement $logement = null;
+
+
+
+    #[ORM\Column(length: 255)]
+    private ?string $Description = null;
+
+    
 
     public function getId(): ?int
     {
@@ -50,7 +65,7 @@ class Equipement
         return $this->nbrChambre;
     }
 
-    public function setNbrChambre(int $nbrChambre): static
+    public function setNbrChambre(?int $nbrChambre): static
     {
         $this->nbrChambre = $nbrChambre;
 
@@ -86,10 +101,38 @@ class Equipement
         return $this->TypesDeChambre;
     }
 
-    public function setTypesDeChambre(string $TypesDeChambre): static
+    public function setTypesDeChambre(?string $TypesDeChambre): static
     {
         $this->TypesDeChambre = $TypesDeChambre;
 
         return $this;
     }
+
+    // public function getLogement(): ?Logement
+    // {
+    //     return $this->logement;
+    // }
+
+    // public function setLogement(?Logement $logement): static
+    // {
+    //     $this->logement = $logement;
+
+    //     return $this;
+    // }
+
+    
+
+    public function getDescription(): ?string
+    {
+        return $this->Description;
+    }
+
+    public function setDescription(string $Description): static
+    {
+        $this->Description = $Description;
+
+        return $this;
+    }
+
+  
 }

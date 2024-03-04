@@ -1,4 +1,104 @@
-{{ form_start(form) }}
+{# 
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <div class="form-group">
+        {{ form_label(form.Parking) }}
+        {{ form_widget(form.Parking, {'attr': {'class': 'form-control' ~ (form_errors(form.Parking)|length > 0 ? ' is-invalid' : '')}}) }}
+        {% if form_errors(form.Parking)|length > 0 %}
+            <div class="invalid-feedback">
+                {{ form_errors(form.Parking)|first }}
+                {{ 'vous devez mettre le Parking!!!'|trans }}
+
+            </div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.internet) }}
+        {{ form_widget(form.internet, {'attr': {'class': 'form-control' ~ (form_errors(form.internet)|length > 0 ? ' is-invalid' : '')}}) }}
+        {% if form_errors(form.internet)|length > 0 %}
+            <div class="invalid-feedback">
+                {{ form_errors(form.internet)|first }}
+                {{ 'vous devez mettre le Internet!!!'|trans }}
+
+            </div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.climatisation) }}
+        {{ form_widget(form.climatisation, {'attr': {'class': 'form-control' ~ (form_errors(form.climatisation)|length > 0 ? ' is-invalid' : '')}}) }}
+        {% if form_errors(form.climatisation)|length > 0 %}
+            <div class="invalid-feedback">
+                {{ form_errors(form.climatisation)|first }}
+                {{ 'vous devez mettre  !!!'|trans }}
+
+            </div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.nbrChambre) }}
+        {{ form_widget(form.nbrChambre, {'attr': {'class': 'form-control' ~ (form_errors(form.nbrChambre)|length > 0 ? ' is-invalid' : '')}}) }}
+        {% if form_errors(form.nbrChambre)|length > 0 %}
+            <div class="invalid-feedback">
+                {{ form_errors(form.nbrChambre)|first }}
+                {{ 'vous devez mettre le nombre de chambre!!!'|trans }}
+            </div>
+          
+        {% endif %}
+    </div>
+   
+    <div class="form-group">
+        {{ form_label(form.TypesDeChambre) }}
+        {{ form_widget(form.TypesDeChambre, {'attr': {'class': 'form-control' ~ (form_errors(form.TypesDeChambre)|length > 0 ? ' is-invalid' : '')}}) }}
+       
+    </div>
+     <div class="form-group">
+        {{ form_label(form.Description) }}
+        {{ form_widget(form.Description, {'attr': {'class': 'form-control' ~ (form_errors(form.Description)|length > 0 ? ' is-invalid' : '')}}) }}
+       
+    </div>
+    <button class="btn">{{ button_label|default('Save') }}</button>
+   
+
+{{ form_end(form) }}
+ #}
+ {% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'id': 'myForm'}}) }}
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
+
+<script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        // Prevent form submission
+
+        // Check if any field is empty
+        var formFields = this.querySelectorAll('input, select, textarea');
+        var isEmpty = false;
+
+        formFields.forEach(function(field) {
+            if (!field.value.trim()) {
+                isEmpty = true;
+            }
+        });
+
+        if (isEmpty) {
+            // Show error message if fields are empty
+            Swal.fire({
+                title: 'Check Your Fields!',
+                text: 'Please fill in all the required fields.',
+                icon: 'error'
+            });
+        } else {
+            // Fields are not empty, proceed with submission
+            // Submit the form
+            this.submit();
+
+            // Show success message after form submission
+            Swal.fire({
+                title: 'Added Successfully!',
+                text: 'Your item has been added successfully.',
+                icon: 'success'
+            });
+        }
+    });
+</script>

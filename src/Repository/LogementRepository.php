@@ -17,6 +17,7 @@ use Doctrine\Persistence\ManagerRegistry;
 class LogementRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
+    
     {
         parent::__construct($registry, Logement::class);
     }
@@ -29,10 +30,28 @@ class LogementRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('l')
             ->andWhere('l.Etat = :Etat')
-            ->setParameter('Etat', true)
+            ->setParameter('Etat', 'acceptee')
             ->getQuery()
             ->getResult();
     }
+    public function findByType(string $type): array
+{
+    return $this->createQueryBuilder('l')
+        ->andWhere('l.type = :type')
+        ->setParameter('type', $type)
+        ->getQuery()
+        ->getResult();
+}
+    public function findByPrix($minPrice, $maxPrice)
+{
+    return $this->createQueryBuilder('l')
+        ->andWhere('l.Prix >= :minPrice')
+        ->andWhere('l.Prix <= :maxPrice')
+        ->setParameter('minPrice', $minPrice)
+        ->setParameter('maxPrice', $maxPrice)
+        ->getQuery()
+        ->getResult();
+}
 //    /**
 //     * @return Logement[] Returns an array of Logement objects
 //     */
@@ -57,4 +76,39 @@ class LogementRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+function findMylogement($id){
+    
+    $em=$this->getEntityManager();
+    
+    return 
+    $em->createQuery('SELECT b from App\Entity\Logement b WHERE 
+    b.logement=:id')
+    ->setParameter('id',$id)
+    ->getResult();
+}
+/**
+     * Récupère tous les sponsors actifs.
+     *
+     * @return Logements[] Returns an array of Sponsoring objects
+     */
+    public function findActiveSponsors(): array
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.type = :type')
+            ->setParameter('type', 'ACTIVE')
+            ->getQuery()
+            ->getResult();
+    }
+    public function removeByIds(array $ids): void
+    {
+        $qb = $this->createQueryBuilder('t')
+            ->delete()
+            ->where('t.id IN (:ids)')
+            ->setParameter('ids', $ids);
+
+        $query = $qb->getQuery();
+        $query->execute();
+
+        $this->getEntityManager()->flush();
+    }
 }
