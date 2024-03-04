@@ -147,6 +147,6 @@ class __TwigTemplate_e7dbd943f0633db430fccb7b007730ce extends Template
         <button class=\"btn btn-primary\">Reset password</button>
     {{ form_end(resetForm) }}
 {% endblock %}
-", "reset_password/reset.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\reset_password\\reset.html.twig");
+", "reset_password/reset.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\reset_password\\reset.html.twig");
     }
 }

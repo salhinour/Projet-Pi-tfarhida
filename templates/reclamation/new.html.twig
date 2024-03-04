@@ -1,0 +1,68 @@
+{% extends 'home/base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h1>Ajouter une Réclamation</h1>
+
+        <div class="form-container">
+            <div id="error-message" style="display: none; color: red; text-align: center; margin-bottom: 10px;">Vous ne pouvez pas modifier la date.</div>
+
+            {{ include('reclamation/_form.html.twig', {'button_label': 'Create'}) }}
+
+            <div class="buttons">
+                <a href="{{ path('app_reclamation_index') }}" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var $dateField = $('#reclamation_date');
+
+            var $errorMessage = $('#error-message');
+
+            $dateField.on('click', function() {
+                $errorMessage.show();
+                $dateField.prop('readonly', true);
+            });
+        });
+    </script>
+    <script src="{{ asset('js/form_validation.js') }}"></script>
+
+    <style>
+        {% block styles %}
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative; 
+        }
+
+        #error-message {
+            position: absolute;
+            top: -20px; 
+            left: 0;
+            right: 0;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .buttons .btn {
+            margin-right: 10px;
+        }
+        {% endblock %}
+    </style>
+{% endblock %}

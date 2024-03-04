@@ -65,6 +65,6 @@ class __TwigTemplate_176ab92d66aa72105d74a6fcab48dab0 extends Template
 
     public function getSourceContext()
     {
-        return new Source("", "front/register.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\front\\register.html.twig");
+        return new Source("", "front/register.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\front\\register.html.twig");
     }
 }

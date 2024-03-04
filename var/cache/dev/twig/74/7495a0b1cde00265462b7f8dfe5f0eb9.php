@@ -812,6 +812,6 @@ class __TwigTemplate_1dedcdc6d1e7203013f7a0245df04f61 extends Template
         </table>
     {% endif %}
 {% endblock %}
-", "@WebProfiler/Collector/config.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\config.html.twig");
+", "@WebProfiler/Collector/config.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\config.html.twig");
     }
 }

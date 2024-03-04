@@ -175,6 +175,6 @@ class __TwigTemplate_28db380b407651672ab509a9d4fce06c extends Template
 
 </nav>
 <!-- End of Topbar -->
-", "admin/partials/topbar.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\admin\\partials\\topbar.html.twig");
+", "admin/partials/topbar.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\admin\\partials\\topbar.html.twig");
     }
 }

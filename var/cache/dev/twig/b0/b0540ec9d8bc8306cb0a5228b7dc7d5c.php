@@ -449,6 +449,6 @@ class __TwigTemplate_7fc14433a2e83f99c2d0b4c38f1d7cc4 extends Template
         </div>
     </div>
 {% endblock %}
-", "security/registration.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\security\\registration.html.twig");
+", "security/registration.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\security\\registration.html.twig");
     }
 }

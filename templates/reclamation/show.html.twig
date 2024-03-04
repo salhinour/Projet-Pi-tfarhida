@@ -1,0 +1,112 @@
+{% extends 'home/base.html.twig' %}
+{% block body %}
+<div class="container">
+    <h1 class="text-center mb-5">Reclamation Details</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">Informations de la réclamation</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row">Id</th>
+                                <td>{{ reclamation.id }}</td>
+                            </tr>
+                             <tr>
+                                <th>Titre</th>
+                                <td>{{ reclamation.titre }}</td>
+                            </tr>
+                            <tr>
+                                <th>Type_de_reclamation</th>
+                                <td>{{ reclamation.type }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Description</th>
+                                <td>{{ reclamation.descriptionReclamation }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Date</th>
+                                <td>{{ reclamation.date ? reclamation.date|date('d-m-Y') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Image</th>
+                                <td>
+                                    {% if reclamation.image %}
+                                        <img src="{{ asset('uploads/' ~ reclamation.image) }}" alt="Image" class="img-fluid">
+                                    {% else %}
+                                        <span>No image available</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-8">
+            <div class="card">
+                  <div class="card-header bg-primary text-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Réponse de l'administrateur</h5>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% if reclamation.Reponse %}
+                        <ul>
+                            <li><strong>Id:</strong> {{ reclamation.Reponse.id }}</li>
+                            <li><strong>Description:</strong> {{ reclamation.Reponse.description }}</li>
+                            <li><strong>Date:</strong> {{ reclamation.Reponse.date ? reclamation.Reponse.date|date('d-m-Y') : '' }}</li>
+                        </ul>
+                    {% else %}
+                        <p class="text-muted">Aucune réponse disponible pour cette réclamation.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-8">
+            <div class="d-flex justify-content-between">
+                {% if reclamation.Reponse is null %}
+                    <a href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}" class="btn btn-primary">Modifier</a>
+                    <form action="{{ path('app_reclamation_delete', {'id': reclamation.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cette réclamation?')">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reclamation.id) }}">
+                        <button type="submit" class="btn btn-danger">Annuler la réclamation</button>
+                    </form>
+                {% else %}
+                    <p class="text-muted">Vous ne pouvez plus modifier ou supprimer cette réclamation .</p>
+                {% endif %}
+                <a href="{{ path('app_reclamation_index') }}" class="btn btn-secondary">Retour à la liste</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    {% block styles %}
+    .card {
+        border: none;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        background-color: #007bff;
+    }
+
+    .btn {
+        border-radius: 20px;
+    }
+    {% endblock %}
+</style>
+
+{% endblock %}

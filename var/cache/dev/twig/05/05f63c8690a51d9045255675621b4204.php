@@ -142,6 +142,6 @@ class __TwigTemplate_0aea715dadc87a7be3d14c469962c689 extends Template
     </p>
     <p>If you don't receive an email please check your spam folder or <a href=\"{{ path('app_forgot_password_request') }}\">try again</a>.</p>
 {% endblock %}
-", "reset_password/check_email.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\reset_password\\check_email.html.twig");
+", "reset_password/check_email.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\reset_password\\check_email.html.twig");
     }
 }

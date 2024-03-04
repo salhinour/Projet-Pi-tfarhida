@@ -314,6 +314,6 @@ class __TwigTemplate_e06ef5c49a2211434426126212ed1d85 extends Template
         <script src=\"{{ asset('sbadmin2/js/sb-admin-2.min.js') }}\"></script>
     </body>
 </html>
-", "admin/base.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\admin\\base.html.twig");
+", "admin/base.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\admin\\base.html.twig");
     }
 }

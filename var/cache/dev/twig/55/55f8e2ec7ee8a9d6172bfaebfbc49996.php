@@ -111,6 +111,6 @@ class __TwigTemplate_610c38ceb9c605bc47160db97c788a4e extends Template
 \t\t</ul>
 \t</div>
 </nav>
-", "partials/_navbar.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\partials\\_navbar.html.twig");
+", "partials/_navbar.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\partials\\_navbar.html.twig");
     }
 }

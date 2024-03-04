@@ -110,6 +110,6 @@ class __TwigTemplate_f4b4962dce8e1d2d6f27a57825084aa8 extends Template
             </div>
         </div>
     </div>
-</div>", "admin/partials/_modal_logout.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\admin\\partials\\_modal_logout.html.twig");
+</div>", "admin/partials/_modal_logout.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\admin\\partials\\_modal_logout.html.twig");
     }
 }

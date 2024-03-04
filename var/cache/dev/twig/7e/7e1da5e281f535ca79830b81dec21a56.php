@@ -373,6 +373,6 @@ class __TwigTemplate_50779ce304ebc85339d1c9e0662c5364 extends Template
         </tbody>
     </table>
 </body>
-</html>", "emails/reset_password.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\emails\\reset_password.html.twig");
+</html>", "emails/reset_password.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\emails\\reset_password.html.twig");
     }
 }

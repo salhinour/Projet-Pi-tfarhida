@@ -247,6 +247,6 @@ class __TwigTemplate_b4882bbd5509b37b891ea9e568631d58 extends Template
         </div>
     </div>
 </div>
-{% endblock %}", "reset_password/request.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\reset_password\\request.html.twig");
+{% endblock %}", "reset_password/request.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\reset_password\\request.html.twig");
     }
 }

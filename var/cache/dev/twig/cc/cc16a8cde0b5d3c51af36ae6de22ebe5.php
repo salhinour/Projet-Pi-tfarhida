@@ -1901,6 +1901,6 @@ class __TwigTemplate_d941d8bcd6085bf76abc56fd0935b7a7 extends Template
 \t\t\t{% endblock %}
 \t\t</body>
 \t\t{% endblock %}
-\t\t</html>", "home/index.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\home\\index.html.twig");
+\t\t</html>", "home/index.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\home\\index.html.twig");
     }
 }

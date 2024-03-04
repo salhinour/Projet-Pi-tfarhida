@@ -1583,6 +1583,6 @@ class __TwigTemplate_5ce9eef1f43b639e7d0f0c64e42a4c40 extends Template
 
 </body>
 
-</html>", "front/back.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\front\\back.html.twig");
+</html>", "front/back.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\front\\back.html.twig");
     }
 }

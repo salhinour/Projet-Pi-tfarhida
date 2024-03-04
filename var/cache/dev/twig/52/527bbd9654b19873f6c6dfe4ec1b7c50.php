@@ -163,6 +163,6 @@ class __TwigTemplate_62c832e3dcb17189f43290d8323fcc9a extends Template
     </ul>
 </div>
 {% endblock %}
-", "front/index.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\front\\index.html.twig");
+", "front/index.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\front\\index.html.twig");
     }
 }

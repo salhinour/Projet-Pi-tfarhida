@@ -280,6 +280,6 @@ class __TwigTemplate_0db3a6ac98f92099651a60dc7607dbd4 extends Template
 
 </body>
 
-</html>", "back/register.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\back\\register.html.twig");
+</html>", "back/register.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\back\\register.html.twig");
     }
 }

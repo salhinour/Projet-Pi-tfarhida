@@ -238,6 +238,6 @@ class __TwigTemplate_bad794f6d94bf7608da0b085219c33dd extends Template
         </div>
     </div>
 </div>
-{% endblock %}", "security/forgot_password.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\security\\forgot_password.html.twig");
+{% endblock %}", "security/forgot_password.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\security\\forgot_password.html.twig");
     }
 }

@@ -116,6 +116,6 @@ class __TwigTemplate_212f553866095d875248ec05d12ab1a1 extends Template
     {% if segment in app.request.attributes.get('_route') %}
         active
     {% endif %}
-{% endmacro %}", "partials/_macro.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\partials\\_macro.html.twig");
+{% endmacro %}", "partials/_macro.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\partials\\_macro.html.twig");
     }
 }

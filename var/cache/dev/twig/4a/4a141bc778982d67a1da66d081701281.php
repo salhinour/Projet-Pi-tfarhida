@@ -410,6 +410,6 @@ class __TwigTemplate_a5537d14b5b5de0eca6ebecfea8b1907 extends Template
         {% block javascripts %}{% endblock %}
     </body>
 </html>
-", "admin/layout.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\admin\\layout.html.twig");
+", "admin/layout.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\admin\\layout.html.twig");
     }
 }

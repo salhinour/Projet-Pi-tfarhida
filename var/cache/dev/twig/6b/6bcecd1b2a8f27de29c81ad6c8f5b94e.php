@@ -97,7 +97,26 @@ class __TwigTemplate_2982d42370a126f2365a33e490f072af extends Template
             <span>Utilisateurs</span>
         </a>
     </li>
-
+    <li class=\"nav-item             active
+    \">
+        <a class=\"nav-link\" href=\"";
+        // line 60
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reclamation_back_index");
+        echo "\" aria-expanded=\"false\">
+            <i class=\"fas fa-user\"></i>
+            <span>Reclamation</span>
+        </a>
+    </li>
+     <li class=\"nav-item             active
+    \">
+        <a class=\"nav-link\" href=\"";
+        // line 67
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reponse_back_index");
+        echo "\" aria-expanded=\"false\">
+            <i class=\"fas fa-user\"></i>
+            <span>Reponse</span>
+        </a>
+    </li>
     <hr class=\"sidebar-divider d-none d-md-block\">
 
     <div class=\"text-center d-none d-md-inline\">
@@ -135,7 +154,7 @@ class __TwigTemplate_2982d42370a126f2365a33e490f072af extends Template
      */
     public function getDebugInfo()
     {
-        return array (  94 => 53,  90 => 52,  86 => 50,  83 => 48,  80 => 25,  78 => 24,  76 => 23,  65 => 14,  61 => 13,  53 => 8,  45 => 2,  43 => 1,);
+        return array (  114 => 67,  104 => 60,  94 => 53,  90 => 52,  86 => 50,  83 => 48,  80 => 25,  78 => 24,  76 => 23,  65 => 14,  61 => 13,  53 => 8,  45 => 2,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -197,7 +216,20 @@ class __TwigTemplate_2982d42370a126f2365a33e490f072af extends Template
             <span>Utilisateurs</span>
         </a>
     </li>
-
+    <li class=\"nav-item             active
+    \">
+        <a class=\"nav-link\" href=\"{{ path('app_reclamation_back_index') }}\" aria-expanded=\"false\">
+            <i class=\"fas fa-user\"></i>
+            <span>Reclamation</span>
+        </a>
+    </li>
+     <li class=\"nav-item             active
+    \">
+        <a class=\"nav-link\" href=\"{{ path('app_reponse_back_index') }}\" aria-expanded=\"false\">
+            <i class=\"fas fa-user\"></i>
+            <span>Reponse</span>
+        </a>
+    </li>
     <hr class=\"sidebar-divider d-none d-md-block\">
 
     <div class=\"text-center d-none d-md-inline\">
@@ -205,6 +237,6 @@ class __TwigTemplate_2982d42370a126f2365a33e490f072af extends Template
     </div>
 
 </ul>
-", "admin/partials/sidebar.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\admin\\partials\\sidebar.html.twig");
+", "admin/partials/sidebar.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\admin\\partials\\sidebar.html.twig");
     }
 }

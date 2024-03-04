@@ -231,6 +231,6 @@ class __TwigTemplate_0975c9e485063c3811a4f46d549c35e8 extends Template
     </div>
 
 {% endblock %}
-", "admin/user/show.html.twig", "C:\\Users\\MSI\\Desktop\\ntasti\\templates\\admin\\user\\show.html.twig");
+", "admin/user/show.html.twig", "C:\\Users\\MSI\\INTEGRATION\\Projet-Pi-tfarhida\\templates\\admin\\user\\show.html.twig");
     }
 }
