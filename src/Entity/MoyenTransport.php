@@ -26,8 +26,10 @@ class MoyenTransport
 
     #[ORM\Column]
     #[Assert\NotBlank(message: "Ce champ est obligatoire !")]
-    #[Assert\Type(type: 'integer', message: "La capacité doit être un nombre.")]
+    #[Assert\GreaterThan(value: 0, message: "La capacité doit être supérieure à 0.")]
+    #[Assert\Type(type: 'integer', message: "La capacité doit être un nombre entier.")]
     private ?int $capacite = null;
+
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: "Ce champ est obligatoire !")]
@@ -61,7 +63,7 @@ class MoyenTransport
         return $this->type;
     }
 
-    public function setType(string $type): static
+    public function setType(?string $type): static
     {
         $this->type = $type;
 
@@ -73,7 +75,7 @@ class MoyenTransport
         return $this->capacite;
     }
 
-    public function setCapacite(int $capacite): static
+    public function setCapacite(?int $capacite): static
     {
         $this->capacite = $capacite;
 
@@ -85,7 +87,7 @@ class MoyenTransport
         return $this->lieu;
     }
 
-    public function setLieu(string $lieu): static
+    public function setLieu(?string $lieu): static
     {
         $this->lieu = $lieu;
 

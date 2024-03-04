@@ -11,15 +11,74 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Knp\Component\Pager\PaginatorInterface;
+use Twilio\Rest\Client;
+
 
 #[Route('/moyen/transport/back')]
 class MoyenTransportBackController extends AbstractController
 {
-    #[Route('/', name: 'app_moyen_transport_back_index', methods: ['GET'])]
-    public function index(MoyenTransportRepository $moyenTransportRepository): Response
-    {
+    #[Route('/', name: 'app_moyen_transport_back_index', methods: ['GET','POST'])]
+    public function index(PaginatorInterface $paginator,MoyenTransportRepository $moyenTransportRepository,Request $request,EntityManagerInterface $entityManager): Response
+    {   
+        $typeStatistics = $entityManager->createQueryBuilder()
+        ->select('p.type, COUNT(p.id) as typeCount')
+        ->from('App\Entity\MoyenTransport', 'p')
+        ->groupBy('p.type')
+        ->getQuery()
+        ->getResult();
+
+
+
+        $moyentransportQuery = $moyenTransportRepository->createQueryBuilder('r')
+        ->orderBy('r.type', 'DESC')
+        ->getQuery();
+
+    
+        $pagination = $paginator->paginate(
+            $moyentransportQuery, 
+            $request->query->getInt('page', 1), 
+            8
+        );
+
+        $moyen = $entityManager
+        ->getRepository(MoyenTransport::class)
+        ->findAll();
+
+        $back = null;
+        
+        if($request->isMethod("POST")){
+            if ( $request->request->get('optionsRadios')){
+                $SortKey = $request->request->get('optionsRadios');
+                switch ($SortKey){
+                    case 'type':
+                        $moyen = $moyenTransportRepository->SortBytype();
+                        break;
+
+                    case 'lieu':
+                        $moyen = $moyenTransportRepository->SortBylieu();
+                        break;
+
+                    case 'capacite':
+                        $moyen = $moyenTransportRepository->SortBycapacite();
+                        break;
+
+
+                }
+            }
+             
+      if ( $moyen){
+                $back = "success";
+            }else{
+                $back = "failure";
+            }
+            }
         return $this->render('moyen_transport_back/index.html.twig', [
-            'moyen_transports' => $moyenTransportRepository->findAll(),
+            'moyen_transports' =>$moyen,
+            'back' =>$back,
+            'pagination' => $pagination,
+            'types' => $moyenTransportRepository->findAll(),
+           'typeStatistics' => $typeStatistics,
         ]);
     }
 
@@ -60,6 +119,7 @@ class MoyenTransportBackController extends AbstractController
         return $this->renderForm('moyen_transport_back/new.html.twig', [
             'moyen_transport' => $moyenTransport,
             'form' => $form,
+            'action' => 'add'
         ]);
     }
 
@@ -105,6 +165,7 @@ class MoyenTransportBackController extends AbstractController
         return $this->renderForm('moyen_transport_back/edit.html.twig', [
             'moyen_transport' => $moyenTransport,
             'form' => $form,
+            'action' => 'edit'
         ]);
     }
 
@@ -117,5 +178,43 @@ class MoyenTransportBackController extends AbstractController
         }
 
         return $this->redirectToRoute('app_moyen_transport_back_index', [], Response::HTTP_SEE_OTHER);
+    }
+    #[Route('/{id}/refuser-valide', name: 'app_refuser_moyen_transport')]
+    public function refuserEtatLogement($id, EntityManagerInterface $entityManager): Response
+    {
+        // Récupérer le logement à partir de l'ID
+        $moyen = $entityManager->getRepository(MoyenTransport::class)->find($id);
+
+        if (!$moyen) {
+            throw $this->createNotFoundException('Logement non trouvé avec l\'identifiant: '.$id);
+        }
+
+        // Mettre à jour l'état du logement (par exemple, changer un champ "état" dans votre entité Logement)
+        $moyen->setValide(0); // Supposons que vous avez un champ "état" dans votre entité Logement
+
+        // Enregistrer les modifications dans la base de données
+        $entityManager->flush();
+
+        // Rediriger ou retourner une réponse appropriée
+        return $this->redirectToRoute('app_moyen_transport_back_index'); // Redirige vers la liste des logements par exemple
+    }
+    #[Route('/{id}/modifier-valide', name: 'app_valider_moyen_transport')]
+    public function modifierEtatLogement($id): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $moyen = $entityManager->getRepository(MoyenTransport::class)->find($id);
+    
+        if (!$moyen) {
+            throw $this->createNotFoundException('Le logement avec l\'ID ' . $id . ' n\'existe pas');
+        }
+    
+        // Modifier l'état du logement selon la logique de votre application
+        $moyen->setValide("1"); // Remplacez 'nouvel_etat' par le nouvel état souhaité
+    
+        // Enregistrer les modifications
+        $entityManager->flush();
+    
+        // Rediriger ou retourner une réponse appropriée
+        return $this->redirectToRoute('app_moyen_transport_back_index', ['id' => $id]);
     }
 }

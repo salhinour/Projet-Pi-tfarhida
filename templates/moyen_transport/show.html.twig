@@ -59,46 +59,48 @@
 </section>
 
 {% block body %}
-    <h1>MoyenTransport</h1>
 
-        <table class="table table-striped table-hover" id="myTable">
 
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ moyen_transport.id }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ moyen_transport.type }}</td>
-            </tr>
-            <tr>
-                <th>Capacite</th>
-                <td>{{ moyen_transport.capacite }}</td>
-            </tr>
-            <tr>
-                <th>Num_serie</th>
-                <td>{{ moyen_transport.lieu }}</td>
-            </tr>
-             <tr>
-                <th>Etat</th>
-                <td>
-                        {% if moyen_transport.etat == 1 %}
-                            Disponible
-                        {% else %}
-                            Non Disponible
-                        {% endif %}
-                </td>                
-                 </tr>
-             <tr>
-                <th>Image</th>
-                <td> <img src="{{ asset('uploads/images/' ~ moyen_transport.image) }}" alt="Image" style="width: 400px; height: 300px;">
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        <table class="table table-striped table-hover mt-4 mb-4 ml-4 mr-4" id="myTable">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ moyen_transport.id }}</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>{{ moyen_transport.type }}</td>
+        </tr>
+        <tr>
+            <th>Capacite</th>
+            <td>{{ moyen_transport.capacite }}</td>
+        </tr>
+        <tr>
+            <th>Lieu</th>
+            <td>{{ moyen_transport.lieu }}</td>
+        </tr>
+        <tr>
+            <th>Etat</th>
+            <td>
+                {% if moyen_transport.etat == 1 %}
+                    Disponible
+                {% else %}
+                    Non Disponible
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td>
+                <img src="{{ asset('uploads/images/' ~ moyen_transport.image) }}" alt="Image" style="width: 400px; height: 300px;">
+            </td>
+        </tr>
+        
+    </tbody>
+</table>
 
-    <a href="{{ path('app_moyen_transport_index') }}" class="btn btn-success  ">back to list</a>
+
+    <a href="{{ path('app_moyen_transport_index') }}" class="btn btn-success ml-4 ">back to list</a>
 
    
 

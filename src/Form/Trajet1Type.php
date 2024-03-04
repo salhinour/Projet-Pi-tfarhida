@@ -21,7 +21,10 @@ class Trajet1Type extends AbstractType
             ->add('LieuArrivee', null, [
                 'attr' => ['class' => 'form-control'],
             ])
-            ->add('heure', null,) 
+            ->add('heure', null,)
+            ->add('date', null,[
+                'format' => 'yyyy-MM-dd',
+            ]) 
                 
             ->add('MoyenTransport',EntityType::class,[
                 'class'=>'App\Entity\MoyenTransport',

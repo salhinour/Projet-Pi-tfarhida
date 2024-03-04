@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+
   <title>Pacific - Free Bootstrap 4 Template by Colorlib</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -63,23 +65,76 @@
 </section> 
 
 {% block body %}
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Trajects for {{ moyenTransport.type }}</h1>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4 text-dark">Trajects for {{ moyenTransport.type }}</h1>
 
-        {% if trajects|length > 0 %}
-            <ul class="list-group">
-                {% for trajet in trajects %}
-                    <li class="list-group-item">
-                        <strong class="highlight">{{ trajet.LieuDepart }}</strong> to <strong class="highlight">{{ trajet.LieuArrivee }}</strong>
-                        at {{ trajet.heure|date('H:i') }}
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p class="text-center mt-4">No trajects found for {{ moyenTransport.type }}</p>
-        {% endif %}
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-dark">Trajet</th>
+                        <th scope="col" class="text-dark">Date and Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for trajet in trajects %}
+                        <tr>
+                            <td>
+                                <strong class="highlight text-dark">{{ trajet.LieuDepart }}</strong> to <strong class="highlight text-dark">{{ trajet.LieuArrivee }}</strong>
+                            </td>
+                            <td class="text-dark">
+                                {{ trajet.date|date('d-m-Y') }} {{ trajet.heure|date('H:i:s') }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {% if trajects|length == 0 %}
+                <p class="text-center mt-4 text-dark">No trajects found for {{ moyenTransport.type }}</p>
+            {% endif %}
+        </div>
+
+        <div class="col-md-6">
+            <div id="mini-calendar"></div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    var events = [
+                        {% for trajet in trajects %}
+                            {
+                                title: '{{ trajet.LieuDepart }} to {{ trajet.LieuArrivee }}',
+                                start: '{{ trajet.date|date('Y-m-d') }}T{{ trajet.heure|date('H:i:s') }}',
+                                allDay: false
+                            },
+                        {% endfor %}
+                    ];
+
+                    $('#mini-calendar').fullCalendar({
+                        events: events,
+                        header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,agendaWeek,agendaDay'
+                        },
+                        editable: false, 
+                        eventRender: function (event, element) {
+                element.find('.fc-content',).css('color', 'black');
+                 element.find('.fc-content').css('box-shadow', '0px 0px 5px 0px rgba(0,0,0,0.5)');}
+                    });
+                });
+            </script>
+        </div>
     </div>
+</div>
+
+
+
+   
+
 {% endblock %}
+
 
 <footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url(/images/bg_3.jpg);">
   <div class="container">
@@ -166,6 +221,14 @@
 <script src="{{asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false')}}"></script>
 <script src="{{asset('js/google-map.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
+ <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- FullCalendar CSS and JS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+
 {% endblock %}
 </body>
 </html>

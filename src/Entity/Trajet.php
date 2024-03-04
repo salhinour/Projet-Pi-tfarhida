@@ -30,6 +30,12 @@ class Trajet
     #[ORM\ManyToOne(inversedBy: 'trajets')]
     private ?MoyenTransport $MoyenTransport = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date = null;
+
+    
+
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -40,7 +46,7 @@ class Trajet
         return $this->LieuDepart;
     }
 
-    public function setLieuDepart(string $LieuDepart): static
+    public function setLieuDepart(?string $LieuDepart): static
     {
         $this->LieuDepart = $LieuDepart;
 
@@ -52,7 +58,7 @@ class Trajet
         return $this->LieuArrivee;
     }
 
-    public function setLieuArrivee(string $LieuArrivee): static
+    public function setLieuArrivee(?string $LieuArrivee): static
     {
         $this->LieuArrivee = $LieuArrivee;
 
@@ -64,7 +70,7 @@ class Trajet
         return $this->heure;
     }
 
-    public function setHeure(\DateTimeInterface $heure): static
+    public function setHeure(?\DateTimeInterface $heure): static
     {
         $this->heure = $heure;
 
@@ -82,4 +88,17 @@ class Trajet
 
         return $this;
     }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): static
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+   
 }

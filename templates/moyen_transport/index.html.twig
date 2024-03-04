@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   {% block stylesheets%}
+    <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
+
   <link href="{{asset('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900')}}" rel="stylesheet">
 	<link href="{{asset('https://fonts.googleapis.com/css2?family=Arizonia&display=swap')}}" rel="stylesheet">
 
@@ -50,7 +52,9 @@
   <div class="container">
     <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
       <div class="col-md-9 ftco-animate pb-5 text-center">
-       <h1 class="mb-0 bread">Transport</h1>
+        <div class="ftco-animate pb-5 text-center" style="margin-top: 80px;">
+         <h1 class="mb-0 bread">Transport</h1>
+      </div>
      </div>
    </div>
  </div>
@@ -92,11 +96,52 @@
                 <td colspan="6">no records found</td>
             </tr>
         {% endfor %} #}
+<section class="ftco-section ftco-no-pb ftco-no-pt">
+		<div class="container ">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="ftco-search d-flex justify-content-center">
+						<div class="row">
+							<div class="col-md-12 nav-link-wrap">
+								<div class="nav nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
 
+								</div>
+							</div>
+							
+							<div class="col-md-12 tab-wrap">
+								
+								<div class="tab-content" id="v-pills-tabContent">
+									
+   <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+    <form id="search-form" action="{{ path('app_moyen_transport_index') }}" class="search-property-1" method="get">
+        <div class="row no-gutters">
+            <div class="col-md d-flex">
+                <div class="form-group p-4 border-0">
+                    <label for="#">Moyen de Transport</label>
+                    <div class="form-field">
+                        <div class="icon"><span class="fa fa-search"></span></div>
+                        <input type="text" id="search-input" class="form-control" placeholder="Search " name="type">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+						
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+<section class="ftco-section">
+    <div class="container">
 <div class="row">
     {% for moyen_transport in moyen_transports %}
-        <div class="col-md-3 mb-4">
+    <div class="col-md-4 ftco-animate fadeInUp ftco-animated">
             <div class="card border-0 shadow" style="background-color: #FDF5E6;"> <!-- Change #f8f9fa to your preferred color code -->
                 <div class="ratio ratio-4x3">
                     <img src="{{ asset('uploads/images/' ~ moyen_transport.image) }}" alt="Image du moyen de transport" style="width: 100%; height: 100%; object-fit: cover;">
@@ -107,11 +152,15 @@
                         <strong>État:</strong> {% if moyen_transport.etat == 1 %} Disponible {% else %} Non Disponible {% endif %}<br>
                     </p>
                     <p class="card-text">
-                    Lieu:{{ moyen_transport.lieu}}
+                    Lieu: {{ moyen_transport.lieu}}
                     </p>
-                    <a href="{{ path('app_moyen_transport_show', {'id': moyen_transport.id}) }}" class="btn btn-primary btn-lg">Détails</a>
-                    <a href="{{ path('app_trajects_for_moyen_transport', {'id': moyen_transport.id}) }}" class="btn btn-primary btn-lg">trajects</a>
+                    <div class="row">
+                    <a href="{{ path('app_moyen_transport_show', {'id': moyen_transport.id}) }}" class="btn btn-primary btn-lg mr-2">Détails</a>
+                    <a href="{{ path('app_trajects_for_moyen_transport', {'id': moyen_transport.id}) }}" class="btn btn-primary btn-lg mr-2">trajects</a>
+                    <a href="{{ path('app_moyen_transport_index', {'id': moyen_transport.id}) }}" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#mapModal">station</a>
                 </div>
+                </div>
+                
             </div>
         </div>
     {% else %}
@@ -120,11 +169,16 @@
         </div>
     {% endfor %}
 </div>
+</div>
+</div>
+</div>
 
 
-
-        </tbody>
-    </table>
+</section>
+<!-- Pagination -->
+    <div class="d-flex justify-content-center">
+        {{ knp_pagination_render(moyen_transports,'moyen_transport/pagination.html.twig')}}
+    </div>
 
 {% endblock %}
 
@@ -213,7 +267,143 @@
 <script src="{{asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false')}}"></script>
 <script src="{{asset('js/google-map.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://js.arcgis.com/4.25"></script>
 {% endblock %}
+
+
+ <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Map Modal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="viewDiv" style="height: 500px;"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+    require([
+        "esri/config",
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/Graphic",
+        "esri/rest/locator"
+    ], (esriConfig, Map, MapView, Graphic, locator) => {
+
+        esriConfig.apiKey = "AAPK12e9985040fe4016865853dd057dc2d965kBjrbZsfaWIjtHQ2qGy5E_tvrRf8-hLlwxsCxO9nXiJjoa2OEfb-TEDqLPRbBi";
+
+        const map = new Map({
+            basemap: "arcgis-navigation"
+        });
+
+        const view = new MapView({
+            container: "viewDiv",
+            map: map,
+            constraints: {
+                snapToZoom: false
+            }
+        });
+
+        view.popup.actions = [];
+
+        view.when(() => {
+            const geocodingServiceUrl = "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer";
+
+            const params = {
+                address: {
+                    "address": "{% for moyen_transport in moyen_transports %}{{ moyen_transport.lieu }}{% endfor %}"
+                }
+            };
+
+            locator.addressToLocations(geocodingServiceUrl, params)
+                .then((results) => {
+                    showResult(results);
+                })
+                .catch((error) => {
+                    console.error("Error during geocoding:", error);
+                });
+
+            function showResult(results) {
+                if (results && results.length > 0) {
+                    const result = results[0];
+                    console.log(result.address);
+
+                    view.graphics.add(new Graphic({
+                        symbol: {
+                            type: "simple-marker",
+                            color: "#000000",
+                            size: "12px",
+                            outline: {
+                                color: "#ffffff",
+                                width: "1px"
+                            }
+                        },
+                        geometry: result.location,
+                        attributes: {
+                            title: "Address",
+                            address: result.address,
+                            score: result.score
+                        },
+                        popupTemplate: {
+                            title: "{title}",
+                            content: `${result.address}<br><br>${result.location.longitude.toFixed(5)}, ${result.location.latitude.toFixed(5)}`
+                        }
+                    }));
+
+                    const graphicsCount = view.graphics.length;
+                    if (graphicsCount > 0) {
+                        const g = view.graphics.getItemAt(graphicsCount - 1);
+                        view.popup.open({
+                            features: [g],
+                            location: g.geometry
+                        });
+
+                        view.goTo({
+                            target: result.location,
+                            zoom: 13
+                        });
+                    }
+                } else {
+                    console.error("No geocoding results found.");
+                }
+            }
+        });
+    });
+</script>
+<!-- Add this script to your template -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#search-input').on('input', function () {
+            var searchTerm = $(this).val();
+
+            $.ajax({
+                type: "GET",
+                url: "{{ path('app_moyen_transport_index') }}",
+                data: { type: searchTerm },
+                success: function (data) {
+                    // Update the content of the result pane with the filtered data
+                    $('#filtered-results').html(data);
+                }
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
 

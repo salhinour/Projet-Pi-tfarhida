@@ -45,4 +45,30 @@ class MoyenTransportRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+public function SortBytype(){
+    return $this->createQueryBuilder('e')
+        ->orderBy('e.type','ASC')
+        ->getQuery()
+        ->getResult()
+        ;
+}
+
+public function SortBylieu()
+{
+    return $this->createQueryBuilder('e')
+        ->orderBy('e.lieu','ASC')
+        ->getQuery()
+        ->getResult()
+        ;
+}
+
+
+public function SortBycapacite()
+{
+    return $this->createQueryBuilder('e')
+        ->orderBy('e.capacite','ASC')
+        ->getQuery()
+        ->getResult()
+        ;
+}
 }

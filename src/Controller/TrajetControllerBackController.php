@@ -10,15 +10,56 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 #[Route('/trajet/controller/back')]
 class TrajetControllerBackController extends AbstractController
 {
-    #[Route('/', name: 'app_trajet_controller_back_index', methods: ['GET'])]
-    public function index(TrajetRepository $trajetRepository): Response
-    {
+    #[Route('/', name: 'app_trajet_controller_back_index', methods: ['GET','POST'])]
+    public function index(PaginatorInterface $paginator,TrajetRepository $trajetRepository,Request $request,EntityManagerInterface $entityManager): Response
+    {   
+        $trajetQuery = $trajetRepository->createQueryBuilder('r')
+        ->orderBy('r.date', 'DESC')
+        ->getQuery();
+
+    
+        $pagination = $paginator->paginate(
+            $trajetQuery, 
+            $request->query->getInt('page', 1), 
+            8
+        );
+       
+        $trajet = $entityManager
+        ->getRepository(Trajet::class)
+        ->findAll();
+
+        $back = null;
+        
+        if($request->isMethod("POST")){
+            if ( $request->request->get('optionsRadios')){
+                $SortKey = $request->request->get('optionsRadios');
+                switch ($SortKey){
+                    case 'heure':
+                        $trajet = $trajetRepository->SortByheure();
+                        break;
+
+                    case 'date':
+                        $trajet = $trajetRepository->SortBydate();
+                        break;
+
+                }
+            }
+             
+      if ( $trajet){
+                $back = "success";
+            }else{
+                $back = "failure";
+            }
+            }
         return $this->render('trajet_controller_back/index.html.twig', [
-            'trajets' => $trajetRepository->findAll(),
+            'trajets' =>$trajet,
+            'back' =>$back,
+            'pagination' => $pagination
         ]);
     }
 
@@ -39,6 +80,7 @@ class TrajetControllerBackController extends AbstractController
         return $this->renderForm('trajet_controller_back/new.html.twig', [
             'trajet' => $trajet,
             'form' => $form,
+            'action' => 'add'
         ]);
     }
 
@@ -65,6 +107,7 @@ class TrajetControllerBackController extends AbstractController
         return $this->renderForm('trajet_controller_back/edit.html.twig', [
             'trajet' => $trajet,
             'form' => $form,
+            'action' => 'edit'
         ]);
     }
 

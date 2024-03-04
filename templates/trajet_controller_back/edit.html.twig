@@ -163,20 +163,13 @@
                         
                         
             <div id="table-actions" class="d-flex align-items-center justify-content-between mb-4">
-        <div class="d-flex">
-            <button id="btPrint" onclick="createPDF()" class="export-pdf-btn">
-                <i class="fas fa-file-pdf"></i> Export PDF
-            </button>
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search ..." class="form-control">
-        </div>
+       
         <div>
             
         </div>
     </div>
-{% block title %}Edit Trajet{% endblock %}
 
 {% block body %}
-    <h1>Edit Trajet</h1>
 
     {{ include('trajet_controller_back/_form.html.twig', {'button_label': 'Update'}) }}
 

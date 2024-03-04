@@ -177,18 +177,11 @@
                         
                         
             <div id="table-actions" class="d-flex align-items-center justify-content-between mb-4">
-        <div class="d-flex">
-            <button id="btPrint" onclick="createPDF()" class="export-pdf-btn">
-                <i class="fas fa-file-pdf"></i> Export PDF
-            </button>
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search ..." class="form-control">
-        </div>
+        
         
     </div>
-{% block title %}Edit MoyenTransport{% endblock %}
 
 {% block body %}
-    <h1>Edit MoyenTransport</h1>
     
     {{ include('moyen_transport_back/_form.html.twig', {'button_label': 'Update' })}}
     

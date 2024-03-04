@@ -45,4 +45,24 @@ class TrajetRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+public function SortByheure(){
+    return $this->createQueryBuilder('e')
+        ->orderBy('e.heure','ASC')
+        ->getQuery()
+        ->getResult()
+        ;
 }
+
+public function SortBydate()
+{
+    return $this->createQueryBuilder('e')
+        ->orderBy('e.date','ASC')
+        ->getQuery()
+        ->getResult()
+        ;
+}
+
+
+
+}
+

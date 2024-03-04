@@ -26,7 +26,6 @@ class MoyenTransportType extends AbstractType
         ])
         ->add('etat', CheckboxType::class, [
             'label' => 'Disponible',
-            'attr' => ['class' => 'form-check-input m-2'],
     
             
         ])
