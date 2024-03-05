@@ -137,11 +137,40 @@
 				</div>
 			</div>
 		</section>
-<section class="ftco-section">
-    <div class="container">
-<div class="row">
+
+    <div id="transport-container">
+    <div class="row">
     {% for moyen_transport in moyen_transports %}
-    <div class="col-md-4 ftco-animate fadeInUp ftco-animated">
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <div class="ratio ratio-4x3">
+                    <img src="{{ asset('uploads/images/' ~ moyen_transport.image) }}" alt="Image du moyen de transport" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ moyen_transport.type }}</h5>
+                    <p class="card-text">
+                        <strong>État:</strong> {% if moyen_transport.etat == 1 %} Disponible {% else %} Non Disponible {% endif %}<br>
+                    </p>
+                    <p class="card-text">
+                    Lieu: {{ moyen_transport.lieu}}
+                    </p>
+                    <div class="row">
+                    <a href="{{ path('app_moyen_transport_show', {'id': moyen_transport.id}) }}" class="btn btn-primary btn-lg mr-2">Détails</a>
+                    <a href="{{ path('app_trajects_for_moyen_transport', {'id': moyen_transport.id}) }}" class="btn btn-primary btn-lg mr-2">trajects</a>
+                    <a href="{{ path('app_moyen_transport_index', {'id': moyen_transport.id}) }}" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#mapModal">station</a>
+                </div>
+                </div>
+
+            </div>
+        </div>
+       
+
+
+
+
+
+    
+    {# <div class="col-md-4 ftco-animate fadeInUp ftco-animated">
             <div class="card border-0 shadow" style="background-color: #FDF5E6;"> <!-- Change #f8f9fa to your preferred color code -->
                 <div class="ratio ratio-4x3">
                     <img src="{{ asset('uploads/images/' ~ moyen_transport.image) }}" alt="Image du moyen de transport" style="width: 100%; height: 100%; object-fit: cover;">
@@ -162,7 +191,7 @@
                 </div>
                 
             </div>
-        </div>
+        </div> #}
     {% else %}
         <div class="col-md-12">
             <p>Pas de moyens de transport trouvés.</p>
@@ -179,7 +208,6 @@
     <div class="d-flex justify-content-center">
         {{ knp_pagination_render(moyen_transports,'moyen_transport/pagination.html.twig')}}
     </div>
-
 {% endblock %}
 
 <footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url(/images/bg_3.jpg);">

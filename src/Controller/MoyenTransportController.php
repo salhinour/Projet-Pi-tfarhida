@@ -37,7 +37,7 @@ public function index(MoyenTransportRepository $moyenTransportRepository, Reques
         ]);
     }
 // Paginer les activités récupérées
-$moyen_transports= $paginator->paginate($moyen_transports, $request->query->getInt('page', 1), 1);
+$moyen_transports= $paginator->paginate($moyen_transports, $request->query->getInt('page', 1), 4);
     // If it's a regular request, render the full page
    
     return $this->render('moyen_transport/index.html.twig', [
