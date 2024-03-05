@@ -1,0 +1,27 @@
+<?php //App%255CEntity%255CLogement%2524num
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Validator\\Constraints\\Regex'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Regex')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'groups' => [
+                [
+                    'Default',
+                ],
+            ],
+            'message' => [
+                'Le numéro doit être composé de 8 chiffres.',
+            ],
+            'pattern' => [
+                '/^\\d{8}$/',
+            ],
+        ],
+    ],
+    [
+        $o[0],
+    ],
+    []
+); }];

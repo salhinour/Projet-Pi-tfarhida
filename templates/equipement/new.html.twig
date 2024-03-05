@@ -1,0 +1,59 @@
+{# {% extends 'header.html.twig' %}
+
+
+{% block body %}
+<div class="hero-wrap js-fullheight" style="background-image: url('/images/maissonBG.jpg');">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
+				<div class="col-md-7 ftco-animate">
+					<span class="subheading">Welcome to Pacific</span>
+					<h1 class="mb-4">Create new equipement</h1>
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+    {{ include('equipement/_form.html.twig') }}
+    <a href="{{ path('app_logement_index') }}"></a>
+
+        <a href="{{ path('app_logement_index') }}">back to list</a> 
+
+{% endblock %} #}
+{% extends 'header.html.twig' %}
+
+{% block body %}
+	<div class="hero-wrap js-fullheight" style="background-image: url('/images/maissonBG.jpg');">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
+				<div class="col-md-7 ftco-animate">
+					<span class="subheading">Welcome to Pacific</span>
+					<h1 class="mb-4">Create new equipement</h1>
+
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h2 class="card-title mb-4">New equipement </h2>
+                    {{ include('equipement/_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{{ path('app_logement_mylist') }}" class="btn btn-secondary">Back to List</a>
+    </div>
+	
+</div>
+{% endblock %}
+

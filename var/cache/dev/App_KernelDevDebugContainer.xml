@@ -422,6 +422,20 @@
         <argument type="service" id=".service_locator.mx0UMmY.App\Controller\CategorieBackCController"/>
       </call>
     </service>
+    <service id="App\Controller\EquipementBackController" class="App\Controller\EquipementBackController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.mx0UMmY.App\Controller\EquipementBackController"/>
+      </call>
+    </service>
+    <service id="App\Controller\EquipementController" class="App\Controller\EquipementController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.mx0UMmY.App\Controller\EquipementController"/>
+      </call>
+    </service>
     <service id="App\Controller\ExelController" class="App\Controller\ExelController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -434,6 +448,20 @@
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.mx0UMmY.App\Controller\HomeController"/>
+      </call>
+    </service>
+    <service id="App\Controller\LogementBackController" class="App\Controller\LogementBackController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.mx0UMmY.App\Controller\LogementBackController"/>
+      </call>
+    </service>
+    <service id="App\Controller\LogementController" class="App\Controller\LogementController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.mx0UMmY.App\Controller\LogementController"/>
       </call>
     </service>
     <service id="App\Controller\MoyenTransportBackController" class="App\Controller\MoyenTransportBackController" public="true" autowire="true" autoconfigure="true">
@@ -542,6 +570,18 @@
     <service id="App\Form\ChangePasswordFormType" class="App\Form\ChangePasswordFormType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\Equipement1Type" class="App\Form\Equipement1Type" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\EquipementType" class="App\Form\EquipementType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\Logement1Type" class="App\Form\Logement1Type" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\LogementType" class="App\Form\LogementType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\MoyenTransport1Type" class="App\Form\MoyenTransport1Type" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -595,6 +635,14 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\EquipementRepository" class="App\Repository\EquipementRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\LogementRepository" class="App\Repository\LogementRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -1433,6 +1481,10 @@
         <argument>App\Form\ActiviteeType</argument>
         <argument>App\Form\CategorieType</argument>
         <argument>App\Form\ChangePasswordFormType</argument>
+        <argument>App\Form\Equipement1Type</argument>
+        <argument>App\Form\EquipementType</argument>
+        <argument>App\Form\Logement1Type</argument>
+        <argument>App\Form\LogementType</argument>
         <argument>App\Form\MoyenTransport1Type</argument>
         <argument>App\Form\MoyenTransportType</argument>
         <argument>App\Form\PlatType</argument>
@@ -3767,7 +3819,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.B80U9e6"/>
+      <argument type="service" id=".service_locator.eYymP9T"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -4668,7 +4720,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.zfEMtWM"/>
+      <argument type="service" id=".service_locator.4DwrFGe"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -6881,12 +6933,24 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CategorieBackCController" class="App\Controller\CategorieBackCController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CategorieBackCController" class="App\Controller\CategorieBackCController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\CategorieBackCController" class="App\Controller\CategorieBackCController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\EquipementBackController" class="App\Controller\EquipementBackController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\EquipementBackController" class="App\Controller\EquipementBackController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\EquipementBackController" class="App\Controller\EquipementBackController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\EquipementController" class="App\Controller\EquipementController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\EquipementController" class="App\Controller\EquipementController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\EquipementController" class="App\Controller\EquipementController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ExelController" class="App\Controller\ExelController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ExelController" class="App\Controller\ExelController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ExelController" class="App\Controller\ExelController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LogementBackController" class="App\Controller\LogementBackController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LogementBackController" class="App\Controller\LogementBackController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\LogementBackController" class="App\Controller\LogementBackController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LogementController" class="App\Controller\LogementController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LogementController" class="App\Controller\LogementController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\LogementController" class="App\Controller\LogementController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\MoyenTransportBackController" class="App\Controller\MoyenTransportBackController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\MoyenTransportBackController" class="App\Controller\MoyenTransportBackController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\MoyenTransportBackController" class="App\Controller\MoyenTransportBackController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6934,6 +6998,14 @@
     <service id=".abstract.instanceof.App\Form\CategorieType" class="App\Form\CategorieType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ChangePasswordFormType" class="App\Form\ChangePasswordFormType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ChangePasswordFormType" class="App\Form\ChangePasswordFormType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\Equipement1Type" class="App\Form\Equipement1Type" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\Equipement1Type" class="App\Form\Equipement1Type" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EquipementType" class="App\Form\EquipementType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\EquipementType" class="App\Form\EquipementType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\Logement1Type" class="App\Form\Logement1Type" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\Logement1Type" class="App\Form\Logement1Type" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\LogementType" class="App\Form\LogementType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\LogementType" class="App\Form\LogementType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\MoyenTransport1Type" class="App\Form\MoyenTransport1Type" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\MoyenTransport1Type" class="App\Form\MoyenTransport1Type" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\MoyenTransportType" class="App\Form\MoyenTransportType" autowire="true" abstract="true"/>
@@ -6970,6 +7042,10 @@
     <service id=".abstract.instanceof.App\Repository\ActiviteeRepository" class="App\Repository\ActiviteeRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\EquipementRepository" class="App\Repository\EquipementRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\EquipementRepository" class="App\Repository\EquipementRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\LogementRepository" class="App\Repository\LogementRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\LogementRepository" class="App\Repository\LogementRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\MoyenTransportRepository" class="App\Repository\MoyenTransportRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\MoyenTransportRepository" class="App\Repository\MoyenTransportRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PlatRepository" class="App\Repository\PlatRepository" autowire="true" abstract="true"/>
@@ -7496,6 +7572,75 @@
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
+    <service id=".service_locator.bhFvWVG" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="equipementRepository" type="service_closure" id="App\Repository\EquipementRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.LZtMC3Y" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="equipement" type="service_closure" id=".errored..service_locator.LZtMC3Y.App\Entity\Equipement"/>
+      </argument>
+    </service>
+    <service id=".service_locator.QVzVDNx" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="equipement" type="service_closure" id=".errored..service_locator.QVzVDNx.App\Entity\Equipement"/>
+      </argument>
+    </service>
+    <service id=".service_locator.H7XQWj5" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="equipementRepository" type="service_closure" id="App\Repository\EquipementRepository"/>
+        <argument key="logementRepository" type="service_closure" id="App\Repository\LogementRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.BjEPY05" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="equipementRepository" type="service_closure" id="App\Repository\EquipementRepository"/>
+        <argument key="logementRepository" type="service_closure" id="App\Repository\LogementRepository"/>
+        <argument key="paginator" type="service_closure" id="knp_paginator"/>
+      </argument>
+    </service>
+    <service id=".service_locator.0eL4DFM" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="logement" type="service_closure" id=".errored..service_locator.0eL4DFM.App\Entity\Logement"/>
+      </argument>
+    </service>
+    <service id=".service_locator.EfrlhyU" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="logement" type="service_closure" id=".errored..service_locator.EfrlhyU.App\Entity\Logement"/>
+      </argument>
+    </service>
+    <service id=".service_locator.LSKdy45" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="logementRepository" type="service_closure" id="App\Repository\LogementRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.YKXKMvA" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="equipementRepository" type="service_closure" id="App\Repository\EquipementRepository"/>
+        <argument key="logementRepository" type="service_closure" id="App\Repository\LogementRepository"/>
+        <argument key="paginator" type="service_closure" id="knp_paginator"/>
+      </argument>
+    </service>
+    <service id=".service_locator.HvaqRN9" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="id" type="service_closure" id=".errored..service_locator.HvaqRN9.App\Entity\Logement"/>
+      </argument>
+    </service>
     <service id=".service_locator.UanU7tj" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7717,7 +7862,7 @@
         <argument key="trajetRepository" type="service_closure" id="App\Repository\TrajetRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.gdByap_" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.19zkkLM" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\ActiviteeBackController::delete" type="service_closure" id=".service_locator.LITCf.T"/>
@@ -7747,7 +7892,31 @@
         <argument key="App\Controller\CategorieBackCController::index" type="service_closure" id=".service_locator..Kjjujg"/>
         <argument key="App\Controller\CategorieBackCController::new" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\CategorieBackCController::show" type="service_closure" id=".service_locator.uSGXe_N"/>
+        <argument key="App\Controller\EquipementBackController::delete" type="service_closure" id=".service_locator.QVzVDNx"/>
+        <argument key="App\Controller\EquipementBackController::edit" type="service_closure" id=".service_locator.QVzVDNx"/>
+        <argument key="App\Controller\EquipementBackController::index" type="service_closure" id=".service_locator.bhFvWVG"/>
+        <argument key="App\Controller\EquipementBackController::new" type="service_closure" id=".service_locator.aKM6MDa"/>
+        <argument key="App\Controller\EquipementBackController::show" type="service_closure" id=".service_locator.LZtMC3Y"/>
+        <argument key="App\Controller\EquipementController::delete" type="service_closure" id=".service_locator.QVzVDNx"/>
+        <argument key="App\Controller\EquipementController::edit" type="service_closure" id=".service_locator.QVzVDNx"/>
+        <argument key="App\Controller\EquipementController::index" type="service_closure" id=".service_locator.bhFvWVG"/>
+        <argument key="App\Controller\EquipementController::new" type="service_closure" id=".service_locator.aKM6MDa"/>
+        <argument key="App\Controller\EquipementController::showlogement" type="service_closure" id=".service_locator.H7XQWj5"/>
         <argument key="App\Controller\ExelController::exportExcel" type="service_closure" id=".service_locator.Q1F27w5"/>
+        <argument key="App\Controller\LogementBackController::delete" type="service_closure" id=".service_locator.EfrlhyU"/>
+        <argument key="App\Controller\LogementBackController::deleteSelected" type="service_closure" id=".service_locator.LSKdy45"/>
+        <argument key="App\Controller\LogementBackController::edit" type="service_closure" id=".service_locator.EfrlhyU"/>
+        <argument key="App\Controller\LogementBackController::index" type="service_closure" id=".service_locator.BjEPY05"/>
+        <argument key="App\Controller\LogementBackController::new" type="service_closure" id=".service_locator.SUMiktK"/>
+        <argument key="App\Controller\LogementBackController::refuserEtatLogement" type="service_closure" id=".service_locator.aKM6MDa"/>
+        <argument key="App\Controller\LogementBackController::show" type="service_closure" id=".service_locator.0eL4DFM"/>
+        <argument key="App\Controller\LogementController::Map" type="service_closure" id=".service_locator.HvaqRN9"/>
+        <argument key="App\Controller\LogementController::Rechercheavisbyclient" type="service_closure" id=".service_locator.LSKdy45"/>
+        <argument key="App\Controller\LogementController::delete" type="service_closure" id=".service_locator.EfrlhyU"/>
+        <argument key="App\Controller\LogementController::edit" type="service_closure" id=".service_locator.EfrlhyU"/>
+        <argument key="App\Controller\LogementController::index" type="service_closure" id=".service_locator.YKXKMvA"/>
+        <argument key="App\Controller\LogementController::new" type="service_closure" id=".service_locator.SUMiktK"/>
+        <argument key="App\Controller\LogementController::show" type="service_closure" id=".service_locator.0eL4DFM"/>
         <argument key="App\Controller\MoyenTransportBackController::delete" type="service_closure" id=".service_locator.HsOHQ0z"/>
         <argument key="App\Controller\MoyenTransportBackController::edit" type="service_closure" id=".service_locator.HsOHQ0z"/>
         <argument key="App\Controller\MoyenTransportBackController::index" type="service_closure" id=".service_locator.UanU7tj"/>
@@ -7846,7 +8015,31 @@
         <argument key="App\Controller\CategorieBackCController:index" type="service_closure" id=".service_locator..Kjjujg"/>
         <argument key="App\Controller\CategorieBackCController:new" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\CategorieBackCController:show" type="service_closure" id=".service_locator.uSGXe_N"/>
+        <argument key="App\Controller\EquipementBackController:delete" type="service_closure" id=".service_locator.QVzVDNx"/>
+        <argument key="App\Controller\EquipementBackController:edit" type="service_closure" id=".service_locator.QVzVDNx"/>
+        <argument key="App\Controller\EquipementBackController:index" type="service_closure" id=".service_locator.bhFvWVG"/>
+        <argument key="App\Controller\EquipementBackController:new" type="service_closure" id=".service_locator.aKM6MDa"/>
+        <argument key="App\Controller\EquipementBackController:show" type="service_closure" id=".service_locator.LZtMC3Y"/>
+        <argument key="App\Controller\EquipementController:delete" type="service_closure" id=".service_locator.QVzVDNx"/>
+        <argument key="App\Controller\EquipementController:edit" type="service_closure" id=".service_locator.QVzVDNx"/>
+        <argument key="App\Controller\EquipementController:index" type="service_closure" id=".service_locator.bhFvWVG"/>
+        <argument key="App\Controller\EquipementController:new" type="service_closure" id=".service_locator.aKM6MDa"/>
+        <argument key="App\Controller\EquipementController:showlogement" type="service_closure" id=".service_locator.H7XQWj5"/>
         <argument key="App\Controller\ExelController:exportExcel" type="service_closure" id=".service_locator.Q1F27w5"/>
+        <argument key="App\Controller\LogementBackController:delete" type="service_closure" id=".service_locator.EfrlhyU"/>
+        <argument key="App\Controller\LogementBackController:deleteSelected" type="service_closure" id=".service_locator.LSKdy45"/>
+        <argument key="App\Controller\LogementBackController:edit" type="service_closure" id=".service_locator.EfrlhyU"/>
+        <argument key="App\Controller\LogementBackController:index" type="service_closure" id=".service_locator.BjEPY05"/>
+        <argument key="App\Controller\LogementBackController:new" type="service_closure" id=".service_locator.SUMiktK"/>
+        <argument key="App\Controller\LogementBackController:refuserEtatLogement" type="service_closure" id=".service_locator.aKM6MDa"/>
+        <argument key="App\Controller\LogementBackController:show" type="service_closure" id=".service_locator.0eL4DFM"/>
+        <argument key="App\Controller\LogementController:Map" type="service_closure" id=".service_locator.HvaqRN9"/>
+        <argument key="App\Controller\LogementController:Rechercheavisbyclient" type="service_closure" id=".service_locator.LSKdy45"/>
+        <argument key="App\Controller\LogementController:delete" type="service_closure" id=".service_locator.EfrlhyU"/>
+        <argument key="App\Controller\LogementController:edit" type="service_closure" id=".service_locator.EfrlhyU"/>
+        <argument key="App\Controller\LogementController:index" type="service_closure" id=".service_locator.YKXKMvA"/>
+        <argument key="App\Controller\LogementController:new" type="service_closure" id=".service_locator.SUMiktK"/>
+        <argument key="App\Controller\LogementController:show" type="service_closure" id=".service_locator.0eL4DFM"/>
         <argument key="App\Controller\MoyenTransportBackController:delete" type="service_closure" id=".service_locator.HsOHQ0z"/>
         <argument key="App\Controller\MoyenTransportBackController:edit" type="service_closure" id=".service_locator.HsOHQ0z"/>
         <argument key="App\Controller\MoyenTransportBackController:index" type="service_closure" id=".service_locator.UanU7tj"/>
@@ -7978,13 +8171,17 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.B80U9e6" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.eYymP9T" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\Activitee1Type" type="service_closure" id="App\Form\Activitee1Type"/>
         <argument key="App\Form\ActiviteeType" type="service_closure" id="App\Form\ActiviteeType"/>
         <argument key="App\Form\CategorieType" type="service_closure" id="App\Form\CategorieType"/>
         <argument key="App\Form\ChangePasswordFormType" type="service_closure" id="App\Form\ChangePasswordFormType"/>
+        <argument key="App\Form\Equipement1Type" type="service_closure" id="App\Form\Equipement1Type"/>
+        <argument key="App\Form\EquipementType" type="service_closure" id="App\Form\EquipementType"/>
+        <argument key="App\Form\Logement1Type" type="service_closure" id="App\Form\Logement1Type"/>
+        <argument key="App\Form\LogementType" type="service_closure" id="App\Form\LogementType"/>
         <argument key="App\Form\MoyenTransport1Type" type="service_closure" id="App\Form\MoyenTransport1Type"/>
         <argument key="App\Form\MoyenTransportType" type="service_closure" id="App\Form\MoyenTransportType"/>
         <argument key="App\Form\PlatType" type="service_closure" id="App\Form\PlatType"/>
@@ -8087,11 +8284,13 @@
         <argument key="doctrine.orm.messenger.doctrine_schema_subscriber" type="service_closure" id="doctrine.orm.messenger.doctrine_schema_subscriber"/>
       </argument>
     </service>
-    <service id=".service_locator.zfEMtWM" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.4DwrFGe" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\ActiviteeRepository" type="service_closure" id="App\Repository\ActiviteeRepository"/>
         <argument key="App\Repository\CategorieRepository" type="service_closure" id="App\Repository\CategorieRepository"/>
+        <argument key="App\Repository\EquipementRepository" type="service_closure" id="App\Repository\EquipementRepository"/>
+        <argument key="App\Repository\LogementRepository" type="service_closure" id="App\Repository\LogementRepository"/>
         <argument key="App\Repository\MoyenTransportRepository" type="service_closure" id="App\Repository\MoyenTransportRepository"/>
         <argument key="App\Repository\PlatRepository" type="service_closure" id="App\Repository\PlatRepository"/>
         <argument key="App\Repository\ReclamationRepository" type="service_closure" id="App\Repository\ReclamationRepository"/>
@@ -8422,6 +8621,18 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.mx0UMmY" method="withContext"/>
     </service>
+    <service id=".service_locator.mx0UMmY.App\Controller\EquipementBackController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\EquipementBackController"/>
+      <argument>App\Controller\EquipementBackController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.mx0UMmY" method="withContext"/>
+    </service>
+    <service id=".service_locator.mx0UMmY.App\Controller\EquipementController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\EquipementController"/>
+      <argument>App\Controller\EquipementController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.mx0UMmY" method="withContext"/>
+    </service>
     <service id=".service_locator.mx0UMmY.App\Controller\ExelController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\ExelController"/>
       <argument>App\Controller\ExelController</argument>
@@ -8431,6 +8642,18 @@
     <service id=".service_locator.mx0UMmY.App\Controller\HomeController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\HomeController"/>
       <argument>App\Controller\HomeController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.mx0UMmY" method="withContext"/>
+    </service>
+    <service id=".service_locator.mx0UMmY.App\Controller\LogementBackController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\LogementBackController"/>
+      <argument>App\Controller\LogementBackController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.mx0UMmY" method="withContext"/>
+    </service>
+    <service id=".service_locator.mx0UMmY.App\Controller\LogementController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\LogementController"/>
+      <argument>App\Controller\LogementController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.mx0UMmY" method="withContext"/>
     </service>
@@ -8694,12 +8917,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.gdByap_"/>
+      <argument type="service" id=".service_locator.19zkkLM"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.gdByap_"/>
+      <argument type="service" id=".service_locator.19zkkLM"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -8728,6 +8951,11 @@
     <service id=".errored..service_locator.GPGtF8v.App\Entity\User" class="App\Entity\User"/>
     <service id=".errored..service_locator.uSGXe_N.App\Entity\Categorie" class="App\Entity\Categorie"/>
     <service id=".errored..service_locator.dvgru7V.App\Entity\Categorie" class="App\Entity\Categorie"/>
+    <service id=".errored..service_locator.LZtMC3Y.App\Entity\Equipement" class="App\Entity\Equipement"/>
+    <service id=".errored..service_locator.QVzVDNx.App\Entity\Equipement" class="App\Entity\Equipement"/>
+    <service id=".errored..service_locator.0eL4DFM.App\Entity\Logement" class="App\Entity\Logement"/>
+    <service id=".errored..service_locator.EfrlhyU.App\Entity\Logement" class="App\Entity\Logement"/>
+    <service id=".errored..service_locator.HvaqRN9.App\Entity\Logement" class="App\Entity\Logement"/>
     <service id=".errored..service_locator.OLwAQcP.App\Entity\MoyenTransport" class="App\Entity\MoyenTransport"/>
     <service id=".errored..service_locator.HsOHQ0z.App\Entity\MoyenTransport" class="App\Entity\MoyenTransport"/>
     <service id=".errored..service_locator.wjaJfDI.App\Entity\MoyenTransport" class="App\Entity\MoyenTransport"/>
@@ -9795,7 +10023,7 @@
     <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.gdByap_"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.19zkkLM"/>
     <service id="session" alias=".session.do-not-use" public="true">
       <deprecated package="symfony/framework-bundle" version="5.3">The "%alias_id%" service and "SessionInterface" alias are deprecated, use "$requestStack-&gt;getSession()" instead.</deprecated>
     </service>
@@ -9823,6 +10051,11 @@
     <service id=".service_locator.riGN6sa" alias=".service_locator.YU8H6ve"/>
     <service id=".service_locator.haRM76D" alias=".service_locator.Sfu.weJ"/>
     <service id=".service_locator.b76MKMg" alias=".service_locator.GPGtF8v"/>
+    <service id=".service_locator.diDq0CG" alias=".service_locator.QVzVDNx"/>
+    <service id=".service_locator.bY25VMi" alias=".service_locator.BjEPY05"/>
+    <service id=".service_locator.GOI4E.y" alias=".service_locator.EfrlhyU"/>
+    <service id=".service_locator.LR.SFS8" alias=".service_locator.YKXKMvA"/>
+    <service id=".service_locator.fGh_3LR" alias=".service_locator.HvaqRN9"/>
     <service id=".service_locator.1nzDBNB" alias=".service_locator.UanU7tj"/>
     <service id=".service_locator.fxPYwEg" alias=".service_locator.HsOHQ0z"/>
     <service id=".service_locator.4Xbe2KV" alias=".service_locator.wjaJfDI"/>
@@ -9839,9 +10072,9 @@
     <service id=".service_locator.z9Ht6qk" alias=".service_locator.geEHK4C"/>
     <service id=".service_locator.gog4oh6" alias=".service_locator.fi90bxy"/>
     <service id=".service_locator.7Y89MSz" alias=".service_locator.rJDRji7"/>
-    <service id=".service_locator.0xaMYGl" alias=".service_locator.gdByap_"/>
+    <service id=".service_locator.6akmiJU" alias=".service_locator.19zkkLM"/>
     <service id=".service_locator.C_sXwkA" alias=".service_locator.lrGgBvN"/>
-    <service id=".service_locator.ETNfAnp" alias=".service_locator.B80U9e6"/>
+    <service id=".service_locator.1pXpfW0" alias=".service_locator.eYymP9T"/>
     <service id=".service_locator.nk0lT0X" alias=".service_locator.1kmbKC8"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator.0ghLsew" alias=".service_locator.mx0UMmY"/>
@@ -9887,6 +10120,16 @@
     <service id=".service_locator.rWz4V5M" alias=".service_locator..Kjjujg"/>
     <service id=".service_locator.qvlr_tn" alias=".service_locator.uSGXe_N"/>
     <service id=".service_locator.CxiYzwm" alias=".service_locator.dvgru7V"/>
+    <service id=".service_locator.sNGZvX0" alias=".service_locator.bhFvWVG"/>
+    <service id=".service_locator.aurSr1v" alias=".service_locator.LZtMC3Y"/>
+    <service id=".service_locator.rWv9KoB" alias=".service_locator.QVzVDNx"/>
+    <service id=".service_locator.gigob8Z" alias=".service_locator.H7XQWj5"/>
+    <service id=".service_locator.laR7tZp" alias=".service_locator.BjEPY05"/>
+    <service id=".service_locator.6NbT9DJ" alias=".service_locator.0eL4DFM"/>
+    <service id=".service_locator.COAtYTT" alias=".service_locator.EfrlhyU"/>
+    <service id=".service_locator.zbSHDnJ" alias=".service_locator.LSKdy45"/>
+    <service id=".service_locator.8uuAPH1" alias=".service_locator.YKXKMvA"/>
+    <service id=".service_locator.tLrGrL7" alias=".service_locator.HvaqRN9"/>
     <service id=".service_locator.QzlOFSh" alias=".service_locator.UanU7tj"/>
     <service id=".service_locator.tLSgqfJ" alias=".service_locator.OLwAQcP"/>
     <service id=".service_locator.4QDpmKf" alias=".service_locator.HsOHQ0z"/>

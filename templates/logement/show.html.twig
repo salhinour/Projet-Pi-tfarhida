@@ -1,0 +1,124 @@
+
+{% extends 'header.html.twig' %}
+
+{% block body%}
+    <div class="hero-wrap js-fullheight" style="background-image:url('{{ asset('uploads/' ~ logement.image) }}');">
+
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
+            <div class="col-md-7 ftco-animate">
+                <span class="subheading">Welcome to Tfarhida </span>
+                <h1 class="mb-4">Discover Your Favorite Place with Us</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="ftco-section ftco-no-pb ftco-no-pt">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="ftco-search d-flex justify-content-center">
+                    <div class="row">
+                        <div class="col-md-12 tab-wrap">
+                            <div class="tab-content" id="v-pills-tabContent">
+                                <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+                                    <form action="#" class="search-property-1">
+                                        <div class="row no-gutters">
+                                            <div class="col-md d-flex">
+                                                <div class="form-group p-4 border-0"  style="text-align: center;">
+                                                    <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">
+                                                        <label for="#">{{ logement.nom }}</label>
+                                                    </a>
+                                                    <div class="form-field">
+
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th>Localisation</th>
+                                                                    <td>{{ logement.Localisation }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>NoteMoyenne</th>
+                                                                    <td>{{ logement.NoteMoyenne }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Prix</th>
+                                                                    <td>{{ logement.Prix }}</td>
+                                                                </tr>
+                                                                <td>
+																
+
+                                                            </tbody>
+                                                        </table>
+                                                            <label for="#">Les equipements disponible de {{ logement.nom }}</label>
+
+
+                                                            {% if logement.equipement is not null %}
+                                                            <div class="form-field">
+                                                            <table class="table">
+
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th><i class="fas fa-parking"></i> Parking</th> <!-- Icon for parking -->
+                                                                        <td>{{ logement.equipement.Parking ? 'Yes' : 'No' }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th><i class="fas fa-wifi"></i> Wifi</th> <!-- Icon for wifi -->
+                                                                        <td>{{ logement.equipement.internet ? 'Yes' : 'No' }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th><i class="fas fa-bed"></i> NbrChambre</th> <!-- Icon for bedrooms -->
+                                                                        <td>{{ logement.equipement.nbrChambre }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th><i class="fas fa-snowflake"></i> Climatisation</th> <!-- Icon for air conditioning -->
+                                                                        <td>{{ logement.equipement.climatisation ? 'Yes' : 'No' }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Types De Chambre</th>
+                                                                        <td>{{ logement.equipement.TypesDeChambre }}</td>
+                                                                    </tr>
+                                                                   <tr>
+                                                                    <th>Description</th>
+                                                                    {% if logement.equipement.Description is not null %}
+                                                                        <td>{{ logement.equipement.Description }}</td>
+                                                                    {% else %}
+                                                                       
+                                                                       <p>Aucun description disponible pour ce logement.</p>
+                                                                      
+                                                                    {% endif %}
+                                                                </tr>   
+
+                                                                </tbody>
+                                                            </table>
+                                                            {% else %}
+                                                                <p>Aucun équipement disponible pour ce logement.</p>
+                                                            {% endif %}
+                                                             {# <a href="{{ path('app_equipement_show', {'equipementId': logement.equipement.id}) }}" class="btn btn-warning">Equipements</a> #}
+                                                            
+                                                              {# <a href="{{ path('app_equipement_show',{'equipementId': logement.equipement.id}) }}" class="btn btn-warning">Equipements</a>  #}
+                                                    </div>
+                                                </div>
+												
+                                            </div>
+                                        </div>
+                                    </form>
+									
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+           
+    </div>
+	</div
+	
+
+
+</section>
+
+<a href="{{ path('app_logement_index') }}">back to list</a>
+{% endblock %}

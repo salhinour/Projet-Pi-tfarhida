@@ -1,0 +1,243 @@
+{% extends 'header.html.twig' %}
+
+
+{% block header %}
+
+    <!-- END nav -->
+	<div class="hero-wrap js-fullheight" style="background-image: url('/images/hotelBG.jpg');">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
+				<div class="col-md-7 ftco-animate">
+					<span class="subheading">Welcome to Pacific</span>
+					<h1 class="mb-4">Discover Your Favorite Place with Us</h1>
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</header>
+{% endblock %}
+
+{% block body%}
+	
+	
+	
+
+	<section class="ftco-section ftco-no-pb ftco-no-pt">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="ftco-search d-flex justify-content-center">
+						<div class="row">
+							<div class="col-md-12 nav-link-wrap">
+								<div class="nav nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+									<a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Logements</a>
+
+								</div>
+							</div>
+							
+							<div class="col-md-12 tab-wrap">
+								
+								<div class="tab-content" id="v-pills-tabContent">
+										{# <div class="form-field">
+									{# <div class="icon"><span class="fa fa-search"></span></div>
+									<input type="text" class="form-control" id="myInput" placeholder="Chercher Logement">
+								</div> #} 
+   <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+    <form action="{{ path('app_logement_index') }}" class="search-property-1" method="get">
+        <div class="row no-gutters">
+            <div class="col-md d-flex">
+                <div class="form-group p-4 border-0" id="filterSection">
+                    <label>Categories</label>
+                    <select name="TypeLog" id="categorySelect" onchange="this.form.submit()">
+                        <option value="">choose an option</option>
+                        <option value="Hotel" {% if selectedState == 'Hotel' %} selected {% endif %}>Hotel</option>
+                        <option value="Villa" {% if selectedState == 'Villa' %} selected {% endif %}>Villa</option>
+                        <option value="Maison" {% if selectedState == 'Maison' %} selected {% endif %}>Maison</option>
+                        <option value="Appartement" {% if selectedState == 'Appartement' %} selected {% endif %}>Appartement</option>
+
+                    </select>
+                </div>
+            </div>
+												<div class="col-md d-flex">
+													<div class="form-group p-4 border-0">
+														<label for="#">Destination</label>
+														<div class="form-field">
+															<div class="icon"><span class="fa fa-search"></span></div>
+															<input type="text" class="form-control" placeholder="Search place">
+														</div>
+													</div>
+												</div>
+												<div class="col-lg d-flex">
+												<div class="form-group p-4">
+													<label for="#">Price Limit</label>
+													<div class="form-field">
+														<div class="select-wrap">
+															<div class="icon">
+																<span class="fa fa-chevron-down"></span>
+															</div>
+															<select name="Prix" id="prix" class="form-control" onchange="this.form.submit()">
+																<option value="">Tous les prix</option>
+																<option value="0-100"  {% if selectedPrice == '0-100' %} selected {% endif %} >Moins de 100 </option>
+																<option value="100-200"  {% if selectedPrice == '100-200' %} selected {% endif %} >100 - 200</option>
+																<option value="200-300"  {% if selectedPrice == '200-300' %} selected {% endif %} >200 - 300</option>
+																<option value="300-500"  {% if selectedPrice == '300-500' %} selected {% endif %} >300 - 500</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+
+												
+												
+											 <div class="col-md d-flex">
+											<div class="form-group d-flex w-100 border-0">
+												<div class="form-field w-100 align-items-center d-flex">
+													<input type="submit" value="Filter" class="align-self-stretch form-control btn btn-primary">
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+																
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+     
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            {% for logement in logements %}
+                <div class="col-md-4 ftco-animate fadeInUp ftco-animated">
+                    <div class="project-wrap hotel">
+					<a href="{{ path('app_logement_show', {'id': logement.id}) }}" class="img" style="background-image: url('{{ asset('uploads/' ~ logement.image) }}');">
+    					<span class="price">{{ logement.Prix }}DT/person</span>
+					</a>
+                        <div class="text p-4">
+						 {% if logement.NoteMoyenne == 1 %}
+						<p class="star mb-2">
+							<span class="fa fa-star"></span>
+						</p> 
+							{% elseif logement.NoteMoyenne == 2 %}  
+
+						<p class="star mb-2">
+							
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						</p> 
+							 {% elseif logement.NoteMoyenne == 3 %}  
+
+						<p class="star mb-2">
+
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						</p> 
+							{% elseif logement.NoteMoyenne == 4 %}  
+
+						<p class="star mb-2">
+
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						</p> 
+							{% elseif logement.NoteMoyenne == 5 %} 
+
+						<p class="star mb-2">
+
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+
+						</p> 
+							 {% endif %}
+                         
+
+                            <span class="days">un jour</span>
+							<div class="row">
+							<div class="col-md-12">
+								<h3>
+									<a href="#">{{ logement.Typelog }}: {{ logement.nom }}</a>
+								</h3>
+							</div>
+						</div>
+                            <p class="location"><span class="fa fa-map-marker"></span>{{ logement.Localisation }}</p>
+							
+                            <ul> 
+							 
+                                <li><span class="fas fa-phone-alt"></span> {{logement.num}} </li>
+							 
+							
+							</ul>
+							<a href="{{ path('app_logement_map', {'id': logement.id}) }}" class="btn btn-info rounded-pill m-2" > <i class="fas fa-location-arrow"></i> Show Map</a>
+							
+							{# -------------------------- Share ------------------------------------  #}
+       						  <div class="sharethis-inline-share-buttons"></div>
+         {# -------------------------- Share ------------------------------------  #}
+
+                        </div>
+                    </div>
+                </div>
+				
+            {% endfor %}
+        </div>
+    </div>
+	<div class="row">
+    <a href="{{ path('app_logement_new') }}">Create new logement</a>
+	</div>
+	<th>
+	{# <div class="row mt-5">
+  <div class="col text-center">
+    <div class="block-27">
+      <ul>
+        <li><a href="#">&lt;</a></li>
+        <li class="active"><span></span></li>
+        <li><a href="#">2</a> </li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&gt;</a></li>
+      </ul>
+    </div>
+  </div>
+</div> #}
+<div class="row mt-5">
+  <div class="col text-center">
+    <div class="block-27">
+      <ul>
+        <li>
+          <a href="#">&lt;</a>
+          {{ knp_pagination_render(logements,'logement/pagination.html.twig')}}
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+	<!-- Pagination -->
+    <div class="d-flex justify-content-center">
+        {{ knp_pagination_render(logements,'logement/pagination.html.twig')}}
+    </div>
+
+</div>
+
+
+
+  
+{% endblock %}

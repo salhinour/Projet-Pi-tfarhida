@@ -1,0 +1,94 @@
+{# {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <div class="form-group">
+        {{ form_label(form.nom) }}
+        {{ form_widget(form.nom, {'attr': {'class': 'form-control' ~ (form_errors(form.nom)|length > 0 ? ' is-invalid' : '')}}) }}
+        {% if form_errors(form.nom)|length > 0 %}
+            <div class="invalid-feedback">
+                {{ form_errors(form.nom)|first }}
+                {{ 'vous devez mettre le Nom!!!'|trans }}
+
+            </div>
+        {% endif %}
+    </div>
+    <div class="form-group"> #}
+         {# <div class="container"> 
+         {# <form id="login" onsubmit="process(event)"> #}
+        {# <p>Entrez votre numéro de téléphone:</p>
+        <input id="phone" type="tel" name="phone" /> #}
+        {# <input type="submit" class="btn" value="Vérifier" /> #}
+        {# </form>
+        <div class="alert alert-info" style="display: none;"></div>
+        </div>  #}
+
+        {# {{ form_label(form.num) }}
+        {{ form_widget(form.num, {'attr': {'class': 'form-control-file' ~ (form_errors(form.num)|length > 0 ? ' is-invalid' : '')}}) }}
+        {% if form_errors(form.num)|length > 0 %}
+        
+            <div class="invalid-feedback">
+                {{ form_errors(form.num)|first }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.Prix) }}
+        {{ form_widget(form.Prix, {'attr': {'class': 'form-control' ~ (form_errors(form.Prix)|length > 0 ? ' is-invalid' : '')}}) }}
+        {% if form_errors(form.Prix)|length > 0 %}
+            <div class="invalid-feedback">
+                {{ form_errors(form.Prix)|first }}
+                {{ 'vous devez mettre le Prix!!!'|trans }}
+
+            </div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.NoteMoyenne) }}
+        {{ form_widget(form.NoteMoyenne, {'attr': {'class': 'form-control' ~ (form_errors(form.NoteMoyenne)|length > 0 ? ' is-invalid' : '')}}) }}
+        {% if form_errors(form.NoteMoyenne)|length > 0 %}
+            <div class="invalid-feedback">
+                {{ form_errors(form.NoteMoyenne)|first }}
+                {{ 'vous devez mettre la note Moyenne !!!'|trans }}
+
+            </div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.Localisation) }}
+        {{ form_widget(form.Localisation, {'attr': {'class': 'form-control' ~ (form_errors(form.Localisation)|length > 0 ? ' is-invalid' : '')}}) }}
+        {% if form_errors(form.Localisation)|length > 0 %}
+            <div class="invalid-feedback">
+                {{ form_errors(form.Localisation)|first }}
+                {{ 'vous devez mettre le Localisation!!!'|trans }}
+            </div>
+          
+        {% endif %}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.image) }}
+        {{ form_widget(form.image, {'attr': {'class': 'form-control-file' ~ (form_errors(form.image)|length > 0 ? ' is-invalid' : '')}}) }}
+        {% if form_errors(form.image)|length > 0 %}
+            <div class="invalid-feedback">
+                {{ form_errors(form.image)|first }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.TypeLog) }}
+        {{ form_widget(form.TypeLog, {'attr': {'class': 'form-control' ~ (form_errors(form.TypeLog)|length > 0 ? ' is-invalid' : '')}}) }}
+        {% if form_errors(form.TypeLog)|length > 0 %}
+            <div class="invalid-feedback">
+                {{ form_errors(form.TypeLog)|first }}
+                {{ 'vous devez mettre le type de votre logement!!!'|trans }}
+
+            </div>
+        {% endif %}
+    </div>
+    
+    <button class="btn">{{ button_label|default('Save') }}</button>
+
+{{ form_end(form) }} #}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{{ form_start(form,{'attr' : { 'novalidate' :'novalidate'}} ) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

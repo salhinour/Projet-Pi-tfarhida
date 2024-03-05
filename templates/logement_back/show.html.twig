@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Logement{% endblock %}
+
+{% block body %}
+    <h1>Logement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ logement.id }}</td>
+            </tr>
+            <tr>
+                <th>Localisation</th>
+                <td>{{ logement.Localisation }}</td>
+            </tr>
+            <tr>
+                <th>NoteMoyenne</th>
+                <td>{{ logement.NoteMoyenne }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ logement.Prix }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ logement.Etat ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ logement.Image }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ logement.nom }}</td>
+            </tr>
+            <tr>
+                <th>TypeLog</th>
+                <td>{{ logement.TypeLog }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_logement_back_index') }}">back to list</a>
+
+    <a href="{{ path('app_logement_back_edit')}}">edit</a>
+
+    {{ include('logement_back/_delete_form.html.twig') }}
+{% endblock %}

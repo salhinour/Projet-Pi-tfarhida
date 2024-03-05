@@ -1,0 +1,194 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Equipement index{% endblock %}
+{% block header %}
+
+<body class="" id="page-top">
+
+    <div id="wrapper">
+
+
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                </div>
+                <div class="sidebar-brand-text mx-3">
+                    <img src="/images/tfarhida.png" alt="Logo Tfarhida" width="100" height="100">
+                </div>
+
+            </a>
+
+            <hr class="sidebar-divider my-0">
+
+            <li class="nav-item     ">
+                <a class="nav-link" href="/admin/tableau-de-bord">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Tableau de bord</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider my-0">
+
+            <li class="nav-item             active
+    ">
+                <a class="nav-link" href="{{ path('app_logement_back_index') }}" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                    <span>Logements</span>
+                </a>
+            </li>
+            <li class="nav-item             active
+    ">
+                <a class="nav-link" href="{{ path('app_equipement_back_index') }}" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                    <span>Equipements</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow topbar">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+
+
+
+                    <ul class="navbar-nav ml-auto">
+
+
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="userDropdown" role="button">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><i class="far fa-user text-primary mr-2 fa-2x "></i>Gharbi jihen</span>
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div aria-labelledby="userDropdown" class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
+                                <a class="dropdown-item" href="/admin/profil">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profil
+                                </a>
+                                <a class="dropdown-item" href="/admin/parametre">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Paramètres
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" data-target="#logoutModal" data-toggle="modal" href="#">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Déconnexion
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+                <!-- End of Topbar -->
+
+                <div class="container-fluid">
+
+                    <h1 class="h3 mb-0 text-gray-800">Gestion des activites</h1>
+
+
+
+                    <div id="table-actions" class="d-flex align-items-center justify-content-between mb-4">
+                        <div class="d-flex">
+                            <button id="btPrint" onclick="createPDF()" class="export-pdf-btn">
+                                <i class="fas fa-file-pdf"></i> Export PDF
+                            </button>
+                            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search ..." class="form-control">
+                        </div>
+                        <div>
+                            <a href="{{ path('app_equipement_back_new') }}" class="btn btn-success btn-icon-split ml-auto">
+                                <i class="fas fa-plus"></i> Create New
+                            </a>
+                        </div>
+
+                    </div>
+                    {% endblock %}
+
+                    {% block body %}
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Parking</th>
+                                    <th scope="col">NbrChambre</th>
+                                    <th scope="col">Internet</th>
+                                    <th scope="col">Climatisation</th>
+                                    <th scope="col">TypesDeChambre</th>
+                                    <th scope="col">Images</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for equipement in equipements %}
+                                <tr>
+                                    <td>{{ equipement.id }}</td>
+                                    <td>{{ equipement.Parking ? 'Yes' : 'No' }}</td>
+                                    <td>{{ equipement.nbrChambre }}</td>
+                                    <td>{{ equipement.internet ? 'Yes' : 'No' }}</td>
+                                    <td>{{ equipement.climatisation ? 'Yes' : 'No' }}</td>
+                                    <td>{{ equipement.TypesDeChambre }}</td>
+                                    <td>
+                                        {% if equipement.image %}
+                                        <img src="{{ asset('uploads/' ~ equipement.image) }}" alt="Image" width="100" height="100">
+                                        {% else %}
+                                        <span>Aucune image</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('app_equipement_back_show', {'id': equipement.id}) }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
+                                        <a href="{{ path('app_equipement_back_edit', {'id': equipement.id}) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                                        <a href="{{ path('app_equipement_back_delete', {'id': equipement.id}) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="7">No records found</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("activitee-table");
+            tr = table.getElementsByTagName("tr");
+            
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[5]; // Colonne de l'état (index 5)
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+        </script
+ {% endblock %}
