@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trajet{% endblock %}
+
+{% block body %}
+    <h1>Trajet</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ trajet.id }}</td>
+            </tr>
+            <tr>
+                <th>LieuDepart</th>
+                <td>{{ trajet.LieuDepart }}</td>
+            </tr>
+            <tr>
+                <th>LieuArrivee</th>
+                <td>{{ trajet.LieuArrivee }}</td>
+            </tr>
+            <tr>
+                <th>Heure</th>
+                <td>{{ trajet.heure ? trajet.heure|date('H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+{% endblock %}

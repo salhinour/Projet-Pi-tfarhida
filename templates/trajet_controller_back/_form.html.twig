@@ -1,0 +1,65 @@
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'id': 'myForm'}}) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-success float-left mr-2" type="submit">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
+{% if action == 'add' or action == 'edit' %}
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+           
+
+            // Check if any field is empty
+            var formFields = this.querySelectorAll('input, select, textarea');
+            var isEmpty = false;
+
+            formFields.forEach(function(field) {
+                if (!field.value.trim()) {
+                    isEmpty = true;
+                }
+            });
+
+            if (isEmpty) {
+                Swal.fire({
+                    title: 'Check Your Fields!',
+                    text: 'Please fill in all the required fields.',
+                    icon: 'error'
+                });
+            } else {
+                // Fields are not empty, proceed with submission
+
+                {% if action == 'add' %}
+                    Swal.fire({
+                        title: 'Added Successfully!',
+                        text: 'Your item has been added successfully.',
+                        icon: 'success'
+                    });
+                {% elseif action == 'edit' %}
+                    // Check again after correcting the fields
+                    var isStillEmpty = false;
+
+                    formFields.forEach(function(field) {
+                        if (!field.value.trim()) {
+                            isStillEmpty = true;
+                        }
+                    });
+
+                    if (isStillEmpty) {
+                        Swal.fire({
+                            title: 'Check Your Fields!',
+                            text: 'Please fill in all the required fields.',
+                            icon: 'error'
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Edited Successfully!',
+                            text: 'Your item has been edited successfully.',
+                            icon: 'success'
+                        });
+                        this.submit();
+                    }
+                {% endif %}
+            }
+        });
+    </script>
+{% endif %}
