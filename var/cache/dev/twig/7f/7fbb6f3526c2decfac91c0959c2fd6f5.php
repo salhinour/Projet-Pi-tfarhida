@@ -200,7 +200,7 @@ class __TwigTemplate_11adb84f04aea48df6902b7b6772af6e extends Template
                <td>
                 <a href=\"";
             // line 87
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activitee_show", ["id" => twig_get_attribute($this->env, $this->source, $context["activitee"], "id", [], "any", false, false, false, 87)]), "html", null, true);
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activitee_desc", ["id" => twig_get_attribute($this->env, $this->source, $context["activitee"], "id", [], "any", false, false, false, 87)]), "html", null, true);
             echo "\" class=\"btn-icon-split\">
                     <i class=\"fas fa-eye text-primary\"></i>
                 </a>
@@ -361,7 +361,7 @@ class __TwigTemplate_11adb84f04aea48df6902b7b6772af6e extends Template
                    {% endif %}
                </td>
                <td>
-                <a href=\"{{ path('app_activitee_show', {'id': activitee.id}) }}\" class=\"btn-icon-split\">
+                <a href=\"{{ path('app_activitee_desc', {'id': activitee.id}) }}\" class=\"btn-icon-split\">
                     <i class=\"fas fa-eye text-primary\"></i>
                 </a>
                 <a href=\"{{ path('app_activitee_edit', {'id': activitee.id}) }}\" class=\"btn-icon-split\">
