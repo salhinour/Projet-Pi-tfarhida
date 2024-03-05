@@ -1,49 +1,115 @@
 {% extends 'home/base.html.twig' %}
 
-{% block title %}Détails de l'activité{% endblock %}
+{% block navBar %}
 
-{% block body %}
-<div class="hero-wrap js-fullheight" style="background-image:url('{{ asset('uploads/' ~ activitee.image) }}');">
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <img src="{{ asset('/images/logo.png') }}" alt="Votre Logo" class="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item "><a href="/accueil" class="nav-link">Accueil</a></li>
+                <li class="nav-item active"><a href="/act" class="nav-link">Activites</a></li>
+                <li class="nav-item"><a href="/logement" class="nav-link">Logements</a></li>
+                <li class="nav-item"><a href="/restaurant" class="nav-link">Restaurants</a></li>
+                <li class="nav-item"><a href="/activite" class="nav-link">Transports</a></li>
+                <li class="nav-item"><a href="/reclamation" class="nav-link">Réclamation</a></li>
+            </ul>
+        </div>
+
+       
+    </div>
+</nav>
+<body>
+	
+	<!-- END nav -->
+    <div class="hero-wrap js-fullheight" style="background-image:url('{{ asset('uploads/' ~ activitee.image) }}');">
+	
+<div class="hero-wrap js-fullheight" style="background-image: url('/images/tourisme.jpg');">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
 				<div class="col-md-7 ftco-animate">
 					<span class="subheading">Bienvenue dans Tfarhida</span>
 					<h1 class="mb-4">Découvrir ton bon plan avec nous</h1>
+					<p class="caps">Voyagez aux quatre coins du monde, sans tourner en rond</p>
 				</div>
-				
+				<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
+					<span class="fa fa-play"></span>
+				</a>
 			</div>
 		</div>
 	</div>
-
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="activity-details-container">
-                <div class="activity-details">
-                    <div class="activity-info">
-                        <h2 class="activity-title">{{ activitee.nom }}</h2>
-                        <div class="activity-description">
-                            <p>{{ activitee.descriptionact }}</p>
+	{% endblock %}
+{% block body%}
+       
+    <section class="ftco-section ftco-no-pb ftco-no-pt">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="ftco-search d-flex justify-content-center">
+                        <div class="row">
+                            <div class="col-md-12 tab-wrap">
+                                <div class="tab-content" id="v-pills-tabContent">
+                                    <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+                                        <form action="#" class="search-property-1">
+                                            <div class="row no-gutters">
+                                                <div class="col-md d-flex">
+                                                    <div class="form-group p-4 border-0">
+                                                        <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">
+                                                            <label for="#">{{ activitee.nom }}</label>
+                                                        </a>
+                                                        <div class="form-field">
+                                                            <table class="table">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th>Localisation</th>
+                                                                        <td>{{ activitee.localisation }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Nombre Participant</th>
+                                                                        <td>{{ activitee.nbP }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Prix</th>
+                                                                        <td>{{ activitee.prix }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Description</th>
+                                                                        <td>{{ activitee.descriptionact }}</td>
+                                                                    </tr>
+                                                                      <tr>
+                                                                        <th>Type Categorie</th>
+                                                                        <td>{{ activitee.categorie.getTypeCategorie() }}</td>
+                                                                    </tr>
+                                                                     <tr>
+                                                                        <th>Description Categorie</th>
+                                                                        <td>{{ activitee.categorie.getDescription() }}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <div style="text-align: center;">
+                                                                <a href="{{ path('app_activitee_indexx') }}" class="btn btn-primary">Retour</a>
+                                                               
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <ul class="activity-details-list">
-                            <li><strong>Localisation:</strong> {{ activitee.localisation }}</li>
-                            <li><strong>Nombre de personnes:</strong> {{ activitee.nbP }}</li>
-                            <li><strong>Prix:</strong> {{ activitee.prix }} DT/personne</li>
-                            {% if activitee.categorie is defined and activitee.categorie is not null %}
-                            <li><strong>Catégorie:</strong> {{ activitee.categorie.getTypeCategorie()}}</li>
-                            <li><strong>Description Catégorie:</strong> {{ activitee.categorie.getDescription()}}</li>
-                            {% else %}
-                            <li>Aucune catégorie trouvée pour cette activité</li>
-                            {% endif %}
-                        </ul>
-                        <a href="{{ path('app_activitee_indexx') }}" class="btn btn-primary">Retour</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
+
 {% endblock %}
-
-

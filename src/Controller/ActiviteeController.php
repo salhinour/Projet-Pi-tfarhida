@@ -26,7 +26,7 @@ use Endroid\QrCode\Writer\PngWriter;
 class ActiviteeController extends AbstractController
 {
     
-    #[Route('/activite', name: 'app_activitee_index', methods: ['GET'])]
+    #[Route('/activitee', name: 'app_activitee_index', methods: ['GET'])]
     public function index(ActiviteeRepository $activiteeRepository): Response
     {
         
@@ -92,7 +92,7 @@ class ActiviteeController extends AbstractController
                 $entityManager->persist($activitee);
                 $entityManager->flush();
         
-                return $this->redirectToRoute('app_activitee_index', [], Response::HTTP_SEE_OTHER);
+                return $this->redirectToRoute('app_activitee_indexx', [], Response::HTTP_SEE_OTHER);
             }
         
             return $this->renderForm('activitee/new.html.twig', [
@@ -153,15 +153,27 @@ class ActiviteeController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_activitee_delete', methods: ['POST'])]
-    public function delete(Request $request, Activitee $activitee, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$activitee->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($activitee);
-            $entityManager->flush();
-        }
+    // #[Route('/{id}', name: 'app_activitee_delete', methods: ['POST'])]
+    // public function delete(Request $request, Activitee $activitee, EntityManagerInterface $entityManager): Response
+    // {
+    //     if ($this->isCsrfTokenValid('delete'.$activitee->getId(), $request->request->get('_token'))) {
+    //         $entityManager->remove($activitee);
+    //         $entityManager->flush();
+    //     }
 
-        return $this->redirectToRoute('app_activitee_index', [], Response::HTTP_SEE_OTHER);
+    //     return $this->redirectToRoute('app_activitee_index', [], Response::HTTP_SEE_OTHER);
+    // }
+    #[Route('/delete/{id}', name: 'app_activitee_delete')]
+    public function deleteactivite(ActiviteeRepository $rep,$id,EntityManagerInterface $em):Response
+    {
+        $activite=new Activitee();
+        $activite=$rep->find($id);
+        $em->remove($activite);
+        $em->flush();
+       return $this->redirectToRoute('app_activitee_index');
+
+
+       
     }
     #[Route('/show_in_map/{id}', name: 'app_evenement_map', methods: ['GET'])]
     public function Map( Activitee $id,EntityManagerInterface $entityManager ): Response
@@ -187,7 +199,7 @@ class ActiviteeController extends AbstractController
             ->setErrorCorrectionLevel(ErrorCorrectionLevel::High); // Set error correction level to HIGH
 
         // Create label
-        $label = Label::create("CoLocStudy")
+        $label = Label::create("Tfarhida")
             ->setTextColor(new Color(255, 0, 0)) // Red text color
             ->setAlignment(LabelAlignment::Left); // Align label to left
 
