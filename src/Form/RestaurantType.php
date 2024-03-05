@@ -13,6 +13,8 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\Range;
 use Symfony\Component\Validator\Constraints\Type;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
 class RestaurantType extends AbstractType
@@ -42,11 +44,38 @@ class RestaurantType extends AbstractType
                 new Range(['min' => 1, 'max' => 5, 'minMessage' => 'Le nombre d\'étoiles doit être au moins 1', 'maxMessage' => 'Le nombre d\'étoiles ne peut pas dépasser 5']),
             ],
         ])
+        
+
+        // Dans la méthode buildForm de RestaurantType
+       
+            // Autres champs...
+            ->add('heureOuverture', TimeType::class, [
+                'label' => 'Heure d\'ouverture',
+                'input' => 'string', // Définir le type d'entrée comme 'string'
+                'widget' => 'single_text',
+                'required' => false,
+            ])
+            ->add('heureFermeture', TimeType::class, [
+                'label' => 'Heure de fermeture',
+                'input' => 'string', // Définir le type d'entrée comme 'string'
+                'widget' => 'single_text',
+                'required' => false,
+            ])
+        
         ->add('imageRestaurant', FileType::class, [
             'label' => 'Image du restaurant',
             'mapped' => false, // Indique à Symfony de ne pas mapper ce champ à une propriété de l'entité
             'required' => false, // Rend le champ facultatif
+        ])
+
+        ->add('plats', EntityType::class, [
+            'class' => 'App\Entity\Plat',
+            'choice_label' => 'nom',
+            'multiple' => true,
+            'expanded' => true,
+            'by_reference' => false, // Assurez-vous que la valeur soit false pour que la relation soit bien gérée
         ]);
+        
 }
 
     public function configureOptions(OptionsResolver $resolver): void

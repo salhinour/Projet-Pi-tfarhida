@@ -156,6 +156,8 @@
 
     <h1>Edit Plat</h1>
 
+    {% form_theme form 'bootstrap_5_layout.html.twig' %}
+
     {{ include('plat/_form.html.twig', {'button_label': 'Update', 'novalidate': true}) }}
     
 

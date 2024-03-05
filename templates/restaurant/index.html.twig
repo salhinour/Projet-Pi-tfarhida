@@ -159,9 +159,23 @@
 {% block title %}Restaurant index{% endblock %}
 
 
-    <h1>Restaurant index</h1>
 
-    <table class="table">
+
+
+
+    <h1>Restaurant index</h1>
+    <div  class="d-flex align-items-center justify-content-between mb-4">
+        <div class="d-flex">
+            <button id="btPrint" onclick="createPDF()" class="export-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Export PDF
+            </button>
+            
+        </div>
+        
+    </div>
+</div>
+
+    <table class="table" id="myTable">
         <thead>
             <tr>
                 <th>Id</th>
@@ -254,7 +268,7 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script>
       function createPDF() {
-        var sTable = document.getElementById('table').outerHTML;
+        var sTable = document.getElementById('myTable').outerHTML;
         var style = "<style>";
         style = style + "table {width: 100%; border-collapse: collapse; margin-top: 20px;}";
         style = style + "th, td {border: 1px solid #ddd; padding: 8px; text-align: left;}";
@@ -338,6 +352,15 @@
           }
         }
     </script>
+    <script>
+function createPDF() {
+    var htmlContent = document.getElementById("myTable").outerHTML;
+    var win = window.open('', '', 'height=700,width=700');
+    win.document.write(htmlContent);
+    win.document.close();
+    win.print();
+}
+</script>
     
 <div id="sfwdt5e5522" class="sf-toolbar" role="region" aria-label="Symfony Web Debug Toolbar" data-sfurl="http://127.0.0.1:8000/_wdt/5e5522" style="display: block;"><!-- START of Symfony Web Debug Toolbar -->
 <div id="sfMiniToolbar-5e5522" class="sf-minitoolbar" data-no-turbolink="" data-turbo="false" style="display: none;">

@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use DateTimeInterface;
 
 
 #[ORM\Entity(repositoryClass: RestaurantRepository::class)]
@@ -29,11 +30,21 @@ class Restaurant
     #[ORM\Column(length: 255)]
     private ?string $numdetel = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $nmbetoiles = null;
+    #[ORM\Column(type: "integer")]
+private ?int $nmbetoiles = null;
+
 
     #[ORM\Column(length: 255)]
     private ?string $ImageRestaurant = null;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $heureOuverture = null;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $heureFermeture = null;
+
+    #[ORM\Column(type: 'boolean')]
+    private bool $favoris = false; // Ajout de la propriété favoris
 
     #[ORM\ManyToMany(targetEntity: Plat::class, mappedBy: "restaurants")]
     private $plats;
@@ -86,7 +97,7 @@ class Restaurant
         return $this->nom;
     }
 
-    public function setNom(string $nom): self
+    public function setNom(?string $nom): self
     {
         $this->nom = $nom;
 
@@ -98,7 +109,7 @@ class Restaurant
         return $this->adresse;
     }
 
-    public function setAdresse(string $adresse): static
+    public function setAdresse(?string $adresse): static
     {
         $this->adresse = $adresse;
 
@@ -110,24 +121,25 @@ class Restaurant
         return $this->numdetel;
     }
 
-    public function setNumdetel(string $numdetel): static
+    public function setNumdetel(?string $numdetel): static
     {
         $this->numdetel = $numdetel;
 
         return $this;
     }
 
-    public function getNmbetoiles(): ?string
-    {
-        return $this->nmbetoiles;
-    }
+    public function getNmbetoiles(): ?int
+{
+    return $this->nmbetoiles;
+}
 
-    public function setNmbetoiles(string $nmbetoiles): static
-    {
-        $this->nmbetoiles = $nmbetoiles;
+public function setNmbetoiles(?int $nmbetoiles): static
+{
+    $this->nmbetoiles = $nmbetoiles;
 
-        return $this;
-    }
+    return $this;
+}
+
 
     public function getImageRestaurant(): ?string
     {
@@ -140,6 +152,41 @@ class Restaurant
 
         return $this;
     }
+
+    public function getHeureOuverture(): ?string
+{
+    return $this->heureOuverture;
+}
+
+public function setHeureOuverture(?string $heureOuverture): self
+{
+    $this->heureOuverture = $heureOuverture;
+    return $this;
+}
+
+public function getHeureFermeture(): ?string
+{
+    return $this->heureFermeture;
+}
+
+public function setHeureFermeture(?string $heureFermeture): self
+{
+    $this->heureFermeture = $heureFermeture;
+    return $this;
+}
+
+public function isFavoris(): ?bool
+    {
+        return $this->favoris;
+    }
+
+    public function setFavoris(bool $favoris): self
+    {
+        $this->favoris = $favoris;
+
+        return $this;
+    }
+
 
    
 

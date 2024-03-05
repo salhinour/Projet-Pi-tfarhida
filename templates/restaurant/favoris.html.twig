@@ -236,54 +236,52 @@
 <div id="restaurants-container">
     <div class="row">
         {% for restaurant in restaurants %}
-        <div class="col-md-3 mb-4">
-            <div class="card">
-                <div class="ratio ratio-4x3">
-                    <img src="{{ asset('uploads/images/' ~ restaurant.ImageRestaurant) }}" class="card-img-top img-fluid" style="max-width: 100%; height: auto;" alt="Image du restaurant">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ restaurant.nom }}</h5>
-                    <p class="card-text">
-                        <strong>Adresse:</strong><p class="card-text card-address">{{ restaurant.adresse }}</p> <!-- Ajoutez cette ligne pour afficher l'adresse -->
-                        <strong>Numéro de téléphone:</strong> {{ restaurant.numdetel }}<br>
-                        <strong>Nombre d'étoiles:</strong> 
-                        {% for i in range(1 , restaurant.nmbetoiles) %}
-                            <span style="color: yellow;">★</span>
-                        {% endfor %}
-                    </p>
-                    {# Affichage de l'état d'ouverture du restaurant #}
-                    {% set currentTime = "now"|date("H:i") %}
-                    {% set isOpen = restaurant.heureOuverture <= currentTime and currentTime <= restaurant.heureFermeture %}
-                    {% if isOpen %}
-                        <p style="color: green;">Le restaurant est ouvert</p>
-                    {% else %}
-                        <p style="color: red;">Le restaurant est fermé</p>
-                    {% endif %}
+            {% if restaurant.favoris %}
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <div class="ratio ratio-4x3">
+                            <img src="{{ asset('uploads/images/' ~ restaurant.ImageRestaurant) }}" class="card-img-top img-fluid" style="max-width: 100%; height: auto;" alt="Image du restaurant">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ restaurant.nom }}</h5>
+                            <p class="card-text">
+                                <strong>Adresse:</strong> {{ restaurant.adresse }}<br>
+                                <strong>Numéro de téléphone:</strong> {{ restaurant.numdetel }}<br>
+                                <strong>Nombre d'étoiles:</strong> 
+                                {% for i in range(1 , restaurant.nmbetoiles) %}
+                                    <span style="color: yellow;">★</span>
+                                {% endfor %}
+                            </p>
+                            {# Affichage de l'état d'ouverture du restaurant #}
+                            {% set currentTime = "now"|date("H:i") %}
+                            {% set isOpen = restaurant.heureOuverture <= currentTime and currentTime <= restaurant.heureFermeture %}
+                            {% if isOpen %}
+                                <p style="color: green;">Le restaurant est ouvert</p>
+                            {% else %}
+                                <p style="color: red;">Le restaurant est fermé</p>
+                            {% endif %}
+							                    <button class="btn btn-primary btn-sm remove-from-favorites" data-restaurant-id="{{ restaurant.id }}">Retirer des favoris</button>
 
-                    <button class="btn btn-primary btn-sm add-to-favorites" data-restaurant-id="{{ restaurant.id }}">Ajouter aux favoris</button>
-                    
-                    <a href="{{ path('app_restaurant_showfront', {'id': restaurant.id}) }}" class="btn btn-primary btn-sm">Détails</a>
+                            <a href="{{ path('app_restaurant_showfront', {'id': restaurant.id}) }}" class="btn btn-primary btn-sm">Détails</a>
+							
+                        </div>
+						
+                    </div>
                 </div>
-
-            </div>
-        </div>
+            {% endif %}
         {% else %}
             <div class="col-md-12">
-                <p>Pas de restaurants trouvés.</p>
+                <p>Pas de restaurants favoris trouvés.</p>
             </div>
         {% endfor %}
     </div>
-</div>
 
-<!-- Bouton "Favoris" -->
-<div>
-    <a href="{{ path('app_restaurant_favoris') }}" class="btn btn-primary btn-sm">Favoris</a>
 </div>
+<a href="{{ path('app_restaurant_indexfront')}}" class="btn btn-primary btn-sm">Retour</a>
 
-<!-- Pagination -->
-<div class="d-flex justify-content-center">
-    {{ knp_pagination_render(restaurants,'restaurant/pagination.html.twig')}}
-</div>
+
+
+
 
 
 
@@ -504,6 +502,21 @@
                     }
                 });
             });
+
+			// Script pour gérer l'ajout aux favoris
+            $(document).on('click', '.remove-from-favorites', function() {
+    var restaurantId = $(this).data('restaurant-id');
+
+    // Requête AJAX pour retirer le restaurant des favoris
+    $.ajax({
+        url: '/remove-from-favorites/' + restaurantId, // Endpoint pour supprimer des favoris
+        type: 'POST',
+        success: function(response) {
+            // Mettre à jour l'interface utilisateur en conséquence
+            // Par exemple, changer le texte du bouton en "Ajouter aux favoris"
+        }
+    });
+});
         
 
 </script>

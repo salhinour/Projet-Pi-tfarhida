@@ -27,12 +27,7 @@ class PlatType extends AbstractType
                 'mapped' => false, // Indique à Symfony de ne pas mapper ce champ à une propriété de l'entité
                 'required' => false, // Rend le champ facultatif
             ])
-            ->add('restaurants', EntityType::class, [
-                'class' => 'App\Entity\Restaurant',
-                'choice_label' => 'nom',
-                'multiple' => true,
-                'expanded' => true,
-            ])
+            
         ;
     }
 

@@ -45,4 +45,19 @@ class RestaurantRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+
+    public function search($query)
+    {
+        // Écrivez votre logique de recherche ici, par exemple :
+        return $this->createQueryBuilder('r')
+            ->where('r.nom LIKE :query')
+            ->setParameter('query', '%'.$query.'%')
+            ->getQuery()
+            ->getResult();
+    }  
+
+    
+    
+    
 }
