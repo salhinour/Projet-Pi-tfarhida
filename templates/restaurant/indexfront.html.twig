@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{% block title %}Pacific - Free Bootstrap 4 Template by Colorlib{% endblock %}</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	{% block stylesheets%}
+	<link href="{{asset('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900')}}" rel="stylesheet">
+	<link href="{{asset('https://fonts.googleapis.com/css2?family=Arizonia&display=swap')}}" rel="stylesheet">
+
+	<link rel="stylesheet" href="{{asset('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')}}">
+
+		<link rel="stylesheet" href="{{asset('css/animate.css')}}">
+	
+	<link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+	<link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
+	<link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
+
+	<link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.css')}}">
+	<link rel="stylesheet" href="{{asset('css/jquery.timepicker.css')}}">
+
+	<link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
+	<link rel="stylesheet" href="{{asset('css/style.css')}}">
+
+	{% endblock %}
+</head>
+<body>
+{% block body%}
+
+
+
+
+    
+
+
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="index.html">Tfarhida<span>Bon plan</span></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a href="accueil" class="nav-link">Home</a></li>
+					<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+					<li class="nav-item"><a href="activite" class="nav-link">Activite</a></li>
+					<li class="nav-item"><a href="hotel.html" class="nav-link">Hotel</a></li>
+					<li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+					<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+					<li <div id="google_translate_element"></div> </li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- END nav -->
+	
+	<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_5.jpg');">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
+				<div class="col-md-7 ftco-animate">
+					<span class="subheading">Welcome to Pacific</span>
+					<h1 class="mb-4">Discover Your Favorite Place with Us</h1>
+					<p class="caps">Travel to the any corner of the world, without going around in circles</p>
+				</div>
+				<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
+					<span class="fa fa-play"></span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<section class="ftco-section ftco-no-pb ftco-no-pt">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="ftco-search d-flex justify-content-center">
+						<div class="row">
+							<div class="col-md-12 nav-link-wrap">
+								<div class="nav nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+									<a class="nav-link active mr-md-1" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Restaurant</a>
+
+
+								</div>
+							</div>
+							<div class="col-md-12 tab-wrap">
+								
+								<div class="tab-content" id="v-pills-tabContent">
+
+									<div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+										<form action="#" class="search-property-1">
+											<div class="row no-gutters">
+												<div class="col-md d-flex">
+													<div class="form-group p-4 border-0">
+														<label for="#">Nom restaurant</label>
+														<div class="form-field">
+															<div class="icon"><span class="fa fa-search"></span></div>
+															<input type="text" class="form-control" id="search-input" name="q" placeholder="Search place">
+														</div>
+													</div>
+												</div>
+												<div class="col-md d-flex">
+													<div class="form-group p-4">
+														<label for="#">Adresse Restaurant</label>
+														<div class="form-field">
+															<div class="icon"><span class="fa fa-search"></span></div>
+															<input type="text" class="form-control" id="searchadresse-input" name="q" placeholder="Search place">														</div>
+													</div>
+												</div>
+												
+												<div class="col-md d-flex">
+													<div class="form-group d-flex w-100 border-0">
+														<div class="form-field w-100 align-items-center d-flex">
+															<input type="submit" value="Search" class="align-self-stretch form-control btn btn-primary">
+														</div>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+
+									<div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-performance-tab">
+										<form action="#" class="search-property-1">
+											<div class="row no-gutters">
+												<div class="col-lg d-flex">
+													<div class="form-group p-4 border-0">
+														<label for="#">Nom Restaurant</label>
+														<div class="form-field">
+															<div class="icon"><span class="fa fa-search"></span></div>
+															<input type="text" class="form-control" placeholder="Search place">
+														</div>
+													</div>
+												</div>
+												<div class="col-lg d-flex">
+													<div class="form-group p-4">
+														<label for="#">Check-in date</label>
+														<div class="form-field">
+															<div class="icon"><span class="fa fa-calendar"></span></div>
+															<input type="text" class="form-control checkin_date" placeholder="Check In Date">
+														</div>
+													</div>
+												</div>
+												<div class="col-lg d-flex">
+													<div class="form-group p-4">
+														<label for="#">Check-out date</label>
+														<div class="form-field">
+															<div class="icon"><span class="fa fa-calendar"></span></div>
+															<input type="text" class="form-control checkout_date" placeholder="Check Out Date">
+														</div>
+													</div>
+												</div>
+												<div class="col-lg d-flex">
+													<div class="form-group p-4">
+														<label for="#">Price Limit</label>
+														<div class="form-field">
+															<div class="select-wrap">
+																<div class="icon"><span class="fa fa-chevron-down"></span></div>
+																<select name="" id="" class="form-control">
+																	<option value="">$100</option>
+																	<option value="">$10,000</option>
+																	<option value="">$50,000</option>
+																	<option value="">$100,000</option>
+																	<option value="">$200,000</option>
+																	<option value="">$300,000</option>
+																	<option value="">$400,000</option>
+																	<option value="">$500,000</option>
+																	<option value="">$600,000</option>
+																	<option value="">$700,000</option>
+																	<option value="">$800,000</option>
+																	<option value="">$900,000</option>
+																	<option value="">$1,000,000</option>
+																	<option value="">$2,000,000</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg d-flex">
+													<div class="form-group d-flex w-100 border-0">
+														<div class="form-field w-100 align-items-center d-flex">
+															<input type="submit" value="Search" class="align-self-stretch form-control btn btn-primary p-0">
+														</div>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		
+
+		
+
+		
+
+		<section class="ftco-section ftco-about ftco-no-pt img">
+       
+			
+    
+
+
+
+
+    <div class="col-md-6 text-end">
+        <div id="filter-menu">
+            <button id="filter-btn" class="btn btn-primary">Filtrer</button>
+            <div id="filter-options" style="display: none;">
+                <h5>Trier par :</h5>
+                <select id="sort-filter">
+                    <option value="name">Nom</option>
+                    <option value="stars">Nombre d'étoiles</option>
+                </select>
+                <h5>État :</h5>
+                <div>
+                    <input type="checkbox" id="open-filter" name="open-filter">
+                    <label for="open-filter">Ouvert</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="closed-filter" name="closed-filter">
+                    <label for="closed-filter">Fermé</label>
+                </div>
+                <button id="apply-filter-btn" class="btn btn-primary mt-2">Appliquer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="restaurants-container">
+    <div class="row">
+        {% for restaurant in restaurants %}
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <div class="ratio ratio-4x3">
+                    <img src="{{ asset('uploads/images/' ~ restaurant.ImageRestaurant) }}" class="card-img-top img-fluid" style="max-width: 100%; height: auto;" alt="Image du restaurant">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ restaurant.nom }}</h5>
+                    <p class="card-text">
+                        <strong>Adresse:</strong><p class="card-text card-address">{{ restaurant.adresse }}</p> <!-- Ajoutez cette ligne pour afficher l'adresse -->
+                        <strong>Numéro de téléphone:</strong> {{ restaurant.numdetel }}<br>
+                        <strong>Nombre d'étoiles:</strong> 
+                        {% for i in range(1 , restaurant.nmbetoiles) %}
+                            <span style="color: yellow;">★</span>
+                        {% endfor %}
+                    </p>
+                    {# Affichage de l'état d'ouverture du restaurant #}
+                    {% set currentTime = "now"|date("H:i") %}
+                    {% set isOpen = restaurant.heureOuverture <= currentTime and currentTime <= restaurant.heureFermeture %}
+                    {% if isOpen %}
+                        <p style="color: green;">Le restaurant est ouvert</p>
+                    {% else %}
+                        <p style="color: red;">Le restaurant est fermé</p>
+                    {% endif %}
+
+                    <button class="btn btn-primary btn-sm add-to-favorites" data-restaurant-id="{{ restaurant.id }}">Ajouter aux favoris</button>
+                    
+                    <a href="{{ path('app_restaurant_showfront', {'id': restaurant.id}) }}" class="btn btn-primary btn-sm">Détails</a>
+                </div>
+
+            </div>
+        </div>
+        {% else %}
+            <div class="col-md-12">
+                <p>Pas de restaurants trouvés.</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Bouton "Favoris" -->
+<div>
+    <a href="{{ path('app_restaurant_favoris') }}" class="btn btn-primary btn-sm">Favoris</a>
+</div>
+
+<!-- Pagination -->
+<div class="d-flex justify-content-center">
+    {{ knp_pagination_render(restaurants,'restaurant/pagination.html.twig')}}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+   
+
+		</section>
+
+		
+
+		<section class="ftco-intro ftco-section ftco-no-pt">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-md-12 text-center">
+						<div class="img"  style="background-image: url(images/bg_2.jpg);">
+							<div class="overlay"></div>
+							<h2>We Are Pacific A Travel Agency</h2>
+							<p>We can manage your dream building A small river named Duden flows by their place</p>
+							<p class="mb-0"><a href="#" class="btn btn-primary px-4 py-3">Ask For A Quote</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url(images/bg_3.jpg);">
+			<div class="container">
+				<div class="row mb-5">
+					<div class="col-md pt-5">
+						<div class="ftco-footer-widget pt-md-5 mb-4">
+							<h2 class="ftco-heading-2">About</h2>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+							<ul class="ftco-footer-social list-unstyled float-md-left float-lft">
+								<li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+								<li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+								<li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md pt-5 border-left">
+						<div class="ftco-footer-widget pt-md-5 mb-4 ml-md-5">
+							<h2 class="ftco-heading-2">Infromation</h2>
+							<ul class="list-unstyled">
+								<li><a href="#" class="py-2 d-block">Online Enquiry</a></li>
+								<li><a href="#" class="py-2 d-block">General Enquiries</a></li>
+								<li><a href="#" class="py-2 d-block">Booking Conditions</a></li>
+								<li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
+								<li><a href="#" class="py-2 d-block">Refund Policy</a></li>
+								<li><a href="#" class="py-2 d-block">Call Us</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md pt-5 border-left">
+						<div class="ftco-footer-widget pt-md-5 mb-4">
+							<h2 class="ftco-heading-2">Experience</h2>
+							<ul class="list-unstyled">
+								<li><a href="#" class="py-2 d-block">Adventure</a></li>
+								<li><a href="#" class="py-2 d-block">Hotel and Restaurant</a></li>
+								<li><a href="#" class="py-2 d-block">Beach</a></li>
+								<li><a href="#" class="py-2 d-block">Nature</a></li>
+								<li><a href="#" class="py-2 d-block">Camping</a></li>
+								<li><a href="#" class="py-2 d-block">Party</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md pt-5 border-left">
+						<div class="ftco-footer-widget pt-md-5 mb-4">
+							<h2 class="ftco-heading-2">Have a Questions?</h2>
+							<div class="block-23 mb-3">
+								<ul>
+									<li><span class="icon fa fa-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+									<li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+									<li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">info@yourdomain.com</span></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-center">
+
+						<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+						</div>
+					</div>
+				</div>
+			</footer>
+			
+			
+
+			<!-- loader -->
+			<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+{% block js %}
+			<script src="{{asset('js/jquery.min.js')}}"></script>
+			<script src="{{asset('js/jquery-migrate-3.0.1.min.js')}}"></script>
+			<script src="{{asset('js/popper.min.js')}}"></script>
+			<script src="{{asset('js/bootstrap.min.js')}}"></script>
+			<script src="{{asset('js/jquery.easing.1.3.js')}}"></script>
+			<script src="{{asset('js/jquery.waypoints.min.js')}}"></script>
+			<script src="{{asset('js/jquery.stellar.min.js')}}"></script>
+			<script src="{{asset('js/owl.carousel.min.js')}}"></script>
+			<script src="{{asset('js/jquery.magnific-popup.min.js')}}"></script>
+			<script src="{{asset('js/jquery.animateNumber.min.js')}}"></script>
+			<script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
+			<script src="{{asset('js/scrollax.min.js')}}"></script>
+			<script src="{{asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false')}}"></script>
+			<script src="{{asset('js/google-map.js')}}"></script>
+			<script src="{{asset('js/main.js')}}"></script>
+			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+			
+			<script>
+
+
+    $(document).ready(function(){
+    $('#filter-btn').on('click', function(){
+        $('#filter-options').toggle();
+    });
+
+    // Fonction pour appliquer le filtre
+    function applyFilter() {
+        var selectedSort = $('#sort-filter').val();
+        var isOpen = $('#open-filter').is(':checked');
+        var isClosed = $('#closed-filter').is(':checked');
+
+        var $container = $('#restaurants-container .row');
+        var $cards = $container.children('.col-md-3').detach();
+
+        $cards.sort(function(a, b) {
+            var nameA = $(a).find('.card-title').text().toUpperCase();
+            var nameB = $(b).find('.card-title').text().toUpperCase();
+            var starsA = parseInt($(a).find('.card-text strong:contains("Nombre d\'étoiles:")').siblings().first().text());
+            var starsB = parseInt($(b).find('.card-text strong:contains("Nombre d\'étoiles:")').siblings().first().text());
+
+            if (selectedSort === 'name') {
+                if (nameA < nameB) return -1;
+                if (nameA > nameB) return 1;
+                return 0;
+            } else if (selectedSort === 'stars') {
+                if (starsA < starsB) return -1;
+                if (starsA > starsB) return 1;
+                return 0;
+            }
+        }).appendTo($container);
+
+        $cards.each(function(){
+            var isOpenRestaurant = $(this).find('p').text().includes("Le restaurant est ouvert");
+            var matchesState = (!isOpen && !isClosed) || (isOpen && isOpenRestaurant) || (isClosed && !isOpenRestaurant);
+
+            if (matchesState){
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    }
+
+    $('#apply-filter-btn').on('click', function(){
+        applyFilter();
+    });
+
+    // Écouter les changements dans le menu de tri
+    $('#sort-filter').on('change', function(){
+        applyFilter();
+    });
+
+    $('#search-input, #searchadresse-input').on('input', function(){
+    var query = $(this).val().toLowerCase();
+    $('#restaurants-container .card').each(function(){
+        var restaurantName = $(this).find('.card-title').text().toLowerCase();
+        var restaurantAddress = $(this).find('.card-address').text().toLowerCase(); // Ajout pour rechercher par adresse
+
+        if(restaurantName.includes(query) || restaurantAddress.includes(query)){ // Modification pour inclure la recherche par adresse
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    });
+});
+
+});
+// Script pour gérer l'ajout aux favoris
+
+            $(document).on('click', '.add-to-favorites', function() {
+                var restaurantId = $(this).data('restaurant-id');
+
+                // Requête AJAX pour ajouter le restaurant aux favoris
+                $.ajax({
+                    url: '/add-to-favorites/' + restaurantId,
+                    type: 'POST',
+                    success: function(response) {
+						 
+                        // Mettre à jour l'interface utilisateur en conséquence
+                        // Par exemple, changer le texte du bouton en "Retirer des favoris"
+                    }
+                });
+            });
+
+            // Script pour gérer l'affichage des favoris
+            $(document).on('click', '#favorites-btn', function() {
+                // Requête AJAX pour charger la liste des restaurants favoris
+                $.ajax({
+                    url: '/favorites',
+                    type: 'GET',
+                    success: function(response) {
+                        // Afficher la liste des restaurants favoris dans un modal ou une autre zone de la page
+                    }
+                });
+            });
+        
+
+</script>
+<script src="script.js"></script>
+      <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        } 
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+			
+		
+
+
+
+
+
+
+			{% endblock %}
+		</body>
+		{% endblock %}
+		</html>

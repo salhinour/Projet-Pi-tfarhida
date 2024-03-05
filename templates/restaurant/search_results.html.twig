@@ -1,0 +1,11 @@
+{% for restaurant in restaurants %}
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">{{ restaurant.nom }}</h5>
+        <!-- Affichez d'autres détails du restaurant si nécessaire -->
+        <a href="{{ path('app_restaurant_showfront', {'id': restaurant.id}) }}" class="btn btn-primary btn-sm">Détails</a>
+    </div>
+</div>
+{% else %}
+    <p>Aucun résultat trouvé.</p>
+{% endfor %}

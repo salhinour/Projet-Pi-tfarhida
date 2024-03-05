@@ -1,0 +1,33 @@
+<div class="row">
+    {% for restaurant in restaurants %}
+    <div class="col-md-3 mb-4">
+        <div class="card">
+            <div class="ratio ratio-4x3">
+                <img src="{{ asset('uploads/images/' ~ restaurant.ImageRestaurant) }}" class="card-img-top img-fluid" style="max-width: 100%; height: auto;" alt="Image du restaurant">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ restaurant.nom }}</h5>
+                <p class="card-text">
+                    <strong>Adresse:</strong> {{ restaurant.adresse }}<br>
+                    <strong>Numéro de téléphone:</strong> {{ restaurant.numdetel }}<br>
+                    <strong>Nombre d'étoiles:</strong> {{ restaurant.nmbetoiles }}
+                </p>
+                {# Affichage de l'état d'ouverture du restaurant #}
+                {% set currentTime = "now"|date("H:i") %}
+                {% set isOpen = restaurant.heureOuverture <= currentTime and currentTime <= restaurant.heureFermeture %}
+                {% if isOpen %}
+                    <p style="color: green;">Le restaurant est ouvert</p>
+                {% else %}
+                    <p style="color: red;">Le restaurant est fermé</p>
+                {% endif %}
+                
+                <a href="{{ path('app_restaurant_showfront', {'id': restaurant.id}) }}" class="btn btn-primary btn-sm">Détails</a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+        <div class="col-md-12">
+            <p>Pas de restaurants trouvés.</p>
+        </div>
+    {% endfor %}
+</div>
