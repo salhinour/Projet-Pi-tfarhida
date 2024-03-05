@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Mettez ici les autres balises meta, titre et liens vers les autres fichiers CSS -->
+    <style>
+        /* CSS pour le bouton Save */
+        .btn-save {
+            background-color: green;
+            color: white;
+            border: 2px solid green;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .btn-save:hover {
+            background-color: darkgreen;
+            border-color: darkgreen;
+        }
+
+        /* CSS pour le cadre autour du formulaire */
+        .form-container {
+            max-width: 400px; /* Largeur maximale du formulaire */
+            margin: 0 auto; /* Centrage horizontal */
+            padding: 20px; /* Espacement intérieur */
+            border: 1px solid #ccc; /* Bordure grise de 1px */
+            border-radius: 5px; /* Coins arrondis de 5px */
+        }
+    </style>
+</head>
+<body>
+    <!-- Conteneur du formulaire avec cadre -->
+    <div class="form-container">
+        {% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+            <!-- Champs du formulaire -->
+            {{ form_widget(form) }}
+            <!-- Bouton Save personnalisé -->
+            <button class="btn-save">{{ button_label|default('Save') }}</button>
+        <!-- Fin du formulaire -->
+        {{ form_end(form) }}
+    </div>
+    <!-- Fin du conteneur du formulaire -->
+</body>
+</html>

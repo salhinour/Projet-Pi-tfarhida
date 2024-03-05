@@ -1,0 +1,36 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Categorie back shoow{% endblock %}
+
+{% block body %}
+<div>
+ <div class="container text-center">
+    <a href="{{ path('app_categorie_back_c_new') }}" class="btn btn-primary btn-icon-split">
+        <i class="fas fa-plus"></i> Create New
+    </a>
+</div>
+        </div>
+    <h1>Categorie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorie.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ categorie.description }}</td>
+            </tr>
+            <tr>
+                <th>Type_categorie</th>
+                <td>{{ categorie.typeCategorie }}</td>
+   </tr>
+        </tbody>
+    </table>
+            <a href="{{ path('app_categorie_back_c_index') }}" class="btn btn-primary">Back to list</a>
+
+    <a href="{{ path('app_categorie_back_c_edit', {'id': categorie.id}) }}" class="btn btn-secondary">edit</a>
+
+    {{ include('categorie_back_c/_delete_form.html.twig') }}
+{% endblock %}

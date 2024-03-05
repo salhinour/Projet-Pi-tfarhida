@@ -1,0 +1,115 @@
+{% extends 'home/base.html.twig' %}
+
+{% block title %}Activite{% endblock %}
+
+{% block body %}
+<div class="hero-wrap js-fullheight" style="background-image: url('/images/services.jpg');">
+
+    <div class="overlay"></div>
+    <div class="container">
+    
+        <div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
+            <div class="col-md-7 ftco-animate">
+                <span class="subheading">Bienvenue dans Tfarhida</span>
+                <h1 class="mb-4">Découvrir ton bon plan avec nous</h1>
+            </div>
+        </div>
+    </div>
+</div>
+   <section class="ftco-section ftco-no-pb ftco-no-pt">
+       <div class="container">
+           <div class="row">
+               <div class="col-md-12">
+                   <div class="ftco-search d-flex justify-content-center">
+                       <div class="row">
+                           <div class="col-md-12 nav-link-wrap">
+                               <div class="nav nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                   <a class="nav-link active mr-md-1" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Chercher activité</a>
+                               </div>
+                           </div>
+                           <div class="col-md-12 tab-wrap">
+                               <div class="tab-content" id="v-pills-tabContent">
+                                   <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+                                       <form action="#" class="search-property-1">
+                                           <div class="row no-gutters">
+                                               <div class="col-md d-flex">
+                                                   <div class="form-group p-4 border-0">
+                                                       <div class="form-field">
+                                                           <div class="icon"><span class="fa fa-search"></span></div>
+                                                           <input type="text" class="form-control" id="myInput" placeholder="Chercher activite">
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                               </div>
+                                           </div>
+                                       </form>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </section>
+
+   <h1>Activite Affichage</h1>
+   <table class="table" id="myTable">
+       <thead>
+           <tr>
+               <th>Id</th>
+               <th>Nom</th>
+               <th>Prix</th>
+               <th>Localisation</th>
+               <th>NbP</th>
+               <th>Etat</th>
+               <th>image</th>
+               <th>actions</th>
+           </tr>
+       </thead>
+       <tbody>
+        {% for activitee in activitees %}
+           <tr>
+               <td>{{ activitee.id }}</td>
+               <td>{{ activitee.nom }}</td>
+               <td>{{ activitee.prix }}</td>
+               <td>{{ activitee.localisation }}</td>
+               <td>{{ activitee.nbP }}</td>
+               <td>{{ activitee.etat }}</td>
+               <td>
+                   {% if activitee.image %}
+                       <img src="{{ asset('uploads/' ~ activitee.image) }}" alt="Image" width="100" height="100">
+                   {% else %}
+                       <span>Aucune image</span>
+                   {% endif %}
+               </td>
+               <td>
+                <a href="{{ path('app_activitee_show', {'id': activitee.id}) }}" class="btn-icon-split">
+                    <i class="fas fa-eye text-primary"></i>
+                </a>
+                <a href="{{ path('app_activitee_edit', {'id': activitee.id}) }}" class="btn-icon-split">
+                    <i class="fas fa-edit text-secondary"></i>
+                </a>
+                     
+               </td>
+           </tr>
+        {% endfor %}
+        
+       </tbody>
+   </table>
+
+   <a href="{{ path('app_activitee_new') }}" class="btn btn-third" >Create new</a>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+   <script>
+       $(document).ready(function () {
+           $("#myInput").on("keyup", function () {
+               var value = $(this).val().toLowerCase();
+               $("#myTable tr").filter(function () {
+                   $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+               });
+           })
+       });
+   </script>
+  
+{% endblock %}

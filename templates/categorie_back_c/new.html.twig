@@ -1,0 +1,19 @@
+
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Categorie back new{% endblock %}
+
+{% block body %}
+
+    <div class="container" style="text-align:center" >
+
+    <h1>Nouvelle Categorie</h1>
+
+        {{ include('categorie_back_c/_form.html.twig') }}
+  
+<a href="{{ path('app_categorie_back_c_index') }}" class="btn btn-primary">Back to list</a>
+<a href="{{ path('app_activitee_back_new') }}" class="btn btn-secondary">Ajouter activité</a>
+
+</div>
+
+{% endblock %}

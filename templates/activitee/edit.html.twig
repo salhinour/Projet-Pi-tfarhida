@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="hero-wrap js-fullheight" style="background-image:url('{{ asset('uploads/' ~ activitee.image) }}');">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
+				<div class="col-md-7 ftco-animate">
+					<span class="subheading">Bienvenue dans Tfarhida</span>
+					<h1 class="mb-4">Découvrir ton bon plan avec nous</h1>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+  <div class="container" style="text-align:center" >
+    <h1>Modifier activité</h1>
+<div class="button-group">
+    {{ include('activitee/_form.html.twig', {'button_label': 'Update'}) }}
+
+        <a href="{{ path('app_activitee_index') }}" class="btn btn-primary">Back to list</a>
+
+    {{ include('activitee/_delete_form.html.twig') }}
+     </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

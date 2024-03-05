@@ -1,0 +1,72 @@
+{% extends 'home/base.html.twig' %}
+
+{% block body%}
+    <div class="hero-wrap js-fullheight" style="background-image:url('{{ asset('uploads/' ~ activitee.image) }}');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
+                <div class="col-md-7 ftco-animate">
+                    <span class="subheading">Bienvenue dans Tfarhida</span>
+                    <h1 class="mb-4">Découvrir ton bon plan avec nous</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section ftco-no-pb ftco-no-pt">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="ftco-search d-flex justify-content-center">
+                        <div class="row">
+                            <div class="col-md-12 tab-wrap">
+                                <div class="tab-content" id="v-pills-tabContent">
+                                    <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+                                        <form action="#" class="search-property-1">
+                                            <div class="row no-gutters">
+                                                <div class="col-md d-flex">
+                                                    <div class="form-group p-4 border-0">
+                                                        <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">
+                                                            <label for="#">{{ activitee.nom }}</label>
+                                                        </a>
+                                                        <div class="form-field">
+                                                            <table class="table">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th>Localisation</th>
+                                                                        <td>{{ activitee.localisation }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Nombre Participant</th>
+                                                                        <td>{{ activitee.nbP }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Prix</th>
+                                                                        <td>{{ activitee.prix }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Description</th>
+                                                                        <td>{{ activitee.descriptionact }}</td>
+                                                                    </tr>
+ 
+                                                                </tbody>
+                                                            </table>
+                                                            <div style="text-align: center;">
+                                                                <a href="{{ path('app_activitee_indexx') }}" class="btn btn-primary">Retour</a>
+                                                               
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

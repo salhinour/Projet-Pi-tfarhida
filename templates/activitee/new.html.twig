@@ -1,0 +1,24 @@
+{% extends 'home/baseg.html.twig' %}
+
+{% block title %}Activitee new{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center mb-4">Nouvelle Activité</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            {{ include('activitee/_form.html.twig') }}
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6">
+            <div class="button-group">
+                <a href="{{ path('app_activitee_index') }}" class="btn btn-primary btn-lg btn-block">Retour à la liste</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

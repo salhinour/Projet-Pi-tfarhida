@@ -1,0 +1,49 @@
+{% extends 'home/base.html.twig' %}
+
+{% block title %}Détails de l'activité{% endblock %}
+
+{% block body %}
+<div class="hero-wrap js-fullheight" style="background-image:url('{{ asset('uploads/' ~ activitee.image) }}');">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
+				<div class="col-md-7 ftco-animate">
+					<span class="subheading">Bienvenue dans Tfarhida</span>
+					<h1 class="mb-4">Découvrir ton bon plan avec nous</h1>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="activity-details-container">
+                <div class="activity-details">
+                    <div class="activity-info">
+                        <h2 class="activity-title">{{ activitee.nom }}</h2>
+                        <div class="activity-description">
+                            <p>{{ activitee.descriptionact }}</p>
+                        </div>
+                        <ul class="activity-details-list">
+                            <li><strong>Localisation:</strong> {{ activitee.localisation }}</li>
+                            <li><strong>Nombre de personnes:</strong> {{ activitee.nbP }}</li>
+                            <li><strong>Prix:</strong> {{ activitee.prix }} DT/personne</li>
+                            {% if activitee.categorie is defined and activitee.categorie is not null %}
+                            <li><strong>Catégorie:</strong> {{ activitee.categorie.getTypeCategorie()}}</li>
+                            <li><strong>Description Catégorie:</strong> {{ activitee.categorie.getDescription()}}</li>
+                            {% else %}
+                            <li>Aucune catégorie trouvée pour cette activité</li>
+                            {% endif %}
+                        </ul>
+                        <a href="{{ path('app_activitee_indexx') }}" class="btn btn-primary">Retour</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
