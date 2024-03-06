@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ActiviteController extends AbstractController
 {
-    #[Route('/activite', name: 'app_activite')]
+    #[Route('/activite', name: 'app_activite', methods: ['GET', 'POST'])]
     public function index(): Response
     {
         return $this->render('activite/index.html.twig', [

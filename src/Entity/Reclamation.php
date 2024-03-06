@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ReclamationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
@@ -46,6 +48,17 @@ class Reclamation
 
     #[ORM\Column(length: 255)]
     private ?string $type = null;
+
+    #[ORM\ManyToOne(inversedBy: 'reclamations')]
+    private ?User $user = null;
+
+    #[ORM\OneToMany(mappedBy: 'reclamation', targetEntity: Notification::class)]
+    private Collection $notifications;
+
+    public function __construct()
+    {
+        $this->notifications = new ArrayCollection();
+    }
 
     
     
@@ -134,6 +147,48 @@ class Reclamation
     public function setType(string $type): static
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Notification>
+     */
+    public function getNotifications(): Collection
+    {
+        return $this->notifications;
+    }
+
+    public function addNotification(Notification $notification): static
+    {
+        if (!$this->notifications->contains($notification)) {
+            $this->notifications->add($notification);
+            $notification->setReclamation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNotification(Notification $notification): static
+    {
+        if ($this->notifications->removeElement($notification)) {
+            // set the owning side to null (unless already changed)
+            if ($notification->getReclamation() === $this) {
+                $notification->setReclamation(null);
+            }
+        }
 
         return $this;
     }

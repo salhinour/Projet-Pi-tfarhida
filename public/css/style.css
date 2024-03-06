@@ -129,6 +129,11 @@ sup {
 sub {
   bottom: -.25em; }
 
+#bord1{
+    border: 2px solid black; /* 2px est la largeur du contour, 'black' est la couleur */
+   padding: 10px; /* Ajoutez du padding si nécessaire pour éviter que le contenu ne touche le contour */}
+  
+
 sup {
   top: -.5em; }
 
@@ -156,6 +161,7 @@ samp {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 1em; }
 
+  
 pre {
   margin-top: 0;
   margin-bottom: 1rem;

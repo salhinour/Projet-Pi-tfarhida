@@ -51,39 +51,110 @@ class __TwigTemplate_4fe5553aac67001245e2dcd7237e3761 extends Template
   ";
         // line 7
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 26
+        // line 28
         echo "</head>
 
 <body>
  <nav class=\"navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light\" id=\"ftco-navbar\">
-   <div class=\"container\">
-     <a class=\"navbar-brand\" href=\"/accueil\">Tfarhida<span>Bon plan</span></a>
-     <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#ftco-nav\" aria-controls=\"ftco-nav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
-       <span class=\"oi oi-menu\"></span> Menu
-     </button>
+\t\t<div class=\"container\">
+\t\t\t<a class=\"navbar-brand\" href=\"index.html\">Tfarhida<span>Bon plan</span></a>
+\t\t\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#ftco-nav\" aria-controls=\"ftco-nav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
+\t\t\t\t<span class=\"oi oi-menu\"></span> Menu
+\t\t\t</button>
 
-     <div class=\"collapse navbar-collapse\" id=\"ftco-nav\">
-       <ul class=\"navbar-nav ml-auto\">
-         <li class=\"nav-item\"><a href=\"accueil\" class=\"nav-link\">Home</a></li>
-         <li class=\"nav-item\"><a href=\"activite\" class=\"nav-link\">Transport</a></li>
-         \t<li class=\"nav-item\"><a href=\"moyen/transport/back\" class=\"nav-link\">Admin</a></li>
+\t\t\t<div class=\"collapse navbar-collapse\" id=\"ftco-nav\">
+\t\t\t\t<ul class=\"navbar-nav ml-auto\">
+\t\t\t\t\t<li class=\"nav-item \"><a href=\"/\" class=\"nav-link\">Home</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"act\" class=\"nav-link\">Activites</a></li>
+\t\t\t\t\t<li class=\"nav-item active\"><a href=\"activite\" class=\"nav-link\">Transports</a></li>
+\t\t\t\t\t<li class=\"nav-item \"><a href=\"logement\" class=\"nav-link\">Logements</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"restaurantfront\" class=\"nav-link\">restaurants</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"reclamation\" class=\"nav-link\">Reclamation</a></li>
+          <li <div id=\"google_translate_element\"></div> </li>
 
+\t\t\t\t
+\t\t\t
+\t\t\t ";
+        // line 50
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 50, $this->source); })()), "user", [], "any", false, false, false, 50)) {
+            // line 51
+            echo "\t\t\t   
 
-       </ul>
-     </div>
-   </div>
- </nav>
+\t\t\t\t ";
+            // line 53
+            if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+                // line 54
+                echo "\t\t\t\t <p><a href=\"";
+                echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_dashboard_index");
+                echo "\" class=\"btn btn-primary mr-md-4 py-3 px-4\"><span class=\"ion-ios-arrow-forward\">Admin</span> </a> </p>
+\t\t\t\t ";
+            }
+            // line 56
+            echo "\t\t <li class=\"nav-item dropdown no-arrow \">
+            <a aria-expanded=\"false\" aria-haspopup=\"true\" class=\"nav-link dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" id=\"userDropdown\" role=\"button\">
+                <span class=\"mr-2 d-none d-lg-inline text-gray-600 small\"><i class=\"far fa-user text-primary mr-2 fa-2x \"></i>  ";
+            // line 58
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 58, $this->source); })()), "user", [], "any", false, false, false, 58), "fullName", [], "any", false, false, false, 58), "html", null, true);
+            echo "</span>
+                            </a>
+            <!-- Dropdown - User Information -->
+            <div aria-labelledby=\"userDropdown\" class=\"dropdown-menu dropdown-menu-right shadow animated--grow-in\">
+                <a class=\"dropdown-item\" href=\"/admin/profil\">
+                    <i class=\"fas fa-user fa-sm fa-fw mr-2 text-gray-400\"></i>
+                    Profil
+                </a>
+\t\t\t\t  <a class=\"dropdown-item\" href=\"/logement/mylogement\">
+                    <i class=\"fas fa-list-ul text-gray-400\"></i>
+                    Mes Logements
+                </a>
+                <a class=\"dropdown-item\" href=\"/admin/parametre\">
+                    <i class=\"fas fa-cogs fa-sm fa-fw mr-2 text-gray-400\"></i>
+                    Paramètres
+                </a>
+                                <div class=\"dropdown-divider\"></div>
+                <a class=\"dropdown-item\"  href=\"";
+            // line 75
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\LogoutUrlExtension']->getLogoutPath("main"), "html", null, true);
+            echo "\">
+                    <i class=\"fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400\"></i>
+                    Déconnexion
+                </a>
+            </div>
+\t\t\t</ul>
+        </li>
+\t\t\t\t  ";
+            // line 84
+            echo "            ";
+            // line 85
+            echo "\t\t\t";
+        } else {
+            // line 86
+            echo "\t\t\t<p><a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
+            echo "\" class=\"btn btn-primary mr-md-4 py-3 px-4\"><span class=\"ion-ios-arrow-forward\">Login</span> </a> </p>
+\t\t\t<p><a href=\"";
+            // line 87
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("registration");
+            echo "\" class=\"btn btn-primary mr-md-4 py-3 px-4\"><span class=\"ion-ios-arrow-forward\">Register</span> </a> </p>
+            ";
+        }
+        // line 89
+        echo "\t\t</div>
+\t\t</div>
+\t</nav>
  <!-- END nav -->
 
  
- <section class=\"hero-wrap hero-wrap-2 js-fullheight\" style=\"background-image: url('/images/bg_1.2.jpg');\">
-  <div class=\"overlay\"></div>
-  <div class=\"container\">
-    <div class=\"row no-gutters slider-text js-fullheight align-items-end justify-content-center\">
-      <div class=\"col-md-9 ftco-animate pb-5 text-center\">
-       <h1 class=\"mb-0 bread\">Transport</h1>
-     </div>
-   </div>
+ <section class=\"hero-wrap hero-wrap-2 js-fullheight\" style=\"background-image: url('/images/transport.jpg');\">
+   <div class=\"overlay\"></div>
+    <div class=\"container\">
+        <div class=\"row no-gutters slider-text js-fullheight align-items-center\" data-scrollax-parent=\"true\">
+            <div class=\"col-md-7 ftco-animate\">
+                <span class=\"subheading\">Bienvenue dans Tfarhida</span>
+                <h1 class=\"mb-4\">Découvrir ton bon plan avec nous</h1>
+            </div>
+        </div>
+    </div>
  </div>
 </section>
 
@@ -94,7 +165,7 @@ class __TwigTemplate_4fe5553aac67001245e2dcd7237e3761 extends Template
       <!-- Existing Section (Left) -->
       <div class=\"col-md-4 d-flex ftco-animate\">
         <div class=\"blog-entry justify-content-end\">
-          <a href=\"blog-single.html\" class=\"block-20\" style=\"background-image: url('/images/image1.jpg');\" id=\"bord1\">
+          <a href=\"blog-single.html\" class=\"block-20\" style=\"background-image: url('/images/image1.jpg');\" id=\"#bord1\">
           </a>
           <div class=\"text\" id=\"bord1\">
             <div class=\"d-flex align-items-center mb-4\">
@@ -202,9 +273,9 @@ class __TwigTemplate_4fe5553aac67001245e2dcd7237e3761 extends Template
 <div id=\"ftco-loader\" class=\"show fullscreen\"><svg class=\"circular\" width=\"48px\" height=\"48px\"><circle class=\"path-bg\" cx=\"24\" cy=\"24\" r=\"22\" fill=\"none\" stroke-width=\"4\" stroke=\"#eeeeee\"/><circle class=\"path\" cx=\"24\" cy=\"24\" r=\"22\" fill=\"none\" stroke-width=\"4\" stroke-miterlimit=\"10\" stroke=\"#F96D00\"/></svg></div>
 
 ";
-        // line 175
+        // line 222
         $this->displayBlock('js', $context, $blocks);
-        // line 192
+        // line 249
         echo "</body>
 </html>
 ";
@@ -276,6 +347,8 @@ class __TwigTemplate_4fe5553aac67001245e2dcd7237e3761 extends Template
         // line 24
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/style.css"), "html", null, true);
         echo "\">
+  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css\">
+
     ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -285,7 +358,7 @@ class __TwigTemplate_4fe5553aac67001245e2dcd7237e3761 extends Template
 
     }
 
-    // line 175
+    // line 222
     public function block_js($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -295,66 +368,76 @@ class __TwigTemplate_4fe5553aac67001245e2dcd7237e3761 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "js"));
 
-        // line 176
+        // line 223
         echo "<script src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 177
+        // line 224
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery-migrate-3.0.1.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 178
+        // line 225
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/popper.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 179
+        // line 226
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 180
+        // line 227
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery.easing.1.3.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 181
+        // line 228
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery.waypoints.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 182
+        // line 229
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery.stellar.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 183
+        // line 230
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/owl.carousel.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 184
+        // line 231
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery.magnific-popup.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 185
+        // line 232
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery.animateNumber.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 186
+        // line 233
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/bootstrap-datepicker.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 187
+        // line 234
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/scrollax.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 188
+        // line 235
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 189
+        // line 236
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/google-map.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 190
+        // line 237
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/main.js"), "html", null, true);
         echo "\"></script>
+<script src=\"script.js\"></script>
+      <script type=\"text/javascript\">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        } 
+  </script>
+  <script type=\"text/javascript\" src=\"https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit\"></script>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -375,9 +458,17 @@ class __TwigTemplate_4fe5553aac67001245e2dcd7237e3761 extends Template
     /**
      * @codeCoverageIgnore
      */
+    public function isTraitable()
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo()
     {
-        return array (  356 => 190,  352 => 189,  348 => 188,  344 => 187,  340 => 186,  336 => 185,  332 => 184,  328 => 183,  324 => 182,  320 => 181,  316 => 180,  312 => 179,  308 => 178,  304 => 177,  299 => 176,  289 => 175,  277 => 24,  273 => 23,  267 => 20,  263 => 19,  258 => 17,  254 => 16,  250 => 15,  245 => 13,  240 => 11,  235 => 9,  230 => 8,  220 => 7,  208 => 192,  206 => 175,  55 => 26,  53 => 7,  45 => 1,);
+        return array (  429 => 237,  425 => 236,  421 => 235,  417 => 234,  413 => 233,  409 => 232,  405 => 231,  401 => 230,  397 => 229,  393 => 228,  389 => 227,  385 => 226,  381 => 225,  377 => 224,  372 => 223,  362 => 222,  348 => 24,  344 => 23,  338 => 20,  334 => 19,  329 => 17,  325 => 16,  321 => 15,  316 => 13,  311 => 11,  306 => 9,  301 => 8,  291 => 7,  279 => 249,  277 => 222,  142 => 89,  137 => 87,  132 => 86,  129 => 85,  127 => 84,  117 => 75,  97 => 58,  93 => 56,  87 => 54,  85 => 53,  81 => 51,  79 => 50,  55 => 28,  53 => 7,  45 => 1,);
     }
 
     public function getSourceContext()
@@ -406,39 +497,86 @@ class __TwigTemplate_4fe5553aac67001245e2dcd7237e3761 extends Template
   
   <link rel=\"stylesheet\" href=\"{{asset('css/flaticon.css')}}\">
 \t<link rel=\"stylesheet\" href=\"{{asset('css/style.css')}}\">
+  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css\">
+
     {% endblock %}
 </head>
 
 <body>
  <nav class=\"navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light\" id=\"ftco-navbar\">
-   <div class=\"container\">
-     <a class=\"navbar-brand\" href=\"/accueil\">Tfarhida<span>Bon plan</span></a>
-     <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#ftco-nav\" aria-controls=\"ftco-nav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
-       <span class=\"oi oi-menu\"></span> Menu
-     </button>
+\t\t<div class=\"container\">
+\t\t\t<a class=\"navbar-brand\" href=\"index.html\">Tfarhida<span>Bon plan</span></a>
+\t\t\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#ftco-nav\" aria-controls=\"ftco-nav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
+\t\t\t\t<span class=\"oi oi-menu\"></span> Menu
+\t\t\t</button>
 
-     <div class=\"collapse navbar-collapse\" id=\"ftco-nav\">
-       <ul class=\"navbar-nav ml-auto\">
-         <li class=\"nav-item\"><a href=\"accueil\" class=\"nav-link\">Home</a></li>
-         <li class=\"nav-item\"><a href=\"activite\" class=\"nav-link\">Transport</a></li>
-         \t<li class=\"nav-item\"><a href=\"moyen/transport/back\" class=\"nav-link\">Admin</a></li>
+\t\t\t<div class=\"collapse navbar-collapse\" id=\"ftco-nav\">
+\t\t\t\t<ul class=\"navbar-nav ml-auto\">
+\t\t\t\t\t<li class=\"nav-item \"><a href=\"/\" class=\"nav-link\">Home</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"act\" class=\"nav-link\">Activites</a></li>
+\t\t\t\t\t<li class=\"nav-item active\"><a href=\"activite\" class=\"nav-link\">Transports</a></li>
+\t\t\t\t\t<li class=\"nav-item \"><a href=\"logement\" class=\"nav-link\">Logements</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"restaurantfront\" class=\"nav-link\">restaurants</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"reclamation\" class=\"nav-link\">Reclamation</a></li>
+          <li <div id=\"google_translate_element\"></div> </li>
 
+\t\t\t\t
+\t\t\t
+\t\t\t {% if app.user %}
+\t\t\t   
 
-       </ul>
-     </div>
-   </div>
- </nav>
+\t\t\t\t {% if is_granted('ROLE_ADMIN') %}
+\t\t\t\t <p><a href=\"{{ path('admin_dashboard_index') }}\" class=\"btn btn-primary mr-md-4 py-3 px-4\"><span class=\"ion-ios-arrow-forward\">Admin</span> </a> </p>
+\t\t\t\t {% endif %}
+\t\t <li class=\"nav-item dropdown no-arrow \">
+            <a aria-expanded=\"false\" aria-haspopup=\"true\" class=\"nav-link dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" id=\"userDropdown\" role=\"button\">
+                <span class=\"mr-2 d-none d-lg-inline text-gray-600 small\"><i class=\"far fa-user text-primary mr-2 fa-2x \"></i>  {{ app.user.fullName }}</span>
+                            </a>
+            <!-- Dropdown - User Information -->
+            <div aria-labelledby=\"userDropdown\" class=\"dropdown-menu dropdown-menu-right shadow animated--grow-in\">
+                <a class=\"dropdown-item\" href=\"/admin/profil\">
+                    <i class=\"fas fa-user fa-sm fa-fw mr-2 text-gray-400\"></i>
+                    Profil
+                </a>
+\t\t\t\t  <a class=\"dropdown-item\" href=\"/logement/mylogement\">
+                    <i class=\"fas fa-list-ul text-gray-400\"></i>
+                    Mes Logements
+                </a>
+                <a class=\"dropdown-item\" href=\"/admin/parametre\">
+                    <i class=\"fas fa-cogs fa-sm fa-fw mr-2 text-gray-400\"></i>
+                    Paramètres
+                </a>
+                                <div class=\"dropdown-divider\"></div>
+                <a class=\"dropdown-item\"  href=\"{{ logout_path('main') }}\">
+                    <i class=\"fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400\"></i>
+                    Déconnexion
+                </a>
+            </div>
+\t\t\t</ul>
+        </li>
+\t\t\t\t  {# <span class=\"mr-2 d-none d-lg-inline text-gray-600 small\"><i class=\"far fa-user text-primary mr-2 fa-2x \"></i>
+\t\t\t\t  {{ app.user.fullName }}</span> #}
+            {# <p><a href=\"{{ logout_path('main') }}\" class=\"btn btn-primary mr-md-4 py-3 px-4\"><span class=\"ion-ios-arrow-forward\">Logout</span> </a> </p> #}
+\t\t\t{% else %}
+\t\t\t<p><a href=\"{{ path('login') }}\" class=\"btn btn-primary mr-md-4 py-3 px-4\"><span class=\"ion-ios-arrow-forward\">Login</span> </a> </p>
+\t\t\t<p><a href=\"{{ path('registration') }}\" class=\"btn btn-primary mr-md-4 py-3 px-4\"><span class=\"ion-ios-arrow-forward\">Register</span> </a> </p>
+            {% endif %}
+\t\t</div>
+\t\t</div>
+\t</nav>
  <!-- END nav -->
 
  
- <section class=\"hero-wrap hero-wrap-2 js-fullheight\" style=\"background-image: url('/images/bg_1.2.jpg');\">
-  <div class=\"overlay\"></div>
-  <div class=\"container\">
-    <div class=\"row no-gutters slider-text js-fullheight align-items-end justify-content-center\">
-      <div class=\"col-md-9 ftco-animate pb-5 text-center\">
-       <h1 class=\"mb-0 bread\">Transport</h1>
-     </div>
-   </div>
+ <section class=\"hero-wrap hero-wrap-2 js-fullheight\" style=\"background-image: url('/images/transport.jpg');\">
+   <div class=\"overlay\"></div>
+    <div class=\"container\">
+        <div class=\"row no-gutters slider-text js-fullheight align-items-center\" data-scrollax-parent=\"true\">
+            <div class=\"col-md-7 ftco-animate\">
+                <span class=\"subheading\">Bienvenue dans Tfarhida</span>
+                <h1 class=\"mb-4\">Découvrir ton bon plan avec nous</h1>
+            </div>
+        </div>
+    </div>
  </div>
 </section>
 
@@ -449,7 +587,7 @@ class __TwigTemplate_4fe5553aac67001245e2dcd7237e3761 extends Template
       <!-- Existing Section (Left) -->
       <div class=\"col-md-4 d-flex ftco-animate\">
         <div class=\"blog-entry justify-content-end\">
-          <a href=\"blog-single.html\" class=\"block-20\" style=\"background-image: url('/images/image1.jpg');\" id=\"bord1\">
+          <a href=\"blog-single.html\" class=\"block-20\" style=\"background-image: url('/images/image1.jpg');\" id=\"#bord1\">
           </a>
           <div class=\"text\" id=\"bord1\">
             <div class=\"d-flex align-items-center mb-4\">
@@ -572,6 +710,16 @@ class __TwigTemplate_4fe5553aac67001245e2dcd7237e3761 extends Template
 <script src=\"{{asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false')}}\"></script>
 <script src=\"{{asset('js/google-map.js')}}\"></script>
 <script src=\"{{asset('js/main.js')}}\"></script>
+<script src=\"script.js\"></script>
+      <script type=\"text/javascript\">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        } 
+  </script>
+  <script type=\"text/javascript\" src=\"https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit\"></script>
 {% endblock %}
 </body>
 </html>

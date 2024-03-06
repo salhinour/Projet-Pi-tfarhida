@@ -31,8 +31,8 @@ class __TwigTemplate_261698d0874c41683ea8aec9460beaf6 extends Template
 
     protected function doGetParent(array $context)
     {
-        // line 1
-        return "baseback.html.twig";
+        // line 2
+        return "admin/layout.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
@@ -44,7 +44,7 @@ class __TwigTemplate_261698d0874c41683ea8aec9460beaf6 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "reponse_back/index.html.twig"));
 
-        $this->parent = $this->loadTemplate("baseback.html.twig", "reponse_back/index.html.twig", 1);
+        $this->parent = $this->loadTemplate("admin/layout.html.twig", "reponse_back/index.html.twig", 2);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -54,7 +54,7 @@ class __TwigTemplate_261698d0874c41683ea8aec9460beaf6 extends Template
 
     }
 
-    // line 3
+    // line 5
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -64,7 +64,7 @@ class __TwigTemplate_261698d0874c41683ea8aec9460beaf6 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 4
+        // line 6
         echo "    <div class=\"container\">
         <h1>Liste des Réponses</h1>
 
@@ -80,36 +80,36 @@ class __TwigTemplate_261698d0874c41683ea8aec9460beaf6 extends Template
                 </thead>
                 <tbody>
                     ";
-        // line 18
+        // line 20
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["reponses"]) || array_key_exists("reponses", $context) ? $context["reponses"] : (function () { throw new RuntimeError('Variable "reponses" does not exist.', 18, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["reponses"]) || array_key_exists("reponses", $context) ? $context["reponses"] : (function () { throw new RuntimeError('Variable "reponses" does not exist.', 20, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["reponse"]) {
-            // line 19
+            // line 21
             echo "                        <tr>
                             <td>";
-            // line 20
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reponse"], "id", [], "any", false, false, false, 20), "html", null, true);
-            echo "</td>
-                            <td>";
-            // line 21
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reponse"], "description", [], "any", false, false, false, 21), "html", null, true);
-            echo "</td>
-                            <td>";
             // line 22
-            ((twig_get_attribute($this->env, $this->source, $context["reponse"], "date", [], "any", false, false, false, 22)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reponse"], "date", [], "any", false, false, false, 22), "Y-m-d"), "html", null, true))) : (print ("")));
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reponse"], "id", [], "any", false, false, false, 22), "html", null, true);
+            echo "</td>
+                            <td>";
+            // line 23
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reponse"], "description", [], "any", false, false, false, 23), "html", null, true);
+            echo "</td>
+                            <td>";
+            // line 24
+            ((twig_get_attribute($this->env, $this->source, $context["reponse"], "date", [], "any", false, false, false, 24)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reponse"], "date", [], "any", false, false, false, 24), "Y-m-d"), "html", null, true))) : (print ("")));
             echo "</td>
                             <td>
                                 
                                   <a href=\"";
-            // line 25
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reponse_back_show", ["id" => twig_get_attribute($this->env, $this->source, $context["reponse"], "id", [], "any", false, false, false, 25)]), "html", null, true);
+            // line 27
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reponse_back_show", ["id" => twig_get_attribute($this->env, $this->source, $context["reponse"], "id", [], "any", false, false, false, 27)]), "html", null, true);
             echo "\" class=\"btn btn-primary mr-2\">
                             <i class=\"fas fa-eye\"></i> 
                         </a>
                                 <a href=\"";
-            // line 28
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reponse_back_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["reponse"], "id", [], "any", false, false, false, 28)]), "html", null, true);
+            // line 30
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reponse_back_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["reponse"], "id", [], "any", false, false, false, 30)]), "html", null, true);
             echo "\" class=\"btn btn-secondary\">Edit</a>
                             </td>
                         </tr>
@@ -117,7 +117,7 @@ class __TwigTemplate_261698d0874c41683ea8aec9460beaf6 extends Template
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 32
+            // line 34
             echo "                        <tr>
                             <td colspan=\"5\">No records found</td>
                         </tr>
@@ -126,13 +126,13 @@ class __TwigTemplate_261698d0874c41683ea8aec9460beaf6 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['reponse'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 36
+        // line 38
         echo "                </tbody>
             </table>
         </div>
  
         <a href=\"";
-        // line 40
+        // line 42
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reponse_back_new");
         echo "\" class=\"btn btn-success\">Create New</a>
     </div>
@@ -177,12 +177,14 @@ class __TwigTemplate_261698d0874c41683ea8aec9460beaf6 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  136 => 40,  130 => 36,  121 => 32,  112 => 28,  106 => 25,  100 => 22,  96 => 21,  92 => 20,  89 => 19,  84 => 18,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  136 => 42,  130 => 38,  121 => 34,  112 => 30,  106 => 27,  100 => 24,  96 => 23,  92 => 22,  89 => 21,  84 => 20,  68 => 6,  58 => 5,  35 => 2,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'baseback.html.twig' %}
+        return new Source("{# {% extends 'baseback.html.twig' %} #}
+{% extends \"admin/layout.html.twig\" %}
+
 
 {% block body %}
     <div class=\"container\">

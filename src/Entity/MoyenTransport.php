@@ -48,6 +48,9 @@ class MoyenTransport
     #[ORM\Column(length: 255)]
     
     private ?string $image = null;
+
+    #[ORM\ManyToOne(inversedBy: 'Transports')]
+    private ?User $user = null;
     public function __construct()
     {
         $this->trajets = new ArrayCollection();
@@ -156,6 +159,18 @@ class MoyenTransport
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

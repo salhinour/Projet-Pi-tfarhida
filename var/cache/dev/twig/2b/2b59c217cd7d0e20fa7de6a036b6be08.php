@@ -56,13 +56,13 @@ class __TwigTemplate_7abd8db80781eb475f5e7dd220b7d963 extends Template
 \t";
         // line 7
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 26
+        // line 27
         echo "</head>
 <body>
 ";
-        // line 28
+        // line 29
         $this->displayBlock('body', $context, $blocks);
-        // line 828
+        // line 863
         echo "\t\t</html>";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -109,7 +109,7 @@ class __TwigTemplate_7abd8db80781eb475f5e7dd220b7d963 extends Template
         // line 9
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("https://fonts.googleapis.com/css2?family=Arizonia&display=swap"), "html", null, true);
         echo "\" rel=\"stylesheet\">
-
+ <link rel=\"stylesheet\" href=\"styles.css\">
 \t<link rel=\"stylesheet\" href=\"";
         // line 11
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"), "html", null, true);
@@ -119,35 +119,36 @@ class __TwigTemplate_7abd8db80781eb475f5e7dd220b7d963 extends Template
         // line 13
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/animate.css"), "html", null, true);
         echo "\">
-\t
+\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css\">
+
 \t<link rel=\"stylesheet\" href=\"";
-        // line 15
+        // line 16
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/owl.carousel.min.css"), "html", null, true);
         echo "\">
 \t<link rel=\"stylesheet\" href=\"";
-        // line 16
+        // line 17
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/owl.theme.default.min.css"), "html", null, true);
         echo "\">
 \t<link rel=\"stylesheet\" href=\"";
-        // line 17
+        // line 18
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/magnific-popup.css"), "html", null, true);
         echo "\">
 
 \t<link rel=\"stylesheet\" href=\"";
-        // line 19
+        // line 20
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/bootstrap-datepicker.css"), "html", null, true);
         echo "\">
 \t<link rel=\"stylesheet\" href=\"";
-        // line 20
+        // line 21
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/jquery.timepicker.css"), "html", null, true);
         echo "\">
 
 \t<link rel=\"stylesheet\" href=\"";
-        // line 22
+        // line 23
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/flaticon.css"), "html", null, true);
         echo "\">
 \t<link rel=\"stylesheet\" href=\"";
-        // line 23
+        // line 24
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/style.css"), "html", null, true);
         echo "\">
 
@@ -160,7 +161,7 @@ class __TwigTemplate_7abd8db80781eb475f5e7dd220b7d963 extends Template
 
     }
 
-    // line 28
+    // line 29
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -170,7 +171,7 @@ class __TwigTemplate_7abd8db80781eb475f5e7dd220b7d963 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 29
+        // line 30
         echo "\t<nav class=\"navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light\" id=\"ftco-navbar\">
 \t\t<div class=\"container\">
 \t\t\t<a class=\"navbar-brand\" href=\"index.html\">Tfarhida<span>Bon plan</span></a>
@@ -181,49 +182,89 @@ class __TwigTemplate_7abd8db80781eb475f5e7dd220b7d963 extends Template
 \t\t\t<div class=\"collapse navbar-collapse\" id=\"ftco-nav\">
 \t\t\t\t<ul class=\"navbar-nav ml-auto\">
 \t\t\t\t\t<li class=\"nav-item active\"><a href=\"accueil\" class=\"nav-link\">Home</a></li>
-\t\t\t\t\t<li class=\"nav-item\"><a href=\"about.html\" class=\"nav-link\">About</a></li>
-\t\t\t\t\t<li class=\"nav-item\"><a href=\"activite\" class=\"nav-link\">Activite</a></li>
-\t\t\t\t\t<li class=\"nav-item\"><a href=\"hotel.html\" class=\"nav-link\">Hotel</a></li>
-\t\t\t\t\t<li class=\"nav-item\"><a href=\"blog.html\" class=\"nav-link\">Blog</a></li>
-\t\t\t\t\t<li class=\"nav-item\"><a href=\"contact.html\" class=\"nav-link\">Contact</a></li>
-\t\t\t\t</ul>
-\t\t\t</div>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"act\" class=\"nav-link\">Activites</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"activite\" class=\"nav-link\">Transports</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"logement\" class=\"nav-link\">Logements</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"restaurant\" class=\"nav-link\">restaurants</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"reclamation\" class=\"nav-link\">Reclamation</a></li>
+\t\t\t\t
+\t\t\t
 \t\t\t ";
-        // line 46
-        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 46, $this->source); })()), "user", [], "any", false, false, false, 46)) {
-            // line 47
+        // line 47
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 47, $this->source); })()), "user", [], "any", false, false, false, 47)) {
+            // line 48
             echo "\t\t\t     ";
-            // line 60
-            echo "\t\t\t\t ";
+            // line 61
+            echo "
+\t\t\t\t ";
+            // line 62
             if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
-                // line 61
+                // line 63
                 echo "\t\t\t\t <p><a href=\"";
                 echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_dashboard_index");
                 echo "\" class=\"btn btn-primary mr-md-4 py-3 px-4\"><span class=\"ion-ios-arrow-forward\">Admin</span> </a> </p>
 \t\t\t\t ";
             }
-            // line 63
-            echo "\t\t\t\t  <span class=\"mr-2 d-none d-lg-inline text-gray-600 small\"><i class=\"far fa-user text-primary mr-2 fa-2x \"></i>";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 63, $this->source); })()), "user", [], "any", false, false, false, 63), "fullName", [], "any", false, false, false, 63), "html", null, true);
+            // line 65
+            echo "\t\t <li class=\"nav-item dropdown no-arrow \">
+            <a aria-expanded=\"false\" aria-haspopup=\"true\" class=\"nav-link dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" id=\"userDropdown\" role=\"button\">
+                <span class=\"mr-2 d-none d-lg-inline text-gray-600 small\"><i class=\"far fa-user text-primary mr-2 fa-2x \"></i>  ";
+            // line 67
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 67, $this->source); })()), "user", [], "any", false, false, false, 67), "fullName", [], "any", false, false, false, 67), "html", null, true);
             echo "</span>
-            <p><a href=\"";
-            // line 64
+                            </a>
+            <!-- Dropdown - User Information -->
+            <div aria-labelledby=\"userDropdown\" class=\"dropdown-menu dropdown-menu-right shadow animated--grow-in\">
+                <a class=\"dropdown-item\" href=\"/admin/profil\">
+                    <i class=\"fas fa-user fa-sm fa-fw mr-2 text-gray-400\"></i>
+                    Profil
+                </a>
+\t\t\t\t  <a class=\"dropdown-item\" href=\"/logement/mylogement\">
+                    <i class=\"fas fa-list-ul text-gray-400\"></i>
+                    Mes Logements
+                </a>
+\t\t\t\t <a class=\"dropdown-item\" href=\"";
+            // line 79
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_front_mestransport");
+            echo "\">
+                    <i class=\"fas fa-list-ul text-gray-400\"></i>
+                    Mes Moyen Transport
+                </a>
+\t\t\t\t
+                <a class=\"dropdown-item\" href=\"/admin/parametre\">
+                    <i class=\"fas fa-cogs fa-sm fa-fw mr-2 text-gray-400\"></i>
+                    Paramètres
+                </a>
+                                <div class=\"dropdown-divider\"></div>
+                <a class=\"dropdown-item\"  href=\"";
+            // line 89
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\LogoutUrlExtension']->getLogoutPath("main"), "html", null, true);
-            echo "\" class=\"btn btn-primary mr-md-4 py-3 px-4\"><span class=\"ion-ios-arrow-forward\">Logout</span> </a> </p>
-\t\t\t";
+            echo "\">
+                    <i class=\"fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400\"></i>
+                    Déconnexion
+                </a>
+            </div>
+\t\t\t</ul>
+        </li>
+\t\t\t\t  ";
+            // line 98
+            echo "            ";
+            // line 99
+            echo "\t\t\t";
         } else {
-            // line 66
+            // line 100
             echo "\t\t\t<p><a href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
             echo "\" class=\"btn btn-primary mr-md-4 py-3 px-4\"><span class=\"ion-ios-arrow-forward\">Login</span> </a> </p>
 \t\t\t<p><a href=\"";
-            // line 67
+            // line 101
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("registration");
             echo "\" class=\"btn btn-primary mr-md-4 py-3 px-4\"><span class=\"ion-ios-arrow-forward\">Register</span> </a> </p>
             ";
         }
-        // line 69
+        // line 103
         echo "\t\t</div>
+\t\t</div>
 \t</nav>
 \t<!-- END nav -->
 \t
@@ -964,9 +1005,9 @@ class __TwigTemplate_7abd8db80781eb475f5e7dd220b7d963 extends Template
 \t\t\t<div id=\"ftco-loader\" class=\"show fullscreen\"><svg class=\"circular\" width=\"48px\" height=\"48px\"><circle class=\"path-bg\" cx=\"24\" cy=\"24\" r=\"22\" fill=\"none\" stroke-width=\"4\" stroke=\"#eeeeee\"/><circle class=\"path\" cx=\"24\" cy=\"24\" r=\"22\" fill=\"none\" stroke-width=\"4\" stroke-miterlimit=\"10\" stroke=\"#F96D00\"/></svg></div>
 
 ";
-        // line 809
+        // line 844
         $this->displayBlock('js', $context, $blocks);
-        // line 826
+        // line 861
         echo "\t\t</body>
 \t\t";
         
@@ -977,7 +1018,7 @@ class __TwigTemplate_7abd8db80781eb475f5e7dd220b7d963 extends Template
 
     }
 
-    // line 809
+    // line 844
     public function block_js($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -987,64 +1028,64 @@ class __TwigTemplate_7abd8db80781eb475f5e7dd220b7d963 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "js"));
 
-        // line 810
+        // line 845
         echo "\t\t\t<script src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 811
+        // line 846
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery-migrate-3.0.1.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 812
+        // line 847
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/popper.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 813
+        // line 848
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 814
+        // line 849
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery.easing.1.3.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 815
+        // line 850
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery.waypoints.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 816
+        // line 851
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery.stellar.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 817
+        // line 852
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/owl.carousel.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 818
+        // line 853
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery.magnific-popup.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 819
+        // line 854
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery.animateNumber.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 820
+        // line 855
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/bootstrap-datepicker.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 821
+        // line 856
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/scrollax.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 822
+        // line 857
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 823
+        // line 858
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/google-map.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 824
+        // line 859
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/main.js"), "html", null, true);
         echo "\"></script>
 \t\t\t";
@@ -1069,7 +1110,7 @@ class __TwigTemplate_7abd8db80781eb475f5e7dd220b7d963 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  1048 => 824,  1044 => 823,  1040 => 822,  1036 => 821,  1032 => 820,  1028 => 819,  1024 => 818,  1020 => 817,  1016 => 816,  1012 => 815,  1008 => 814,  1004 => 813,  1000 => 812,  996 => 811,  991 => 810,  981 => 809,  970 => 826,  968 => 809,  226 => 69,  221 => 67,  216 => 66,  211 => 64,  206 => 63,  200 => 61,  197 => 60,  195 => 47,  193 => 46,  174 => 29,  164 => 28,  151 => 23,  147 => 22,  142 => 20,  138 => 19,  133 => 17,  129 => 16,  125 => 15,  120 => 13,  115 => 11,  110 => 9,  105 => 8,  95 => 7,  76 => 4,  66 => 828,  64 => 28,  60 => 26,  58 => 7,  52 => 4,  47 => 1,);
+        return array (  1089 => 859,  1085 => 858,  1081 => 857,  1077 => 856,  1073 => 855,  1069 => 854,  1065 => 853,  1061 => 852,  1057 => 851,  1053 => 850,  1049 => 849,  1045 => 848,  1041 => 847,  1037 => 846,  1032 => 845,  1022 => 844,  1011 => 861,  1009 => 844,  266 => 103,  261 => 101,  256 => 100,  253 => 99,  251 => 98,  241 => 89,  228 => 79,  213 => 67,  209 => 65,  203 => 63,  201 => 62,  198 => 61,  196 => 48,  194 => 47,  175 => 30,  165 => 29,  152 => 24,  148 => 23,  143 => 21,  139 => 20,  134 => 18,  130 => 17,  126 => 16,  120 => 13,  115 => 11,  110 => 9,  105 => 8,  95 => 7,  76 => 4,  66 => 863,  64 => 29,  60 => 27,  58 => 7,  52 => 4,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -1083,11 +1124,12 @@ class __TwigTemplate_7abd8db80781eb475f5e7dd220b7d963 extends Template
 \t{% block stylesheets%}
 \t<link href=\"{{asset('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900')}}\" rel=\"stylesheet\">
 \t<link href=\"{{asset('https://fonts.googleapis.com/css2?family=Arizonia&display=swap')}}\" rel=\"stylesheet\">
-
+ <link rel=\"stylesheet\" href=\"styles.css\">
 \t<link rel=\"stylesheet\" href=\"{{asset('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')}}\">
 
 \t\t<link rel=\"stylesheet\" href=\"{{asset('css/animate.css')}}\">
-\t
+\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css\">
+
 \t<link rel=\"stylesheet\" href=\"{{asset('css/owl.carousel.min.css')}}\">
 \t<link rel=\"stylesheet\" href=\"{{asset('css/owl.theme.default.min.css')}}\">
 \t<link rel=\"stylesheet\" href=\"{{asset('css/magnific-popup.css')}}\">
@@ -1112,13 +1154,13 @@ class __TwigTemplate_7abd8db80781eb475f5e7dd220b7d963 extends Template
 \t\t\t<div class=\"collapse navbar-collapse\" id=\"ftco-nav\">
 \t\t\t\t<ul class=\"navbar-nav ml-auto\">
 \t\t\t\t\t<li class=\"nav-item active\"><a href=\"accueil\" class=\"nav-link\">Home</a></li>
-\t\t\t\t\t<li class=\"nav-item\"><a href=\"about.html\" class=\"nav-link\">About</a></li>
-\t\t\t\t\t<li class=\"nav-item\"><a href=\"activite\" class=\"nav-link\">Activite</a></li>
-\t\t\t\t\t<li class=\"nav-item\"><a href=\"hotel.html\" class=\"nav-link\">Hotel</a></li>
-\t\t\t\t\t<li class=\"nav-item\"><a href=\"blog.html\" class=\"nav-link\">Blog</a></li>
-\t\t\t\t\t<li class=\"nav-item\"><a href=\"contact.html\" class=\"nav-link\">Contact</a></li>
-\t\t\t\t</ul>
-\t\t\t</div>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"act\" class=\"nav-link\">Activites</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"activite\" class=\"nav-link\">Transports</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"logement\" class=\"nav-link\">Logements</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"restaurant\" class=\"nav-link\">restaurants</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"reclamation\" class=\"nav-link\">Reclamation</a></li>
+\t\t\t\t
+\t\t\t
 \t\t\t {% if app.user %}
 \t\t\t     {# {% if is_granted('ROLE_USER') %}
                     <li class=\"nav-item dropdown\">
@@ -1133,15 +1175,49 @@ class __TwigTemplate_7abd8db80781eb475f5e7dd220b7d963 extends Template
                         </div>
                     </li>
                     {% endif %} #}
+
 \t\t\t\t {% if is_granted('ROLE_ADMIN') %}
 \t\t\t\t <p><a href=\"{{ path('admin_dashboard_index') }}\" class=\"btn btn-primary mr-md-4 py-3 px-4\"><span class=\"ion-ios-arrow-forward\">Admin</span> </a> </p>
 \t\t\t\t {% endif %}
-\t\t\t\t  <span class=\"mr-2 d-none d-lg-inline text-gray-600 small\"><i class=\"far fa-user text-primary mr-2 fa-2x \"></i>{{ app.user.fullName }}</span>
-            <p><a href=\"{{ logout_path('main') }}\" class=\"btn btn-primary mr-md-4 py-3 px-4\"><span class=\"ion-ios-arrow-forward\">Logout</span> </a> </p>
+\t\t <li class=\"nav-item dropdown no-arrow \">
+            <a aria-expanded=\"false\" aria-haspopup=\"true\" class=\"nav-link dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" id=\"userDropdown\" role=\"button\">
+                <span class=\"mr-2 d-none d-lg-inline text-gray-600 small\"><i class=\"far fa-user text-primary mr-2 fa-2x \"></i>  {{ app.user.fullName }}</span>
+                            </a>
+            <!-- Dropdown - User Information -->
+            <div aria-labelledby=\"userDropdown\" class=\"dropdown-menu dropdown-menu-right shadow animated--grow-in\">
+                <a class=\"dropdown-item\" href=\"/admin/profil\">
+                    <i class=\"fas fa-user fa-sm fa-fw mr-2 text-gray-400\"></i>
+                    Profil
+                </a>
+\t\t\t\t  <a class=\"dropdown-item\" href=\"/logement/mylogement\">
+                    <i class=\"fas fa-list-ul text-gray-400\"></i>
+                    Mes Logements
+                </a>
+\t\t\t\t <a class=\"dropdown-item\" href=\"{{path('app_front_mestransport')}}\">
+                    <i class=\"fas fa-list-ul text-gray-400\"></i>
+                    Mes Moyen Transport
+                </a>
+\t\t\t\t
+                <a class=\"dropdown-item\" href=\"/admin/parametre\">
+                    <i class=\"fas fa-cogs fa-sm fa-fw mr-2 text-gray-400\"></i>
+                    Paramètres
+                </a>
+                                <div class=\"dropdown-divider\"></div>
+                <a class=\"dropdown-item\"  href=\"{{ logout_path('main') }}\">
+                    <i class=\"fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400\"></i>
+                    Déconnexion
+                </a>
+            </div>
+\t\t\t</ul>
+        </li>
+\t\t\t\t  {# <span class=\"mr-2 d-none d-lg-inline text-gray-600 small\"><i class=\"far fa-user text-primary mr-2 fa-2x \"></i>
+\t\t\t\t  {{ app.user.fullName }}</span> #}
+            {# <p><a href=\"{{ logout_path('main') }}\" class=\"btn btn-primary mr-md-4 py-3 px-4\"><span class=\"ion-ios-arrow-forward\">Logout</span> </a> </p> #}
 \t\t\t{% else %}
 \t\t\t<p><a href=\"{{ path('login') }}\" class=\"btn btn-primary mr-md-4 py-3 px-4\"><span class=\"ion-ios-arrow-forward\">Login</span> </a> </p>
 \t\t\t<p><a href=\"{{ path('registration') }}\" class=\"btn btn-primary mr-md-4 py-3 px-4\"><span class=\"ion-ios-arrow-forward\">Register</span> </a> </p>
             {% endif %}
+\t\t</div>
 \t\t</div>
 \t</nav>
 \t<!-- END nav -->

@@ -24,16 +24,12 @@ class __TwigTemplate_7d75a4b54acf199a8d4dd49a11c58c16 extends Template
 
         $this->source = $this->getSourceContext();
 
+        $this->parent = false;
+
         $this->blocks = [
             'title' => [$this, 'block_title'],
-            'body' => [$this, 'block_body'],
+            'content' => [$this, 'block_content'],
         ];
-    }
-
-    protected function doGetParent(array $context)
-    {
-        // line 1
-        return "admin/base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
@@ -45,8 +41,17 @@ class __TwigTemplate_7d75a4b54acf199a8d4dd49a11c58c16 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "security/forgot_password.html.twig"));
 
-        $this->parent = $this->loadTemplate("admin/base.html.twig", "security/forgot_password.html.twig", 1);
-        $this->parent->display($context, array_merge($this->blocks, $blocks));
+        // line 48
+        echo "
+
+";
+        // line 50
+        $this->displayBlock('title', $context, $blocks);
+        // line 51
+        echo "
+";
+        // line 52
+        $this->displayBlock('content', $context, $blocks);
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
@@ -55,7 +60,7 @@ class __TwigTemplate_7d75a4b54acf199a8d4dd49a11c58c16 extends Template
 
     }
 
-    // line 3
+    // line 50
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -65,7 +70,7 @@ class __TwigTemplate_7d75a4b54acf199a8d4dd49a11c58c16 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Mot de passe oublie";
+        echo "Forget Password";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -74,89 +79,61 @@ class __TwigTemplate_7d75a4b54acf199a8d4dd49a11c58c16 extends Template
 
     }
 
-    // line 5
-    public function block_body($context, array $blocks = [])
+    // line 52
+    public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 6
-        echo "<div class=\"container\">
-    <div class=\"row justify-content-center\">
-        <div class=\"col-xl-10 col-lg-12 col-md-9\">
-            <div class=\"card o-hidden border-0 shadow-lg my-5\">
-                <div class=\"card-body p-0\">
-                    <div class=\"row\">
-                        <div class=\"col-lg-6 d-none d-lg-block bg-login-image\" style=\"background: url('";
-        // line 12
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/login.jpg"), "html", null, true);
-        echo "'); background-size: cover;\"></div>
-                        <div class=\"col-lg-6\">
-                            <div class=\"p-5\">
-                                <div class=\"text-center\">
-                                    <h1 class=\"h4 text-gray-900 mb-4\">Mot de passe oublié</h1>
-                                </div>
-                                <hr>
-                                ";
-        // line 19
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 19, $this->source); })()), "flashes", [], "any", false, false, false, 19));
-        foreach ($context['_seq'] as $context["label"] => $context["messages"]) {
-            // line 20
-            echo "                                    <div class=\"container\">
-                                        <div class=\"alert alert-";
-            // line 21
-            echo twig_escape_filter($this->env, $context["label"], "html", null, true);
-            echo "\">
-                                            ";
-            // line 22
-            $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable($context["messages"]);
-            foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-                // line 23
-                echo "                                                <p>";
-                echo $context["message"];
-                echo "</p>
-                                            ";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 25
-            echo "                                        </div>
-                                    </div>
-                                ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['label'], $context['messages'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 28
-        echo "                                <form method=\"post\" class=\"user\">
-                                    <div class=\"form-group\">
-                                        <input type=\"email\" name=\"_email\" id=\"forgot-password-email\" class=\"form-control form-control-user my-4\" placeholder=\"Adresse email\" required>
-                                    </div>                    
+        // line 53
+        echo "<section class=\"section\">
+    <div class=\"container mt-5\">
+        <div class=\"row\">
+            <div class=\"col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4\">
+                <div class=\"login-brand\">
+                    
+                </div>
 
-                                    <button class=\"btn btn-primary btn-user btn-block\" type=\"submit\">Envoyer l'email !</button>
-                                </form>
-                                <hr>
-                                <div class=\"text-center\">
-                                    <a class=\"small\" href=\"";
-        // line 37
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
-        echo "\">Revenir à la page de connexion !</a>
-                                </div>
+                <div class=\"card card-primary\">
+                    <div class=\"card-header\"><h4>Forgot Password</h4></div>
+
+                    <div class=\"card-body\">
+                        <p class=\"text-muted\">We will send a link to reset your password</p>
+                        ";
+        // line 66
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["requestPassForm"]) || array_key_exists("requestPassForm", $context) ? $context["requestPassForm"] : (function () { throw new RuntimeError('Variable "requestPassForm" does not exist.', 66, $this->source); })()), 'form_start');
+        echo "
+                            <div class=\"form-group\">
+                                ";
+        // line 68
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["requestPassForm"]) || array_key_exists("requestPassForm", $context) ? $context["requestPassForm"] : (function () { throw new RuntimeError('Variable "requestPassForm" does not exist.', 68, $this->source); })()), "email", [], "any", false, false, false, 68), 'label');
+        echo "
+                                ";
+        // line 69
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["requestPassForm"]) || array_key_exists("requestPassForm", $context) ? $context["requestPassForm"] : (function () { throw new RuntimeError('Variable "requestPassForm" does not exist.', 69, $this->source); })()), "email", [], "any", false, false, false, 69), 'widget', ["attr" => ["class" => "form-control", "placeholder" => "example@email.com"]]);
+        echo "
                             </div>
-                        </div>
+                            <div class=\"form-group\">
+                                <button type=\"submit\" class=\"btn btn-primary btn-block\" tabindex=\"4\">
+                                    Forgot Password
+                                </button>
+                            </div>
+                        ";
+        // line 76
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["requestPassForm"]) || array_key_exists("requestPassForm", $context) ? $context["requestPassForm"] : (function () { throw new RuntimeError('Variable "requestPassForm" does not exist.', 76, $this->source); })()), 'form_end');
+        echo "
                     </div>
+                </div>
+                <div class=\"simple-footer\">
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -177,22 +154,14 @@ class __TwigTemplate_7d75a4b54acf199a8d4dd49a11c58c16 extends Template
     /**
      * @codeCoverageIgnore
      */
-    public function isTraitable()
-    {
-        return false;
-    }
-
-    /**
-     * @codeCoverageIgnore
-     */
     public function getDebugInfo()
     {
-        return array (  149 => 37,  138 => 28,  130 => 25,  121 => 23,  117 => 22,  113 => 21,  110 => 20,  106 => 19,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  127 => 76,  117 => 69,  113 => 68,  108 => 66,  93 => 53,  83 => 52,  64 => 50,  54 => 52,  51 => 51,  49 => 50,  45 => 48,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'admin/base.html.twig' %}
+        return new Source("{# {% extends 'admin/base.html.twig' %}
 
 {% block title \"Mot de passe oublie\" %}
 
@@ -238,6 +207,45 @@ class __TwigTemplate_7d75a4b54acf199a8d4dd49a11c58c16 extends Template
         </div>
     </div>
 </div>
-{% endblock %}", "security/forgot_password.html.twig", "C:\\Users\\ASUS\\Desktop\\PiDev\\Projet-Pi-tfarhida\\templates\\security\\forgot_password.html.twig");
+{% endblock %} #}
+
+
+{% block title %}Forget Password{% endblock %}
+
+{% block content %}
+<section class=\"section\">
+    <div class=\"container mt-5\">
+        <div class=\"row\">
+            <div class=\"col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4\">
+                <div class=\"login-brand\">
+                    
+                </div>
+
+                <div class=\"card card-primary\">
+                    <div class=\"card-header\"><h4>Forgot Password</h4></div>
+
+                    <div class=\"card-body\">
+                        <p class=\"text-muted\">We will send a link to reset your password</p>
+                        {{ form_start(requestPassForm)}}
+                            <div class=\"form-group\">
+                                {{ form_label(requestPassForm.email) }}
+                                {{ form_widget(requestPassForm.email, {'attr': {'class': 'form-control', 'placeholder': 'example@email.com'}}) }}
+                            </div>
+                            <div class=\"form-group\">
+                                <button type=\"submit\" class=\"btn btn-primary btn-block\" tabindex=\"4\">
+                                    Forgot Password
+                                </button>
+                            </div>
+                        {{ form_end(requestPassForm) }}
+                    </div>
+                </div>
+                <div class=\"simple-footer\">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+", "security/forgot_password.html.twig", "C:\\Users\\ASUS\\Desktop\\PiDev\\Projet-Pi-tfarhida\\templates\\security\\forgot_password.html.twig");
     }
 }

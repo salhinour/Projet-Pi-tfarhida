@@ -32,8 +32,8 @@ class __TwigTemplate_f127fed82b8fe07527e3d170555d980d extends Template
 
     protected function doGetParent(array $context)
     {
-        // line 1
-        return "baseBack.html.twig";
+        // line 2
+        return "admin/layout.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
@@ -45,7 +45,7 @@ class __TwigTemplate_f127fed82b8fe07527e3d170555d980d extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "logement_back/new.html.twig"));
 
-        $this->parent = $this->loadTemplate("baseBack.html.twig", "logement_back/new.html.twig", 1);
+        $this->parent = $this->loadTemplate("admin/layout.html.twig", "logement_back/new.html.twig", 2);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -55,7 +55,7 @@ class __TwigTemplate_f127fed82b8fe07527e3d170555d980d extends Template
 
     }
 
-    // line 3
+    // line 5
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -74,7 +74,7 @@ class __TwigTemplate_f127fed82b8fe07527e3d170555d980d extends Template
 
     }
 
-    // line 6
+    // line 8
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -84,7 +84,7 @@ class __TwigTemplate_f127fed82b8fe07527e3d170555d980d extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 7
+        // line 9
         echo "\t
     <div class=\"row justify-content-center mt-5\">
         <div class=\"col-md-6\">
@@ -92,7 +92,7 @@ class __TwigTemplate_f127fed82b8fe07527e3d170555d980d extends Template
                 <div class=\"card-body\">
                     <h2 class=\"card-title mb-4\">New Logement Form</h2>
                       ";
-        // line 13
+        // line 15
         echo twig_include($this->env, $context, "logement_back/_form.html.twig");
         echo "
 
@@ -103,7 +103,7 @@ class __TwigTemplate_f127fed82b8fe07527e3d170555d980d extends Template
 
     <div class=\"text-center mt-4\">
        <a href=\"";
-        // line 21
+        // line 23
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logement_back_index");
         echo "\">back to list</a>
     </div>
@@ -138,12 +138,14 @@ class __TwigTemplate_f127fed82b8fe07527e3d170555d980d extends Template
      */
     public function getDebugInfo()
     {
-        return array (  107 => 21,  96 => 13,  88 => 7,  78 => 6,  59 => 3,  36 => 1,);
+        return array (  107 => 23,  96 => 15,  88 => 9,  78 => 8,  59 => 5,  36 => 2,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'baseBack.html.twig' %}
+        return new Source("{# {% extends 'baseBack.html.twig' %} #}
+{% extends \"admin/layout.html.twig\" %}
+
 
 {% block title %}New Logement{% endblock %}
 

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Activitee;
 use App\Form\Activitee1Type;
 use App\Repository\ActiviteeRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -94,7 +95,7 @@ class ActiviteeBackController extends AbstractController
         ]);
     }
     #[Route('/{id}/modifier-etat', name: 'app_modifier_etat_activite')]
-    public function modifierEtatActivite($id,MailerInterface $mailer): Response
+    public function modifierEtatActivite($id,MailerInterface $mailer,UserRepository $userRepository): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
         $activitee = $entityManager->getRepository(Activitee::class)->find($id);
@@ -108,10 +109,14 @@ class ActiviteeBackController extends AbstractController
     
         // Enregistrer les modifications
         $entityManager->flush();
-    
+        $admin = $this->getUser();
+        //$user=$activitee->getUser()->getEmail();
+        $userEmail = $activitee->getUser()->getEmail() ?? null;
+        //$user = $userRepository->find($id);
         $email = (new Email())
-        ->from('salhi.nour@esprit.tn')
-        ->To('salhi.nour@esprit.tn')
+        ->from($admin->getEmail())
+        ->to($userEmail)
+        //->To('salhi.nour@esprit.tn')
         ->subject('reponse')
         ->text("votre demande est accepté!!!");
         $mailer->send($email);

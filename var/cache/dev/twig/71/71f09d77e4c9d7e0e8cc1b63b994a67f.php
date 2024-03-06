@@ -31,8 +31,8 @@ class __TwigTemplate_600e347854b1518977294ce2e38fcd10 extends Template
 
     protected function doGetParent(array $context)
     {
-        // line 1
-        return "baseback.html.twig";
+        // line 2
+        return "admin/layout.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
@@ -44,7 +44,7 @@ class __TwigTemplate_600e347854b1518977294ce2e38fcd10 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "reponse_back/new.html.twig"));
 
-        $this->parent = $this->loadTemplate("baseback.html.twig", "reponse_back/new.html.twig", 1);
+        $this->parent = $this->loadTemplate("admin/layout.html.twig", "reponse_back/new.html.twig", 2);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -54,7 +54,7 @@ class __TwigTemplate_600e347854b1518977294ce2e38fcd10 extends Template
 
     }
 
-    // line 3
+    // line 5
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -64,7 +64,7 @@ class __TwigTemplate_600e347854b1518977294ce2e38fcd10 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 4
+        // line 6
         echo "    <div class=\"container\">
         <div class=\"row justify-content-center\">
             <div class=\"col-md-8\">
@@ -74,14 +74,14 @@ class __TwigTemplate_600e347854b1518977294ce2e38fcd10 extends Template
                     </div>
                     <div class=\"card-body\">
                         ";
-        // line 12
+        // line 14
         echo twig_include($this->env, $context, "reponse_back/_form.html.twig");
         echo "
                     </div>
                 </div>
                 <div class=\"mt-3\">
                     <a href=\"";
-        // line 16
+        // line 18
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reponse_back_index");
         echo "\" class=\"btn btn-secondary\">Back to List</a>
                 </div>
@@ -118,12 +118,14 @@ class __TwigTemplate_600e347854b1518977294ce2e38fcd10 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  85 => 16,  78 => 12,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  85 => 18,  78 => 14,  68 => 6,  58 => 5,  35 => 2,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'baseback.html.twig' %}
+        return new Source("{# {% extends 'baseback.html.twig' %} #}
+{% extends \"admin/layout.html.twig\" %}
+
 
 {% block body %}
     <div class=\"container\">

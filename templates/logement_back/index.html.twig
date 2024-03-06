@@ -1,20 +1,35 @@
-{% extends 'baseBack.html.twig' %}
+{# {% extends 'baseBack.html.twig' %} #}
+{% extends "admin/layout.html.twig" %}
+
 
 {% block title %}Logement index{% endblock %}
 
 {% block body %}
+
 <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#statsModal">
     Show Stats
 </button>
-
-        <div  class="d-flex align-items-center justify-content-between mb-4">
-           
-                <button id="delete-selected-btn" style="display: none;" data-csrf-token="{{ csrf_token('delete_selected') }}" class="btn btn-danger">Delete Selected</button>
+ <div class="d-flex align-items-center justify-content-between mb-4">
+        <div class="d-flex">
+        
+        <div>
+          
+            <button id="btPrint" onclick="createPDF()" class="export-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Export PDF
+            </button>  
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search ..." class="form-control" id="search-input">
 
             </div>
+
+
+
         </div>
+					<div>	<button id="delete-selected-btn" style="display: none;" data-csrf-token="{{ csrf_token('delete_selected') }}" class="btn btn-danger">Delete Selected</button></div>
 
-
+  <a href="{{ path('app_logement_back_new') }}" class="btn btn-success btn-icon-split ml-auto">
+                <i class="fas fa-plus"></i> Create New
+            </a>
+        </div>
         <div class="d-flex align-items-center justify-content-between mb-4">
 
         
@@ -22,11 +37,11 @@
          <thead class="thead-dark">
             <tr>
             <th class="text-center">
-				<div class="custom-checkbox custom-control">
-					<input type="checkbox" data-checkboxes="mygroup"  class="custom-control-input" id="checkbox-all">
-					<label for="checkbox-all" class="custom-control-label"></label>
-						</div>
-					</th>
+										<div class="custom-checkbox custom-control">
+											<input type="checkbox" data-checkboxes="mygroup"  class="custom-control-input" id="checkbox-all">
+											<label for="checkbox-all" class="custom-control-label"></label>
+										</div>
+									</th>
                 <th>Id</th>
                 <th onclick="sortTable(1)">Nom</th>
                 <th onclick="sortTable(2)">TypeLog</th>
@@ -44,10 +59,10 @@
         {% for logement in pagination %}
             <tr>
             <td class="text-center">
-					<div class="custom-checkbox custom-control">
-						<input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-{{ logement.id }}">
+				<div class="custom-checkbox custom-control">
+				<input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-{{ logement.id }}">
 					<label for="checkbox-{{ logement.id }}" class="custom-control-label"></label>
-					</div>
+				</div>
 					</td>
             
                 <td>{{ logement.id }}</td>
@@ -135,6 +150,75 @@
         {% endif %}
     </ul>
 </div>
+
+<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const deleteButton = document.querySelector('#delete-selected-btn');
+			const checkboxes = document.querySelectorAll('input[data-checkboxes="mygroup"]');
+			const checkAllCheckbox = document.querySelector('input[data-checkboxes="mygroup"]');
+
+			function updateDeleteButtonVisibility() {
+				const isAnyCheckboxChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+				deleteButton.style.display = isAnyCheckboxChecked ? 'inline-block' : 'none';
+				console.log('Update Delete Button Visibility:', isAnyCheckboxChecked ? 'Show' : 'Hide');
+			}
+
+			if (checkboxes) {
+				checkboxes.forEach(checkbox => {
+					checkbox.addEventListener('change', function () {
+						updateDeleteButtonVisibility();
+					});
+				});
+			}
+
+			if (checkAllCheckbox) {
+				checkAllCheckbox.addEventListener('change', function() {
+					const isChecked = this.checked;
+					checkboxes.forEach(checkbox => {
+						checkbox.checked = isChecked;
+					});
+					updateDeleteButtonVisibility();
+				});
+			}
+
+			updateDeleteButtonVisibility();
+
+			deleteButton.addEventListener('click', function() {
+
+				const selectedIds = Array.from(checkboxes)
+						.filter(checkbox => checkbox.checked)
+						.map(checkbox => {
+							const match = checkbox.id.match(/checkbox-(\d+)/);
+							return match ? match[1] : null;
+						})
+				if (selectedIds.length > 0) {
+					const csrfToken = this.getAttribute('data-csrf-token');
+					console.log('Sending deletion request with CSRF token:', csrfToken);
+
+					fetch('/logement/back/delete-selected, {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({ ids: selectedIds, '_token': csrfToken })
+					})
+							.then(response => {
+								if (!response.ok) {
+									throw new Error('Network response was not ok');
+								}
+								return response.json();
+							})
+							.then(data => {
+								console.log('Deletion Success:', data);
+								alert(data.message);
+								window.location.reload();
+							})
+							.catch(error => {
+								console.error('Deletion Error:', error);
+								alert('Error deleting ');
+							});
+				}
+			});
+		});
+	</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
    <script>
        $(document).ready(function () {
@@ -224,7 +308,6 @@ function createPDF() {
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 
 {% endblock %}
 

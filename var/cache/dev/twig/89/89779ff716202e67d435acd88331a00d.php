@@ -310,7 +310,16 @@ class __TwigTemplate_d04482295fc44793a3a28dfa1ab319e8 extends Template
         });
     });
 </script>
-
+<script src=\"script.js\"></script>
+      <script type=\"text/javascript\">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        } 
+  </script>
+  <script type=\"text/javascript\" src=\"https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit\"></script>
 </body>
 </html>
 
@@ -659,7 +668,7 @@ class __TwigTemplate_d04482295fc44793a3a28dfa1ab319e8 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  626 => 297,  622 => 296,  618 => 295,  614 => 294,  610 => 293,  606 => 292,  602 => 291,  598 => 290,  594 => 289,  590 => 288,  586 => 287,  582 => 286,  578 => 285,  574 => 284,  569 => 283,  559 => 282,  546 => 209,  535 => 200,  526 => 196,  521 => 195,  505 => 160,  501 => 159,  497 => 158,  491 => 155,  481 => 152,  476 => 150,  470 => 147,  465 => 144,  460 => 143,  431 => 117,  411 => 99,  409 => 64,  399 => 63,  387 => 26,  383 => 25,  377 => 22,  373 => 21,  368 => 19,  364 => 18,  360 => 17,  355 => 15,  350 => 13,  345 => 11,  341 => 10,  337 => 8,  327 => 7,  302 => 424,  223 => 355,  169 => 303,  167 => 282,  95 => 212,  93 => 63,  56 => 28,  54 => 7,  46 => 1,);
+        return array (  635 => 297,  631 => 296,  627 => 295,  623 => 294,  619 => 293,  615 => 292,  611 => 291,  607 => 290,  603 => 289,  599 => 288,  595 => 287,  591 => 286,  587 => 285,  583 => 284,  578 => 283,  568 => 282,  555 => 209,  544 => 200,  535 => 196,  530 => 195,  514 => 160,  510 => 159,  506 => 158,  500 => 155,  490 => 152,  485 => 150,  479 => 147,  474 => 144,  469 => 143,  440 => 117,  420 => 99,  418 => 64,  408 => 63,  396 => 26,  392 => 25,  386 => 22,  382 => 21,  377 => 19,  373 => 18,  369 => 17,  364 => 15,  359 => 13,  354 => 11,  350 => 10,  346 => 8,  336 => 7,  302 => 424,  223 => 355,  169 => 303,  167 => 282,  95 => 212,  93 => 63,  56 => 28,  54 => 7,  46 => 1,);
     }
 
     public function getSourceContext()
@@ -1097,7 +1106,16 @@ class __TwigTemplate_d04482295fc44793a3a28dfa1ab319e8 extends Template
         });
     });
 </script>
-
+<script src=\"script.js\"></script>
+      <script type=\"text/javascript\">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        } 
+  </script>
+  <script type=\"text/javascript\" src=\"https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit\"></script>
 </body>
 </html>
 

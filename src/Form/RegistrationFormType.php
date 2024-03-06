@@ -3,11 +3,13 @@
 namespace App\Form;
 
 use App\Entity\User;
+use Illuminate\Support\Number;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -40,6 +42,12 @@ class RegistrationFormType extends AbstractType
             ->add('username', TextType::class, [
                 'attr' => [
                     'placeholder' => "Nom d'utilisateur",
+                    'class' => "form-control-user"
+                ]
+            ])
+            ->add('numero', NumberType::class, [
+                'attr' => [
+                    'placeholder' => "number",
                     'class' => "form-control-user"
                 ]
             ])

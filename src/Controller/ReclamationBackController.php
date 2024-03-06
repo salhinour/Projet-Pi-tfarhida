@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Notification;
 use App\Entity\Reclamation;
 use App\Entity\Reponse;
 use App\Form\Reclamation1Type;
@@ -32,6 +33,10 @@ class ReclamationBackController extends AbstractController
         $reclamations = $entityManager
         ->getRepository(Reclamation::class)
         ->findAll();
+
+        //$user = $this->getUser();
+        $reclamation=$reclamationRepository->findAll();
+        $notifications = $entityManager->getRepository(Notification::class)->findBy(['reclamation' => $reclamation], ['created_at' => 'DESC']);
 
         /////////
         // $back = null;
@@ -77,8 +82,9 @@ class ReclamationBackController extends AbstractController
             'reclamations' => $reclamations,
             // 'back' => $back,
             'pagination' => $pagination,
-            'typeStatistics'=>$typeStatistics
-        ]);
+            'typeStatistics'=>$typeStatistics,
+            'notifications' => $notifications,
+       ]);
     }
 
     #[Route('/{id}/repondre', name: 'app_reclamation_back_repondre', methods: ['GET', 'POST'])]
@@ -88,16 +94,22 @@ public function repondre(Request $request, Reclamation $reclamation, EntityManag
 
     $form = $this->createForm(Reponse1Type::class, $reponse);
     $form->handleRequest($request);
+    $user = $this->getUser();
+
+    $tel=strval($user->getNumero());
 
     if ($form->isSubmitted() && $form->isValid()) {
-        $accountSid = 'ACe1066284a1c153e92f884d183dec7869';
-            $authToken = 'c86cf0b4ecfe7c4685f7dbcbf59d7528';
+        // $accountSid = 'ACe1066284a1c153e92f884d183dec7869';
+        //     $authToken = 'c86cf0b4ecfe7c4685f7dbcbf59d7528';
+        $accountSid = 'ACb0d367046da4463fd88b43989996bc8d';
+        $authToken = '6d0a3d7e12b11d0f413fb748361e00b0';
             $client = new Client($accountSid, $authToken);
     
+           
             $message = $client->messages->create(
-                '+21696638088', // replace with admin's phone number
+                '+216'.$tel, // replace with admin's phone number
                 [
-                    'from' => '+15098222653', // replace with your Twilio phone number
+                    'from' => '+19725841982', // replace with your Twilio phone number
                     'body' => 'vous avez reçu une reponse a votre reclamation'
                 ]
             );

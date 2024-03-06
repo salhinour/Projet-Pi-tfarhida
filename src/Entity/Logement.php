@@ -62,6 +62,9 @@ class Logement
     #[ORM\JoinColumn(name: "equipement_id", referencedColumnName: "id", onDelete: "CASCADE")]
     private ?Equipement $equipement = null;
 
+    #[ORM\ManyToOne(inversedBy: 'logements')]
+    private ?User $user = null;
+
    
 
  
@@ -188,6 +191,18 @@ public function getEquipement(): ?equipement
 public function setEquipement(?equipement $equipement): static
 {
     $this->equipement = $equipement;
+
+    return $this;
+}
+
+public function getUser(): ?User
+{
+    return $this->user;
+}
+
+public function setUser(?User $user): static
+{
+    $this->user = $user;
 
     return $this;
 }

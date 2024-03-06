@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Logement;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -26,14 +27,35 @@ class LogementRepository extends ServiceEntityRepository
      *
      * @return Logement[] Returns an array of Logement objects
      */
+    public function findByTypeAndEtat(string $selectedState): array
+    {
+        return $this->createQueryBuilder('l')
+            ->andWhere('l.TypeLog = :TypeLog')
+            ->setParameter('TypeLog', $selectedState)
+            ->getQuery()
+            ->getResult();
+    }
+
     public function findAllWithEtatTrue(): array
     {
         return $this->createQueryBuilder('l')
             ->andWhere('l.Etat = :Etat')
-            ->setParameter('Etat', 'acceptee')
+            ->setParameter('Etat', 'Acceptee')
             ->getQuery()
             ->getResult();
     }
+
+    public function findByTypeAndEtatTrue(string $selectedState): array
+    {
+        return $this->createQueryBuilder('l')
+            ->andWhere('l.TypeLog = :TypeLog')
+            ->andWhere('l.Etat = :Etat')
+            ->setParameter('TypeLog', $selectedState)
+            ->setParameter('Etat', 'Acceptee')
+            ->getQuery()
+            ->getResult();
+    }
+
     public function findByType(string $type): array
 {
     return $this->createQueryBuilder('l')
@@ -76,14 +98,13 @@ class LogementRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
-function findMylogement($id){
+function findMylogement(User $user){
     
-    $em=$this->getEntityManager();
-    
-    return 
-    $em->createQuery('SELECT b from App\Entity\Logement b WHERE 
-    b.logement=:id')
-    ->setParameter('id',$id)
+    return $this->createQueryBuilder('t')
+    ->where('t.user = :userId')
+    ->setParameter('userId', $user)
+    ->setMaxResults(6)
+    ->getQuery()
     ->getResult();
 }
 /**
@@ -91,14 +112,7 @@ function findMylogement($id){
      *
      * @return Logements[] Returns an array of Sponsoring objects
      */
-    public function findActiveSponsors(): array
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.type = :type')
-            ->setParameter('type', 'ACTIVE')
-            ->getQuery()
-            ->getResult();
-    }
+  
     public function removeByIds(array $ids): void
     {
         $qb = $this->createQueryBuilder('t')

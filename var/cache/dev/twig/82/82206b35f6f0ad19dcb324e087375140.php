@@ -32,8 +32,8 @@ class __TwigTemplate_0ceb2a3c2eebd93e0e3516bd0b38c3ba extends Template
 
     protected function doGetParent(array $context)
     {
-        // line 1
-        return "baseBack.html.twig";
+        // line 2
+        return "admin/layout.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
@@ -45,7 +45,7 @@ class __TwigTemplate_0ceb2a3c2eebd93e0e3516bd0b38c3ba extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "equipement_back/edit.html.twig"));
 
-        $this->parent = $this->loadTemplate("baseBack.html.twig", "equipement_back/edit.html.twig", 1);
+        $this->parent = $this->loadTemplate("admin/layout.html.twig", "equipement_back/edit.html.twig", 2);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -55,7 +55,7 @@ class __TwigTemplate_0ceb2a3c2eebd93e0e3516bd0b38c3ba extends Template
 
     }
 
-    // line 3
+    // line 4
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -74,7 +74,7 @@ class __TwigTemplate_0ceb2a3c2eebd93e0e3516bd0b38c3ba extends Template
 
     }
 
-    // line 5
+    // line 6
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -84,21 +84,21 @@ class __TwigTemplate_0ceb2a3c2eebd93e0e3516bd0b38c3ba extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 6
+        // line 7
         echo "    <h1>Edit Equipement</h1>
 
     ";
-        // line 8
+        // line 9
         echo twig_include($this->env, $context, "equipement_back/_form.html.twig", ["button_label" => "Update"]);
         echo "
 
     <a href=\"";
-        // line 10
+        // line 11
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_equipement_back_index");
         echo "\">back to list</a>
 
     ";
-        // line 12
+        // line 13
         echo twig_include($this->env, $context, "equipement_back/_delete_form.html.twig");
         echo "
 ";
@@ -131,12 +131,13 @@ class __TwigTemplate_0ceb2a3c2eebd93e0e3516bd0b38c3ba extends Template
      */
     public function getDebugInfo()
     {
-        return array (  102 => 12,  97 => 10,  92 => 8,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  102 => 13,  97 => 11,  92 => 9,  88 => 7,  78 => 6,  59 => 4,  36 => 2,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'baseBack.html.twig' %}
+        return new Source("{# {% extends 'baseBack.html.twig' %} #}
+{% extends \"admin/layout.html.twig\" %}
 
 {% block title %}Edit Equipement{% endblock %}
 

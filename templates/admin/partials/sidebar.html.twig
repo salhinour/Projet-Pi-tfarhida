@@ -55,7 +55,7 @@
             <span>Utilisateurs</span>
         </a>
     </li>
-    <li class="nav-item             active
+     <li class="nav-item             active
     ">
         <a class="nav-link" href="{{ path('app_reclamation_back_index') }}" aria-expanded="false">
             <i class="fas fa-user"></i>
@@ -69,6 +69,37 @@
             <span>Reponse</span>
         </a>
     </li>
+    <li class="nav-item {{ macros.is_active('admin_user') }}">
+        <a class="nav-link" href="{{ path('app_logement_back_index') }}">
+            <i class="fas fa-user"></i>
+            <span>Logement</span>
+        </a>
+    </li>
+     <li class="nav-item {{ macros.is_active('admin_user') }}">
+        <a class="nav-link" href="{{ path('app_equipement_back_index') }}">
+            <i class="fas fa-user"></i>
+            <span>Equipement</span>
+        </a>
+    </li>
+     <li class="nav-item {{ macros.is_active('admin_user') }}">
+        <a class="nav-link" href="{{ path('admin_user_index') }}">
+            <i class="fas fa-user"></i>
+            <span>Activites</span>
+        </a>
+    </li>
+    <li class="nav-item {{ macros.is_active('admin_user') }}">
+        <a class="nav-link" href="{{ path('admin_user_index') }}">
+            <i class="fas fa-user"></i>
+            <span>Restaurants</span>
+        </a>
+    </li>
+    <li class="nav-item {{ macros.is_active('admin_user') }}">
+        <a class="nav-link" href="{{ path('app_moyen_transport_back_index') }}">
+            <i class="fas fa-user"></i>
+            <span>Transports</span>
+        </a>
+    </li>
+    
     <hr class="sidebar-divider d-none d-md-block">
 
     <div class="text-center d-none d-md-inline">

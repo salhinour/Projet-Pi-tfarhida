@@ -33,8 +33,8 @@ class __TwigTemplate_4e7220c3cca8e76651ab57091fcc42c9 extends Template
 
     protected function doGetParent(array $context)
     {
-        // line 1
-        return "baseBack.html.twig";
+        // line 2
+        return "admin/layout.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
@@ -46,7 +46,7 @@ class __TwigTemplate_4e7220c3cca8e76651ab57091fcc42c9 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "equipement_back/index.html.twig"));
 
-        $this->parent = $this->loadTemplate("baseBack.html.twig", "equipement_back/index.html.twig", 1);
+        $this->parent = $this->loadTemplate("admin/layout.html.twig", "equipement_back/index.html.twig", 2);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -56,7 +56,7 @@ class __TwigTemplate_4e7220c3cca8e76651ab57091fcc42c9 extends Template
 
     }
 
-    // line 3
+    // line 5
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -75,7 +75,7 @@ class __TwigTemplate_4e7220c3cca8e76651ab57091fcc42c9 extends Template
 
     }
 
-    // line 4
+    // line 6
     public function block_header($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -85,7 +85,7 @@ class __TwigTemplate_4e7220c3cca8e76651ab57091fcc42c9 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "header"));
 
-        // line 5
+        // line 7
         echo "
 <body class=\"\" id=\"page-top\">
 
@@ -116,7 +116,7 @@ class __TwigTemplate_4e7220c3cca8e76651ab57091fcc42c9 extends Template
             <li class=\"nav-item             active
     \">
                 <a class=\"nav-link\" href=\"";
-        // line 34
+        // line 36
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logement_back_index");
         echo "\" aria-expanded=\"false\">
                     <i class=\"fas fa-user\"></i>
@@ -126,7 +126,7 @@ class __TwigTemplate_4e7220c3cca8e76651ab57091fcc42c9 extends Template
             <li class=\"nav-item             active
     \">
                 <a class=\"nav-link\" href=\"";
-        // line 41
+        // line 43
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_equipement_back_index");
         echo "\" aria-expanded=\"false\">
                     <i class=\"fas fa-user\"></i>
@@ -207,7 +207,7 @@ class __TwigTemplate_4e7220c3cca8e76651ab57091fcc42c9 extends Template
                         </div>
                         <div>
                             <a href=\"";
-        // line 119
+        // line 121
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_equipement_back_new");
         echo "\" class=\"btn btn-success btn-icon-split ml-auto\">
                                 <i class=\"fas fa-plus\"></i> Create New
@@ -224,7 +224,7 @@ class __TwigTemplate_4e7220c3cca8e76651ab57091fcc42c9 extends Template
 
     }
 
-    // line 127
+    // line 129
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -234,7 +234,7 @@ class __TwigTemplate_4e7220c3cca8e76651ab57091fcc42c9 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 128
+        // line 130
         echo "                    <div class=\"table-responsive\">
                         <table class=\"table table-bordered table-hover\">
                             <thead class=\"thead-dark\">
@@ -251,65 +251,50 @@ class __TwigTemplate_4e7220c3cca8e76651ab57091fcc42c9 extends Template
                             </thead>
                             <tbody>
                                 ";
-        // line 143
+        // line 145
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["equipements"]) || array_key_exists("equipements", $context) ? $context["equipements"] : (function () { throw new RuntimeError('Variable "equipements" does not exist.', 143, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["equipements"]) || array_key_exists("equipements", $context) ? $context["equipements"] : (function () { throw new RuntimeError('Variable "equipements" does not exist.', 145, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["equipement"]) {
-            // line 144
+            // line 146
             echo "                                <tr>
                                     <td>";
-            // line 145
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["equipement"], "id", [], "any", false, false, false, 145), "html", null, true);
-            echo "</td>
-                                    <td>";
-            // line 146
-            echo ((twig_get_attribute($this->env, $this->source, $context["equipement"], "Parking", [], "any", false, false, false, 146)) ? ("Yes") : ("No"));
-            echo "</td>
-                                    <td>";
             // line 147
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["equipement"], "nbrChambre", [], "any", false, false, false, 147), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["equipement"], "id", [], "any", false, false, false, 147), "html", null, true);
             echo "</td>
                                     <td>";
             // line 148
-            echo ((twig_get_attribute($this->env, $this->source, $context["equipement"], "internet", [], "any", false, false, false, 148)) ? ("Yes") : ("No"));
+            echo ((twig_get_attribute($this->env, $this->source, $context["equipement"], "Parking", [], "any", false, false, false, 148)) ? ("Yes") : ("No"));
             echo "</td>
                                     <td>";
             // line 149
-            echo ((twig_get_attribute($this->env, $this->source, $context["equipement"], "climatisation", [], "any", false, false, false, 149)) ? ("Yes") : ("No"));
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["equipement"], "nbrChambre", [], "any", false, false, false, 149), "html", null, true);
             echo "</td>
                                     <td>";
             // line 150
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["equipement"], "TypesDeChambre", [], "any", false, false, false, 150), "html", null, true);
+            echo ((twig_get_attribute($this->env, $this->source, $context["equipement"], "internet", [], "any", false, false, false, 150)) ? ("Yes") : ("No"));
             echo "</td>
-                                    <td>
-                                        ";
+                                    <td>";
+            // line 151
+            echo ((twig_get_attribute($this->env, $this->source, $context["equipement"], "climatisation", [], "any", false, false, false, 151)) ? ("Yes") : ("No"));
+            echo "</td>
+                                    <td>";
             // line 152
-            if (twig_get_attribute($this->env, $this->source, $context["equipement"], "image", [], "any", false, false, false, 152)) {
-                // line 153
-                echo "                                        <img src=\"";
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, $context["equipement"], "image", [], "any", false, false, false, 153))), "html", null, true);
-                echo "\" alt=\"Image\" width=\"100\" height=\"100\">
-                                        ";
-            } else {
-                // line 155
-                echo "                                        <span>Aucune image</span>
-                                        ";
-            }
-            // line 157
-            echo "                                    </td>
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["equipement"], "TypesDeChambre", [], "any", false, false, false, 152), "html", null, true);
+            echo "</td>
+                                   
                                     <td>
                                         <a href=\"";
-            // line 159
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_equipement_back_show", ["id" => twig_get_attribute($this->env, $this->source, $context["equipement"], "id", [], "any", false, false, false, 159)]), "html", null, true);
+            // line 155
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_equipement_back_show", ["id" => twig_get_attribute($this->env, $this->source, $context["equipement"], "id", [], "any", false, false, false, 155)]), "html", null, true);
             echo "\" class=\"btn btn-info btn-sm\"><i class=\"fas fa-eye\"></i></a>
                                         <a href=\"";
-            // line 160
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_equipement_back_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["equipement"], "id", [], "any", false, false, false, 160)]), "html", null, true);
+            // line 156
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_equipement_back_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["equipement"], "id", [], "any", false, false, false, 156)]), "html", null, true);
             echo "\" class=\"btn btn-primary btn-sm\"><i class=\"fas fa-edit\"></i></a>
                                         <a href=\"";
-            // line 161
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_equipement_back_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["equipement"], "id", [], "any", false, false, false, 161)]), "html", null, true);
+            // line 157
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_equipement_back_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["equipement"], "id", [], "any", false, false, false, 157)]), "html", null, true);
             echo "\" class=\"btn btn-danger btn-sm\"><i class=\"fas fa-trash-alt\"></i></a>
                                     </td>
                                 </tr>
@@ -317,7 +302,7 @@ class __TwigTemplate_4e7220c3cca8e76651ab57091fcc42c9 extends Template
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 165
+            // line 161
             echo "                                <tr>
                                     <td colspan=\"7\">No records found</td>
                                 </tr>
@@ -326,7 +311,7 @@ class __TwigTemplate_4e7220c3cca8e76651ab57091fcc42c9 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['equipement'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 169
+        // line 165
         echo "                            </tbody>
                         </table>
                     </div>
@@ -382,12 +367,14 @@ class __TwigTemplate_4e7220c3cca8e76651ab57091fcc42c9 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  330 => 169,  321 => 165,  312 => 161,  308 => 160,  304 => 159,  300 => 157,  296 => 155,  290 => 153,  288 => 152,  283 => 150,  279 => 149,  275 => 148,  271 => 147,  267 => 146,  263 => 145,  260 => 144,  255 => 143,  238 => 128,  228 => 127,  211 => 119,  130 => 41,  120 => 34,  89 => 5,  79 => 4,  60 => 3,  37 => 1,);
+        return array (  315 => 165,  306 => 161,  297 => 157,  293 => 156,  289 => 155,  283 => 152,  279 => 151,  275 => 150,  271 => 149,  267 => 148,  263 => 147,  260 => 146,  255 => 145,  238 => 130,  228 => 129,  211 => 121,  130 => 43,  120 => 36,  89 => 7,  79 => 6,  60 => 5,  37 => 2,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'baseBack.html.twig' %}
+        return new Source("{# {% extends 'baseBack.html.twig' %} #}
+{% extends \"admin/layout.html.twig\" %}
+
 
 {% block title %}Equipement index{% endblock %}
 {% block header %}
@@ -537,13 +524,7 @@ class __TwigTemplate_4e7220c3cca8e76651ab57091fcc42c9 extends Template
                                     <td>{{ equipement.internet ? 'Yes' : 'No' }}</td>
                                     <td>{{ equipement.climatisation ? 'Yes' : 'No' }}</td>
                                     <td>{{ equipement.TypesDeChambre }}</td>
-                                    <td>
-                                        {% if equipement.image %}
-                                        <img src=\"{{ asset('uploads/' ~ equipement.image) }}\" alt=\"Image\" width=\"100\" height=\"100\">
-                                        {% else %}
-                                        <span>Aucune image</span>
-                                        {% endif %}
-                                    </td>
+                                   
                                     <td>
                                         <a href=\"{{ path('app_equipement_back_show', {'id': equipement.id}) }}\" class=\"btn btn-info btn-sm\"><i class=\"fas fa-eye\"></i></a>
                                         <a href=\"{{ path('app_equipement_back_edit', {'id': equipement.id}) }}\" class=\"btn btn-primary btn-sm\"><i class=\"fas fa-edit\"></i></a>

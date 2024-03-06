@@ -8,7 +8,7 @@
 return [
     false, // $matchHost
     [ // $staticRoutes
-        '/activite' => [[['_route' => 'app_activite', '_controller' => 'App\\Controller\\ActiviteController::index'], null, null, null, false, false, null]],
+        '/activite' => [[['_route' => 'app_activite', '_controller' => 'App\\Controller\\ActiviteController::index'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/activitee/back' => [[['_route' => 'app_activitee_back_index', '_controller' => 'App\\Controller\\ActiviteeBackController::index'], null, ['GET' => 0, 'POST' => 1], null, true, false, null]],
         '/activitee/back/new' => [[['_route' => 'app_activitee_back_new', '_controller' => 'App\\Controller\\ActiviteeBackController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/activitee' => [[['_route' => 'app_activitee_index', '_controller' => 'App\\Controller\\ActiviteeController::index'], null, ['GET' => 0], null, false, false, null]],
@@ -29,7 +29,7 @@ return [
         '/equipement/new' => [[['_route' => 'app_equipement_new', '_controller' => 'App\\Controller\\EquipementController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/export/excel' => [[['_route' => 'export_excel', '_controller' => 'App\\Controller\\ExelController::exportExcel'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'home_index', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
-        '/logement/back' => [[['_route' => 'app_logement_back_index', '_controller' => 'App\\Controller\\LogementBackController::index'], null, ['GET' => 0], null, true, false, null]],
+        '/logement/back' => [[['_route' => 'app_logement_back_index', '_controller' => 'App\\Controller\\LogementBackController::index'], null, ['GET' => 0], null, false, false, null]],
         '/logement/back/new' => [[['_route' => 'app_logement_back_new', '_controller' => 'App\\Controller\\LogementBackController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/logement' => [[['_route' => 'app_logement_index', '_controller' => 'App\\Controller\\LogementController::index'], null, ['GET' => 0], null, true, false, null]],
         '/logement/new' => [[['_route' => 'app_logement_new', '_controller' => 'App\\Controller\\LogementController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
@@ -38,6 +38,7 @@ return [
         '/moyen/transport/back/new' => [[['_route' => 'app_moyen_transport_back_new', '_controller' => 'App\\Controller\\MoyenTransportBackController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/moyen/transport' => [[['_route' => 'app_moyen_transport_index', '_controller' => 'App\\Controller\\MoyenTransportController::index'], null, ['GET' => 0], null, true, false, null]],
         '/moyen/transport/new' => [[['_route' => 'app_moyen_transport_new', '_controller' => 'App\\Controller\\MoyenTransportController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/superadmin/notifications' => [[['_route' => 'superadmin_notifications', '_controller' => 'App\\Controller\\NotificationController::listNotifications'], null, null, null, false, false, null]],
         '/plat' => [[['_route' => 'app_plat_index', '_controller' => 'App\\Controller\\PlatController::index'], null, ['GET' => 0], null, true, false, null]],
         '/plat/platfront' => [[['_route' => 'app_plat_indexfront', '_controller' => 'App\\Controller\\PlatController::indexFront'], null, null, null, false, false, null]],
         '/plat/new' => [[['_route' => 'app_plat_new', '_controller' => 'App\\Controller\\PlatController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
@@ -51,8 +52,7 @@ return [
         '/reponse/back/new' => [[['_route' => 'app_reponse_back_new', '_controller' => 'App\\Controller\\ReponseBackController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/reponse' => [[['_route' => 'app_reponse_index', '_controller' => 'App\\Controller\\ReponseController::index'], null, ['GET' => 0], null, true, false, null]],
         '/reponse/new' => [[['_route' => 'app_reponse_new', '_controller' => 'App\\Controller\\ReponseController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        '/reset-password' => [[['_route' => 'app_forgot_password_request', '_controller' => 'App\\Controller\\ResetPasswordController::request'], null, null, null, false, false, null]],
-        '/reset-password/check-email' => [[['_route' => 'app_check_email', '_controller' => 'App\\Controller\\ResetPasswordController::checkEmail'], null, null, null, false, false, null]],
+        '/forgot-password' => [[['_route' => 'forgot_password', '_controller' => 'App\\Controller\\ResetPasswordController::showForgotPasswordForm'], null, null, null, false, false, null]],
         '/restaurant' => [[['_route' => 'app_restaurant_index', '_controller' => 'App\\Controller\\RestaurantController::index'], null, null, null, false, false, null]],
         '/restaurantfront' => [[['_route' => 'app_restaurant_indexfront', '_controller' => 'App\\Controller\\RestaurantController::indexFront'], null, null, null, false, false, null]],
         '/restaurant/new' => [[['_route' => 'app_restaurant_new', '_controller' => 'App\\Controller\\RestaurantController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
@@ -144,87 +144,88 @@ return [
                         .')'
                         .'|(*:840)'
                     .')'
+                    .'|show/([^/]++)(*:862)'
                     .'|([^/]++)(?'
-                        .'|(*:860)'
                         .'|/(?'
-                            .'|edit(*:876)'
-                            .'|trajects(*:892)'
+                            .'|edit(*:889)'
+                            .'|trajects(*:905)'
                         .')'
-                        .'|(*:901)'
+                        .'|(*:914)'
                     .')'
-                    .'|show_in_map/([^/]++)(*:930)'
+                    .'|show_in_map/([^/]++)(*:943)'
+                    .'|transport(*:960)'
                 .')'
                 .'|/plat/([^/]++)(?'
-                    .'|(*:956)'
-                    .'|/edit(*:969)'
-                    .'|(*:977)'
+                    .'|(*:986)'
+                    .'|/edit(*:999)'
+                    .'|(*:1007)'
                 .')'
                 .'|/re(?'
                     .'|clamation/(?'
                         .'|back/([^/]++)(?'
                             .'|/(?'
-                                .'|repondre(*:1033)'
-                                .'|show_response(*:1055)'
-                                .'|edit(*:1068)'
+                                .'|repondre(*:1064)'
+                                .'|show_response(*:1086)'
+                                .'|edit(*:1099)'
                             .')'
-                            .'|(*:1078)'
+                            .'|(*:1109)'
                         .')'
                         .'|([^/]++)(?'
-                            .'|(*:1099)'
-                            .'|/edit(*:1113)'
-                            .'|(*:1122)'
+                            .'|(*:1130)'
+                            .'|/edit(*:1144)'
+                            .'|(*:1153)'
                         .')'
                     .')'
                     .'|ponse/(?'
                         .'|back/([^/]++)(?'
-                            .'|(*:1158)'
-                            .'|/edit(*:1172)'
-                            .'|(*:1181)'
+                            .'|(*:1189)'
+                            .'|/edit(*:1203)'
+                            .'|(*:1212)'
                         .')'
                         .'|([^/]++)(?'
-                            .'|(*:1202)'
-                            .'|/edit(*:1216)'
-                            .'|(*:1225)'
+                            .'|(*:1233)'
+                            .'|/edit(*:1247)'
+                            .'|(*:1256)'
                         .')'
                     .')'
                     .'|s(?'
-                        .'|et\\-password/reset(?:/([^/]++))?(*:1272)'
+                        .'|et\\-password/([^/]++)(*:1292)'
                         .'|taurant(?'
                             .'|/([^/]++)(?'
-                                .'|(*:1303)'
-                                .'|/edit(*:1317)'
-                                .'|(*:1326)'
+                                .'|(*:1323)'
+                                .'|/edit(*:1337)'
+                                .'|(*:1346)'
                             .')'
-                            .'|front/([^/]++)(*:1350)'
+                            .'|front/([^/]++)(*:1370)'
                         .')'
                     .')'
-                    .'|move\\-from\\-favorites/([^/]++)(*:1391)'
+                    .'|move\\-from\\-favorites/([^/]++)(*:1411)'
                 .')'
                 .'|/trajet/(?'
                     .'|([^/]++)(?'
-                        .'|(*:1423)'
-                        .'|/edit(*:1437)'
-                        .'|(*:1446)'
+                        .'|(*:1443)'
+                        .'|/edit(*:1457)'
+                        .'|(*:1466)'
                     .')'
                     .'|controller/back/([^/]++)(?'
-                        .'|(*:1483)'
-                        .'|/edit(*:1497)'
-                        .'|(*:1506)'
+                        .'|(*:1503)'
+                        .'|/edit(*:1517)'
+                        .'|(*:1526)'
                     .')'
                 .')'
                 .'|/_(?'
-                    .'|error/(\\d+)(?:\\.([^/]++))?(*:1548)'
-                    .'|wdt/([^/]++)(*:1569)'
+                    .'|error/(\\d+)(?:\\.([^/]++))?(*:1568)'
+                    .'|wdt/([^/]++)(*:1589)'
                     .'|profiler/([^/]++)(?'
                         .'|/(?'
-                            .'|search/results(*:1616)'
-                            .'|router(*:1631)'
+                            .'|search/results(*:1636)'
+                            .'|router(*:1651)'
                             .'|exception(?'
-                                .'|(*:1652)'
-                                .'|\\.css(*:1666)'
+                                .'|(*:1672)'
+                                .'|\\.css(*:1686)'
                             .')'
                         .')'
-                        .'|(*:1677)'
+                        .'|(*:1697)'
                     .')'
                 .')'
             .')/?$}sDu',
@@ -273,49 +274,50 @@ return [
         807 => [[['_route' => 'app_refuser_moyen_transport', '_controller' => 'App\\Controller\\MoyenTransportBackController::refuserEtatLogement'], ['id'], null, null, false, false, null]],
         831 => [[['_route' => 'app_valider_moyen_transport', '_controller' => 'App\\Controller\\MoyenTransportBackController::modifierEtatLogement'], ['id'], null, null, false, false, null]],
         840 => [[['_route' => 'app_moyen_transport_back_delete', '_controller' => 'App\\Controller\\MoyenTransportBackController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        860 => [[['_route' => 'app_moyen_transport_show', '_controller' => 'App\\Controller\\MoyenTransportController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        876 => [[['_route' => 'app_moyen_transport_edit', '_controller' => 'App\\Controller\\MoyenTransportController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        892 => [[['_route' => 'app_trajects_for_moyen_transport', '_controller' => 'App\\Controller\\MoyenTransportController::trajectsForMoyenTransport'], ['id'], ['GET' => 0], null, false, false, null]],
-        901 => [[['_route' => 'app_moyen_transport_delete', '_controller' => 'App\\Controller\\MoyenTransportController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        930 => [[['_route' => 'app_moyen_transport_map', '_controller' => 'App\\Controller\\MoyenTransportController::Map'], ['id'], ['GET' => 0], null, false, true, null]],
-        956 => [[['_route' => 'app_plat_show', '_controller' => 'App\\Controller\\PlatController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        969 => [[['_route' => 'app_plat_edit', '_controller' => 'App\\Controller\\PlatController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        977 => [[['_route' => 'app_plat_delete', '_controller' => 'App\\Controller\\PlatController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1033 => [[['_route' => 'app_reclamation_back_repondre', '_controller' => 'App\\Controller\\ReclamationBackController::repondre'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1055 => [[['_route' => 'app_reclamation_back_show_response', '_controller' => 'App\\Controller\\ReclamationBackController::showResponse'], ['id'], ['GET' => 0], null, false, false, null]],
-        1068 => [[['_route' => 'app_reclamation_back_edit', '_controller' => 'App\\Controller\\ReclamationBackController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1078 => [
+        862 => [[['_route' => 'app_moyen_transport_show', '_controller' => 'App\\Controller\\MoyenTransportController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        889 => [[['_route' => 'app_moyen_transport_edit', '_controller' => 'App\\Controller\\MoyenTransportController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        905 => [[['_route' => 'app_trajects_for_moyen_transport', '_controller' => 'App\\Controller\\MoyenTransportController::trajectsForMoyenTransport'], ['id'], ['GET' => 0], null, false, false, null]],
+        914 => [[['_route' => 'app_moyen_transport_delete', '_controller' => 'App\\Controller\\MoyenTransportController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        943 => [[['_route' => 'app_moyen_transport_map', '_controller' => 'App\\Controller\\MoyenTransportController::Map'], ['id'], ['GET' => 0], null, false, true, null]],
+        960 => [[['_route' => 'app_front_mestransport', '_controller' => 'App\\Controller\\MoyenTransportController::MesTranspors'], [], ['GET' => 0], null, false, false, null]],
+        986 => [[['_route' => 'app_plat_show', '_controller' => 'App\\Controller\\PlatController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        999 => [[['_route' => 'app_plat_edit', '_controller' => 'App\\Controller\\PlatController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1007 => [[['_route' => 'app_plat_delete', '_controller' => 'App\\Controller\\PlatController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1064 => [[['_route' => 'app_reclamation_back_repondre', '_controller' => 'App\\Controller\\ReclamationBackController::repondre'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1086 => [[['_route' => 'app_reclamation_back_show_response', '_controller' => 'App\\Controller\\ReclamationBackController::showResponse'], ['id'], ['GET' => 0], null, false, false, null]],
+        1099 => [[['_route' => 'app_reclamation_back_edit', '_controller' => 'App\\Controller\\ReclamationBackController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1109 => [
             [['_route' => 'app_reclamation_back_show', '_controller' => 'App\\Controller\\ReclamationBackController::show'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'app_reclamation_back_delete', '_controller' => 'App\\Controller\\ReclamationBackController::delete'], ['id'], ['POST' => 0], null, false, true, null],
         ],
-        1099 => [[['_route' => 'app_reclamation_show', '_controller' => 'App\\Controller\\ReclamationController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        1113 => [[['_route' => 'app_reclamation_edit', '_controller' => 'App\\Controller\\ReclamationController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1122 => [[['_route' => 'app_reclamation_delete', '_controller' => 'App\\Controller\\ReclamationController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1158 => [[['_route' => 'app_reponse_back_show', '_controller' => 'App\\Controller\\ReponseBackController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        1172 => [[['_route' => 'app_reponse_back_edit', '_controller' => 'App\\Controller\\ReponseBackController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1181 => [[['_route' => 'app_reponse_back_delete', '_controller' => 'App\\Controller\\ReponseBackController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1202 => [[['_route' => 'app_reponse_show', '_controller' => 'App\\Controller\\ReponseController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        1216 => [[['_route' => 'app_reponse_edit', '_controller' => 'App\\Controller\\ReponseController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1225 => [[['_route' => 'app_reponse_delete', '_controller' => 'App\\Controller\\ReponseController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1272 => [[['_route' => 'app_reset_password', 'token' => null, '_controller' => 'App\\Controller\\ResetPasswordController::reset'], ['token'], null, null, false, true, null]],
-        1303 => [[['_route' => 'app_restaurant_show', '_controller' => 'App\\Controller\\RestaurantController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        1317 => [[['_route' => 'app_restaurant_edit', '_controller' => 'App\\Controller\\RestaurantController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1326 => [[['_route' => 'app_restaurant_delete', '_controller' => 'App\\Controller\\RestaurantController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1350 => [[['_route' => 'app_restaurant_showfront', '_controller' => 'App\\Controller\\RestaurantController::showfront'], ['id'], ['GET' => 0], null, false, true, null]],
-        1391 => [[['_route' => 'remove-from_favorites', '_controller' => 'App\\Controller\\RestaurantController::RemoveFromFavorites'], ['id'], null, null, false, true, null]],
-        1423 => [[['_route' => 'app_trajet_show', '_controller' => 'App\\Controller\\TrajetController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        1437 => [[['_route' => 'app_trajet_edit', '_controller' => 'App\\Controller\\TrajetController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1446 => [[['_route' => 'app_trajet_delete', '_controller' => 'App\\Controller\\TrajetController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1483 => [[['_route' => 'app_trajet_controller_back_show', '_controller' => 'App\\Controller\\TrajetControllerBackController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        1497 => [[['_route' => 'app_trajet_controller_back_edit', '_controller' => 'App\\Controller\\TrajetControllerBackController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1506 => [[['_route' => 'app_trajet_controller_back_delete', '_controller' => 'App\\Controller\\TrajetControllerBackController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1548 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
-        1569 => [[['_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'], ['token'], null, null, false, true, null]],
-        1616 => [[['_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'], ['token'], null, null, false, false, null]],
-        1631 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
-        1652 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
-        1666 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
-        1677 => [
+        1130 => [[['_route' => 'app_reclamation_show', '_controller' => 'App\\Controller\\ReclamationController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        1144 => [[['_route' => 'app_reclamation_edit', '_controller' => 'App\\Controller\\ReclamationController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1153 => [[['_route' => 'app_reclamation_delete', '_controller' => 'App\\Controller\\ReclamationController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1189 => [[['_route' => 'app_reponse_back_show', '_controller' => 'App\\Controller\\ReponseBackController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        1203 => [[['_route' => 'app_reponse_back_edit', '_controller' => 'App\\Controller\\ReponseBackController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1212 => [[['_route' => 'app_reponse_back_delete', '_controller' => 'App\\Controller\\ReponseBackController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1233 => [[['_route' => 'app_reponse_show', '_controller' => 'App\\Controller\\ReponseController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        1247 => [[['_route' => 'app_reponse_edit', '_controller' => 'App\\Controller\\ReponseController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1256 => [[['_route' => 'app_reponse_delete', '_controller' => 'App\\Controller\\ReponseController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1292 => [[['_route' => 'reset_password', '_controller' => 'App\\Controller\\ResetPasswordController::resetPassword'], ['token'], null, null, false, true, null]],
+        1323 => [[['_route' => 'app_restaurant_show', '_controller' => 'App\\Controller\\RestaurantController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        1337 => [[['_route' => 'app_restaurant_edit', '_controller' => 'App\\Controller\\RestaurantController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1346 => [[['_route' => 'app_restaurant_delete', '_controller' => 'App\\Controller\\RestaurantController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1370 => [[['_route' => 'app_restaurant_showfront', '_controller' => 'App\\Controller\\RestaurantController::showfront'], ['id'], ['GET' => 0], null, false, true, null]],
+        1411 => [[['_route' => 'remove-from_favorites', '_controller' => 'App\\Controller\\RestaurantController::RemoveFromFavorites'], ['id'], null, null, false, true, null]],
+        1443 => [[['_route' => 'app_trajet_show', '_controller' => 'App\\Controller\\TrajetController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        1457 => [[['_route' => 'app_trajet_edit', '_controller' => 'App\\Controller\\TrajetController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1466 => [[['_route' => 'app_trajet_delete', '_controller' => 'App\\Controller\\TrajetController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1503 => [[['_route' => 'app_trajet_controller_back_show', '_controller' => 'App\\Controller\\TrajetControllerBackController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        1517 => [[['_route' => 'app_trajet_controller_back_edit', '_controller' => 'App\\Controller\\TrajetControllerBackController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1526 => [[['_route' => 'app_trajet_controller_back_delete', '_controller' => 'App\\Controller\\TrajetControllerBackController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1568 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
+        1589 => [[['_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'], ['token'], null, null, false, true, null]],
+        1636 => [[['_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'], ['token'], null, null, false, false, null]],
+        1651 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
+        1672 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
+        1686 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
+        1697 => [
             [['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

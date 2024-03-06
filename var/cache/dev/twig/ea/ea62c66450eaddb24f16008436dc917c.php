@@ -174,7 +174,7 @@ class __TwigTemplate_225717327a9720180430fa2f45ca3f83 extends Template
                                 <div class=\"text-center\">
                                     <a class=\"small\" href=\"";
         // line 57
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forgot_password_request");
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("forgot_password");
         echo "\">Mot de passe oublié ?</a>
                                 </div>
                                 <div class=\"text-center\">
@@ -282,7 +282,7 @@ class __TwigTemplate_225717327a9720180430fa2f45ca3f83 extends Template
                                 </form>
                                 <hr>
                                 <div class=\"text-center\">
-                                    <a class=\"small\" href=\"{{ path('app_forgot_password_request') }}\">Mot de passe oublié ?</a>
+                                    <a class=\"small\" href=\"{{ path('forgot_password') }}\">Mot de passe oublié ?</a>
                                 </div>
                                 <div class=\"text-center\">
                                     <a class=\"small\" href=\"{{ path('registration') }}\">S'inscrire ?</a>

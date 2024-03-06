@@ -19,7 +19,7 @@ use Knp\Component\Pager\PaginatorInterface;
 class MoyenTransportController extends AbstractController
 {
     #[Route('/', name: 'app_moyen_transport_index', methods: ['GET'])]
-public function index(MoyenTransportRepository $moyenTransportRepository, Request $request,PaginatorInterface $paginator,): Response
+public function index(MoyenTransportRepository $moyenTransportRepository, Request $request,PaginatorInterface $paginator): Response
 {
     $selectedType = $request->query->get('type');
     $moyen_transports = [];
@@ -52,14 +52,15 @@ $moyen_transports= $paginator->paginate($moyen_transports, $request->query->getI
         $moyenTransport = new MoyenTransport();
         $form = $this->createForm(MoyenTransportType::class, $moyenTransport);
         $form->handleRequest($request);
-
+        $user = $this->getUser();
+        $tel=strval($user->getNumero());
         if ($form->isSubmitted() && $form->isValid()) {
             $accountSid = 'AC9ebe82e65c458cdd9134237ce1ea69d8';
             $authToken = '5baa5838b302ea6970fcb6fe84f81613';
             $client = new Client($accountSid, $authToken);
     
             $message = $client->messages->create(
-                '+21656747798', // replace with admin's phone number
+                '+216'.$tel, // replace with admin's phone number
                 [
                     'from' => '+16822378789', // replace with your Twilio phone number
                     'body' => 'moyen de transport bien ajouté et sous traitement :' . $moyenTransport->getType(),
@@ -98,10 +99,11 @@ $moyen_transports= $paginator->paginate($moyen_transports, $request->query->getI
         ]);
     }
 
-    #[Route('/{id}', name: 'app_moyen_transport_show', methods: ['GET'])]
-    public function show(MoyenTransport $moyenTransport): Response
+    #[Route('/show/{id}', name: 'app_moyen_transport_show', methods: ['GET'])]
+    public function show(Request $request,MoyenTransport $moyenTransport): Response
     {
         return $this->render('moyen_transport/show.html.twig', [
+            'form' => $this->createForm(MoyenTransportType::class)->handleRequest($request)->createView(),
             'moyen_transport' => $moyenTransport,
         ]);
     }
@@ -158,6 +160,16 @@ $moyen_transports= $paginator->paginate($moyen_transports, $request->query->getI
             );
         return $this->render('moyen_transport/index.html.twig', [
             'moyen_transport' => $id,
+        ]);
+    }
+
+    #[Route('/transport', name: 'app_front_mestransport', methods: ['GET'])]
+    public function MesTranspors( MoyenTransportRepository $Repository,PaginatorInterface $paginator,Request $request): Response
+    {
+
+        return $this->render('moyen_transport/mestransport.html.twig', [
+            'transports' => $Repository->getTransportByUser($this->getUser()),
+            
         ]);
     }
     

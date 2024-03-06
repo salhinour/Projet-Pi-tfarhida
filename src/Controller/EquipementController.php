@@ -33,18 +33,29 @@ class EquipementController extends AbstractController
         $equipement = new Equipement();
         $form = $this->createForm(EquipementType::class, $equipement);
         $form->handleRequest($request);
-
+    
         if ($form->isSubmitted() && $form->isValid()) {
+            // Récupérer l'ID du logement à partir des paramètres de la requête
+            $logementId = $request->get('logement_id');
+            // Récupérer l'entité Logement correspondant à l'ID
+            $logement = $entityManager->getRepository(Logement::class)->find($logementId);
+            
+            // Assurez-vous que le logement existe
+            if (!$logement) {
+                throw $this->createNotFoundException('Le logement avec l\'ID ' . $logementId . ' n\'existe pas.');
+            }
+            
+            // Associez l'équipement au logement
+            $logement->setEquipement($equipement);
+            
             $entityManager->persist($equipement);
             $entityManager->flush();
             $equipement_created = true;
-            return $this->redirectToRoute('app_logement_index', [
-                'equipement' => $equipement,
-            'form' => $form,
-            'equipement_created' => $equipement_created,
-            ], Response::HTTP_SEE_OTHER);
+            
+            // Rediriger vers la page d'index de logement
+            return $this->redirectToRoute('app_logement_index', [], Response::HTTP_SEE_OTHER);
         }
-
+    
         return $this->renderForm('equipement/new.html.twig', [
             'equipement' => $equipement,
             'form' => $form,
@@ -52,6 +63,7 @@ class EquipementController extends AbstractController
             'action'=>'add'
         ]);
     }
+    
 
     // #[Route('/{id}', name: 'app_equipement_show', methods: ['GET'])]
     // public function show(Equipement $equipement): Response

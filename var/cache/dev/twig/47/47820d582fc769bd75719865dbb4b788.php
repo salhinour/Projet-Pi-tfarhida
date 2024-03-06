@@ -150,8 +150,9 @@ class __TwigTemplate_167b130230ab07bc8d04c7080cf9caf7 extends Template
         </div>
     </nav>
     <div class=\"hero-wrap js-fullheight\" style=\"background-image: url('/images/hotelBG.jpg');\">
-\t\t<div class=\"overlay\"></div>
-\t\t<div class=\"container\">
+\t\t";
+        // line 80
+        echo "\t\t<div class=\"container\">
 \t\t\t<div class=\"row no-gutters slider-text js-fullheight align-items-center\" data-scrollax-parent=\"true\">
 \t\t\t\t<div class=\"col-md-7 ftco-animate\">
 \t\t\t\t\t<span class=\"subheading\">Welcome to Pacific</span>
@@ -185,7 +186,7 @@ class __TwigTemplate_167b130230ab07bc8d04c7080cf9caf7 extends Template
 
         // line 95
         echo "
-      <div>
+     
     <table class=\"table\" id=\"myTable\">
         <thead class=\"thead-dark\">
             <tr>
@@ -281,9 +282,7 @@ class __TwigTemplate_167b130230ab07bc8d04c7080cf9caf7 extends Template
                  </div>
               
                 </td>
-                <td >
-
-                </td>
+               
 
                
 
@@ -301,7 +300,7 @@ class __TwigTemplate_167b130230ab07bc8d04c7080cf9caf7 extends Template
             }
         }
         if (!$context['_iterated']) {
-            // line 149
+            // line 147
             echo "            <tr>
                 <td colspan=\"9\">no records found</td>
             </tr>
@@ -310,10 +309,10 @@ class __TwigTemplate_167b130230ab07bc8d04c7080cf9caf7 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['logement'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 153
+        // line 151
         echo "        </tbody>
     </table>
-    </div>
+   
 \t";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -344,7 +343,7 @@ class __TwigTemplate_167b130230ab07bc8d04c7080cf9caf7 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  314 => 153,  305 => 149,  275 => 132,  270 => 130,  263 => 126,  259 => 125,  256 => 124,  252 => 122,  246 => 120,  244 => 119,  239 => 117,  235 => 116,  231 => 115,  227 => 114,  223 => 112,  205 => 111,  187 => 95,  177 => 94,  141 => 68,  114 => 43,  112 => 42,  110 => 41,  108 => 40,  106 => 39,  104 => 38,  69 => 4,  59 => 3,  36 => 1,);
+        return array (  313 => 151,  304 => 147,  276 => 132,  271 => 130,  264 => 126,  260 => 125,  257 => 124,  253 => 122,  247 => 120,  245 => 119,  240 => 117,  236 => 116,  232 => 115,  228 => 114,  224 => 112,  206 => 111,  188 => 95,  178 => 94,  155 => 80,  141 => 68,  114 => 43,  112 => 42,  110 => 41,  108 => 40,  106 => 39,  104 => 38,  69 => 4,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -427,7 +426,7 @@ class __TwigTemplate_167b130230ab07bc8d04c7080cf9caf7 extends Template
         </div>
     </nav>
     <div class=\"hero-wrap js-fullheight\" style=\"background-image: url('/images/hotelBG.jpg');\">
-\t\t<div class=\"overlay\"></div>
+\t\t{# <div class=\"overlay\"></div> #}
 \t\t<div class=\"container\">
 \t\t\t<div class=\"row no-gutters slider-text js-fullheight align-items-center\" data-scrollax-parent=\"true\">
 \t\t\t\t<div class=\"col-md-7 ftco-animate\">
@@ -444,7 +443,7 @@ class __TwigTemplate_167b130230ab07bc8d04c7080cf9caf7 extends Template
 {% endblock %}
 {% block body %}
 
-      <div>
+     
     <table class=\"table\" id=\"myTable\">
         <thead class=\"thead-dark\">
             <tr>
@@ -488,9 +487,7 @@ class __TwigTemplate_167b130230ab07bc8d04c7080cf9caf7 extends Template
                  </div>
               
                 </td>
-                <td >
-
-                </td>
+               
 
                
 
@@ -503,7 +500,7 @@ class __TwigTemplate_167b130230ab07bc8d04c7080cf9caf7 extends Template
         {% endfor %}
         </tbody>
     </table>
-    </div>
+   
 \t{% endblock %}
 
 ", "logement/Mylist.html.twig", "C:\\Users\\ASUS\\Desktop\\PiDev\\Projet-Pi-tfarhida\\templates\\logement\\Mylist.html.twig");

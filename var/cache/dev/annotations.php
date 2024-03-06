@@ -240,6 +240,12 @@ return [[
 '[C]App%5CController%5CMoyenTransportController%23trajectsForMoyenTransport' => 1,
 'App%5CController%5CMoyenTransportController%23Map' => 0,
 '[C]App%5CController%5CMoyenTransportController%23Map' => 1,
+'App%5CController%5CMoyenTransportController%23MesTranspors' => 0,
+'[C]App%5CController%5CMoyenTransportController%23MesTranspors' => 1,
+'App%5CController%5CNotificationController' => 0,
+'[C]App%5CController%5CNotificationController' => 1,
+'App%5CController%5CNotificationController%23listNotifications' => 0,
+'[C]App%5CController%5CNotificationController%23listNotifications' => 1,
 'App%5CController%5CPlatController' => 0,
 '[C]App%5CController%5CPlatController' => 1,
 'App%5CController%5CPlatController%23index' => 0,
@@ -320,14 +326,10 @@ return [[
 '[C]App%5CController%5CResetPasswordController' => 1,
 'App%5CController%5CResetPasswordController%23__construct' => 0,
 '[C]App%5CController%5CResetPasswordController%23__construct' => 1,
-'App%5CController%5CResetPasswordController%23request' => 0,
-'[C]App%5CController%5CResetPasswordController%23request' => 1,
-'App%5CController%5CResetPasswordController%23checkEmail' => 0,
-'[C]App%5CController%5CResetPasswordController%23checkEmail' => 1,
-'App%5CController%5CResetPasswordController%23reset' => 0,
-'[C]App%5CController%5CResetPasswordController%23reset' => 1,
-'App%5CController%5CResetPasswordController%23processSendingPasswordResetEmail' => 0,
-'[C]App%5CController%5CResetPasswordController%23processSendingPasswordResetEmail' => 1,
+'App%5CController%5CResetPasswordController%23showForgotPasswordForm' => 0,
+'[C]App%5CController%5CResetPasswordController%23showForgotPasswordForm' => 1,
+'App%5CController%5CResetPasswordController%23resetPassword' => 8,
+'[C]App%5CController%5CResetPasswordController%23resetPassword' => 1,
 'App%5CController%5CResetPasswordController%23setCanCheckEmailInSession' => 0,
 '[C]App%5CController%5CResetPasswordController%23setCanCheckEmailInSession' => 1,
 'App%5CController%5CResetPasswordController%23canCheckEmail' => 0,
@@ -382,7 +384,7 @@ return [[
 '[C]App%5CController%5CSecurityController%23login' => 1,
 'App%5CController%5CSecurityController%23logout' => 0,
 '[C]App%5CController%5CSecurityController%23logout' => 1,
-'App%5CController%5CSecurityController%23onLoginSuccess' => 8,
+'App%5CController%5CSecurityController%23onLoginSuccess' => 9,
 '[C]App%5CController%5CSecurityController%23onLoginSuccess' => 1,
 'App%5CController%5CTrajetController' => 0,
 '[C]App%5CController%5CTrajetController' => 1,
@@ -446,6 +448,10 @@ return [[
 '[C]App%5CEntity%5CActivitee%23setDescriptionAct' => 1,
 'App%5CEntity%5CActivitee%23__construct' => 0,
 '[C]App%5CEntity%5CActivitee%23__construct' => 1,
+'App%5CEntity%5CActivitee%23getUser' => 0,
+'[C]App%5CEntity%5CActivitee%23getUser' => 1,
+'App%5CEntity%5CActivitee%23setUser' => 0,
+'[C]App%5CEntity%5CActivitee%23setUser' => 1,
 'App%5CEntity%5CActivitee%24id' => 0,
 '[C]App%5CEntity%5CActivitee%24id' => 1,
 'App%5CEntity%5CActivitee%24nom' => 0,
@@ -464,6 +470,8 @@ return [[
 '[C]App%5CEntity%5CActivitee%24DescriptionAct' => 1,
 'App%5CEntity%5CActivitee%24categorie' => 0,
 '[C]App%5CEntity%5CActivitee%24categorie' => 1,
+'App%5CEntity%5CActivitee%24user' => 0,
+'[C]App%5CEntity%5CActivitee%24user' => 1,
 'App%5CEntity%5CCategorie' => 0,
 '[C]App%5CEntity%5CCategorie' => 1,
 'App%5CEntity%5CCategorie%23__construct' => 0,
@@ -576,11 +584,15 @@ return [[
 '[C]App%5CEntity%5CLogement%23getEquipement' => 1,
 'App%5CEntity%5CLogement%23setEquipement' => 0,
 '[C]App%5CEntity%5CLogement%23setEquipement' => 1,
+'App%5CEntity%5CLogement%23getUser' => 0,
+'[C]App%5CEntity%5CLogement%23getUser' => 1,
+'App%5CEntity%5CLogement%23setUser' => 0,
+'[C]App%5CEntity%5CLogement%23setUser' => 1,
 'App%5CEntity%5CLogement%24id' => 0,
 '[C]App%5CEntity%5CLogement%24id' => 1,
 'App%5CEntity%5CLogement%24Localisation' => 0,
 '[C]App%5CEntity%5CLogement%24Localisation' => 1,
-'App%5CEntity%5CLogement%24num' => 9,
+'App%5CEntity%5CLogement%24num' => 10,
 '[C]App%5CEntity%5CLogement%24num' => 1,
 'App%5CEntity%5CLogement%24NoteMoyenne' => 0,
 '[C]App%5CEntity%5CLogement%24NoteMoyenne' => 1,
@@ -596,6 +608,8 @@ return [[
 '[C]App%5CEntity%5CLogement%24TypeLog' => 1,
 'App%5CEntity%5CLogement%24equipement' => 0,
 '[C]App%5CEntity%5CLogement%24equipement' => 1,
+'App%5CEntity%5CLogement%24user' => 0,
+'[C]App%5CEntity%5CLogement%24user' => 1,
 'App%5CEntity%5CMoyenTransport' => 0,
 '[C]App%5CEntity%5CMoyenTransport' => 1,
 'App%5CEntity%5CMoyenTransport%23__construct' => 0,
@@ -632,6 +646,10 @@ return [[
 '[C]App%5CEntity%5CMoyenTransport%23getImage' => 1,
 'App%5CEntity%5CMoyenTransport%23setImage' => 0,
 '[C]App%5CEntity%5CMoyenTransport%23setImage' => 1,
+'App%5CEntity%5CMoyenTransport%23getUser' => 0,
+'[C]App%5CEntity%5CMoyenTransport%23getUser' => 1,
+'App%5CEntity%5CMoyenTransport%23setUser' => 0,
+'[C]App%5CEntity%5CMoyenTransport%23setUser' => 1,
 'App%5CEntity%5CMoyenTransport%24id' => 0,
 '[C]App%5CEntity%5CMoyenTransport%24id' => 1,
 'App%5CEntity%5CMoyenTransport%24type' => 0,
@@ -648,6 +666,42 @@ return [[
 '[C]App%5CEntity%5CMoyenTransport%24valide' => 1,
 'App%5CEntity%5CMoyenTransport%24image' => 0,
 '[C]App%5CEntity%5CMoyenTransport%24image' => 1,
+'App%5CEntity%5CMoyenTransport%24user' => 0,
+'[C]App%5CEntity%5CMoyenTransport%24user' => 1,
+'App%5CEntity%5CNotification' => 0,
+'[C]App%5CEntity%5CNotification' => 1,
+'App%5CEntity%5CNotification%23__construct' => 0,
+'[C]App%5CEntity%5CNotification%23__construct' => 1,
+'App%5CEntity%5CNotification%23prePersist' => 11,
+'[C]App%5CEntity%5CNotification%23prePersist' => 1,
+'App%5CEntity%5CNotification%23getCreatedAt' => 0,
+'[C]App%5CEntity%5CNotification%23getCreatedAt' => 1,
+'App%5CEntity%5CNotification%23setCreatedAtValue' => 0,
+'[C]App%5CEntity%5CNotification%23setCreatedAtValue' => 1,
+'App%5CEntity%5CNotification%23getId' => 0,
+'[C]App%5CEntity%5CNotification%23getId' => 1,
+'App%5CEntity%5CNotification%23getMessage' => 0,
+'[C]App%5CEntity%5CNotification%23getMessage' => 1,
+'App%5CEntity%5CNotification%23setMessage' => 0,
+'[C]App%5CEntity%5CNotification%23setMessage' => 1,
+'App%5CEntity%5CNotification%23getLink' => 0,
+'[C]App%5CEntity%5CNotification%23getLink' => 1,
+'App%5CEntity%5CNotification%23setLink' => 0,
+'[C]App%5CEntity%5CNotification%23setLink' => 1,
+'App%5CEntity%5CNotification%23getReclamation' => 0,
+'[C]App%5CEntity%5CNotification%23getReclamation' => 1,
+'App%5CEntity%5CNotification%23setReclamation' => 0,
+'[C]App%5CEntity%5CNotification%23setReclamation' => 1,
+'App%5CEntity%5CNotification%24id' => 0,
+'[C]App%5CEntity%5CNotification%24id' => 1,
+'App%5CEntity%5CNotification%24message' => 0,
+'[C]App%5CEntity%5CNotification%24message' => 1,
+'App%5CEntity%5CNotification%24link' => 0,
+'[C]App%5CEntity%5CNotification%24link' => 1,
+'App%5CEntity%5CNotification%24created_at' => 0,
+'[C]App%5CEntity%5CNotification%24created_at' => 1,
+'App%5CEntity%5CNotification%24reclamation' => 0,
+'[C]App%5CEntity%5CNotification%24reclamation' => 1,
 'App%5CEntity%5CPlat' => 0,
 '[C]App%5CEntity%5CPlat' => 1,
 'App%5CEntity%5CPlat%23__construct' => 0,
@@ -684,6 +738,8 @@ return [[
 '[C]App%5CEntity%5CPlat%24restaurants' => 1,
 'App%5CEntity%5CReclamation' => 0,
 '[C]App%5CEntity%5CReclamation' => 1,
+'App%5CEntity%5CReclamation%23__construct' => 0,
+'[C]App%5CEntity%5CReclamation%23__construct' => 1,
 'App%5CEntity%5CReclamation%23getId' => 0,
 '[C]App%5CEntity%5CReclamation%23getId' => 1,
 'App%5CEntity%5CReclamation%23getTitre' => 0,
@@ -714,6 +770,16 @@ return [[
 '[C]App%5CEntity%5CReclamation%23getType' => 1,
 'App%5CEntity%5CReclamation%23setType' => 0,
 '[C]App%5CEntity%5CReclamation%23setType' => 1,
+'App%5CEntity%5CReclamation%23getUser' => 0,
+'[C]App%5CEntity%5CReclamation%23getUser' => 1,
+'App%5CEntity%5CReclamation%23setUser' => 0,
+'[C]App%5CEntity%5CReclamation%23setUser' => 1,
+'App%5CEntity%5CReclamation%23getNotifications' => 0,
+'[C]App%5CEntity%5CReclamation%23getNotifications' => 1,
+'App%5CEntity%5CReclamation%23addNotification' => 0,
+'[C]App%5CEntity%5CReclamation%23addNotification' => 1,
+'App%5CEntity%5CReclamation%23removeNotification' => 0,
+'[C]App%5CEntity%5CReclamation%23removeNotification' => 1,
 'App%5CEntity%5CReclamation%24id' => 0,
 '[C]App%5CEntity%5CReclamation%24id' => 1,
 'App%5CEntity%5CReclamation%24titre' => 0,
@@ -730,6 +796,10 @@ return [[
 '[C]App%5CEntity%5CReclamation%24image' => 1,
 'App%5CEntity%5CReclamation%24type' => 0,
 '[C]App%5CEntity%5CReclamation%24type' => 1,
+'App%5CEntity%5CReclamation%24user' => 0,
+'[C]App%5CEntity%5CReclamation%24user' => 1,
+'App%5CEntity%5CReclamation%24notifications' => 0,
+'[C]App%5CEntity%5CReclamation%24notifications' => 1,
 'App%5CEntity%5CReponse' => 0,
 '[C]App%5CEntity%5CReponse' => 1,
 'App%5CEntity%5CReponse%23getId' => 0,
@@ -770,13 +840,13 @@ return [[
 '[C]App%5CEntity%5CResetPasswordRequest%24id' => 1,
 'App%5CEntity%5CResetPasswordRequest%24user' => 0,
 '[C]App%5CEntity%5CResetPasswordRequest%24user' => 1,
-'App%5CEntity%5CResetPasswordRequest%24selector' => 10,
+'App%5CEntity%5CResetPasswordRequest%24selector' => 12,
 '[C]App%5CEntity%5CResetPasswordRequest%24selector' => 1,
-'App%5CEntity%5CResetPasswordRequest%24hashedToken' => 11,
+'App%5CEntity%5CResetPasswordRequest%24hashedToken' => 13,
 '[C]App%5CEntity%5CResetPasswordRequest%24hashedToken' => 1,
-'App%5CEntity%5CResetPasswordRequest%24requestedAt' => 12,
+'App%5CEntity%5CResetPasswordRequest%24requestedAt' => 14,
 '[C]App%5CEntity%5CResetPasswordRequest%24requestedAt' => 1,
-'App%5CEntity%5CResetPasswordRequest%24expiresAt' => 12,
+'App%5CEntity%5CResetPasswordRequest%24expiresAt' => 14,
 '[C]App%5CEntity%5CResetPasswordRequest%24expiresAt' => 1,
 'App%5CEntity%5CRestaurant' => 0,
 '[C]App%5CEntity%5CRestaurant' => 1,
@@ -880,6 +950,12 @@ return [[
 '[C]App%5CEntity%5CTrajet%24date' => 1,
 'App%5CEntity%5CUser' => 0,
 '[C]App%5CEntity%5CUser' => 1,
+'App%5CEntity%5CUser%23__construct' => 0,
+'[C]App%5CEntity%5CUser%23__construct' => 1,
+'App%5CEntity%5CUser%23getResetToken' => 0,
+'[C]App%5CEntity%5CUser%23getResetToken' => 1,
+'App%5CEntity%5CUser%23setResetToken' => 0,
+'[C]App%5CEntity%5CUser%23setResetToken' => 1,
 'App%5CEntity%5CUser%23getId' => 0,
 '[C]App%5CEntity%5CUser%23getId' => 1,
 'App%5CEntity%5CUser%23getEmail' => 0,
@@ -920,12 +996,36 @@ return [[
 '[C]App%5CEntity%5CUser%23getRoleTitle' => 1,
 'App%5CEntity%5CUser%23getSalt' => 0,
 '[C]App%5CEntity%5CUser%23getSalt' => 1,
-'App%5CEntity%5CUser%23getResetToken' => 0,
-'[C]App%5CEntity%5CUser%23getResetToken' => 1,
-'App%5CEntity%5CUser%23setResetToken' => 0,
-'[C]App%5CEntity%5CUser%23setResetToken' => 1,
 'App%5CEntity%5CUser%23getCreatedAt' => 0,
 '[C]App%5CEntity%5CUser%23getCreatedAt' => 1,
+'App%5CEntity%5CUser%23getNumero' => 0,
+'[C]App%5CEntity%5CUser%23getNumero' => 1,
+'App%5CEntity%5CUser%23setNumero' => 0,
+'[C]App%5CEntity%5CUser%23setNumero' => 1,
+'App%5CEntity%5CUser%23getReclamations' => 0,
+'[C]App%5CEntity%5CUser%23getReclamations' => 1,
+'App%5CEntity%5CUser%23addReclamation' => 0,
+'[C]App%5CEntity%5CUser%23addReclamation' => 1,
+'App%5CEntity%5CUser%23removeReclamation' => 0,
+'[C]App%5CEntity%5CUser%23removeReclamation' => 1,
+'App%5CEntity%5CUser%23getLogements' => 0,
+'[C]App%5CEntity%5CUser%23getLogements' => 1,
+'App%5CEntity%5CUser%23addLogement' => 0,
+'[C]App%5CEntity%5CUser%23addLogement' => 1,
+'App%5CEntity%5CUser%23removeLogement' => 0,
+'[C]App%5CEntity%5CUser%23removeLogement' => 1,
+'App%5CEntity%5CUser%23getActivites' => 0,
+'[C]App%5CEntity%5CUser%23getActivites' => 1,
+'App%5CEntity%5CUser%23addActivite' => 0,
+'[C]App%5CEntity%5CUser%23addActivite' => 1,
+'App%5CEntity%5CUser%23removeActivite' => 0,
+'[C]App%5CEntity%5CUser%23removeActivite' => 1,
+'App%5CEntity%5CUser%23getTransports' => 0,
+'[C]App%5CEntity%5CUser%23getTransports' => 1,
+'App%5CEntity%5CUser%23addTransport' => 0,
+'[C]App%5CEntity%5CUser%23addTransport' => 1,
+'App%5CEntity%5CUser%23removeTransport' => 0,
+'[C]App%5CEntity%5CUser%23removeTransport' => 1,
 'App%5CEntity%5CUser%24id' => 0,
 '[C]App%5CEntity%5CUser%24id' => 1,
 'App%5CEntity%5CUser%24email' => 0,
@@ -942,10 +1042,20 @@ return [[
 '[C]App%5CEntity%5CUser%24lastName' => 1,
 'App%5CEntity%5CUser%24isVerified' => 0,
 '[C]App%5CEntity%5CUser%24isVerified' => 1,
-'App%5CEntity%5CUser%24resetToken' => 13,
-'[C]App%5CEntity%5CUser%24resetToken' => 1,
-'App%5CEntity%5CUser%24createdAt' => 14,
+'App%5CEntity%5CUser%24createdAt' => 15,
 '[C]App%5CEntity%5CUser%24createdAt' => 1,
+'App%5CEntity%5CUser%24numero' => 0,
+'[C]App%5CEntity%5CUser%24numero' => 1,
+'App%5CEntity%5CUser%24reclamations' => 0,
+'[C]App%5CEntity%5CUser%24reclamations' => 1,
+'App%5CEntity%5CUser%24logements' => 0,
+'[C]App%5CEntity%5CUser%24logements' => 1,
+'App%5CEntity%5CUser%24activites' => 0,
+'[C]App%5CEntity%5CUser%24activites' => 1,
+'App%5CEntity%5CUser%24Transports' => 0,
+'[C]App%5CEntity%5CUser%24Transports' => 1,
+'App%5CEntity%5CUser%24resetToken' => 0,
+'[C]App%5CEntity%5CUser%24resetToken' => 1,
 'Doctrine%5CBundle%5CDoctrineBundle%5CController%5CProfilerController' => 0,
 '[C]Doctrine%5CBundle%5CDoctrineBundle%5CController%5CProfilerController' => 1,
 'Doctrine%5CBundle%5CDoctrineBundle%5CController%5CProfilerController%23__construct' => 0,
@@ -1774,7 +1884,7 @@ return [[
 ], [
 
 0 => [],
-1 => 1709640614,
+1 => 1709701005,
 2 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
@@ -1921,6 +2031,28 @@ return [[
         [
             'Symfony\\Component\\Routing\\Annotation\\Route' => [
                 'path' => [
+                    '/reset-password/{token}',
+                ],
+                'name' => [
+                    'reset_password',
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+9 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        ],
+        null,
+        [
+            'Symfony\\Component\\Routing\\Annotation\\Route' => [
+                'path' => [
                     '/connexion/succes',
                 ],
                 'name' => [
@@ -1934,7 +2066,7 @@ return [[
         []
     );
 },
-9 => static function () {
+10 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Validator\\Constraints\\Regex'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Regex')),
@@ -1961,7 +2093,20 @@ return [[
         []
     );
 },
-10 => static function () {
+11 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\PrePersist'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\PrePersist')),
+        ],
+        null,
+        [],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+12 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -1989,7 +2134,7 @@ return [[
         []
     );
 },
-11 => static function () {
+13 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -2017,7 +2162,7 @@ return [[
         []
     );
 },
-12 => static function () {
+14 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -2042,38 +2187,7 @@ return [[
         []
     );
 },
-13 => static function () {
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
-        ],
-        null,
-        [
-            'stdClass' => [
-                'type' => [
-                    'string',
-                ],
-                'length' => [
-                    255,
-                ],
-                'precision' => [
-                    null,
-                ],
-                'scale' => [
-                    null,
-                ],
-                'nullable' => [
-                    true,
-                ],
-            ],
-        ],
-        [
-            $o[0],
-        ],
-        []
-    );
-},
-14 => static function () {
+15 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),

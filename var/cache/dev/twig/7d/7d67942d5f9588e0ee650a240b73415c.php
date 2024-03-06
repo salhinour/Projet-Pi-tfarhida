@@ -32,8 +32,8 @@ class __TwigTemplate_f65967eb51a75ec3b34c4a5317b18215 extends Template
 
     protected function doGetParent(array $context)
     {
-        // line 1
-        return "baseback.html.twig";
+        // line 2
+        return "admin/layout.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
@@ -45,7 +45,7 @@ class __TwigTemplate_f65967eb51a75ec3b34c4a5317b18215 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "reclamation_back/edit.html.twig"));
 
-        $this->parent = $this->loadTemplate("baseback.html.twig", "reclamation_back/edit.html.twig", 1);
+        $this->parent = $this->loadTemplate("admin/layout.html.twig", "reclamation_back/edit.html.twig", 2);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -55,7 +55,7 @@ class __TwigTemplate_f65967eb51a75ec3b34c4a5317b18215 extends Template
 
     }
 
-    // line 3
+    // line 5
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -74,7 +74,7 @@ class __TwigTemplate_f65967eb51a75ec3b34c4a5317b18215 extends Template
 
     }
 
-    // line 5
+    // line 7
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -84,21 +84,21 @@ class __TwigTemplate_f65967eb51a75ec3b34c4a5317b18215 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 6
+        // line 8
         echo "    <h1>Edit Reclamation</h1>
 
     ";
-        // line 8
+        // line 10
         echo twig_include($this->env, $context, "reclamation_back/_form.html.twig", ["button_label" => "Update"]);
         echo "
 
     <a href=\"";
-        // line 10
+        // line 12
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reclamation_back_index");
         echo "\">back to list</a>
 
     ";
-        // line 12
+        // line 14
         echo twig_include($this->env, $context, "reclamation_back/_delete_form.html.twig");
         echo "
 ";
@@ -131,12 +131,14 @@ class __TwigTemplate_f65967eb51a75ec3b34c4a5317b18215 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  102 => 12,  97 => 10,  92 => 8,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  102 => 14,  97 => 12,  92 => 10,  88 => 8,  78 => 7,  59 => 5,  36 => 2,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'baseback.html.twig' %}
+        return new Source("{# {% extends 'baseback.html.twig' %} #}
+{% extends \"admin/layout.html.twig\" %}
+
 
 {% block title %}Edit Reclamation{% endblock %}
 

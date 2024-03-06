@@ -1,6 +1,42 @@
-{% extends 'baseback.html.twig' %}
-
+{# {% extends 'baseback.html.twig' %} #}
+{% extends "admin/layout.html.twig" %}
 {% block body %}
+  <li class="dropdown dropdown-list-toggle">
+							<a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep">
+								<i class="ion ion-ios-bell-outline"></i>
+							</a>
+							 <div class="dropdown notification-dropdown">
+    <a class="dropdown-toggle" href="#" role="button" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-bell"></i> <!-- Icône de cloche -->
+        <span class="badge badge-pill badge-danger">3</span> <!-- Afficher le nombre de notifications non lues -->
+    </a>
+    <div class="dropdown-menu" aria-labelledby="notificationDropdown">
+									{% for notification in notifications %}
+										<a href="{{ notification.link }}" class="dropdown-item dropdown-item-unread">
+											<div class="dropdown-item-icon bg-primary text-white">
+											</div>
+											<div class="dropdown-item-desc">
+												{{ notification.message }}
+												<div class="time text-primary">{{ notification.createdAt|date('Y-m-d H:i') }}</div>
+											</div>
+										</a>
+									{% else %}
+										<a class="dropdown-item">
+											<div class="dropdown-item-desc">
+												No notifications
+											</div>
+										</a>
+									{% endfor %}
+								</div>
+    
+</div>
+								
+							</div>
+						</li>
+
+        </li>
+
+
     <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#statsModal">
         Afficher les statistiques 
     </button>

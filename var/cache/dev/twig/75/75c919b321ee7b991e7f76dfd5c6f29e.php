@@ -81,12 +81,23 @@ class __TwigTemplate_31118d0f7f08e6bd3dd7654e5b94722f extends Template
 
         <div class=\"collapse navbar-collapse\" id=\"ftco-nav\">
             <ul class=\"navbar-nav ml-auto\">
-                <li class=\"nav-item \"><a href=\"/accueil\" class=\"nav-link\">Accueil</a></li>
-                <li class=\"nav-item active\"><a href=\"/act\" class=\"nav-link\">Activites</a></li>
-                <li class=\"nav-item\"><a href=\"/logement\" class=\"nav-link\">Logements</a></li>
-                <li class=\"nav-item\"><a href=\"/restaurant\" class=\"nav-link\">Restaurants</a></li>
-                <li class=\"nav-item\"><a href=\"/activite\" class=\"nav-link\">Transports</a></li>
-                <li class=\"nav-item\"><a href=\"/reclamation\" class=\"nav-link\">Réclamation</a></li>
+            <ul class=\"navbar-nav ml-auto\">
+\t\t\t\t\t<li class=\"nav-item \"><a href=\"\" class=\"nav-link\">Home</a></li>
+\t\t\t\t\t<li class=\"nav-item active\"><a  href=\"";
+        // line 18
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activitee_indexx");
+        echo "\"class=\"nav-link\">Activites</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a  href=\"";
+        // line 19
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite");
+        echo "\" class=\"nav-link\">Transports</a></li>
+\t\t\t\t\t<li class=\"nav-item \"><a href=\"\" class=\"nav-link\">Logements</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"";
+        // line 21
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite");
+        echo "\" class=\"nav-link\">restaurants</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"reclamation\" class=\"nav-link\">Reclamation</a></li>
+\t\t\t\t
             </ul>
         </div>
 
@@ -97,8 +108,8 @@ class __TwigTemplate_31118d0f7f08e6bd3dd7654e5b94722f extends Template
 \t
 \t<!-- END nav -->
     <div class=\"hero-wrap js-fullheight\" style=\"background-image:url('";
-        // line 31
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, (isset($context["activitee"]) || array_key_exists("activitee", $context) ? $context["activitee"] : (function () { throw new RuntimeError('Variable "activitee" does not exist.', 31, $this->source); })()), "image", [], "any", false, false, false, 31))), "html", null, true);
+        // line 33
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, (isset($context["activitee"]) || array_key_exists("activitee", $context) ? $context["activitee"] : (function () { throw new RuntimeError('Variable "activitee" does not exist.', 33, $this->source); })()), "image", [], "any", false, false, false, 33))), "html", null, true);
         echo "');\">
 \t
 <div class=\"hero-wrap js-fullheight\" style=\"background-image: url('/images/tourisme.jpg');\">
@@ -125,7 +136,7 @@ class __TwigTemplate_31118d0f7f08e6bd3dd7654e5b94722f extends Template
 
     }
 
-    // line 49
+    // line 51
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -135,7 +146,7 @@ class __TwigTemplate_31118d0f7f08e6bd3dd7654e5b94722f extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 50
+        // line 52
         echo "       
     <section class=\"ftco-section ftco-no-pb ftco-no-pt\">
         <div class=\"container\">
@@ -152,8 +163,8 @@ class __TwigTemplate_31118d0f7f08e6bd3dd7654e5b94722f extends Template
                                                     <div class=\"form-group p-4 border-0\">
                                                         <a class=\"nav-link\" id=\"v-pills-2-tab\" data-toggle=\"pill\" href=\"#v-pills-2\" role=\"tab\" aria-controls=\"v-pills-2\" aria-selected=\"false\">
                                                             <label for=\"#\">";
-        // line 65
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activitee"]) || array_key_exists("activitee", $context) ? $context["activitee"] : (function () { throw new RuntimeError('Variable "activitee" does not exist.', 65, $this->source); })()), "nom", [], "any", false, false, false, 65), "html", null, true);
+        // line 67
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activitee"]) || array_key_exists("activitee", $context) ? $context["activitee"] : (function () { throw new RuntimeError('Variable "activitee" does not exist.', 67, $this->source); })()), "nom", [], "any", false, false, false, 67), "html", null, true);
         echo "</label>
                                                         </a>
                                                         <div class=\"form-field\">
@@ -162,50 +173,50 @@ class __TwigTemplate_31118d0f7f08e6bd3dd7654e5b94722f extends Template
                                                                     <tr>
                                                                         <th>Localisation</th>
                                                                         <td>";
-        // line 72
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activitee"]) || array_key_exists("activitee", $context) ? $context["activitee"] : (function () { throw new RuntimeError('Variable "activitee" does not exist.', 72, $this->source); })()), "localisation", [], "any", false, false, false, 72), "html", null, true);
+        // line 74
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activitee"]) || array_key_exists("activitee", $context) ? $context["activitee"] : (function () { throw new RuntimeError('Variable "activitee" does not exist.', 74, $this->source); })()), "localisation", [], "any", false, false, false, 74), "html", null, true);
         echo "</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th>Nombre Participant</th>
                                                                         <td>";
-        // line 76
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activitee"]) || array_key_exists("activitee", $context) ? $context["activitee"] : (function () { throw new RuntimeError('Variable "activitee" does not exist.', 76, $this->source); })()), "nbP", [], "any", false, false, false, 76), "html", null, true);
+        // line 78
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activitee"]) || array_key_exists("activitee", $context) ? $context["activitee"] : (function () { throw new RuntimeError('Variable "activitee" does not exist.', 78, $this->source); })()), "nbP", [], "any", false, false, false, 78), "html", null, true);
         echo "</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th>Prix</th>
                                                                         <td>";
-        // line 80
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activitee"]) || array_key_exists("activitee", $context) ? $context["activitee"] : (function () { throw new RuntimeError('Variable "activitee" does not exist.', 80, $this->source); })()), "prix", [], "any", false, false, false, 80), "html", null, true);
+        // line 82
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activitee"]) || array_key_exists("activitee", $context) ? $context["activitee"] : (function () { throw new RuntimeError('Variable "activitee" does not exist.', 82, $this->source); })()), "prix", [], "any", false, false, false, 82), "html", null, true);
         echo "</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th>Description</th>
                                                                         <td>";
-        // line 84
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activitee"]) || array_key_exists("activitee", $context) ? $context["activitee"] : (function () { throw new RuntimeError('Variable "activitee" does not exist.', 84, $this->source); })()), "descriptionact", [], "any", false, false, false, 84), "html", null, true);
+        // line 86
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activitee"]) || array_key_exists("activitee", $context) ? $context["activitee"] : (function () { throw new RuntimeError('Variable "activitee" does not exist.', 86, $this->source); })()), "descriptionact", [], "any", false, false, false, 86), "html", null, true);
         echo "</td>
                                                                     </tr>
                                                                       <tr>
                                                                         <th>Type Categorie</th>
                                                                         <td>";
-        // line 88
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["activitee"]) || array_key_exists("activitee", $context) ? $context["activitee"] : (function () { throw new RuntimeError('Variable "activitee" does not exist.', 88, $this->source); })()), "categorie", [], "any", false, false, false, 88), "getTypeCategorie", [], "method", false, false, false, 88), "html", null, true);
+        // line 90
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["activitee"]) || array_key_exists("activitee", $context) ? $context["activitee"] : (function () { throw new RuntimeError('Variable "activitee" does not exist.', 90, $this->source); })()), "categorie", [], "any", false, false, false, 90), "getTypeCategorie", [], "method", false, false, false, 90), "html", null, true);
         echo "</td>
                                                                     </tr>
                                                                      <tr>
                                                                         <th>Description Categorie</th>
                                                                         <td>";
-        // line 92
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["activitee"]) || array_key_exists("activitee", $context) ? $context["activitee"] : (function () { throw new RuntimeError('Variable "activitee" does not exist.', 92, $this->source); })()), "categorie", [], "any", false, false, false, 92), "getDescription", [], "method", false, false, false, 92), "html", null, true);
+        // line 94
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["activitee"]) || array_key_exists("activitee", $context) ? $context["activitee"] : (function () { throw new RuntimeError('Variable "activitee" does not exist.', 94, $this->source); })()), "categorie", [], "any", false, false, false, 94), "getDescription", [], "method", false, false, false, 94), "html", null, true);
         echo "</td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
                                                             <div style=\"text-align: center;\">
                                                                 <a href=\"";
-        // line 97
+        // line 99
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activitee_indexx");
         echo "\" class=\"btn btn-primary\">Retour</a>
                                                                
@@ -255,7 +266,7 @@ class __TwigTemplate_31118d0f7f08e6bd3dd7654e5b94722f extends Template
      */
     public function getDebugInfo()
     {
-        return array (  209 => 97,  201 => 92,  194 => 88,  187 => 84,  180 => 80,  173 => 76,  166 => 72,  156 => 65,  139 => 50,  129 => 49,  101 => 31,  75 => 8,  69 => 4,  59 => 3,  36 => 1,);
+        return array (  220 => 99,  212 => 94,  205 => 90,  198 => 86,  191 => 82,  184 => 78,  177 => 74,  167 => 67,  150 => 52,  140 => 51,  112 => 33,  97 => 21,  92 => 19,  88 => 18,  75 => 8,  69 => 4,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -275,12 +286,14 @@ class __TwigTemplate_31118d0f7f08e6bd3dd7654e5b94722f extends Template
 
         <div class=\"collapse navbar-collapse\" id=\"ftco-nav\">
             <ul class=\"navbar-nav ml-auto\">
-                <li class=\"nav-item \"><a href=\"/accueil\" class=\"nav-link\">Accueil</a></li>
-                <li class=\"nav-item active\"><a href=\"/act\" class=\"nav-link\">Activites</a></li>
-                <li class=\"nav-item\"><a href=\"/logement\" class=\"nav-link\">Logements</a></li>
-                <li class=\"nav-item\"><a href=\"/restaurant\" class=\"nav-link\">Restaurants</a></li>
-                <li class=\"nav-item\"><a href=\"/activite\" class=\"nav-link\">Transports</a></li>
-                <li class=\"nav-item\"><a href=\"/reclamation\" class=\"nav-link\">Réclamation</a></li>
+            <ul class=\"navbar-nav ml-auto\">
+\t\t\t\t\t<li class=\"nav-item \"><a href=\"\" class=\"nav-link\">Home</a></li>
+\t\t\t\t\t<li class=\"nav-item active\"><a  href=\"{{ path('app_activitee_indexx') }}\"class=\"nav-link\">Activites</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a  href=\"{{ path('app_activite') }}\" class=\"nav-link\">Transports</a></li>
+\t\t\t\t\t<li class=\"nav-item \"><a href=\"\" class=\"nav-link\">Logements</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"{{ path('app_activite') }}\" class=\"nav-link\">restaurants</a></li>
+\t\t\t\t\t<li class=\"nav-item\"><a href=\"reclamation\" class=\"nav-link\">Reclamation</a></li>
+\t\t\t\t
             </ul>
         </div>
 

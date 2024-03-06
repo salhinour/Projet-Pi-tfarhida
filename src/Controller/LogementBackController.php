@@ -18,10 +18,10 @@ use Doctrine\ORM\Mapping\Entity;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-#[Route('/logement/back')]
+//#[Route('/logement/back')]
 class LogementBackController extends AbstractController
 {
-    #[Route('/', name: 'app_logement_back_index', methods: ['GET'])]
+    #[Route('/logement/back', name: 'app_logement_back_index', methods: ['GET'])]
     public function index(EntityManagerInterface $entityManager ,LogementRepository $logementRepository, EquipementRepository $equipementRepository, PaginatorInterface $paginator,Request $request): Response
     {   
         $typeStatistics = $entityManager->createQueryBuilder()
@@ -51,11 +51,14 @@ class LogementBackController extends AbstractController
 
         ]);
     }
-    #[Route('/{id}/modifier-etat', name: 'app_modifier_etat_logement')]
+    #[Route('/logement/back/{id}/modifier-etat', name: 'app_modifier_etat_logement')]
     public function modifierEtatLogement($id): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
         $logement = $entityManager->getRepository(Logement::class)->find($id);
+        $user = $this->getUser();
+
+        $tel=strval($user->getNumero());
     
         if (!$logement) {
             throw $this->createNotFoundException('Le logement avec l\'ID ' . $id . ' n\'existe pas');
@@ -71,7 +74,7 @@ class LogementBackController extends AbstractController
         $client = new Client($accountSid, $authToken);
 
         $message = $client->messages->create(
-            '+21658978570', // replace with admin's phone number
+            '+216'.$tel, // replace with admin's phone number
             [
                 'from' => '+19725841982', // replace with your Twilio phone number
                 'body' => 'votre logement est acceptée: ' . $logement->getNom(),
@@ -81,7 +84,7 @@ class LogementBackController extends AbstractController
         // Rediriger ou retourner une réponse appropriée
         return $this->redirectToRoute('app_logement_back_index', ['id' => $id]);
     }
-    #[Route('/{id}/refuser-etat', name: 'app_refuser_etat_logement')]
+    #[Route('/logement/back/{id}/refuser-etat', name: 'app_refuser_etat_logement')]
     public function refuserEtatLogement($id, EntityManagerInterface $entityManager): Response
     {
         // Récupérer le logement à partir de l'ID
@@ -102,7 +105,7 @@ class LogementBackController extends AbstractController
     }
 
     
-    #[Route('/new', name: 'app_logement_back_new', methods: ['GET', 'POST'])]
+    #[Route('/logement/back/new', name: 'app_logement_back_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, ParameterBagInterface $parameterBag): Response
     {
         $logement = new logement();
@@ -138,7 +141,7 @@ class LogementBackController extends AbstractController
     }
 
 
-    #[Route('/{id}', name: 'app_logement_back_show', methods: ['GET'])]
+    #[Route('/logement/back/{id}', name: 'app_logement_back_show', methods: ['GET'])]
     public function show(Logement $logement): Response
     {
         return $this->render('logement_back/show.html.twig', [
@@ -146,7 +149,7 @@ class LogementBackController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_logement_back_edit', methods: ['GET', 'POST'])]
+    #[Route('/logement/back/{id}/edit', name: 'app_logement_back_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Logement $logement, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(Logement1Type::class, $logement);
@@ -164,7 +167,7 @@ class LogementBackController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_logement_back_delete', methods: ['POST'])]
+    #[Route('/logement/back/{id}', name: 'app_logement_back_delete', methods: ['POST'])]
     public function delete(Request $request, Logement $logement, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$logement->getId(), $request->request->get('_token'))) {
@@ -184,10 +187,9 @@ class LogementBackController extends AbstractController
     // }
 
 
-  /**
+    /**
      * @Route("/logement/back/delete-selected", name="deleteSelected", methods={"POST"})
      */
-
     public function deleteSelected(Request $request, LogementRepository $logementRepository): Response
     {
         $data = json_decode($request->getContent(), true);

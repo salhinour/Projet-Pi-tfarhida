@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Notification;
 use App\Entity\Reclamation;
+use App\Entity\User;
 use App\Form\ReclamationType;
 use App\Repository\ReclamationRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,6 +16,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 #[Route('/reclamation')]
 class ReclamationController extends AbstractController
@@ -64,7 +67,7 @@ class ReclamationController extends AbstractController
     }
 
     #[Route('/new', name: 'app_reclamation_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, ParameterBagInterface $parameterBag): Response
+    public function new(UrlGeneratorInterface $router,EntityManagerInterface $entityManager, Request $request, ParameterBagInterface $parameterBag): Response
     {
         $reclamation = new Reclamation();
         $form = $this->createForm(ReclamationType::class, $reclamation);
@@ -82,17 +85,30 @@ class ReclamationController extends AbstractController
                 }
             }
 
-/*
-            $dictionaryPath = '/path/to/dictionary/file.txt';
-
-            // Set the dictionary for the Builder class
-            Builder::setDictionary($dictionaryPath);
-            */
             $content = $reclamation->getDescriptionReclamation();
             $cleanedContenu = \ConsoleTVs\Profanity\Builder::blocker($content)->filter();
             $reclamation->setDescriptionReclamation($cleanedContenu);
+            $user=$this->getUser();
+            $reclamation->setUser($user);
             $entityManager->persist($reclamation);
             $entityManager->flush();
+
+            $reclamationId = $reclamation->getId();          
+    $notification = new Notification();
+    $notification->setReclamation($reclamation);
+    $notification->setMessage('A new reclamation, %s, has registered.');
+    if ($reclamationId !== null && ctype_digit((string) $reclamationId)) {
+        $detailsUrl = $router->generate('app_reclamation_back_show', ['id' => $reclamationId]);
+        $notification->setLink($detailsUrl);
+
+        $entityManager->persist($notification);
+    }
+
+
+$entityManager->flush();
+
+                // $entityManager->persist($notification); ya mansour r9at ?
+            
 
             return $this->redirectToRoute('app_reclamation_index', [], Response::HTTP_SEE_OTHER);
         }

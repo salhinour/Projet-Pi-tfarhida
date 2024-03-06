@@ -33,7 +33,7 @@ class __TwigTemplate_d7ba70a62d0a009aa1e458424ec783d7 extends Template
     protected function doGetParent(array $context)
     {
         // line 1
-        return "baseback.html.twig";
+        return "admin/layout.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
@@ -45,7 +45,7 @@ class __TwigTemplate_d7ba70a62d0a009aa1e458424ec783d7 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "categorie_back_c/index.html.twig"));
 
-        $this->parent = $this->loadTemplate("baseback.html.twig", "categorie_back_c/index.html.twig", 1);
+        $this->parent = $this->loadTemplate("admin/layout.html.twig", "categorie_back_c/index.html.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -55,7 +55,7 @@ class __TwigTemplate_d7ba70a62d0a009aa1e458424ec783d7 extends Template
 
     }
 
-    // line 3
+    // line 4
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -74,7 +74,7 @@ class __TwigTemplate_d7ba70a62d0a009aa1e458424ec783d7 extends Template
 
     }
 
-    // line 5
+    // line 6
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -84,11 +84,11 @@ class __TwigTemplate_d7ba70a62d0a009aa1e458424ec783d7 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 6
+        // line 7
         echo "<div>
 <div class=\"container text-center\">
     <a href=\"";
-        // line 8
+        // line 9
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_back_c_new");
         echo "\" class=\"btn btn-primary btn-icon-split\">
         <i class=\"fas fa-plus\"></i> Create New
@@ -109,36 +109,36 @@ class __TwigTemplate_d7ba70a62d0a009aa1e458424ec783d7 extends Template
         </thead>
         <tbody>
         ";
-        // line 26
+        // line 27
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 26, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 27, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["categorie"]) {
-            // line 27
+            // line 28
             echo "            <tr>
                 <td>";
-            // line 28
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["categorie"], "id", [], "any", false, false, false, 28), "html", null, true);
-            echo "</td>
-                <td>";
             // line 29
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["categorie"], "description", [], "any", false, false, false, 29), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["categorie"], "id", [], "any", false, false, false, 29), "html", null, true);
             echo "</td>
                 <td>";
             // line 30
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["categorie"], "typeCategorie", [], "any", false, false, false, 30), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["categorie"], "description", [], "any", false, false, false, 30), "html", null, true);
+            echo "</td>
+                <td>";
+            // line 31
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["categorie"], "typeCategorie", [], "any", false, false, false, 31), "html", null, true);
             echo "</td>
                
                   <td>
                 <a href=\"";
-            // line 33
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_back_c_show", ["id" => twig_get_attribute($this->env, $this->source, $context["categorie"], "id", [], "any", false, false, false, 33)]), "html", null, true);
+            // line 34
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_back_c_show", ["id" => twig_get_attribute($this->env, $this->source, $context["categorie"], "id", [], "any", false, false, false, 34)]), "html", null, true);
             echo "\" class=\"btn-icon-split\">
                     <i class=\"fas fa-eye text-primary\"></i>
                 </a>
                 <a href=\"";
-            // line 36
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_back_c_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["categorie"], "id", [], "any", false, false, false, 36)]), "html", null, true);
+            // line 37
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_back_c_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["categorie"], "id", [], "any", false, false, false, 37)]), "html", null, true);
             echo "\" class=\"btn-icon-split\">
                     <i class=\"fas fa-edit text-secondary\"></i>
                 </a>
@@ -148,7 +148,7 @@ class __TwigTemplate_d7ba70a62d0a009aa1e458424ec783d7 extends Template
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 42
+            // line 43
             echo "            <tr>
                 <td colspan=\"4\">no records found</td>
             </tr>
@@ -157,19 +157,19 @@ class __TwigTemplate_d7ba70a62d0a009aa1e458424ec783d7 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['categorie'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 46
+        // line 47
         echo "        </tbody>
     </table>
 <div class=\"pagination-container\">
     <ul class=\"pagination\">
         ";
-        // line 50
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 50, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 50) > 1)) {
-            // line 51
+        // line 51
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 51, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 51) > 1)) {
+            // line 52
             echo "            <li class=\"page-item\">
                 <a class=\"page-link\" href=\"";
-            // line 52
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_back_c_index", ["page" => (twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 52, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 52) - 1)]), "html", null, true);
+            // line 53
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_back_c_index", ["page" => (twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 53, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 53) - 1)]), "html", null, true);
             echo "\" aria-label=\"Previous\">
                     <span aria-hidden=\"true\">&laquo;</span>
                     <span class=\"sr-only\">Previous</span>
@@ -177,21 +177,21 @@ class __TwigTemplate_d7ba70a62d0a009aa1e458424ec783d7 extends Template
             </li>
         ";
         }
-        // line 58
+        // line 59
         echo "
         ";
-        // line 59
+        // line 60
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(range(1, twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 59, $this->source); })()), "pageCount", [], "any", false, false, false, 59)));
+        $context['_seq'] = twig_ensure_traversable(range(1, twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 60, $this->source); })()), "pageCount", [], "any", false, false, false, 60)));
         foreach ($context['_seq'] as $context["_key"] => $context["page"]) {
-            // line 60
+            // line 61
             echo "            <li class=\"page-item ";
-            if (($context["page"] == twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 60, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 60))) {
+            if (($context["page"] == twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 61, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 61))) {
                 echo "active";
             }
             echo "\">
                 <a class=\"page-link\" href=\"";
-            // line 61
+            // line 62
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_back_c_index", ["page" => $context["page"]]), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $context["page"], "html", null, true);
@@ -202,16 +202,16 @@ class __TwigTemplate_d7ba70a62d0a009aa1e458424ec783d7 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['page'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 64
+        // line 65
         echo "
         ";
-        // line 65
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 65, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 65) < twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 65, $this->source); })()), "pageCount", [], "any", false, false, false, 65))) {
-            // line 66
+        // line 66
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 66, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 66) < twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 66, $this->source); })()), "pageCount", [], "any", false, false, false, 66))) {
+            // line 67
             echo "            <li class=\"page-item\">
                 <a class=\"page-link\" href=\"";
-            // line 67
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_back_c_index", ["page" => (twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 67, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 67) + 1)]), "html", null, true);
+            // line 68
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_back_c_index", ["page" => (twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 68, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 68) + 1)]), "html", null, true);
             echo "\" aria-label=\"Next\">
                     <span aria-hidden=\"true\">&raquo;</span>
                     <span class=\"sr-only\">Next</span>
@@ -219,7 +219,7 @@ class __TwigTemplate_d7ba70a62d0a009aa1e458424ec783d7 extends Template
             </li>
         ";
         }
-        // line 73
+        // line 74
         echo "    </ul>
 </div>
 ";
@@ -252,12 +252,13 @@ class __TwigTemplate_d7ba70a62d0a009aa1e458424ec783d7 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  223 => 73,  214 => 67,  211 => 66,  209 => 65,  206 => 64,  195 => 61,  188 => 60,  184 => 59,  181 => 58,  172 => 52,  169 => 51,  167 => 50,  161 => 46,  152 => 42,  141 => 36,  135 => 33,  129 => 30,  125 => 29,  121 => 28,  118 => 27,  113 => 26,  92 => 8,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  223 => 74,  214 => 68,  211 => 67,  209 => 66,  206 => 65,  195 => 62,  188 => 61,  184 => 60,  181 => 59,  172 => 53,  169 => 52,  167 => 51,  161 => 47,  152 => 43,  141 => 37,  135 => 34,  129 => 31,  125 => 30,  121 => 29,  118 => 28,  113 => 27,  92 => 9,  88 => 7,  78 => 6,  59 => 4,  36 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'baseback.html.twig' %}
+        return new Source("{% extends \"admin/layout.html.twig\" %}
+{# {% extends 'baseback.html.twig' %} #}
 
 {% block title %}Categorie back index{% endblock %}
 

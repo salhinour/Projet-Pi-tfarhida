@@ -97,7 +97,7 @@ class __TwigTemplate_d7fc3c3a98f0513ed33da5ba932b013b extends Template
             <span>Utilisateurs</span>
         </a>
     </li>
-    <li class=\"nav-item             active
+     <li class=\"nav-item             active
     \">
         <a class=\"nav-link\" href=\"";
         // line 60
@@ -117,6 +117,67 @@ class __TwigTemplate_d7fc3c3a98f0513ed33da5ba932b013b extends Template
             <span>Reponse</span>
         </a>
     </li>
+    <li class=\"nav-item ";
+        // line 72
+        echo twig_call_macro($macros["macros"], "macro_is_active", ["admin_user"], 72, $context, $this->getSourceContext());
+        echo "\">
+        <a class=\"nav-link\" href=\"";
+        // line 73
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logement_back_index");
+        echo "\">
+            <i class=\"fas fa-user\"></i>
+            <span>Logement</span>
+        </a>
+    </li>
+     <li class=\"nav-item ";
+        // line 78
+        echo twig_call_macro($macros["macros"], "macro_is_active", ["admin_user"], 78, $context, $this->getSourceContext());
+        echo "\">
+        <a class=\"nav-link\" href=\"";
+        // line 79
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_equipement_back_index");
+        echo "\">
+            <i class=\"fas fa-user\"></i>
+            <span>Equipement</span>
+        </a>
+    </li>
+     <li class=\"nav-item ";
+        // line 84
+        echo twig_call_macro($macros["macros"], "macro_is_active", ["admin_user"], 84, $context, $this->getSourceContext());
+        echo "\">
+        <a class=\"nav-link\" href=\"";
+        // line 85
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_user_index");
+        echo "\">
+            <i class=\"fas fa-user\"></i>
+            <span>Activites</span>
+        </a>
+    </li>
+    <li class=\"nav-item ";
+        // line 90
+        echo twig_call_macro($macros["macros"], "macro_is_active", ["admin_user"], 90, $context, $this->getSourceContext());
+        echo "\">
+        <a class=\"nav-link\" href=\"";
+        // line 91
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_user_index");
+        echo "\">
+            <i class=\"fas fa-user\"></i>
+            <span>Restaurants</span>
+        </a>
+    </li>
+    <li class=\"nav-item ";
+        // line 96
+        echo twig_call_macro($macros["macros"], "macro_is_active", ["admin_user"], 96, $context, $this->getSourceContext());
+        echo "\">
+        <a class=\"nav-link\" href=\"";
+        // line 97
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_moyen_transport_back_index");
+        echo "\">
+            <i class=\"fas fa-user\"></i>
+            <span>Transports</span>
+        </a>
+    </li>
+    
     <hr class=\"sidebar-divider d-none d-md-block\">
 
     <div class=\"text-center d-none d-md-inline\">
@@ -154,7 +215,7 @@ class __TwigTemplate_d7fc3c3a98f0513ed33da5ba932b013b extends Template
      */
     public function getDebugInfo()
     {
-        return array (  114 => 67,  104 => 60,  94 => 53,  90 => 52,  86 => 50,  83 => 48,  80 => 25,  78 => 24,  76 => 23,  65 => 14,  61 => 13,  53 => 8,  45 => 2,  43 => 1,);
+        return array (  174 => 97,  170 => 96,  162 => 91,  158 => 90,  150 => 85,  146 => 84,  138 => 79,  134 => 78,  126 => 73,  122 => 72,  114 => 67,  104 => 60,  94 => 53,  90 => 52,  86 => 50,  83 => 48,  80 => 25,  78 => 24,  76 => 23,  65 => 14,  61 => 13,  53 => 8,  45 => 2,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -216,7 +277,7 @@ class __TwigTemplate_d7fc3c3a98f0513ed33da5ba932b013b extends Template
             <span>Utilisateurs</span>
         </a>
     </li>
-    <li class=\"nav-item             active
+     <li class=\"nav-item             active
     \">
         <a class=\"nav-link\" href=\"{{ path('app_reclamation_back_index') }}\" aria-expanded=\"false\">
             <i class=\"fas fa-user\"></i>
@@ -230,6 +291,37 @@ class __TwigTemplate_d7fc3c3a98f0513ed33da5ba932b013b extends Template
             <span>Reponse</span>
         </a>
     </li>
+    <li class=\"nav-item {{ macros.is_active('admin_user') }}\">
+        <a class=\"nav-link\" href=\"{{ path('app_logement_back_index') }}\">
+            <i class=\"fas fa-user\"></i>
+            <span>Logement</span>
+        </a>
+    </li>
+     <li class=\"nav-item {{ macros.is_active('admin_user') }}\">
+        <a class=\"nav-link\" href=\"{{ path('app_equipement_back_index') }}\">
+            <i class=\"fas fa-user\"></i>
+            <span>Equipement</span>
+        </a>
+    </li>
+     <li class=\"nav-item {{ macros.is_active('admin_user') }}\">
+        <a class=\"nav-link\" href=\"{{ path('admin_user_index') }}\">
+            <i class=\"fas fa-user\"></i>
+            <span>Activites</span>
+        </a>
+    </li>
+    <li class=\"nav-item {{ macros.is_active('admin_user') }}\">
+        <a class=\"nav-link\" href=\"{{ path('admin_user_index') }}\">
+            <i class=\"fas fa-user\"></i>
+            <span>Restaurants</span>
+        </a>
+    </li>
+    <li class=\"nav-item {{ macros.is_active('admin_user') }}\">
+        <a class=\"nav-link\" href=\"{{ path('app_moyen_transport_back_index') }}\">
+            <i class=\"fas fa-user\"></i>
+            <span>Transports</span>
+        </a>
+    </li>
+    
     <hr class=\"sidebar-divider d-none d-md-block\">
 
     <div class=\"text-center d-none d-md-inline\">

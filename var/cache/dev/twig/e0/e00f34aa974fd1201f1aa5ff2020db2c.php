@@ -59,11 +59,11 @@ class __TwigTemplate_484595e663f2269576ef90221d821fe1 extends Template
         // line 93
         echo "  ";
         $this->displayBlock('navBar', $context, $blocks);
-        // line 172
+        // line 171
         $this->displayBlock('body', $context, $blocks);
-        // line 175
+        // line 174
         $this->displayBlock('footer', $context, $blocks);
-        // line 239
+        // line 238
         echo "</footer>
 
 
@@ -71,9 +71,9 @@ class __TwigTemplate_484595e663f2269576ef90221d821fe1 extends Template
 <!-- loader -->
 <div id=\"ftco-loader\" class=\"show fullscreen\"><svg class=\"circular\" width=\"48px\" height=\"48px\"><circle class=\"path-bg\" cx=\"24\" cy=\"24\" r=\"22\" fill=\"none\" stroke-width=\"4\" stroke=\"#eeeeee\"/><circle class=\"path\" cx=\"24\" cy=\"24\" r=\"22\" fill=\"none\" stroke-width=\"4\" stroke-miterlimit=\"10\" stroke=\"#F96D00\"/></svg></div>
 ";
-        // line 245
+        // line 244
         $this->displayBlock('js', $context, $blocks);
-        // line 400
+        // line 409
         echo " <script src=\"path/to/sweetalert.min.js\"></script>
 
 </body>
@@ -223,49 +223,9 @@ class __TwigTemplate_484595e663f2269576ef90221d821fe1 extends Template
         // line 47
         echo "<header>
 
-<nav class=\"navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light\" id=\"ftco-navbar\">
-\t\t<div class=\"container\">
-     <a class=\"navbar-brand\" href=\"index.html\">Tfarhida<span>Bon plan Agency</span></a>
-\t\t\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#ftco-nav\" aria-controls=\"ftco-nav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
-\t\t\t\t<span class=\"oi oi-menu\"></span> Menu
-\t\t\t</button>
-
-\t\t\t<div class=\"collapse navbar-collapse\" id=\"ftco-nav\">
-\t\t\t\t <div class=\"collapse navbar-collapse\" id=\"ftco-nav\">
-\t\t\t 
-                <ul class=\"navbar-nav ml-auto\">
-\t\t\t\t
-                    <li class=\"nav-item\">
-\t\t\t\t\t<a href=\"accueil\" class=\"nav-link\">Accueil</a>
-\t\t\t\t\t</li>
-
-                   
-\t\t\t\t\t\t<li class=\"nav-item active\">
-\t\t\t\t\t
-
-\t\t\t\t\t
-\t\t\t\t\t\t<a href=\"\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">Logements</a>
-\t\t\t\t\t\t</li>
-\t\t\t
-\t\t\t\t\t\t\t\t<div class=\"dropdown-menu m-0\">
-\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\">Hotel</a>
-\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\"> Villa</a>
-\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\"> Maison</a>
-\t\t\t\t\t\t\t
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t
-\t\t\t\t\t\t
-\t\t\t\t\t</ul>
-          </div>
-\t\t\t\t</ul>
-\t\t\t</div>
-\t\t</div>
-    
-\t</nav>
-
-\t<!-- END nav -->
-\t</header>
-
+";
+        // line 91
+        echo "
 \t";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -285,36 +245,14 @@ class __TwigTemplate_484595e663f2269576ef90221d821fe1 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navBar"));
 
-        // line 94
-        echo "<header>
-    <nav class=\"navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light\" id=\"ftco-navbar\">
-        <div class=\"container\">
-            <a class=\"navbar-brand\" href=\"index.html\">Tfarhida<span>Travel Agency</span></a>
-            <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#ftco-nav\" aria-controls=\"ftco-nav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
-                <span class=\"oi oi-menu\"></span> Menu
-            </button>
-\t\t\t<div class=\"nav-item dropdown\">
-             <div class=\"collapse navbar-collapse\" id=\"ftco-nav\">
-\t\t\t 
-                <ul class=\"navbar-nav ml-auto\">
-\t\t\t\t
-                    <li class=\"nav-item\">
-\t\t\t\t\t<a href=\"accueil\" class=\"nav-link\">Accueil</a>
-\t\t\t\t\t</li>
-
-                   
-\t\t\t\t\t\t<li class=\"nav-item active\">
-\t\t\t\t\t
-
-\t\t\t\t\t
-\t\t\t\t\t<li class=\"nav-item active\">
-            <a  class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">Logements</a>
-            <div class=\"dropdown-menu p-0\"> <!-- Ajoutez la classe p-0 ici -->
-                ";
+        // line 95
+        echo "    ";
+        // line 118
+        echo "                ";
         // line 122
-        echo "            </div>
-        </li>
-                    
+        echo "            ";
+        // line 124
+        echo "                    
 \t\t\t\t\t
                     ";
         // line 127
@@ -328,49 +266,13 @@ class __TwigTemplate_484595e663f2269576ef90221d821fe1 extends Template
         // line 131
         echo "                    ";
         // line 132
-        echo "                </ul> 
-\t\t\t\t</div>
-            </div>  
-\t\t\t<ul class=\"navbar-nav ml-auto\">
-
-
-        
-        <div class=\"topbar-divider d-none d-sm-block\"></div>
-
+        echo "                ";
+        // line 139
+        echo "
         <!-- Nav Item - User Information -->
-        <li class=\"nav-item dropdown no-arrow\">
-            <a aria-expanded=\"false\" aria-haspopup=\"true\" class=\"nav-link dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" id=\"userDropdown\" role=\"button\">
-                <span class=\"mr-2 d-none d-lg-inline text-gray-600 small\"><i class=\"far fa-user text-primary mr-2 fa-2x \"></i>Gharbi jihen</span>
-                            </a>
-            <!-- Dropdown - User Information -->
-            <div aria-labelledby=\"userDropdown\" class=\"dropdown-menu dropdown-menu-right shadow animated--grow-in\">
-                <a class=\"dropdown-item\" href=\"/admin/profil\">
-                    <i class=\"fas fa-user fa-sm fa-fw mr-2 text-gray-400\"></i>
-                    Profil
-                </a>
-\t\t\t\t  <a class=\"dropdown-item\" href=\"/logement/mylogement\">
-                    <i class=\"fas fa-list-ul text-gray-400\"></i>
-                    Mes Logements
-                </a>
-                <a class=\"dropdown-item\" href=\"/admin/parametre\">
-                    <i class=\"fas fa-cogs fa-sm fa-fw mr-2 text-gray-400\"></i>
-                    Paramètres
-                </a>
-                                <div class=\"dropdown-divider\"></div>
-                <a class=\"dropdown-item\"  href=\"";
-        // line 161
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logement_back_index");
-        echo "\">
-                    <i class=\"fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400\"></i>
-                    Déconnexion
-                </a>
-            </div>
-        </li>
-
-    </ul>
-        </div>
-    </nav>
-";
+        ";
+        // line 158
+        echo "                ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -379,7 +281,7 @@ class __TwigTemplate_484595e663f2269576ef90221d821fe1 extends Template
 
     }
 
-    // line 172
+    // line 171
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -389,7 +291,7 @@ class __TwigTemplate_484595e663f2269576ef90221d821fe1 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 173
+        // line 172
         echo "
 ";
         
@@ -400,7 +302,7 @@ class __TwigTemplate_484595e663f2269576ef90221d821fe1 extends Template
 
     }
 
-    // line 175
+    // line 174
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -410,7 +312,7 @@ class __TwigTemplate_484595e663f2269576ef90221d821fe1 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 176
+        // line 175
         echo "<footer class=\"ftco-footer bg-bottom ftco-no-pt\" style=\"background-image: url(/images/bg_3.jpg);\">
   <div class=\"container\">
     <div class=\"row mb-5\">
@@ -482,7 +384,7 @@ class __TwigTemplate_484595e663f2269576ef90221d821fe1 extends Template
 
     }
 
-    // line 245
+    // line 244
     public function block_js($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -492,61 +394,61 @@ class __TwigTemplate_484595e663f2269576ef90221d821fe1 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "js"));
 
-        // line 246
+        // line 245
         echo "
 ";
-        // line 248
+        // line 247
         echo "
 <script src=\"";
-        // line 249
+        // line 248
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 250
+        // line 249
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery-migrate-3.0.1.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 251
+        // line 250
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/popper.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 252
+        // line 251
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 253
+        // line 252
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery.easing.1.3.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 254
+        // line 253
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery.waypoints.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 255
+        // line 254
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery.stellar.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 256
+        // line 255
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/owl.carousel.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 257
+        // line 256
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery.magnific-popup.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 258
+        // line 257
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery.animateNumber.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 259
+        // line 258
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/bootstrap-datepicker.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 260
+        // line 259
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/scrollax.min.js"), "html", null, true);
         echo "\"></script>
 ";
-        // line 262
+        // line 261
         echo "<script src=\"//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js\"></script>
 <script>
   var map = L.map('map').setView([51.505, -0.09], 13);
@@ -580,14 +482,14 @@ class __TwigTemplate_484595e663f2269576ef90221d821fe1 extends Template
 
 </script>
 ";
-        // line 295
+        // line 294
         echo "<script src=\"path/to/sweetalert.min.js\"></script>
 <script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@11\"></script>
 
 
 <script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>
 <script src=\"";
-        // line 300
+        // line 299
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"), "html", null, true);
         echo "\"></script>
     <script type=\"module\" src=\"./index.js\"></script>
@@ -601,11 +503,11 @@ class __TwigTemplate_484595e663f2269576ef90221d821fe1 extends Template
 </script>
 
 <script src=\"";
-        // line 311
+        // line 310
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/google-map.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 312
+        // line 311
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/main.js"), "html", null, true);
         echo "\"></script>
 <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js\"></script>
@@ -621,7 +523,7 @@ class __TwigTemplate_484595e663f2269576ef90221d821fe1 extends Template
    </script>
    <script type=\"text/javascript\" src=\"https://platform-api.sharethis.com/js/sharethis.js#property=64065d7b567fbf001a2d5d17&product=inline-share-buttons&source=platform\" async=\"async\"></script>
    ";
-        // line 326
+        // line 325
         echo "   <script src=\"https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js\"></script>
    <script>
    const phoneInputField = document.querySelector(\"#phone\");
@@ -670,7 +572,7 @@ const phoneInput = window.intlTelInput(phoneInputField, {
 });
  </script>
  ";
-        // line 374
+        // line 373
         echo "  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js\"></script>
    <script>
        \$(document).ready(function () {
@@ -683,7 +585,7 @@ const phoneInput = window.intlTelInput(phoneInputField, {
        });
    </script>
    ";
-        // line 386
+        // line 385
         echo "  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js\"></script>
    <script>
        \$(document).ready(function () {
@@ -695,8 +597,18 @@ const phoneInput = window.intlTelInput(phoneInputField, {
            })
        });
    </script>
+   <script src=\"script.js\"></script>
+      <script type=\"text/javascript\">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        } 
+  </script>
+  <script type=\"text/javascript\" src=\"https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit\"></script>
 ";
-        // line 398
+        // line 407
         echo "
  ";
         
@@ -720,7 +632,7 @@ const phoneInput = window.intlTelInput(phoneInputField, {
      */
     public function getDebugInfo()
     {
-        return array (  700 => 398,  687 => 386,  674 => 374,  625 => 326,  609 => 312,  605 => 311,  591 => 300,  584 => 295,  550 => 262,  546 => 260,  542 => 259,  538 => 258,  534 => 257,  530 => 256,  526 => 255,  522 => 254,  518 => 253,  514 => 252,  510 => 251,  506 => 250,  502 => 249,  499 => 248,  496 => 246,  486 => 245,  414 => 176,  404 => 175,  393 => 173,  383 => 172,  362 => 161,  331 => 132,  329 => 131,  327 => 130,  325 => 129,  323 => 128,  321 => 127,  315 => 122,  289 => 94,  279 => 93,  224 => 47,  214 => 46,  203 => 41,  197 => 36,  189 => 31,  185 => 29,  181 => 28,  177 => 27,  173 => 26,  169 => 25,  165 => 24,  161 => 23,  157 => 22,  153 => 21,  149 => 20,  144 => 17,  134 => 16,  122 => 43,  120 => 16,  116 => 14,  112 => 11,  108 => 6,  98 => 5,  77 => 400,  75 => 245,  67 => 239,  65 => 175,  63 => 172,  60 => 93,  58 => 46,  56 => 5,  50 => 1,);
+        return array (  612 => 407,  589 => 385,  576 => 373,  527 => 325,  511 => 311,  507 => 310,  493 => 299,  486 => 294,  452 => 261,  448 => 259,  444 => 258,  440 => 257,  436 => 256,  432 => 255,  428 => 254,  424 => 253,  420 => 252,  416 => 251,  412 => 250,  408 => 249,  404 => 248,  401 => 247,  398 => 245,  388 => 244,  316 => 175,  306 => 174,  295 => 172,  285 => 171,  275 => 158,  271 => 139,  269 => 132,  267 => 131,  265 => 130,  263 => 129,  261 => 128,  259 => 127,  255 => 124,  253 => 122,  251 => 118,  249 => 95,  239 => 93,  228 => 91,  224 => 47,  214 => 46,  203 => 41,  197 => 36,  189 => 31,  185 => 29,  181 => 28,  177 => 27,  173 => 26,  169 => 25,  165 => 24,  161 => 23,  157 => 22,  153 => 21,  149 => 20,  144 => 17,  134 => 16,  122 => 43,  120 => 16,  116 => 14,  112 => 11,  108 => 6,  98 => 5,  77 => 409,  75 => 244,  67 => 238,  65 => 174,  63 => 171,  60 => 93,  58 => 46,  56 => 5,  50 => 1,);
     }
 
     public function getSourceContext()
@@ -773,7 +685,7 @@ const phoneInput = window.intlTelInput(phoneInputField, {
 {% block header %}
 <header>
 
-<nav class=\"navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light\" id=\"ftco-navbar\">
+{# <nav class=\"navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light\" id=\"ftco-navbar\">
 \t\t<div class=\"container\">
      <a class=\"navbar-brand\" href=\"index.html\">Tfarhida<span>Bon plan Agency</span></a>
 \t\t\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#ftco-nav\" aria-controls=\"ftco-nav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
@@ -814,12 +726,12 @@ const phoneInput = window.intlTelInput(phoneInputField, {
 \t</nav>
 
 \t<!-- END nav -->
-\t</header>
+\t</header> #}
 
 \t{% endblock %}
   {% block navBar %}
-<header>
-    <nav class=\"navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light\" id=\"ftco-navbar\">
+{# <header> #}
+    {# <nav class=\"navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light\" id=\"ftco-navbar\">
         <div class=\"container\">
             <a class=\"navbar-brand\" href=\"index.html\">Tfarhida<span>Travel Agency</span></a>
             <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#ftco-nav\" aria-controls=\"ftco-nav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
@@ -841,13 +753,13 @@ const phoneInput = window.intlTelInput(phoneInputField, {
 \t\t\t\t\t
 \t\t\t\t\t<li class=\"nav-item active\">
             <a  class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">Logements</a>
-            <div class=\"dropdown-menu p-0\"> <!-- Ajoutez la classe p-0 ici -->
+            <div class=\"dropdown-menu p-0\"> <!-- Ajoutez la classe p-0 ici --> #}
                 {# <a class=\"dropdown-item\"  href=\"logement\">Hotel</a>
                 <a class=\"dropdown-item\">Villa</a>
                 <a class=\"dropdown-item\">Maison</a>
                 <a class=\"dropdown-item\">Appartement</a> #}
-            </div>
-        </li>
+            {# </div>
+        </li> #}
                     
 \t\t\t\t\t
                     {# {% if app.user %} #}
@@ -856,17 +768,16 @@ const phoneInput = window.intlTelInput(phoneInputField, {
                         {# <li class=\"nav-item\"> #}
 \t\t\t\t\t\t{# <a href=\"{{ path('app_logement_back_index') }}\" class=\"nav-link\">Connexion</a></li> #}
                     {# {# {% endif %} # #}
-                </ul> 
+                {# </ul> 
 \t\t\t\t</div>
             </div>  
 \t\t\t<ul class=\"navbar-nav ml-auto\">
 
 
-        
-        <div class=\"topbar-divider d-none d-sm-block\"></div>
+         #}
 
         <!-- Nav Item - User Information -->
-        <li class=\"nav-item dropdown no-arrow\">
+        {# <li class=\"nav-item dropdown no-arrow\">
             <a aria-expanded=\"false\" aria-haspopup=\"true\" class=\"nav-link dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" id=\"userDropdown\" role=\"button\">
                 <span class=\"mr-2 d-none d-lg-inline text-gray-600 small\"><i class=\"far fa-user text-primary mr-2 fa-2x \"></i>Gharbi jihen</span>
                             </a>
@@ -882,8 +793,8 @@ const phoneInput = window.intlTelInput(phoneInputField, {
                 </a>
                 <a class=\"dropdown-item\" href=\"/admin/parametre\">
                     <i class=\"fas fa-cogs fa-sm fa-fw mr-2 text-gray-400\"></i>
-                    Paramètres
-                </a>
+                    Paramètres #}
+                {# </a>
                                 <div class=\"dropdown-divider\"></div>
                 <a class=\"dropdown-item\"  href=\"{{ path('app_logement_back_index') }}\">
                     <i class=\"fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400\"></i>
@@ -894,7 +805,7 @@ const phoneInput = window.intlTelInput(phoneInputField, {
 
     </ul>
         </div>
-    </nav>
+    </nav> #}
 {% endblock %}
 {% block body %}
 
@@ -1121,6 +1032,16 @@ const phoneInput = window.intlTelInput(phoneInputField, {
            })
        });
    </script>
+   <script src=\"script.js\"></script>
+      <script type=\"text/javascript\">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        } 
+  </script>
+  <script type=\"text/javascript\" src=\"https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit\"></script>
 {#  #}
 
  {% endblock %}

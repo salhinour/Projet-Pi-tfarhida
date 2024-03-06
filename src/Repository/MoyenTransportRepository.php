@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\MoyenTransport;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -71,4 +72,14 @@ public function SortBycapacite()
         ->getResult()
         ;
 }
+
+public function getTransportByUser(User $user): array
+    {
+        return $this->createQueryBuilder('t')
+            ->where('t.user = :userId')
+            ->setParameter('userId', $user)
+            ->setMaxResults(6)
+            ->getQuery()
+            ->getResult();
+    }
 }

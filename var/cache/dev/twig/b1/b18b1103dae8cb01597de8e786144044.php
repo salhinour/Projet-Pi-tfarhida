@@ -31,8 +31,8 @@ class __TwigTemplate_1301cfadb0d60b3f6caee94e59d5dd68 extends Template
 
     protected function doGetParent(array $context)
     {
-        // line 1
-        return "baseback.html.twig";
+        // line 2
+        return "admin/layout.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
@@ -44,7 +44,7 @@ class __TwigTemplate_1301cfadb0d60b3f6caee94e59d5dd68 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "reclamation_back/index.html.twig"));
 
-        $this->parent = $this->loadTemplate("baseback.html.twig", "reclamation_back/index.html.twig", 1);
+        $this->parent = $this->loadTemplate("admin/layout.html.twig", "reclamation_back/index.html.twig", 2);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -65,7 +65,66 @@ class __TwigTemplate_1301cfadb0d60b3f6caee94e59d5dd68 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "    <button type=\"button\" class=\"btn btn-primary btn-icon-split\" data-toggle=\"modal\" data-target=\"#statsModal\">
+        echo "  <li class=\"dropdown dropdown-list-toggle\">
+\t\t\t\t\t\t\t<a href=\"#\" data-toggle=\"dropdown\" class=\"nav-link notification-toggle nav-link-lg beep\">
+\t\t\t\t\t\t\t\t<i class=\"ion ion-ios-bell-outline\"></i>
+\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t <div class=\"dropdown notification-dropdown\">
+    <a class=\"dropdown-toggle\" href=\"#\" role=\"button\" id=\"notificationDropdown\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+        <i class=\"fas fa-bell\"></i> <!-- Icône de cloche -->
+        <span class=\"badge badge-pill badge-danger\">3</span> <!-- Afficher le nombre de notifications non lues -->
+    </a>
+    <div class=\"dropdown-menu\" aria-labelledby=\"notificationDropdown\">
+\t\t\t\t\t\t\t\t\t";
+        // line 14
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["notifications"]) || array_key_exists("notifications", $context) ? $context["notifications"] : (function () { throw new RuntimeError('Variable "notifications" does not exist.', 14, $this->source); })()));
+        $context['_iterated'] = false;
+        foreach ($context['_seq'] as $context["_key"] => $context["notification"]) {
+            // line 15
+            echo "\t\t\t\t\t\t\t\t\t\t<a href=\"";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["notification"], "link", [], "any", false, false, false, 15), "html", null, true);
+            echo "\" class=\"dropdown-item dropdown-item-unread\">
+\t\t\t\t\t\t\t\t\t\t\t<div class=\"dropdown-item-icon bg-primary text-white\">
+\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t<div class=\"dropdown-item-desc\">
+\t\t\t\t\t\t\t\t\t\t\t\t";
+            // line 19
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["notification"], "message", [], "any", false, false, false, 19), "html", null, true);
+            echo "
+\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"time text-primary\">";
+            // line 20
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["notification"], "createdAt", [], "any", false, false, false, 20), "Y-m-d H:i"), "html", null, true);
+            echo "</div>
+\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t";
+            $context['_iterated'] = true;
+        }
+        if (!$context['_iterated']) {
+            // line 24
+            echo "\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\">
+\t\t\t\t\t\t\t\t\t\t\t<div class=\"dropdown-item-desc\">
+\t\t\t\t\t\t\t\t\t\t\t\tNo notifications
+\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['notification'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 30
+        echo "\t\t\t\t\t\t\t\t</div>
+    
+</div>
+\t\t\t\t\t\t\t\t
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</li>
+
+        </li>
+
+
+    <button type=\"button\" class=\"btn btn-primary btn-icon-split\" data-toggle=\"modal\" data-target=\"#statsModal\">
         Afficher les statistiques 
     </button>
 
@@ -106,88 +165,88 @@ class __TwigTemplate_1301cfadb0d60b3f6caee94e59d5dd68 extends Template
         <td colspan=\"7\">Aucune réclamation trouvée.</td>
     </tr>
     ";
-        // line 44
-        if ((twig_length_filter($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 44, $this->source); })())) > 0)) {
-            // line 45
+        // line 80
+        if ((twig_length_filter($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 80, $this->source); })())) > 0)) {
+            // line 81
             echo "        ";
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 45, $this->source); })()));
+            $context['_seq'] = twig_ensure_traversable((isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 81, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["reclamation"]) {
-                // line 46
+                // line 82
                 echo "            <tr>
                 <td>";
-                // line 47
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reclamation"], "id", [], "any", false, false, false, 47), "html", null, true);
+                // line 83
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reclamation"], "id", [], "any", false, false, false, 83), "html", null, true);
                 echo "</td>
                 <td>";
-                // line 48
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reclamation"], "titre", [], "any", false, false, false, 48), "html", null, true);
+                // line 84
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reclamation"], "titre", [], "any", false, false, false, 84), "html", null, true);
                 echo "</td>
                 <td>";
-                // line 49
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reclamation"], "type", [], "any", false, false, false, 49), "html", null, true);
+                // line 85
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reclamation"], "type", [], "any", false, false, false, 85), "html", null, true);
                 echo "</td>
                 <td>";
-                // line 50
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reclamation"], "descriptionReclamation", [], "any", false, false, false, 50), "html", null, true);
+                // line 86
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reclamation"], "descriptionReclamation", [], "any", false, false, false, 86), "html", null, true);
                 echo "</td>
                 <td>";
-                // line 51
-                ((twig_get_attribute($this->env, $this->source, $context["reclamation"], "date", [], "any", false, false, false, 51)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reclamation"], "date", [], "any", false, false, false, 51), "d-m-Y"), "html", null, true))) : (print ("")));
+                // line 87
+                ((twig_get_attribute($this->env, $this->source, $context["reclamation"], "date", [], "any", false, false, false, 87)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reclamation"], "date", [], "any", false, false, false, 87), "d-m-Y"), "html", null, true))) : (print ("")));
                 echo "</td>
                 <td>
                     ";
-                // line 53
-                if (twig_get_attribute($this->env, $this->source, $context["reclamation"], "image", [], "any", false, false, false, 53)) {
-                    // line 54
+                // line 89
+                if (twig_get_attribute($this->env, $this->source, $context["reclamation"], "image", [], "any", false, false, false, 89)) {
+                    // line 90
                     echo "                        <img src=\"";
-                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, $context["reclamation"], "image", [], "any", false, false, false, 54))), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, $context["reclamation"], "image", [], "any", false, false, false, 90))), "html", null, true);
                     echo "\" alt=\"Image\" width=\"100\" height=\"100\">
                     ";
                 } else {
-                    // line 56
+                    // line 92
                     echo "                        <span>Aucune image</span>
                     ";
                 }
-                // line 58
+                // line 94
                 echo "                </td>
                 <td>
                     ";
-                // line 60
-                if ( !twig_get_attribute($this->env, $this->source, $context["reclamation"], "etat", [], "any", false, false, false, 60)) {
-                    // line 61
+                // line 96
+                if ( !twig_get_attribute($this->env, $this->source, $context["reclamation"], "etat", [], "any", false, false, false, 96)) {
+                    // line 97
                     echo "                        <span style=\"color: red;\">Non traitée</span>
                     ";
                 } else {
-                    // line 63
+                    // line 99
                     echo "                        <span style=\"color: green;\">Traitée</span>
                     ";
                 }
-                // line 65
+                // line 101
                 echo "                </td>
                 <td>
                     ";
-                // line 67
-                if (( !twig_get_attribute($this->env, $this->source, $context["reclamation"], "etat", [], "any", false, false, false, 67) &&  !twig_get_attribute($this->env, $this->source, $context["reclamation"], "reponse", [], "any", false, false, false, 67))) {
-                    // line 68
+                // line 103
+                if (( !twig_get_attribute($this->env, $this->source, $context["reclamation"], "etat", [], "any", false, false, false, 103) &&  !twig_get_attribute($this->env, $this->source, $context["reclamation"], "reponse", [], "any", false, false, false, 103))) {
+                    // line 104
                     echo "                        <a href=\"";
-                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reclamation_back_repondre", ["id" => twig_get_attribute($this->env, $this->source, $context["reclamation"], "id", [], "any", false, false, false, 68)]), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reclamation_back_repondre", ["id" => twig_get_attribute($this->env, $this->source, $context["reclamation"], "id", [], "any", false, false, false, 104)]), "html", null, true);
                     echo "\" class=\"btn btn-success\">Répondre</a>
                     ";
-                } elseif (twig_get_attribute($this->env, $this->source,                 // line 69
-$context["reclamation"], "reponse", [], "any", false, false, false, 69)) {
+                } elseif (twig_get_attribute($this->env, $this->source,                 // line 105
+$context["reclamation"], "reponse", [], "any", false, false, false, 105)) {
                     echo " 
                         <a href=\"";
-                    // line 70
-                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reclamation_back_show_response", ["id" => twig_get_attribute($this->env, $this->source, $context["reclamation"], "id", [], "any", false, false, false, 70)]), "html", null, true);
+                    // line 106
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reclamation_back_show_response", ["id" => twig_get_attribute($this->env, $this->source, $context["reclamation"], "id", [], "any", false, false, false, 106)]), "html", null, true);
                     echo "\" class=\"btn btn-primary btn-view-response\">
                             Voir la réponse
                         </a>
                     ";
                 }
-                // line 74
+                // line 110
                 echo "                    <a href=\"";
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reclamation_back_show", ["id" => twig_get_attribute($this->env, $this->source, $context["reclamation"], "id", [], "any", false, false, false, 74)]), "html", null, true);
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reclamation_back_show", ["id" => twig_get_attribute($this->env, $this->source, $context["reclamation"], "id", [], "any", false, false, false, 110)]), "html", null, true);
                 echo "\" class=\"btn btn-primary btn-view-reclamation mr-2\">
                         <i class=\"fas fa-eye\"></i> 
                     </a>
@@ -199,22 +258,22 @@ $context["reclamation"], "reponse", [], "any", false, false, false, 69)) {
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['reclamation'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 81
+            // line 117
             echo "    ";
         }
-        // line 82
+        // line 118
         echo "     </tbody>
 </table>
 <div class=\"pagination-container\">
             <ul class=\"pagination\">
                 ";
-        // line 86
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 86, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 86) > 1)) {
-            // line 87
+        // line 122
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 122, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 122) > 1)) {
+            // line 123
             echo "                    <li class=\"page-item\">
                         <a class=\"page-link\" href=\"";
-            // line 88
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reclamation_back_index", ["page" => (twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 88, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 88) - 1)]), "html", null, true);
+            // line 124
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reclamation_back_index", ["page" => (twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 124, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 124) - 1)]), "html", null, true);
             echo "\" aria-label=\"Previous\">
                             <span aria-hidden=\"true\">&laquo;</span>
                             <span class=\"sr-only\">Previous</span>
@@ -222,21 +281,21 @@ $context["reclamation"], "reponse", [], "any", false, false, false, 69)) {
                     </li>
                 ";
         }
-        // line 94
+        // line 130
         echo "
                 ";
-        // line 95
+        // line 131
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(range(1, twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 95, $this->source); })()), "pageCount", [], "any", false, false, false, 95)));
+        $context['_seq'] = twig_ensure_traversable(range(1, twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 131, $this->source); })()), "pageCount", [], "any", false, false, false, 131)));
         foreach ($context['_seq'] as $context["_key"] => $context["page"]) {
-            // line 96
+            // line 132
             echo "                    <li class=\"page-item ";
-            if (($context["page"] == twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 96, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 96))) {
+            if (($context["page"] == twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 132, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 132))) {
                 echo "active";
             }
             echo "\">
                         <a class=\"page-link\" href=\"";
-            // line 97
+            // line 133
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reclamation_back_index", ["page" => $context["page"]]), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $context["page"], "html", null, true);
@@ -247,16 +306,16 @@ $context["reclamation"], "reponse", [], "any", false, false, false, 69)) {
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['page'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 100
+        // line 136
         echo "
                 ";
-        // line 101
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 101, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 101) < twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 101, $this->source); })()), "pageCount", [], "any", false, false, false, 101))) {
-            // line 102
+        // line 137
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 137, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 137) < twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 137, $this->source); })()), "pageCount", [], "any", false, false, false, 137))) {
+            // line 138
             echo "                    <li class=\"page-item\">
                         <a class=\"page-link\" href=\"";
-            // line 103
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reclamation_back_index", ["page" => (twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 103, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 103) + 1)]), "html", null, true);
+            // line 139
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reclamation_back_index", ["page" => (twig_get_attribute($this->env, $this->source, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 139, $this->source); })()), "currentPageNumber", [], "any", false, false, false, 139) + 1)]), "html", null, true);
             echo "\" aria-label=\"Next\">
                             <span aria-hidden=\"true\">&raquo;</span>
                             <span class=\"sr-only\">Next</span>
@@ -264,7 +323,7 @@ $context["reclamation"], "reponse", [], "any", false, false, false, 69)) {
                     </li>
                 ";
         }
-        // line 109
+        // line 145
         echo "            </ul>
         </div>
     <div class=\"modal fade\" id=\"responseModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"responseModalLabel\" aria-hidden=\"true\">
@@ -431,41 +490,41 @@ $context["reclamation"], "reponse", [], "any", false, false, false, 69)) {
                             var data = {
                                 labels: [
                                     ";
-        // line 274
+        // line 310
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["typeStatistics"]) || array_key_exists("typeStatistics", $context) ? $context["typeStatistics"] : (function () { throw new RuntimeError('Variable "typeStatistics" does not exist.', 274, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["typeStatistics"]) || array_key_exists("typeStatistics", $context) ? $context["typeStatistics"] : (function () { throw new RuntimeError('Variable "typeStatistics" does not exist.', 310, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["stat"]) {
-            // line 275
+            // line 311
             echo "                                        '";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["stat"], "type", [], "any", false, false, false, 275), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["stat"], "type", [], "any", false, false, false, 311), "html", null, true);
             echo " (";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["stat"], "typeCount", [], "any", false, false, false, 275), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["stat"], "typeCount", [], "any", false, false, false, 311), "html", null, true);
             echo ")',
                                     ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['stat'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 277
+        // line 313
         echo "                                    
                                 ],
                                 datasets: [{
                                     data: [
                                         ";
-        // line 281
+        // line 317
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["typeStatistics"]) || array_key_exists("typeStatistics", $context) ? $context["typeStatistics"] : (function () { throw new RuntimeError('Variable "typeStatistics" does not exist.', 281, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["typeStatistics"]) || array_key_exists("typeStatistics", $context) ? $context["typeStatistics"] : (function () { throw new RuntimeError('Variable "typeStatistics" does not exist.', 317, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["stat"]) {
-            // line 282
+            // line 318
             echo "                                            ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["stat"], "typeCount", [], "any", false, false, false, 282), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["stat"], "typeCount", [], "any", false, false, false, 318), "html", null, true);
             echo ",
                                         ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['stat'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 284
+        // line 320
         echo "                                    ],
                                     backgroundColor: colors
                                 }]
@@ -529,14 +588,50 @@ $context["reclamation"], "reponse", [], "any", false, false, false, 69)) {
      */
     public function getDebugInfo()
     {
-        return array (  469 => 284,  460 => 282,  456 => 281,  450 => 277,  439 => 275,  435 => 274,  268 => 109,  259 => 103,  256 => 102,  254 => 101,  251 => 100,  240 => 97,  233 => 96,  229 => 95,  226 => 94,  217 => 88,  214 => 87,  212 => 86,  206 => 82,  203 => 81,  189 => 74,  182 => 70,  178 => 69,  173 => 68,  171 => 67,  167 => 65,  163 => 63,  159 => 61,  157 => 60,  153 => 58,  149 => 56,  143 => 54,  141 => 53,  136 => 51,  132 => 50,  128 => 49,  124 => 48,  120 => 47,  117 => 46,  112 => 45,  110 => 44,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  528 => 320,  519 => 318,  515 => 317,  509 => 313,  498 => 311,  494 => 310,  327 => 145,  318 => 139,  315 => 138,  313 => 137,  310 => 136,  299 => 133,  292 => 132,  288 => 131,  285 => 130,  276 => 124,  273 => 123,  271 => 122,  265 => 118,  262 => 117,  248 => 110,  241 => 106,  237 => 105,  232 => 104,  230 => 103,  226 => 101,  222 => 99,  218 => 97,  216 => 96,  212 => 94,  208 => 92,  202 => 90,  200 => 89,  195 => 87,  191 => 86,  187 => 85,  183 => 84,  179 => 83,  176 => 82,  171 => 81,  169 => 80,  117 => 30,  106 => 24,  97 => 20,  93 => 19,  85 => 15,  80 => 14,  68 => 4,  58 => 3,  35 => 2,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'baseback.html.twig' %}
-
+        return new Source("{# {% extends 'baseback.html.twig' %} #}
+{% extends \"admin/layout.html.twig\" %}
 {% block body %}
+  <li class=\"dropdown dropdown-list-toggle\">
+\t\t\t\t\t\t\t<a href=\"#\" data-toggle=\"dropdown\" class=\"nav-link notification-toggle nav-link-lg beep\">
+\t\t\t\t\t\t\t\t<i class=\"ion ion-ios-bell-outline\"></i>
+\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t <div class=\"dropdown notification-dropdown\">
+    <a class=\"dropdown-toggle\" href=\"#\" role=\"button\" id=\"notificationDropdown\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+        <i class=\"fas fa-bell\"></i> <!-- Icône de cloche -->
+        <span class=\"badge badge-pill badge-danger\">3</span> <!-- Afficher le nombre de notifications non lues -->
+    </a>
+    <div class=\"dropdown-menu\" aria-labelledby=\"notificationDropdown\">
+\t\t\t\t\t\t\t\t\t{% for notification in notifications %}
+\t\t\t\t\t\t\t\t\t\t<a href=\"{{ notification.link }}\" class=\"dropdown-item dropdown-item-unread\">
+\t\t\t\t\t\t\t\t\t\t\t<div class=\"dropdown-item-icon bg-primary text-white\">
+\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t<div class=\"dropdown-item-desc\">
+\t\t\t\t\t\t\t\t\t\t\t\t{{ notification.message }}
+\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"time text-primary\">{{ notification.createdAt|date('Y-m-d H:i') }}</div>
+\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t{% else %}
+\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\">
+\t\t\t\t\t\t\t\t\t\t\t<div class=\"dropdown-item-desc\">
+\t\t\t\t\t\t\t\t\t\t\t\tNo notifications
+\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t{% endfor %}
+\t\t\t\t\t\t\t\t</div>
+    
+</div>
+\t\t\t\t\t\t\t\t
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</li>
+
+        </li>
+
+
     <button type=\"button\" class=\"btn btn-primary btn-icon-split\" data-toggle=\"modal\" data-target=\"#statsModal\">
         Afficher les statistiques 
     </button>

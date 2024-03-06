@@ -20,48 +20,51 @@ use Knp\Component\Pager\PaginatorInterface;
 class LogementController extends AbstractController
 {
     #[Route('/', name: 'app_logement_index', methods: ['GET'])]
-    public function index(LogementRepository $logementRepository,EquipementRepository $equipementRepository,PaginatorInterface $paginator, Request $request): Response
-    {
-        // Récupérer l'état sélectionné depuis la requête
-        $selectedState = $request->query->get('TypeLog'); // Utiliser query au lieu de request pour récupérer les paramètres GET
-        $selectedPrice = $request->query->get('Prix');
-    
-        // Récupérer les activités en fonction de l'état sélectionné
-        $logementQuery = $logementRepository->createQueryBuilder('a')
-            ->orderBy('a.id', 'DESC'); // Tri par défaut
-    
-        
-        $logements = $logementRepository->findAllWithEtatTrue();
-        $equipements = $equipementRepository->findAll();
-        if ($selectedState) {
-            $logements = $logementRepository->findBy(['TypeLog' => $selectedState]);
-        }  
-         if ($selectedPrice) {
-            // Extrayez la plage de prix à partir du paramètre sélectionné
-            $Price = explode('-', $selectedPrice);
-            $minPrice = $Price[0];
-            $maxPrice = $Price[1];
-            
-            // Filtrez les logements en fonction de la plage de prix
-            $logements = $logementRepository->findByPrix($minPrice, $maxPrice);
-        }
-         // Récupérer le prix sélectionné depuis la requête
-         // Paginer les activités récupérées
-        $logements = $paginator->paginate($logements, $request->query->getInt('page', 1), 6);
+public function index(
+    LogementRepository $logementRepository,
+    EquipementRepository $equipementRepository,
+    PaginatorInterface $paginator,
+    Request $request
+): Response {
+    // Récupérer l'état sélectionné depuis la requête
+    $selectedState = $request->query->get('TypeLog');
+    $selectedPrice = $request->query->get('Prix');
 
-        return $this->render('logement/index.html.twig', [
-            'logements' => $logements,
-             // Use filtered logements here
-            'equipements' => $equipements,
-            'selectedState' => $selectedState, // Passer la valeur de l'état sélectionné au template
-            'selectedPrice' =>$selectedPrice,
-             'selectedState' => $selectedState
+    // Récupérer les activités en fonction de l'état sélectionné
+    $logementQuery = $logementRepository->createQueryBuilder('a')
+        ->orderBy('a.id', 'DESC'); // Tri par défaut
 
-        ]);
-    
-    
-    
+    $filteredLogements = []; // Initialize an empty array for filtered logements
+
+    if ($selectedState) {
+        $filteredLogements = $logementRepository->findByTypeAndEtatTrue($selectedState);
+    }else{
+        $filteredLogements=$logementRepository->findAllWithEtatTrue();
     }
+
+    if ($selectedPrice) {
+        // Extrayez la plage de prix à partir du paramètre sélectionné
+        $Price = explode('-', $selectedPrice);
+        $minPrice = $Price[0];
+        $maxPrice = $Price[1];
+
+        // Filtrez les logements en fonction de la plage de prix
+        $filteredLogements = $logementRepository->findByPrix($minPrice, $maxPrice);
+    }
+
+    // Paginer les activités récupérées
+    $logements = $paginator->paginate($filteredLogements, $request->query->getInt('page', 1), 6);
+
+    $equipements = $equipementRepository->findAll();
+
+    return $this->render('logement/index.html.twig', [
+        'logements' => $logements,
+        'equipements' => $equipements,
+        'selectedState' => $selectedState,
+        'selectedPrice' => $selectedPrice,
+    ]);
+}
+
     // #[Route('/new', name: 'app_logement_new', methods: ['GET', 'POST'])]
     // public function new(Request $request, EntityManagerInterface $entityManager): Response
     // {
@@ -113,6 +116,7 @@ class LogementController extends AbstractController
         
                 return $this->redirectToRoute('app_equipement_new', [
                     
+                    'logement_id' => $logement->getId(),
                 ], Response::HTTP_SEE_OTHER);
             }
         
@@ -164,11 +168,12 @@ class LogementController extends AbstractController
         return $this->redirectToRoute('app_logement_index', [], Response::HTTP_SEE_OTHER);
     }
     #[Route('/mylogement', name:'app_logement_mylist')]
-    function Rechercheavisbyclient(LogementRepository $logementRepository){
+    function Rechercheavisbyclient(LogementRepository $Repository){
        
-        $logements = $logementRepository->findAll();
         
-        return $this->render('logement/Mylist.html.twig',['logements' => $logements, ]);
+        return $this->render('logement/Mylist.html.twig',[
+            'logements' => $Repository->findMylogement($this->getUser()),
+         ]);
        }
 
        #[Route('/show_in_map/{id}', name: 'app_logement_map', methods: ['GET'])]

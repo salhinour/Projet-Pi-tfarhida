@@ -13,12 +13,14 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item "><a href="/accueil" class="nav-link">Accueil</a></li>
-                <li class="nav-item active"><a href="/act" class="nav-link">Activites</a></li>
-                <li class="nav-item"><a href="/logement" class="nav-link">Logements</a></li>
-                <li class="nav-item"><a href="/restaurant" class="nav-link">Restaurants</a></li>
-                <li class="nav-item"><a href="/activite" class="nav-link">Transports</a></li>
-                <li class="nav-item"><a href="/reclamation" class="nav-link">Réclamation</a></li>
+            <ul class="navbar-nav ml-auto">
+					<li class="nav-item "><a href="" class="nav-link">Home</a></li>
+					<li class="nav-item active"><a  href="{{ path('app_activitee_indexx') }}"class="nav-link">Activites</a></li>
+					<li class="nav-item"><a  href="{{ path('app_activite') }}" class="nav-link">Transports</a></li>
+					<li class="nav-item "><a href="" class="nav-link">Logements</a></li>
+					<li class="nav-item"><a href="{{ path('app_activite') }}" class="nav-link">restaurants</a></li>
+					<li class="nav-item"><a href="reclamation" class="nav-link">Reclamation</a></li>
+				
             </ul>
         </div>
 

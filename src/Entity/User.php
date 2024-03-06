@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -58,15 +60,52 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $resetToken;
+   
 
     /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+    #[ORM\Column]
+    private ?int $numero = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity:Reclamation::class)]
+    private Collection $reclamations;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Logement::class)]
+    private Collection $logements;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Activitee::class)]
+    private Collection $activites;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: MoyenTransport::class)]
+    private Collection $Transports;
+
+    #[ORM\Column(type: 'string', length: 100, nullable: true)]
+    private $resetToken;
+
+    
+
+    public function __construct()
+    {
+        $this->reclamations = new ArrayCollection();
+        $this->logements = new ArrayCollection();
+        $this->activites = new ArrayCollection();
+        $this->Transports = new ArrayCollection();
+    }
+
+    public function getResetToken(): ?string
+    {
+        return $this->resetToken;
+    }
+
+    public function setResetToken(?string $resetToken): self
+    {
+        $this->resetToken = $resetToken;
+
+        return $this;
+    }
 
     public function getId(): ?int
     {
@@ -200,21 +239,148 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
     }
     
-    public function getSalt()
-    {}
+     public function getSalt()
+     {}
 
     
-    public function getResetToken(): string
-    {
-        return $this->resetToken;
-    }
-     
-    public function setResetToken(?string $resetToken): void
-    {
-        $this->resetToken = $resetToken;
-    }
+ 
     public function getCreatedAt()
     {
         return $this->createdAt;
     }
+
+    public function getNumero(): ?int
+    {
+        return $this->numero;
+    }
+
+    public function setNumero(int $numero): static
+    {
+        $this->numero = $numero;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, reclamation>
+     */
+    public function getReclamations(): Collection
+    {
+        return $this->reclamations;
+    }
+
+    public function addReclamation(Reclamation $reclamation): static
+    {
+        if (!$this->reclamations->contains($reclamation)) {
+            $this->reclamations->add($reclamation);
+            $reclamation->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReclamation(reclamation $reclamation): static
+    {
+        if ($this->reclamations->removeElement($reclamation)) {
+            // set the owning side to null (unless already changed)
+            if ($reclamation->getUser() === $this) {
+                $reclamation->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Logement>
+     */
+    public function getLogements(): Collection
+    {
+        return $this->logements;
+    }
+
+    public function addLogement(Logement $logement): static
+    {
+        if (!$this->logements->contains($logement)) {
+            $this->logements->add($logement);
+            $logement->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLogement(Logement $logement): static
+    {
+        if ($this->logements->removeElement($logement)) {
+            // set the owning side to null (unless already changed)
+            if ($logement->getUser() === $this) {
+                $logement->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Activitee>
+     */
+    public function getActivites(): Collection
+    {
+        return $this->activites;
+    }
+
+    public function addActivite(Activitee $activite): static
+    {
+        if (!$this->activites->contains($activite)) {
+            $this->activites->add($activite);
+            $activite->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActivite(Activitee $activite): static
+    {
+        if ($this->activites->removeElement($activite)) {
+            // set the owning side to null (unless already changed)
+            if ($activite->getUser() === $this) {
+                $activite->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MoyenTransport>
+     */
+    public function getTransports(): Collection
+    {
+        return $this->Transports;
+    }
+
+    public function addTransport(MoyenTransport $transport): static
+    {
+        if (!$this->Transports->contains($transport)) {
+            $this->Transports->add($transport);
+            $transport->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTransport(MoyenTransport $transport): static
+    {
+        if ($this->Transports->removeElement($transport)) {
+            // set the owning side to null (unless already changed)
+            if ($transport->getUser() === $this) {
+                $transport->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+   
+
 }

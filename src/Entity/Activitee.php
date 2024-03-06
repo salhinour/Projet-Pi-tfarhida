@@ -51,7 +51,12 @@ class Activitee
 
     #[ORM\ManyToOne(inversedBy: 'activitee')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank(message: "vous devez mettre la categorie!!!")]
+
     private ?Categorie $categorie;
+
+    #[ORM\ManyToOne(inversedBy: 'activites')]
+    private ?User $user = null;
 
     
    
@@ -168,5 +173,17 @@ class Activitee
 {
     $this->etat = "En cours";
 }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
+
+        return $this;
+    }
     
 }

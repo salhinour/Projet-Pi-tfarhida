@@ -19,6 +19,7 @@ class UserType extends AbstractType
             ->add('username')
             ->add('firstName')
             ->add('lastName')
+            ->add('numero')
             ->add('isVerified')
         ;
     }

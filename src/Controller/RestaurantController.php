@@ -13,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 
